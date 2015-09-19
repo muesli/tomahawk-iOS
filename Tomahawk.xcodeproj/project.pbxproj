@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DBDE01C1BADC2BA00CD02CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE01B1BADC2BA00CD02CC /* main.m */; };
+		4DBDE01F1BADC2BA00CD02CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */; };
+		4DBDE0221BADC2BA00CD02CC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0211BADC2BA00CD02CC /* FirstViewController.m */; };
+		4DBDE0251BADC2BA00CD02CC /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0241BADC2BA00CD02CC /* SecondViewController.m */; };
+		4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0261BADC2BA00CD02CC /* Main.storyboard */; };
+		4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */; };
+		4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */; };
+		4DBDE0381BADC2BA00CD02CC /* TomahawkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */; };
+		4DBDE0431BADC2BA00CD02CC /* TomahawkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DBDE0341BADC2BA00CD02CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DBDE00F1BADC2B900CD02CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DBDE0161BADC2BA00CD02CC;
+			remoteInfo = Tomahawk;
+		};
+		4DBDE03F1BADC2BA00CD02CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DBDE00F1BADC2B900CD02CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DBDE0161BADC2BA00CD02CC;
+			remoteInfo = Tomahawk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DBDE01B1BADC2BA00CD02CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4DBDE0201BADC2BA00CD02CC /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		4DBDE0211BADC2BA00CD02CC /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		4DBDE0231BADC2BA00CD02CC /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		4DBDE0241BADC2BA00CD02CC /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		4DBDE0271BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DBDE02C1BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4DBDE02E1BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomahawkTests.m; sourceTree = "<group>"; };
+		4DBDE0391BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomahawkUITests.m; sourceTree = "<group>"; };
+		4DBDE0441BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DBDE0141BADC2BA00CD02CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DBDE0301BADC2BA00CD02CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DBDE03B1BADC2BA00CD02CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DBDE00E1BADC2B900CD02CC = {
+			isa = PBXGroup;
+			children = (
+				4DBDE0191BADC2BA00CD02CC /* Tomahawk */,
+				4DBDE0361BADC2BA00CD02CC /* TomahawkTests */,
+				4DBDE0411BADC2BA00CD02CC /* TomahawkUITests */,
+				4DBDE0181BADC2BA00CD02CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DBDE0181BADC2BA00CD02CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */,
+				4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */,
+				4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DBDE0191BADC2BA00CD02CC /* Tomahawk */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */,
+				4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */,
+				4DBDE0201BADC2BA00CD02CC /* FirstViewController.h */,
+				4DBDE0211BADC2BA00CD02CC /* FirstViewController.m */,
+				4DBDE0231BADC2BA00CD02CC /* SecondViewController.h */,
+				4DBDE0241BADC2BA00CD02CC /* SecondViewController.m */,
+				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
+				4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */,
+				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
+				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
+				4DBDE01A1BADC2BA00CD02CC /* Supporting Files */,
+			);
+			path = Tomahawk;
+			sourceTree = "<group>";
+		};
+		4DBDE01A1BADC2BA00CD02CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE01B1BADC2BA00CD02CC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DBDE0361BADC2BA00CD02CC /* TomahawkTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */,
+				4DBDE0391BADC2BA00CD02CC /* Info.plist */,
+			);
+			path = TomahawkTests;
+			sourceTree = "<group>";
+		};
+		4DBDE0411BADC2BA00CD02CC /* TomahawkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */,
+				4DBDE0441BADC2BA00CD02CC /* Info.plist */,
+			);
+			path = TomahawkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DBDE0161BADC2BA00CD02CC /* Tomahawk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DBDE0471BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "Tomahawk" */;
+			buildPhases = (
+				4DBDE0131BADC2BA00CD02CC /* Sources */,
+				4DBDE0141BADC2BA00CD02CC /* Frameworks */,
+				4DBDE0151BADC2BA00CD02CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tomahawk;
+			productName = Tomahawk;
+			productReference = 4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DBDE0321BADC2BA00CD02CC /* TomahawkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DBDE04A1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkTests" */;
+			buildPhases = (
+				4DBDE02F1BADC2BA00CD02CC /* Sources */,
+				4DBDE0301BADC2BA00CD02CC /* Frameworks */,
+				4DBDE0311BADC2BA00CD02CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DBDE0351BADC2BA00CD02CC /* PBXTargetDependency */,
+			);
+			name = TomahawkTests;
+			productName = TomahawkTests;
+			productReference = 4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4DBDE03D1BADC2BA00CD02CC /* TomahawkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DBDE04D1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkUITests" */;
+			buildPhases = (
+				4DBDE03A1BADC2BA00CD02CC /* Sources */,
+				4DBDE03B1BADC2BA00CD02CC /* Frameworks */,
+				4DBDE03C1BADC2BA00CD02CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DBDE0401BADC2BA00CD02CC /* PBXTargetDependency */,
+			);
+			name = TomahawkUITests;
+			productName = TomahawkUITests;
+			productReference = 4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DBDE00F1BADC2B900CD02CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Mark Bourke";
+				TargetAttributes = {
+					4DBDE0161BADC2BA00CD02CC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9UC9V3Y3K3;
+					};
+					4DBDE0321BADC2BA00CD02CC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9UC9V3Y3K3;
+						TestTargetID = 4DBDE0161BADC2BA00CD02CC;
+					};
+					4DBDE03D1BADC2BA00CD02CC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 9UC9V3Y3K3;
+						TestTargetID = 4DBDE0161BADC2BA00CD02CC;
+					};
+				};
+			};
+			buildConfigurationList = 4DBDE0121BADC2B900CD02CC /* Build configuration list for PBXProject "Tomahawk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DBDE00E1BADC2B900CD02CC;
+			productRefGroup = 4DBDE0181BADC2BA00CD02CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DBDE0161BADC2BA00CD02CC /* Tomahawk */,
+				4DBDE0321BADC2BA00CD02CC /* TomahawkTests */,
+				4DBDE03D1BADC2BA00CD02CC /* TomahawkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DBDE0151BADC2BA00CD02CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */,
+				4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */,
+				4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DBDE0311BADC2BA00CD02CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DBDE03C1BADC2BA00CD02CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DBDE0131BADC2BA00CD02CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DBDE0251BADC2BA00CD02CC /* SecondViewController.m in Sources */,
+				4DBDE01F1BADC2BA00CD02CC /* AppDelegate.m in Sources */,
+				4DBDE0221BADC2BA00CD02CC /* FirstViewController.m in Sources */,
+				4DBDE01C1BADC2BA00CD02CC /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DBDE02F1BADC2BA00CD02CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DBDE0381BADC2BA00CD02CC /* TomahawkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DBDE03A1BADC2BA00CD02CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DBDE0431BADC2BA00CD02CC /* TomahawkUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DBDE0351BADC2BA00CD02CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DBDE0161BADC2BA00CD02CC /* Tomahawk */;
+			targetProxy = 4DBDE0341BADC2BA00CD02CC /* PBXContainerItemProxy */;
+		};
+		4DBDE0401BADC2BA00CD02CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DBDE0161BADC2BA00CD02CC /* Tomahawk */;
+			targetProxy = 4DBDE03F1BADC2BA00CD02CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4DBDE0261BADC2BA00CD02CC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DBDE0271BADC2BA00CD02CC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4DBDE02C1BADC2BA00CD02CC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4DBDE0451BADC2BA00CD02CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4DBDE0461BADC2BA00CD02CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DBDE0481BADC2BA00CD02CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Tomahawk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.Tomahawk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4DBDE0491BADC2BA00CD02CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Tomahawk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.Tomahawk;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		4DBDE04B1BADC2BA00CD02CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TomahawkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.TomahawkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tomahawk.app/Tomahawk";
+			};
+			name = Debug;
+		};
+		4DBDE04C1BADC2BA00CD02CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TomahawkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.TomahawkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tomahawk.app/Tomahawk";
+			};
+			name = Release;
+		};
+		4DBDE04E1BADC2BA00CD02CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TomahawkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.TomahawkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Tomahawk;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		4DBDE04F1BADC2BA00CD02CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TomahawkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.TomahawkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Tomahawk;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DBDE0121BADC2B900CD02CC /* Build configuration list for PBXProject "Tomahawk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DBDE0451BADC2BA00CD02CC /* Debug */,
+				4DBDE0461BADC2BA00CD02CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DBDE0471BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "Tomahawk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DBDE0481BADC2BA00CD02CC /* Debug */,
+				4DBDE0491BADC2BA00CD02CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DBDE04A1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DBDE04B1BADC2BA00CD02CC /* Debug */,
+				4DBDE04C1BADC2BA00CD02CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4DBDE04D1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DBDE04E1BADC2BA00CD02CC /* Debug */,
+				4DBDE04F1BADC2BA00CD02CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DBDE00F1BADC2B900CD02CC /* Project object */;
+}
