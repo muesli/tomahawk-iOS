@@ -7,10 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1E3DF71BD2BAE200717185 /* InsidePlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D1EBACD1BC8290000B15A89 /* Inside Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EBACC1BC8290000B15A89 /* Inside Settings.m */; settings = {ASSET_TAGS = (); }; };
+		4D1EBAD01BC9358A00B15A89 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EBACF1BC9358A00B15A89 /* Settings.m */; settings = {ASSET_TAGS = (); }; };
+		4D2112BA1BD0EEF1001D415D /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D32B8DF1BCA7A1D00C42A85 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32B8DE1BCA7A1D00C42A85 /* HMSegmentedControl.m */; settings = {ASSET_TAGS = (); }; };
+		4D32B8E61BCA7CE700C42A85 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D32E1531BD1AFCE008F9373 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6023E71BC6E8810053F998 /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CED1BD49853008D2515 /* blurExample.png */; settings = {ASSET_TAGS = (); }; };
+		4D7B0CF01BD4EF40008D2515 /* Shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CEF1BD4EF40008D2515 /* Shuffle.png */; settings = {ASSET_TAGS = (); }; };
+		4D83A9F41BDC3C1C0040721C /* List-44.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D83A9F21BDC3C1C0040721C /* List-44.png */; settings = {ASSET_TAGS = (); }; };
+		4DAA0DA41BD3D7EE006A9D2F /* Untitled-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA0DA31BD3D7EE006A9D2F /* Untitled-1.png */; settings = {ASSET_TAGS = (); }; };
+		4DB344F31BCABFB200BF8E31 /* Forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB344ED1BCABFB200BF8E31 /* Forward.png */; settings = {ASSET_TAGS = (); }; };
+		4DB344F41BCABFB200BF8E31 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB344EE1BCABFB200BF8E31 /* Pause.png */; settings = {ASSET_TAGS = (); }; };
+		4DB344F51BCABFB200BF8E31 /* Repeat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB344EF1BCABFB200BF8E31 /* Repeat.png */; settings = {ASSET_TAGS = (); }; };
+		4DB344F61BCABFB200BF8E31 /* Rewind.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB344F01BCABFB200BF8E31 /* Rewind.png */; settings = {ASSET_TAGS = (); }; };
+		4DB344F71BCABFB200BF8E31 /* Shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB344F11BCABFB200BF8E31 /* Shape.png */; settings = {ASSET_TAGS = (); }; };
 		4DBDE01C1BADC2BA00CD02CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE01B1BADC2BA00CD02CC /* main.m */; };
 		4DBDE01F1BADC2BA00CD02CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */; };
-		4DBDE0221BADC2BA00CD02CC /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0211BADC2BA00CD02CC /* FirstViewController.m */; };
-		4DBDE0251BADC2BA00CD02CC /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0241BADC2BA00CD02CC /* SecondViewController.m */; };
+		4DBDE0221BADC2BA00CD02CC /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */; };
 		4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0261BADC2BA00CD02CC /* Main.storyboard */; };
 		4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */; };
 		4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */; };
@@ -36,14 +52,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D1E3DF51BD2BAE200717185 /* InsidePlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsidePlaylistsViewController.h; path = Tomahawk/InsidePlaylistsViewController.h; sourceTree = "<group>"; };
+		4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsidePlaylistsViewController.m; path = Tomahawk/InsidePlaylistsViewController.m; sourceTree = "<group>"; };
+		4D1EBACB1BC8290000B15A89 /* Inside Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Inside Settings.h"; sourceTree = "<group>"; };
+		4D1EBACC1BC8290000B15A89 /* Inside Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Inside Settings.m"; sourceTree = "<group>"; };
+		4D1EBACE1BC9358A00B15A89 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		4D1EBACF1BC9358A00B15A89 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		4D32B8DD1BCA7A1D00C42A85 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSegmentedControl.h; path = Tomahawk/HMSegmentedControl.h; sourceTree = "<group>"; };
+		4D32B8DE1BCA7A1D00C42A85 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSegmentedControl.m; path = Tomahawk/HMSegmentedControl.m; sourceTree = "<group>"; };
+		4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
+		4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyMusicViewController.h; path = Tomahawk/MyMusicViewController.h; sourceTree = "<group>"; };
+		4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyMusicViewController.m; path = Tomahawk/MyMusicViewController.m; sourceTree = "<group>"; };
+		4D6023E61BC6E8810053F998 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4D7B0CED1BD49853008D2515 /* blurExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample.png; sourceTree = "<group>"; };
+		4D7B0CEF1BD4EF40008D2515 /* Shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shuffle.png; sourceTree = "<group>"; };
+		4D83A9F21BDC3C1C0040721C /* List-44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "List-44.png"; sourceTree = "<group>"; };
+		4DAA0DA31BD3D7EE006A9D2F /* Untitled-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Untitled-1.png"; sourceTree = "<group>"; };
+		4DB344ED1BCABFB200BF8E31 /* Forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forward.png; sourceTree = "<group>"; };
+		4DB344EE1BCABFB200BF8E31 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		4DB344EF1BCABFB200BF8E31 /* Repeat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Repeat.png; sourceTree = "<group>"; };
+		4DB344F01BCABFB200BF8E31 /* Rewind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Rewind.png; sourceTree = "<group>"; };
+		4DB344F11BCABFB200BF8E31 /* Shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shape.png; sourceTree = "<group>"; };
 		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE01B1BADC2BA00CD02CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4DBDE0201BADC2BA00CD02CC /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		4DBDE0211BADC2BA00CD02CC /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		4DBDE0231BADC2BA00CD02CC /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		4DBDE0241BADC2BA00CD02CC /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		4DBDE0271BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DBDE02C1BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,9 +120,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D1E3DF81BD2C8B100717185 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */,
+				4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */,
+				4D1E3DF51BD2BAE200717185 /* InsidePlaylistsViewController.h */,
+				4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		4D32B8E01BCA7A2A00C42A85 /* Custom Segmented Control */ = {
+			isa = PBXGroup;
+			children = (
+				4D32B8DD1BCA7A1D00C42A85 /* HMSegmentedControl.h */,
+				4D32B8DE1BCA7A1D00C42A85 /* HMSegmentedControl.m */,
+			);
+			name = "Custom Segmented Control";
+			sourceTree = "<group>";
+		};
 		4DBDE00E1BADC2B900CD02CC = {
 			isa = PBXGroup;
 			children = (
+				4D1E3DF81BD2C8B100717185 /* Music */,
+				4D32B8E01BCA7A2A00C42A85 /* Custom Segmented Control */,
 				4DBDE0191BADC2BA00CD02CC /* Tomahawk */,
 				4DBDE0361BADC2BA00CD02CC /* TomahawkTests */,
 				4DBDE0411BADC2BA00CD02CC /* TomahawkUITests */,
@@ -106,14 +167,24 @@
 			children = (
 				4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */,
 				4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */,
-				4DBDE0201BADC2BA00CD02CC /* FirstViewController.h */,
-				4DBDE0211BADC2BA00CD02CC /* FirstViewController.m */,
-				4DBDE0231BADC2BA00CD02CC /* SecondViewController.h */,
-				4DBDE0241BADC2BA00CD02CC /* SecondViewController.m */,
+				4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */,
+				4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */,
+				4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */,
+				4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */,
+				4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */,
+				4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */,
+				4D6023E61BC6E8810053F998 /* SettingsViewController.h */,
+				4D6023E71BC6E8810053F998 /* SettingsViewController.m */,
+				4D1EBACE1BC9358A00B15A89 /* Settings.h */,
+				4D1EBACF1BC9358A00B15A89 /* Settings.m */,
+				4D1EBACB1BC8290000B15A89 /* Inside Settings.h */,
+				4D1EBACC1BC8290000B15A89 /* Inside Settings.m */,
 				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
 				4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */,
+				4DAA0DA31BD3D7EE006A9D2F /* Untitled-1.png */,
 				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
 				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
+				4D83A9F21BDC3C1C0040721C /* List-44.png */,
 				4DBDE01A1BADC2BA00CD02CC /* Supporting Files */,
 			);
 			path = Tomahawk;
@@ -122,6 +193,13 @@
 		4DBDE01A1BADC2BA00CD02CC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4DB344ED1BCABFB200BF8E31 /* Forward.png */,
+				4DB344EE1BCABFB200BF8E31 /* Pause.png */,
+				4D7B0CED1BD49853008D2515 /* blurExample.png */,
+				4DB344EF1BCABFB200BF8E31 /* Repeat.png */,
+				4DB344F01BCABFB200BF8E31 /* Rewind.png */,
+				4D7B0CEF1BD4EF40008D2515 /* Shuffle.png */,
+				4DB344F11BCABFB200BF8E31 /* Shape.png */,
 				4DBDE01B1BADC2BA00CD02CC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -251,9 +329,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D7B0CF01BD4EF40008D2515 /* Shuffle.png in Resources */,
+				4DB344F51BCABFB200BF8E31 /* Repeat.png in Resources */,
+				4D83A9F41BDC3C1C0040721C /* List-44.png in Resources */,
 				4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */,
 				4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */,
 				4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */,
+				4DB344F31BCABFB200BF8E31 /* Forward.png in Resources */,
+				4DB344F71BCABFB200BF8E31 /* Shape.png in Resources */,
+				4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */,
+				4DAA0DA41BD3D7EE006A9D2F /* Untitled-1.png in Resources */,
+				4DB344F41BCABFB200BF8E31 /* Pause.png in Resources */,
+				4DB344F61BCABFB200BF8E31 /* Rewind.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +365,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBDE0251BADC2BA00CD02CC /* SecondViewController.m in Sources */,
+				4D2112BA1BD0EEF1001D415D /* DiscoverViewController.m in Sources */,
+				4D1E3DF71BD2BAE200717185 /* InsidePlaylistsViewController.m in Sources */,
+				4D32B8DF1BCA7A1D00C42A85 /* HMSegmentedControl.m in Sources */,
+				4D32E1531BD1AFCE008F9373 /* MyMusicViewController.m in Sources */,
 				4DBDE01F1BADC2BA00CD02CC /* AppDelegate.m in Sources */,
-				4DBDE0221BADC2BA00CD02CC /* FirstViewController.m in Sources */,
+				4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */,
+				4D1EBACD1BC8290000B15A89 /* Inside Settings.m in Sources */,
+				4DBDE0221BADC2BA00CD02CC /* FeedViewController.m in Sources */,
+				4D32B8E61BCA7CE700C42A85 /* RadioViewController.m in Sources */,
 				4DBDE01C1BADC2BA00CD02CC /* main.m in Sources */,
+				4D1EBAD01BC9358A00B15A89 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +447,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: mark.bourke@wriggle.ie (9DAK9VK687)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mark.bourke@wriggle.ie (9DAK9VK687)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -396,7 +491,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: mark.bourke@wriggle.ie (9DAK9VK687)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mark.bourke@wriggle.ie (9DAK9VK687)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -420,10 +516,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tomahawk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.Tomahawk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -431,10 +530,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Tomahawk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.Tomahawk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -505,6 +607,7 @@
 				4DBDE0491BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DBDE04A1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +616,7 @@
 				4DBDE04C1BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DBDE04D1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +625,7 @@
 				4DBDE04F1BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
