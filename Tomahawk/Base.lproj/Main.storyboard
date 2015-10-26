@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Feed-->
+        <!--Feed View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FeedViewController" sceneMemberID="viewController">
@@ -15,30 +15,28 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" searchBarStyle="minimal" text="" placeholder="Search Artists, Songs, Albums etc." translatesAutoresizingMaskIntoConstraints="NO" id="7AJ-lO-hfF">
-                                <rect key="frame" x="0.0" y="28" width="329" height="44"/>
-                                <animations/>
-                                <color key="barTintColor" red="0.1137254902" green="0.1137254902" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="YhL-ta-wef">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="7pH-mz-AcI">
+                            <connections>
+                                <action selector="inboxButton:" destination="9pv-A4-QxB" id="gaJ-HY-sLp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-174.5" y="-3118.5"/>
+            <point key="canvasLocation" x="60.5" y="-3030.5"/>
         </scene>
-        <!--    -->
+        <!--My Music-->
         <scene sceneID="FnB-94-FR2">
             <objects>
-                <viewController id="bEp-25-O6s" customClass="MyMusicViewController" sceneMemberID="viewController">
+                <viewController title="My Music" id="bEp-25-O6s" customClass="MyMusicViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Hp-Sw-DGO"/>
                         <viewControllerLayoutGuide type="bottom" id="jPJ-Ht-SIk"/>
@@ -95,7 +93,7 @@
                             </tableView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="s0S-b3-e5C" secondAttribute="trailing" constant="-20" id="Erd-9g-uH6"/>
@@ -126,12 +124,12 @@
                 <swipeGestureRecognizer direction="left" id="fDF-LJ-6uT"/>
                 <swipeGestureRecognizer direction="right" id="sO2-ue-5Wb"/>
             </objects>
-            <point key="canvasLocation" x="1632.5" y="-2541.5"/>
+            <point key="canvasLocation" x="60.5" y="-2205.5"/>
         </scene>
         <!--Inside Playlists View Controller-->
         <scene sceneID="67x-MZ-vku">
             <objects>
-                <viewController id="lW8-sC-NQO" customClass="InsidePlaylistsViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="lW8-sC-NQO" customClass="InsidePlaylistsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cwc-qN-Tde"/>
                         <viewControllerLayoutGuide type="bottom" id="S2I-PS-m81"/>
@@ -213,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIb-XS-WbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2114.5" y="-2541.5"/>
+            <point key="canvasLocation" x="599.5" y="-2221.5"/>
         </scene>
         <!--Radio View Controller-->
         <scene sceneID="fbY-BM-Eg5">
@@ -229,7 +227,13 @@
                         <animations/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xHn-Su-afa"/>
+                    <navigationItem key="navigationItem" id="xHn-Su-afa">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="u3o-GN-K4Q">
+                            <connections>
+                                <action selector="inboxButton:" destination="64d-AS-328" id="hoL-B1-ryq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -246,7 +250,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="476.5" y="-1109.5"/>
+            <point key="canvasLocation" x="60.5" y="-1473.5"/>
         </scene>
         <!--Discover View Controller-->
         <scene sceneID="ZcW-G3-duK">
@@ -262,11 +266,17 @@
                         <animations/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7qV-2g-Wla"/>
+                    <navigationItem key="navigationItem" id="7qV-2g-Wla">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="gsO-ux-GF6">
+                            <connections>
+                                <action selector="inboxButton:" destination="Xg7-X4-LS6" id="J4K-CB-k4o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8p-Ek-HCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809.5" y="-1285.5"/>
+            <point key="canvasLocation" x="73.5" y="-733.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="4ao-iD-fNV">
@@ -379,7 +389,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4KY-Gh-TRf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-740" y="-37"/>
+            <point key="canvasLocation" x="-428.5" y="-13.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -396,7 +406,7 @@
                         <color key="barTintColor" red="0.14509803921568626" green="0.14509803921568626" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="cdh-A4-0Ly" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="pOm-Af-pqI" kind="relationship" relationship="viewControllers" id="sZM-P2-iyI"/>
                         <segue destination="CFu-5n-YUN" kind="relationship" relationship="viewControllers" id="3fQ-V8-LF0"/>
                         <segue destination="tpZ-8E-iOE" kind="relationship" relationship="viewControllers" id="eig-Sq-Oe1"/>
@@ -426,7 +436,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eM3-Bk-tvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1045.5" y="-2541.5"/>
+            <point key="canvasLocation" x="-454.5" y="-2197.5"/>
         </scene>
         <!--Radio-->
         <scene sceneID="9xS-xu-lb2">
@@ -447,7 +457,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qIw-P0-xjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-110.5" y="-1109.5"/>
+            <point key="canvasLocation" x="-454.5" y="-1497.5"/>
         </scene>
         <!--Discover-->
         <scene sceneID="rjz-Vw-po0">
@@ -468,7 +478,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePQ-kg-wLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1222.5" y="-1285.5"/>
+            <point key="canvasLocation" x="-428.5" y="-757.5"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="6zH-Wy-sSJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cdh-A4-0Ly" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1b4-N1-kE8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Vlk-3J-TOC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFe-am-ev4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-462.5" y="-3030.5"/>
         </scene>
     </scenes>
     <resources>

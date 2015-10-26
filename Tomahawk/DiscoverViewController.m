@@ -13,21 +13,22 @@
 @end
 
 @implementation DiscoverViewController
+- (IBAction)inboxButton:(id)sender {
+    //Insert Code
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //    [self setNeedsStatusBarAppearanceUpdate];
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    //    UIView *statusBarView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 22)];
-    //    statusBarView.backgroundColor  =  [UIColor colorWithRed:49.0f/255.0f green:49.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
-    //    [self.view addSubview:statusBarView];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                  forBarPosition:UIBarPositionAny
                                                      barMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-#pragma Search Controller
+    
+#pragma mark - Search Controller
     //Creating Search Controller
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self];
     // Use the current view controller to update the search results.
@@ -41,7 +42,7 @@
     self.definesPresentationContext = YES;
     self.navigationItem.titleView = searchController.searchBar;
     
-    
+#pragma mark - Custom Segmented Control
     HMSegmentedControl *segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"FOR YOU", @"CHARTS", @"LIKED", @" NEW SONGS"]];
     //First value: Left padding Second value: Top padding Third Value: Width Fourth Value: Height
     segmentedControl.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
@@ -52,6 +53,14 @@
     barbackground.backgroundColor = [UIColor colorWithRed:49.0f/255.0f green:49.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
     [self.view addSubview:barbackground];
     [self.view addSubview:segmentedControl];
+    
+#pragma mark - Now Playing Bar
+    CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
+    UITabBar *nowPlayingBar = [[UITabBar alloc]initWithFrame:CGRectMake(0, CGRectGetMinY(self.tabBarController.tabBar.frame) - tabBarHeight*2.3 , viewWidth, CGRectGetHeight(self.tabBarController.tabBar.frame))];
+    nowPlayingBar.barTintColor = [UIColor colorWithRed:37.0f/255.0f green:37.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
+    nowPlayingBar.translucent = YES;
+    nowPlayingBar.barStyle = UIBarStyleBlack;
+    [self.view addSubview:nowPlayingBar];
     
 }
 

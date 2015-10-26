@@ -20,7 +20,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = false;
     NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:currentCell animated:YES];
 }
@@ -29,8 +28,6 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
-    //self.tableView.delaysContentTouches = NO;   //Removes stupid delay when button selecting
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwipe:)];
     leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:leftSwipe];
@@ -63,28 +60,16 @@
     self.definesPresentationContext = YES;
     searchController.searchBar.frame = CGRectMake(0, 0, 10,CGRectGetHeight(searchController.searchBar.frame));
     self.navigationItem.titleView = searchController.searchBar;
-//    [inboxButton setImage:[UIImage imageNamed:@"Inbox"] forState:UIControlStateNormal];
-//    [inboxButton setImage:[UIImage imageNamed:@"Inbox Selected"] forState:UIControlStateHighlighted];
-//    inboxButton.frame = CGRectMake(CGRectGetWidth(self.view.frame) * 0.89, 28, 20, 20);
-
-    [self segmentedControl];
+    
 #pragma mark - Now Playing Bar
-    
-    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-     visualEffectView.backgroundColor = [UIColor colorWithRed:49.0f/255.0f green:49.0f/255.0f blue:61.0f/255.0f alpha:0.6f];
-    visualEffectView.alpha = 1;
     CGFloat tabBarHeight = CGRectGetHeight(self.tabBarController.tabBar.frame);
-    visualEffectView.frame = CGRectMake(0, CGRectGetMinY(self.tabBarController.tabBar.frame) - tabBarHeight*2.3 , viewWidth, CGRectGetHeight(self.tabBarController.tabBar.frame));
-    
-    [self.view addSubview:visualEffectView];
-
-}
+    UITabBar *nowPlayingBar = [[UITabBar alloc]initWithFrame:CGRectMake(0, CGRectGetMinY(self.tabBarController.tabBar.frame) - tabBarHeight*2.3 , viewWidth, CGRectGetHeight(self.tabBarController.tabBar.frame))];
+    nowPlayingBar.barTintColor = [UIColor colorWithRed:37.0f/255.0f green:37.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
+    nowPlayingBar.translucent = YES;
+    nowPlayingBar.barStyle = UIBarStyleBlack;
+    [self.view addSubview:nowPlayingBar];
 
 #pragma mark - Custom Segmented Control
-    
--(void)segmentedControl{
-    
     HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"PLAYLISTS", @"SONGS"]];
     segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
     segmentedControl1.frame = CGRectMake(7, 0, CGRectGetWidth(self.view.frame)*0.95, 40);
@@ -100,7 +85,6 @@
     UIView *barbackground = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMinY(segmentedControl1.frame),  CGRectGetWidth(self.view.frame), CGRectGetHeight(segmentedControl1.frame))];
     barbackground.backgroundColor = [UIColor colorWithRed:49.0f/255.0f green:49.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
     [self.view addSubview:barbackground];
-
     //Adding the Segmented Control to the View
     [self.view addSubview:segmentedControl1];
     
@@ -138,8 +122,6 @@
     cell.detailTextLabel.text = @"Placeholder";
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     cell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
-    //Create Buttons
-
     
     if (shouldShowDetails == 1){
         UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
@@ -213,11 +195,11 @@
         tableView.tableHeaderView = headerView;
 
     }else if (shouldShowDetails == 0){
-        //Remove Buttons and allow to be selected
+        //Remove Header
         tableView.tableHeaderView = nil;
         [self.tableView.tableHeaderView removeFromSuperview];
     }
-    //Turns off retarded stuff
+    //Turn off retarded stuff
     [[self tableView]setAlwaysBounceVertical:NO];
     [[self tableView]setBounces:NO];
     [[self tableView]setDelaysContentTouches:NO];
@@ -237,10 +219,9 @@
     NSSet *touches = [event allTouches];
     UITouch *touch = [touches anyObject];
     CGPoint currentTouchPosition = [touch locationInView:self.tableView];
-    
     // Lookup the index path of the cell whose checkbox was modified.
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
-    NSLog(@"Cock.jpg");
+    //Do Stuff
 }
 
 
