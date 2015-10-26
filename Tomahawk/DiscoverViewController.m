@@ -1,5 +1,5 @@
 //
-//  DIscoverViewController.m
+//  DiscoverViewController.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 16/10/2015.

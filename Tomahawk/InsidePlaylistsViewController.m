@@ -14,6 +14,7 @@
 
 @implementation InsidePlaylistsViewController{
     NSString *myCellText;
+    NSString *artistName;
 }
 
 
@@ -22,11 +23,18 @@
     self.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     myCellText = @"Placeholder";
-    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-    effectView.frame = self.imageView.bounds;
-    [self.imageView addSubview:effectView];
-    // Do any additional setup after loading the view.
+    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
+//    UIImageView *insidePlaylistsBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 170)];
+//    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+//    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+//    effectView.frame = insidePlaylistsBackground.bounds;
+//    [self.view addSubview:insidePlaylistsBackground];
+//    [insidePlaylistsBackground addSubview:effectView];
+    [_followButton setTitle:@"FOLLOW" forState:UIControlStateNormal];
+    _followButton.layer.borderWidth = 0.5;
+    _followButton.layer.masksToBounds = YES;
+    _followButton.layer.cornerRadius = 3.0;
+    _followButton.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +56,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     self.tableView.delaysContentTouches = NO;   //Removes stupid delay when button selecting
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+//    artistName = @"OMI";
+//    CMTime time;
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"ARTIST: %@ • LENGTH: %@", artistName, time];
     UIButton *more=[UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [UIImage imageNamed:@"More"];
     [more setImage:image forState:UIControlStateNormal];
@@ -58,7 +69,6 @@
     cell.accessoryView = more;
     [[cell textLabel] setTextColor:([UIColor whiteColor])];
     cell.textLabel.text = myCellText;
-    cell.detailTextLabel.text = @"Placeholder";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
     //Create Buttons
@@ -155,18 +165,10 @@
                                                             constant:0.0]];
 
     self.tableView.tableHeaderView = headerView;
-//    [self tableView:tableView viewForHeaderInSection:(NSInteger)]
+//    [self performSegueWithIdentifier:@"NowPlayingViewController" sender:self];
     return cell;
 }
 
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if(cell.accessoryType == UITableViewCellAccessoryNone){
-        return nil;
-    }
-    return indexPath;
-}
 
 
 -(IBAction)moreButtonTouched:(id)sender forEvent:(UIEvent *)event{
@@ -178,6 +180,36 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
     NSLog(@"Cock.jpg");
 }
+
+-(IBAction) buttonTouchDown:(id)sender {
+    [_followButton setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    _followButton.backgroundColor = [UIColor whiteColor];
+}
+- (IBAction)buttonTouchUpOutside:(id)sender {
+    if(isButtonSelected == TRUE){
+        _followButton.backgroundColor = [UIColor whiteColor];
+        _followButton.titleLabel.textColor = [UIColor blackColor];
+    }else{
+    _followButton.backgroundColor = [UIColor clearColor];
+    _followButton.titleLabel.textColor = [UIColor whiteColor];
+    }
+}
+
+-(IBAction) buttonTouchUpInside:(id)sender {
+    if(isButtonSelected == TRUE){
+        isButtonSelected = FALSE;
+        [_followButton setTitle:@"FOLLOW" forState:UIControlStateNormal];
+        [_followButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _followButton.backgroundColor = [UIColor clearColor];
+    }else{
+        isButtonSelected = TRUE;
+            [_followButton setTitle:@"FOLLOWING" forState:UIControlStateNormal];
+        [_followButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_followButton setBackgroundColor:[UIColor whiteColor]];
+
+    }
+}
+
 
 
 /*

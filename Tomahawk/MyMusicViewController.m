@@ -108,7 +108,13 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    //Turn off retarded stuff
+    [[self tableView]setAlwaysBounceVertical:NO];
+    [[self tableView]setBounces:NO];
+    [[self tableView]setDelaysContentTouches:NO];
+    //    artistName = @"OMI";
+    //    CMTime time;
+    //    cell.detailTextLabel.text = [NSString stringWithFormat:@"ARTIST: %@ • LENGTH: %@", artistName, time];
     UIButton *more=[UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [UIImage imageNamed:@"More"];
     [more setImage:image forState:UIControlStateNormal];
@@ -116,14 +122,16 @@
     more.tag = indexPath.row;
     [more addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
     [more setContentMode:UIViewContentModeScaleToFill];
-    cell.accessoryView = more;
-    [[cell textLabel] setTextColor:([UIColor whiteColor])];
-    cell.textLabel.text = myCellText;
-    cell.detailTextLabel.text = @"Placeholder";
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-    cell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
     
     if (shouldShowDetails == 1){
+        UITableViewCell *songsCell = [tableView dequeueReusableCellWithIdentifier:@"Songs"];
+        //Create Second Cells Using Dot Syntax
+        songsCell.accessoryView = more;
+        songsCell.textLabel.textColor = [UIColor whiteColor];
+        songsCell.textLabel.text = myCellText;
+        songsCell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
+        
+        //Create Header and Buttons
         UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
         headerView.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:43.0/255.0 alpha:1.0];
         UILabel *textLabel = [[UILabel alloc]init];
@@ -193,19 +201,22 @@
                                                                 constant:0.0]];
         
         tableView.tableHeaderView = headerView;
+        return songsCell;
 
     }else if (shouldShowDetails == 0){
         //Remove Header
         tableView.tableHeaderView = nil;
         [self.tableView.tableHeaderView removeFromSuperview];
+        //Create First Cells Using Normal Syntax
+        UITableViewCell *playlistsCell = [tableView dequeueReusableCellWithIdentifier:@"Playlists"];
+        [playlistsCell setAccessoryView: more];
+        [[playlistsCell textLabel] setTextColor:([UIColor whiteColor])];
+        [[playlistsCell textLabel]setText:myCellText];
+        [playlistsCell setBackgroundColor:[UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)]];
+        return playlistsCell;
     }
-    //Turn off retarded stuff
-    [[self tableView]setAlwaysBounceVertical:NO];
-    [[self tableView]setBounces:NO];
-    [[self tableView]setDelaysContentTouches:NO];
-    return cell;
+    return nil;
 }
-
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];

@@ -86,6 +86,30 @@
    
 }
 
+
+
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 1 && indexPath.section == 2) {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sign Out"
+                                                                       message:@"Are you sure you want to sign out?"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Sign Out" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            
+        }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *cancel){
+            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            //Do Stuff
+        }];
+        [alert addAction:defaultAction];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    return indexPath;
+}
+
  #pragma mark - Navigation
  
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

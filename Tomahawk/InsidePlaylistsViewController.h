@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMedia/CMTime.h>
+
+static BOOL isButtonSelected;
 
 @interface InsidePlaylistsViewController : UIViewController <UITableViewDataSource>
 
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
-@property(nonatomic, strong) IBOutlet UIImageView *imageView;   
+@property (weak, nonatomic) IBOutlet UIButton *followButton;
 
 @end
