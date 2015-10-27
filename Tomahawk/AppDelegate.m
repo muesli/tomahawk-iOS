@@ -18,11 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    CGFloat red = 226.0;
-    CGFloat green = 56.0;
-    CGFloat blue = 83.0;
-    CGFloat alpha = 255.0;
-    [[UITabBar appearance] setTintColor: [UIColor colorWithRed:(red/255.0) green:(green/255.0) blue:(blue/255.0) alpha:(alpha/255.0)]];
+    [[UITabBar appearance] setTintColor: [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)]];
     // Override point for customization after application launch.
     return YES;
 }

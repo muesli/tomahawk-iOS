@@ -11,4 +11,6 @@
 
 @interface DiscoverViewController : UIViewController
 
+@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
+
 @end

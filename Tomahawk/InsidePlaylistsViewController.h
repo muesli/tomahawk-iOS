@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreMedia/CMTime.h>
+#import "MBProgressHUD.h"
 
 static BOOL isButtonSelected;
 
@@ -15,5 +16,6 @@ static BOOL isButtonSelected;
 
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property(nonatomic, strong) IBOutlet UIImageView *playlistImage;
 
 @end

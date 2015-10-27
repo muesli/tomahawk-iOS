@@ -48,7 +48,10 @@
     nowPlayingBar.barTintColor = [UIColor colorWithRed:37.0f/255.0f green:37.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
     nowPlayingBar.translucent = YES;
     nowPlayingBar.barStyle = UIBarStyleBlack;
+    _showNowPlaying.tintColor = [UIColor clearColor]; //Create invisible button to trigger the now playing segue
     [self.view addSubview:nowPlayingBar];
+    [nowPlayingBar addSubview:_showNowPlaying]; //Add button to now playing bar
+    
 
 }
 

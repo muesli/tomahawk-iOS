@@ -10,6 +10,7 @@
 
 @interface FeedViewController : UIViewController
 
+@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 
 @end
 

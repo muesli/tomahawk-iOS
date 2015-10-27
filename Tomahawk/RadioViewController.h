@@ -11,4 +11,6 @@
 
 @interface RadioViewController : UIViewController
 
+@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
+
 @end

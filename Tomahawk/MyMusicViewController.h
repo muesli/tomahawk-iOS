@@ -15,5 +15,6 @@
 @interface MyMusicViewController : UIViewController <UITableViewDataSource>
 
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
+@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 
 @end

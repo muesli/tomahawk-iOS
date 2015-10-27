@@ -19,6 +19,15 @@
     //Insert Code Here
 }
 
+-(IBAction)moreButtonTouched:(id)sender forEvent:(UIEvent *)event{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    // Lookup the index path of the cell whose checkbox was modified.
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+    //Do Stuff
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
     [self.tableView deselectRowAtIndexPath:currentCell animated:YES];
@@ -67,7 +76,10 @@
     nowPlayingBar.barTintColor = [UIColor colorWithRed:37.0f/255.0f green:37.0f/255.0f blue:46.0f/255.0f alpha:1.0f];
     nowPlayingBar.translucent = YES;
     nowPlayingBar.barStyle = UIBarStyleBlack;
-    [self.view addSubview:nowPlayingBar];
+    _showNowPlaying.tintColor = [UIColor clearColor]; //Create invisible button to trigger the now playing segue
+   [self.view addSubview:nowPlayingBar];
+    [nowPlayingBar addSubview:_showNowPlaying]; //Add button to now playing bar
+    
 
 #pragma mark - Custom Segmented Control
     HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"PLAYLISTS", @"SONGS"]];
@@ -224,15 +236,6 @@
         return nil;
     }
     return indexPath;
-}
-
--(IBAction)moreButtonTouched:(id)sender forEvent:(UIEvent *)event{
-    NSSet *touches = [event allTouches];
-    UITouch *touch = [touches anyObject];
-    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
-    // Lookup the index path of the cell whose checkbox was modified.
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
-    //Do Stuff
 }
 
 
