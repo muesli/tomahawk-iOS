@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface Settings : NSObject
+
 @property (nonatomic) NSString *name;
-@property (nonatomic) UIImage *image;
 
 @end

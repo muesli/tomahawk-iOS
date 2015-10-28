@@ -14,9 +14,22 @@
 
 @implementation NowPlayingViewController
 
+-(IBAction)buttonTouched:(id)sender{
+    NSLog(@"Cock.jpg");
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSArray *buttons = [NSArray arrayWithObjects:_expandArrow, _googleCast, _lyrics, _like, _queue, _share, _playPause, _next, _previous, _repeat, _shuffle, nil];
+    
+    for (UIButton *myButton in buttons) {
+        myButton.imageView.image = [myButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [myButton setImage:myButton.imageView.image forState:UIControlStateNormal];
+        myButton.tintColor = [UIColor redColor];
+        [myButton addTarget:self action:@selector(buttonTouched:) forControlEvents:UIControlEventTouchUpInside];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {

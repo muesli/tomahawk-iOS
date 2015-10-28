@@ -35,8 +35,9 @@
 
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                          atScrollPosition:UITableViewScrollPositionTop animated:NO];
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwipe:)];
     leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:leftSwipe];
@@ -51,7 +52,6 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    self.tableView.contentInset = UIEdgeInsetsMake(40.0f, 0.0f, 0.0f, 0.0f);
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     myCellText = @"Placeholder";
     
@@ -110,6 +110,8 @@
 
 #pragma mark - Table View
 
+
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -118,6 +120,89 @@
     return 100;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(shouldShowDetails == 1){
+    return 70;
+    }
+    return 0;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if(shouldShowDetails == 1){
+    //Create Header and Buttons
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
+    headerView.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:43.0/255.0 alpha:1.0];
+    UILabel *textLabel = [[UILabel alloc]init];
+    [textLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    textLabel.text = @"64 Songs Saved";
+    textLabel.textColor = [UIColor whiteColor];
+    [headerView addSubview:textLabel];
+    
+    UIButton *download = [UIButton buttonWithType:UIButtonTypeCustom];
+    [download setImage:[UIImage imageNamed:@"Cloud"] forState:UIControlStateNormal];
+    [download setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [headerView addSubview:download];
+    
+    UIButton *shuffle = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shuffle setImage:[UIImage imageNamed:@"Shuffle"] forState:UIControlStateNormal];
+    [shuffle setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [headerView addSubview:shuffle];
+    
+    //Download Button Right
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
+                                                           attribute:NSLayoutAttributeTrailingMargin
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeTrailingMargin
+                                                          multiplier:0.95
+                                                            constant:0.0]];
+    //Download Button Top
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
+                                                           attribute:NSLayoutAttributeCenterY
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeCenterY
+                                                          multiplier:1.0
+                                                            constant:0.0]];
+    //Shuffle Button Right
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:shuffle
+                                                           attribute:NSLayoutAttributeTrailingMargin
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeTrailingMargin
+                                                          multiplier:0.82
+                                                            constant:0.0]];
+    //Shuffle Button Top
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:shuffle
+                                                           attribute:NSLayoutAttributeCenterY
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeCenterY
+                                                          multiplier:1.0
+                                                            constant:0.0]];
+    
+    //Label Left
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
+                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                          multiplier:3.3
+                                                            constant:0.0]];
+    //Label Top
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
+                                                           attribute:NSLayoutAttributeCenterY
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeCenterY
+                                                          multiplier:1.0
+                                                            constant:0.0]];
+    
+    return headerView;
+    }
+    [tableView.tableHeaderView removeFromSuperview];
+    return nil;
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //Turn off retarded stuff
@@ -142,83 +227,9 @@
         songsCell.textLabel.textColor = [UIColor whiteColor];
         songsCell.textLabel.text = myCellText;
         songsCell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
-        
-        //Create Header and Buttons
-        UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
-        headerView.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:43.0/255.0 alpha:1.0];
-        UILabel *textLabel = [[UILabel alloc]init];
-        [textLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-        textLabel.text = @"64 Songs Saved";
-        textLabel.textColor = [UIColor whiteColor];
-        [headerView addSubview:textLabel];
-        
-        UIButton *download = [UIButton buttonWithType:UIButtonTypeCustom];
-        [download setImage:[UIImage imageNamed:@"Cloud"] forState:UIControlStateNormal];
-        [download setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [headerView addSubview:download];
-        
-        UIButton *shuffle = [UIButton buttonWithType:UIButtonTypeCustom];
-        [shuffle setImage:[UIImage imageNamed:@"Shuffle"] forState:UIControlStateNormal];
-        [shuffle setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [headerView addSubview:shuffle];
-        
-        //Download Button Right
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
-                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                              multiplier:0.95
-                                                                constant:0.0]];
-        //Download Button Top
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
-                                                               attribute:NSLayoutAttributeCenterY
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                              multiplier:1.0
-                                                                constant:0.0]];
-        //Shuffle Button Right
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:shuffle
-                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                              multiplier:0.82
-                                                                constant:0.0]];
-        //Shuffle Button Top
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:shuffle
-                                                               attribute:NSLayoutAttributeCenterY
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                              multiplier:1.0
-                                                                constant:0.0]];
-        
-        //Label Left
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
-                                                               attribute:NSLayoutAttributeLeadingMargin
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeLeadingMargin
-                                                              multiplier:3.3
-                                                                constant:0.0]];
-        //Label Top
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
-                                                               attribute:NSLayoutAttributeCenterY
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                              multiplier:1.0
-                                                                constant:0.0]];
-        
-        tableView.tableHeaderView = headerView;
         return songsCell;
 
     }else if (shouldShowDetails == 0){
-        //Remove Header
-        tableView.tableHeaderView = nil;
-        [self.tableView.tableHeaderView removeFromSuperview];
         //Create First Cells Using Normal Syntax
         UITableViewCell *playlistsCell = [tableView dequeueReusableCellWithIdentifier:@"Playlists"];
         [playlistsCell setAccessoryView: more];
@@ -230,13 +241,6 @@
     return nil;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if(cell.accessoryType == UITableViewCellAccessoryNone){
-        return nil;
-    }
-    return indexPath;
-}
 
 
 #pragma mark - Segmented Control changes
@@ -245,7 +249,8 @@
     if(segmentedControl.selectedSegmentIndex == 1){
         myCellText = @"PLACEHOLDER";
         //Reset Scroll Position when change Segment
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                         atScrollPosition:UITableViewScrollPositionTop animated:NO];
         shouldShowDetails = 1;
         [self.tableView reloadData];
         
@@ -253,7 +258,8 @@
         shouldShowDetails = 0;
         myCellText = @"Placeholder";
         //Reset Scroll Position when change Segment
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                              atScrollPosition:UITableViewScrollPositionTop animated:NO];
         [self.tableView reloadData];
     }
 

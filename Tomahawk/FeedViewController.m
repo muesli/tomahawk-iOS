@@ -20,8 +20,11 @@
     //Insert Code Here
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                  forBarPosition:UIBarPositionAny
@@ -59,5 +62,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

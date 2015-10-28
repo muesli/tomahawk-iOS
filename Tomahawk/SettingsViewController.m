@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
-    //self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     self.navigationController.navigationBar.topItem.title = @"Settings";
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }
@@ -41,51 +40,46 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //Create settings objects and name them
     settings = [[NSMutableArray alloc]init];
-    Settings *settingsStar = [[Settings alloc]init];
-    settingsStar.name = @"Rate the App";
-    settingsStar.image = [UIImage imageNamed:@"Star"];
-    [settings addObject:settingsStar];
-    
-    Settings *settingsShare = [[Settings alloc]init];
-    settingsShare.name = @"Tell Your Friends";
-    settingsShare.image = [UIImage imageNamed:@"Share"];
-    [settings addObject:settingsShare];
-    
-    Settings *settingsQuality = [[Settings alloc]init];
-    settingsQuality.name = @"Streaming Quality";
-    settingsQuality.image = [UIImage imageNamed:@"Quality"];
-    [settings addObject:settingsQuality];
-    
-    Settings *settingsEqualiser = [[Settings alloc]init];
-    settingsEqualiser.name = @"Equaliser";
-    settingsEqualiser.image = [UIImage imageNamed:@"Equaliser"];
-    [settings addObject:settingsEqualiser];
-    
-    Settings *settingsAccount = [[Settings alloc]init];
-    settingsAccount.name = @"Account";
-    settingsAccount.image = [UIImage imageNamed:@"Account"];
-    [settings addObject:settingsAccount];
-    
-    Settings *settingsSignOut = [[Settings alloc]init];
-    settingsSignOut.name = @"Sign Out";
-    settingsSignOut.image = [UIImage imageNamed:@"Sign Out"];
-    [settings addObject:settingsSignOut];
+    NSMutableArray *settingsNames = [[NSMutableArray alloc]initWithObjects:@"Rate the App", @"Tell Your Friends", @"Streaming Quality", @"Equaliser", @"Account", @"Sign Out", nil];
+    for (NSString *name in settingsNames) {
+        Settings *newSettings = [Settings new];
+        newSettings.name = name;
+        [settings addObject:newSettings];
+    }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [[cell textLabel] setTextColor:([UIColor whiteColor])];
-    if (indexPath.row == 0 && indexPath.section == 0){[[cell textLabel] setText:settingsStar.name]; cell.imageView.image = settingsStar.image;}
-    else if(indexPath.row == 1 && indexPath.section == 0){[[cell textLabel] setText:settingsShare.name];cell.imageView.image = settingsShare.image;}
-    else if (indexPath.row ==0 && indexPath.section == 1){[[cell textLabel] setText:settingsQuality.name]; cell.imageView.image = settingsQuality.image;}
-    else if (indexPath.row ==1 && indexPath.section == 1){[[cell textLabel] setText:settingsEqualiser.name];cell.imageView.image = settingsEqualiser.image;}
-    else if (indexPath.row ==0 && indexPath.section == 2){[[cell textLabel] setText:settingsAccount.name]; cell.imageView.image = settingsAccount.image;}
-    else if (indexPath.row ==1 && indexPath.section == 2){[[cell textLabel] setText:settingsSignOut.name];cell.imageView.image = settingsSignOut.image;}
+    if (indexPath.row == 0 && indexPath.section == 0){
+        cell.textLabel.text = [[settings objectAtIndex:0] valueForKey:@"name"];
+        cell.imageView.image = [UIImage imageNamed: [[settings objectAtIndex:0] valueForKey:@"name"]];
+    }
+    else if(indexPath.row == 1 && indexPath.section == 0){
+        cell.textLabel.text = [[settings objectAtIndex:1] valueForKey:@"name"];
+        cell.imageView.image = [UIImage imageNamed: [[settings objectAtIndex:1] valueForKey:@"name"]];
+    }
+    else if (indexPath.row ==0 && indexPath.section == 1){
+        cell.textLabel.text = [[settings objectAtIndex:2] valueForKey:@"name"];
+        cell.imageView.image = [UIImage imageNamed: [[settings objectAtIndex:2] valueForKey:@"name"]];
+    }
+    else if (indexPath.row ==1 && indexPath.section == 1){
+        cell.textLabel.text = [[settings objectAtIndex:3] valueForKey:@"name"];
+        cell.imageView.image = [UIImage imageNamed: [[settings objectAtIndex:3] valueForKey:@"name"]];
+    }
+    else if (indexPath.row ==0 && indexPath.section == 2){
+        cell.textLabel.text = [[settings objectAtIndex:4] valueForKey:@"name"];
+        cell.imageView.image = [UIImage imageNamed: [[settings objectAtIndex:4] valueForKey:@"name"]];
+    }
+    else if (indexPath.row ==1 && indexPath.section == 2){
+        cell.textLabel.text = [[settings objectAtIndex:5] valueForKey:@"name"];
+        cell.imageView.image = [UIImage imageNamed: [[settings objectAtIndex:5] valueForKey:@"name"]];
+    }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.backgroundColor = [UIColor colorWithRed:(37.0/255.0) green:(38.0/255.0) blue:(45.0/255.0) alpha:(1.0)];
     return cell;
    
 }
-
 
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -132,6 +126,35 @@
      
  }
 
+//    Settings *settingsStar = [[Settings alloc]init];
+//    settingsStar.name = @"Rate the App";
+//    settingsStar.image = [UIImage imageNamed:@"Star"];
+//    [settings addObject:settingsStar];
+//
+//    Settings *settingsShare = [[Settings alloc]init];
+//    settingsShare.name = @"Tell Your Friends";
+//    settingsShare.image = [UIImage imageNamed:@"Share"];
+//    [settings addObject:settingsShare];
+//
+//    Settings *settingsQuality = [[Settings alloc]init];
+//    settingsQuality.name = @"Streaming Quality";
+//    settingsQuality.image = [UIImage imageNamed:@"Quality"];
+//    [settings addObject:settingsQuality];
+//
+//    Settings *settingsEqualiser = [[Settings alloc]init];
+//    settingsEqualiser.name = @"Equaliser";
+//    settingsEqualiser.image = [UIImage imageNamed:@"Equaliser"];
+//    [settings addObject:settingsEqualiser];
+//
+//    Settings *settingsAccount = [[Settings alloc]init];
+//    settingsAccount.name = @"Account";
+//    settingsAccount.image = [UIImage imageNamed:@"Account"];
+//    [settings addObject:settingsAccount];
+//
+//    Settings *settingsSignOut = [[Settings alloc]init];
+//    settingsSignOut.name = @"Sign Out";
+//    settingsSignOut.image = [UIImage imageNamed:@"Sign Out"];
+//    [settings addObject:settingsSignOut];
 
 
 @end

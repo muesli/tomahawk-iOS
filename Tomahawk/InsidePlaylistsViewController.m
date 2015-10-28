@@ -21,11 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                          atScrollPosition:UITableViewScrollPositionTop animated:NO];
     self.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     myCellText = @"Placeholder";
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    UIImageView *insidePlaylistsBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 165)];
+    UIImageView *insidePlaylistsBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 161)];
     insidePlaylistsBackground.image = [UIImage imageNamed:@"blurExample1"];
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
@@ -56,26 +58,13 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 100;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 70;
+}
 
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.tableView.delaysContentTouches = NO;   //Removes stupid delay when button selecting
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-//    artistName = @"OMI";
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"ARTIST: %@ • LENGTH: %@", artistName, time];
-    UIButton *more=[UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image = [UIImage imageNamed:@"More"];
-    [more setImage:image forState:UIControlStateNormal];
-    more.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    more.tag = indexPath.row;
-    [more addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
-    [more setContentMode:UIViewContentModeScaleToFill];
-    cell.accessoryView = more;
-    [[cell textLabel] setTextColor:([UIColor whiteColor])];
-    cell.textLabel.text = myCellText;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     //Create Buttons
+    [[self tableView]setDelaysContentTouches:NO];
     [[self tableView] setAlwaysBounceVertical:NO];
     [[self tableView]setBounces:NO];
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
@@ -104,20 +93,20 @@
     
     //More Button Right
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:moreHeader
-                                                          attribute:NSLayoutAttributeTrailingMargin
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:headerView
-                                                          attribute:NSLayoutAttributeTrailingMargin
-                                                         multiplier:0.95
-                                                           constant:0.0]];
+                                                           attribute:NSLayoutAttributeTrailingMargin
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeTrailingMargin
+                                                          multiplier:0.95
+                                                            constant:0.0]];
     //More Button Top
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:moreHeader
-                                                     attribute:NSLayoutAttributeCenterY
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:headerView
-                                                     attribute:NSLayoutAttributeCenterY
-                                                    multiplier:1.0
-                                                      constant:0.0]];
+                                                           attribute:NSLayoutAttributeCenterY
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeCenterY
+                                                          multiplier:1.0
+                                                            constant:0.0]];
     //Download Button Right
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
                                                            attribute:NSLayoutAttributeTrailingMargin
@@ -150,7 +139,7 @@
                                                            attribute:NSLayoutAttributeCenterY
                                                           multiplier:1.0
                                                             constant:0.0]];
-
+    
     //Label Left
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
                                                            attribute:NSLayoutAttributeLeadingMargin
@@ -167,9 +156,27 @@
                                                            attribute:NSLayoutAttributeCenterY
                                                           multiplier:1.0
                                                             constant:0.0]];
+    
+    return headerView;
+}
 
-    self.tableView.tableHeaderView = headerView;
-//    [self performSegueWithIdentifier:@"NowPlayingViewController" sender:self];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.tableView.delaysContentTouches = NO;   //Removes stupid delay when button selecting
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+//    artistName = @"OMI";
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"ARTIST: %@ • LENGTH: %@", artistName, time];
+    UIButton *more=[UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:@"More"];
+    [more setImage:image forState:UIControlStateNormal];
+    more.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    more.tag = indexPath.row;
+    [more addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
+    [more setContentMode:UIViewContentModeScaleToFill];
+    cell.accessoryView = more;
+    [[cell textLabel] setTextColor:([UIColor whiteColor])];
+    cell.textLabel.text = myCellText;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor colorWithRed:(29.0/255.0) green:(30.0/255.0) blue:(35.0/255.0) alpha:(1.0)];
     return cell;
 }
 
