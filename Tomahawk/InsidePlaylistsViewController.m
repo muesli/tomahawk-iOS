@@ -215,7 +215,7 @@
 -(IBAction) buttonTouchUpInside:(id)sender {
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
-    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark"]];
     // Set custom view mode
     HUD.mode = MBProgressHUDModeCustomView;
     HUD.delegate = self;

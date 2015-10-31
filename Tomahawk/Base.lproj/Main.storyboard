@@ -488,90 +488,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MuK-OK-Jpj">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MuK-OK-Jpj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <animations/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4tH-rb-8lC">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4tH-rb-8lC">
                                 <rect key="frame" x="20" y="572" width="335" height="2"/>
                                 <animations/>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKb-aO-ALE">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKb-aO-ALE">
                                 <rect key="frame" x="20" y="38" width="29" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Expand Arrow"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ui-OYt">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ui-OYt">
                                 <rect key="frame" x="321" y="36" width="34" height="24"/>
                                 <animations/>
                                 <state key="normal" image="cast_off"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLe-iE-FRl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLe-iE-FRl">
                                 <rect key="frame" x="166" y="30" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gs-Qu-Jj2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gs-Qu-Jj2">
                                 <rect key="frame" x="166" y="48" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCG-aw-2a6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCG-aw-2a6">
                                 <rect key="frame" x="20" y="630" width="22" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Lyrics"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZL-gG-XXj">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZL-gG-XXj">
                                 <rect key="frame" x="333" y="630" width="22" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Like"/>
+                                <connections>
+                                    <action selector="likeButtonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="LYe-oN-2tj"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sq-a8-eq3">
-                                <rect key="frame" x="230" y="630" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sq-a8-eq3">
+                                <rect key="frame" x="230" y="632" width="22" height="22"/>
                                 <animations/>
-                                <state key="normal" image="List"/>
+                                <state key="normal" image="Queue"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-uF-0CJ">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmC-uF-0CJ">
                                 <rect key="frame" x="127" y="630" width="22" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Share"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN9-7X-vwD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN9-7X-vwD">
                                 <rect key="frame" x="33" y="512" width="16" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Shuffle"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glp-2u-FWc">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glp-2u-FWc">
                                 <rect key="frame" x="107" y="512" width="14" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Previous"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zz-Ux-JUO">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zz-Ux-JUO">
                                 <rect key="frame" x="313" y="512" width="23" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Repeat"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-l5-Z57">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-l5-Z57">
                                 <rect key="frame" x="177" y="512" width="17" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Pause"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh9-ty-Hkd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh9-ty-Hkd">
                                 <rect key="frame" x="166" y="470" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cv3-Te-45m">
-                                <rect key="frame" x="164" y="446" width="62" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cv3-Te-45m">
+                                <rect key="frame" x="164" y="446" width="53" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="45b-wI-1j6">
@@ -586,42 +589,93 @@
                                 <rect key="frame" x="-298" y="94" width="312" height="316"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj4-6S-8vz">
-                                <rect key="frame" x="20" y="548" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj4-6S-8vz">
+                                <rect key="frame" x="20" y="548" width="22" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iID-WJ-sdj">
-                                <rect key="frame" x="327" y="548" width="28" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iID-WJ-sdj">
+                                <rect key="frame" x="333" y="548" width="22" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnL-mG-6om">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnL-mG-6om">
                                 <rect key="frame" x="244" y="513" width="17" height="22"/>
                                 <animations/>
                                 <state key="normal" image="Next"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFR-CO-6Cg">
+                                <rect key="frame" x="333" y="630" width="22" height="22"/>
+                                <animations/>
+                                <state key="normal" image="Like Selected"/>
+                                <connections>
+                                    <action selector="likeSelectedButtonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="p7M-lY-pVS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="eAK-l5-Z57" secondAttribute="bottom" constant="133" id="1K5-gh-cyi"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="4tH-rb-8lC" secondAttribute="leading" id="4Kz-en-Hlg"/>
+                            <constraint firstItem="Cv3-Te-45m" firstAttribute="centerX" secondItem="D61-D1-cc5" secondAttribute="centerX" id="CrL-iw-nYW"/>
+                            <constraint firstItem="eAK-l5-Z57" firstAttribute="top" secondItem="Cv3-Te-45m" secondAttribute="bottom" constant="45" id="ErT-Eu-BpN"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="KCG-aw-2a6" secondAttribute="bottom" constant="15" id="FrT-kx-JIX"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="4tH-rb-8lC" secondAttribute="bottom" constant="93" id="H6F-9i-607"/>
+                            <constraint firstItem="4Gs-Qu-Jj2" firstAttribute="centerX" secondItem="D61-D1-cc5" secondAttribute="centerX" id="HIw-B6-LFv"/>
+                            <constraint firstItem="rLe-iE-FRl" firstAttribute="top" secondItem="Fbk-PB-R1U" secondAttribute="bottom" constant="10" id="KLR-cy-ajZ"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="Glp-2u-FWc" secondAttribute="bottom" constant="133" id="KT2-Cc-VNh"/>
+                            <constraint firstItem="geV-Ui-OYt" firstAttribute="top" secondItem="Fbk-PB-R1U" secondAttribute="bottom" constant="16" id="LVy-l6-26b"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="geV-Ui-OYt" secondAttribute="trailing" id="MGh-6v-ZyT"/>
+                            <constraint firstItem="4Gs-Qu-Jj2" firstAttribute="top" secondItem="Fbk-PB-R1U" secondAttribute="bottom" constant="28" id="Np3-LP-hay"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4tH-rb-8lC" secondAttribute="trailing" id="Ok5-tp-4aI"/>
+                            <constraint firstItem="4tH-rb-8lC" firstAttribute="top" secondItem="uj4-6S-8vz" secondAttribute="bottom" constant="3" id="Pab-db-wCm"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="lnL-mG-6om" secondAttribute="bottom" constant="132" id="Q4x-f5-Rxj"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="1Zz-Ux-JUO" secondAttribute="bottom" constant="133" id="UAS-B2-5zN"/>
+                            <constraint firstItem="4tH-rb-8lC" firstAttribute="top" secondItem="iID-WJ-sdj" secondAttribute="bottom" constant="3" id="Vwe-z4-qYW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="uj4-6S-8vz" secondAttribute="leading" id="WJ4-gN-BVn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Zz-Ux-JUO" secondAttribute="trailing" constant="19" id="YrV-lH-xax"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="0sq-a8-eq3" secondAttribute="bottom" constant="13" id="aBN-DU-SXA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0ZL-gG-XXj" secondAttribute="trailing" id="aWu-GE-1Mn"/>
+                            <constraint firstItem="eh9-ty-Hkd" firstAttribute="top" secondItem="Cv3-Te-45m" secondAttribute="bottom" constant="3" id="ceI-xa-TtR"/>
+                            <constraint firstItem="eh9-ty-Hkd" firstAttribute="centerX" secondItem="D61-D1-cc5" secondAttribute="centerX" id="etK-dn-jd0"/>
+                            <constraint firstItem="lKb-aO-ALE" firstAttribute="top" secondItem="Fbk-PB-R1U" secondAttribute="bottom" constant="18" id="gmM-RZ-RnM"/>
+                            <constraint firstItem="eAK-l5-Z57" firstAttribute="centerX" secondItem="D61-D1-cc5" secondAttribute="centerX" id="huT-Za-XhA"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="gFR-CO-6Cg" secondAttribute="bottom" constant="15" id="lnr-lx-WEY"/>
+                            <constraint firstItem="MN9-7X-vwD" firstAttribute="leading" secondItem="D61-D1-cc5" secondAttribute="leadingMargin" constant="13" id="nyM-2k-VVy"/>
+                            <constraint firstItem="rLe-iE-FRl" firstAttribute="centerX" secondItem="D61-D1-cc5" secondAttribute="centerX" id="pfs-Hg-wCn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gFR-CO-6Cg" secondAttribute="trailing" id="qq7-Ya-vEi"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="KCG-aw-2a6" secondAttribute="leading" id="rcn-kw-iUY"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="MN9-7X-vwD" secondAttribute="bottom" constant="133" id="tqW-B6-0vy"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="lKb-aO-ALE" secondAttribute="leading" id="upi-fO-DNu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iID-WJ-sdj" secondAttribute="trailing" id="yIa-YN-tmo"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="0ZL-gG-XXj" secondAttribute="bottom" constant="15" id="yxW-R6-ocm"/>
+                            <constraint firstItem="8v0-IJ-Q0E" firstAttribute="top" secondItem="NmC-uF-0CJ" secondAttribute="bottom" constant="15" id="z8o-kK-GuK"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="MuK-OK-Jpj" id="YSI-xZ-Pn8"/>
                         <outlet property="expandArrow" destination="lKb-aO-ALE" id="4nm-Vd-ywZ"/>
                         <outlet property="googleCast" destination="geV-Ui-OYt" id="ybj-GK-YTJ"/>
                         <outlet property="like" destination="0ZL-gG-XXj" id="VIc-u5-cwN"/>
+                        <outlet property="likeSelected" destination="gFR-CO-6Cg" id="7PX-KO-7XS"/>
                         <outlet property="lyrics" destination="KCG-aw-2a6" id="Oxt-pM-VnK"/>
                         <outlet property="next" destination="lnL-mG-6om" id="wl6-cU-cql"/>
                         <outlet property="playPause" destination="eAK-l5-Z57" id="SEY-Lr-Xso"/>
+                        <outlet property="playlistArtist" destination="4Gs-Qu-Jj2" id="lGF-MW-axp"/>
+                        <outlet property="playlistTitle" destination="rLe-iE-FRl" id="VYR-3t-3Cq"/>
                         <outlet property="previous" destination="Glp-2u-FWc" id="zyK-0F-EbQ"/>
                         <outlet property="queue" destination="0sq-a8-eq3" id="rcN-Ue-Nbz"/>
                         <outlet property="repeat" destination="1Zz-Ux-JUO" id="kyU-qf-5Hu"/>
                         <outlet property="share" destination="NmC-uF-0CJ" id="ao7-dW-5S0"/>
                         <outlet property="shuffle" destination="MN9-7X-vwD" id="IjV-Kv-3w1"/>
+                        <outlet property="songArtist" destination="eh9-ty-Hkd" id="52t-dq-txY"/>
+                        <outlet property="songTitle" destination="Cv3-Te-45m" id="LEy-Yc-B5v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vW1-w2-lo1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -770,12 +824,13 @@
         <image name="Feed Selected" width="25" height="25"/>
         <image name="Inbox" width="22" height="22"/>
         <image name="Like" width="22" height="22"/>
-        <image name="List" width="44" height="44"/>
+        <image name="Like Selected" width="22" height="22"/>
         <image name="Lyrics" width="22" height="22"/>
         <image name="My Music" width="25" height="25"/>
         <image name="Next" width="14" height="14"/>
         <image name="Pause" width="14" height="14"/>
         <image name="Previous" width="14" height="14"/>
+        <image name="Queue" width="22" height="22"/>
         <image name="Radio" width="25" height="25"/>
         <image name="Radio Selected" width="25" height="25"/>
         <image name="Repeat" width="17" height="17"/>
@@ -786,7 +841,7 @@
         <image name="cast_off" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dae-Wa-aVB"/>
+        <segue reference="UJF-uC-UfX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

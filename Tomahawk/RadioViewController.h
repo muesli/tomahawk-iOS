@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
 
-@interface RadioViewController : UIViewController
+@interface RadioViewController : UIViewController <UISearchResultsUpdating>
 
 @property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 

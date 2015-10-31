@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CCColorCube.h"
 
 @interface NowPlayingViewController : UIViewController
 
@@ -18,9 +19,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *shuffle;
 @property (strong, nonatomic) IBOutlet UIButton *repeat;
 @property (strong, nonatomic) IBOutlet UIButton *like;
+@property (strong, nonatomic) IBOutlet UIButton *likeSelected;
 @property (strong, nonatomic) IBOutlet UIButton *queue;
 @property (strong, nonatomic) IBOutlet UIButton *share;
 @property (strong, nonatomic) IBOutlet UIButton *lyrics;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UILabel *playlistTitle;
+@property (strong, nonatomic) IBOutlet UILabel *playlistArtist;
+@property (strong, nonatomic) IBOutlet UILabel *songTitle;
+@property (strong, nonatomic) IBOutlet UILabel *songArtist;
 
 
 @end

@@ -93,15 +93,21 @@
             
         }];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *cancel){
-            [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+            //[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             //Do Stuff
         }];
         [alert addAction:defaultAction];
         [alert addAction:cancel];
         
         [self presentViewController:alert animated:YES completion:nil];
+        return nil;
     }
+    if (indexPath.row == 0 && indexPath.section == 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://itunes.apple.com/us/app/apple-store/id375380948?mt=8"]];
+        return nil;
+    }else{
     return indexPath;
+    }
 }
 
  #pragma mark - Navigation
@@ -126,35 +132,6 @@
      
  }
 
-//    Settings *settingsStar = [[Settings alloc]init];
-//    settingsStar.name = @"Rate the App";
-//    settingsStar.image = [UIImage imageNamed:@"Star"];
-//    [settings addObject:settingsStar];
-//
-//    Settings *settingsShare = [[Settings alloc]init];
-//    settingsShare.name = @"Tell Your Friends";
-//    settingsShare.image = [UIImage imageNamed:@"Share"];
-//    [settings addObject:settingsShare];
-//
-//    Settings *settingsQuality = [[Settings alloc]init];
-//    settingsQuality.name = @"Streaming Quality";
-//    settingsQuality.image = [UIImage imageNamed:@"Quality"];
-//    [settings addObject:settingsQuality];
-//
-//    Settings *settingsEqualiser = [[Settings alloc]init];
-//    settingsEqualiser.name = @"Equaliser";
-//    settingsEqualiser.image = [UIImage imageNamed:@"Equaliser"];
-//    [settings addObject:settingsEqualiser];
-//
-//    Settings *settingsAccount = [[Settings alloc]init];
-//    settingsAccount.name = @"Account";
-//    settingsAccount.image = [UIImage imageNamed:@"Account"];
-//    [settings addObject:settingsAccount];
-//
-//    Settings *settingsSignOut = [[Settings alloc]init];
-//    settingsSignOut.name = @"Sign Out";
-//    settingsSignOut.image = [UIImage imageNamed:@"Sign Out"];
-//    [settings addObject:settingsSignOut];
 
 
 @end

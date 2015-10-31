@@ -72,7 +72,7 @@
 }
 
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
-    NSLog(@"Selected index %d (via UIControlEventValueChanged)", segmentedControl.selectedSegmentIndex);
+    NSLog(@"Selected index %ld (via UIControlEventValueChanged)", (long)segmentedControl.selectedSegmentIndex);
 }
 
 //- (UIStatusBarStyle)preferredStatusBarStyle

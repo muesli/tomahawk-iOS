@@ -12,7 +12,7 @@
 
 static BOOL isButtonSelected;
 
-@interface InsidePlaylistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface InsidePlaylistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
 
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;

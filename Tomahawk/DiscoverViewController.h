@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
 
-@interface DiscoverViewController : UIViewController
+@interface DiscoverViewController : UIViewController <UISearchResultsUpdating>
 
 @property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 
