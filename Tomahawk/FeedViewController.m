@@ -23,6 +23,8 @@
 
 
 - (void)viewDidLoad {
+    _collectionView.backgroundColor = [UIColor clearColor];
+    _collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [super viewDidLoad];
     
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
@@ -56,6 +58,18 @@
     [nowPlayingBar addSubview:_showNowPlaying]; //Add button to now playing bar
     
 
+}
+
+#pragma mark - Collection View
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 14;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CollectionViewCell *recentSongsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentSongsCell" forIndexPath:indexPath];
+    return recentSongsCell;
 }
 
 - (void)didReceiveMemoryWarning {

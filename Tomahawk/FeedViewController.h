@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionViewCell.h"
 
-@interface FeedViewController : UIViewController <UISearchResultsUpdating>
+@interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
+@property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+
 
 @end
 

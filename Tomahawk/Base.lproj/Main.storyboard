@@ -28,6 +28,76 @@
                                     <segue destination="Iy0-Dv-cOW" kind="presentation" id="UJF-uC-UfX"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-LF-I3b">
+                                <rect key="frame" x="7" y="0.0" width="368" height="320"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.086274509803921567" green="0.090196078431372548" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R6R-sd-Z62">
+                                    <size key="itemSize" width="140" height="190"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recentSongsCell" id="usF-jR-Iga" customClass="CollectionViewCell">
+                                        <rect key="frame" x="10" y="70" width="140" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="190"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blurExample.png" translatesAutoresizingMaskIntoConstraints="NO" id="2he-P9-8dh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.93496066330000005" green="0.0" blue="0.067075152574513366" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIM-MF-rPQ">
+                                                    <rect key="frame" x="8" y="146" width="42" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw5-f6-ixQ">
+                                                    <rect key="frame" x="8" y="167" width="42" height="15"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mH4-Ba-XDe">
+                                                    <rect key="frame" x="109" y="165" width="23" height="18"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="headphone4.png" translatesAutoresizingMaskIntoConstraints="NO" id="B40-5t-iY1">
+                                                    <rect key="frame" x="95" y="169" width="11" height="9"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="artist" destination="bw5-f6-ixQ" id="7IE-rC-Jfw"/>
+                                            <outlet property="detailImage" destination="B40-5t-iY1" id="vjM-67-8JW"/>
+                                            <outlet property="detailText" destination="mH4-Ba-XDe" id="XYk-QH-zqw"/>
+                                            <outlet property="image" destination="2he-P9-8dh" id="EEg-Bc-2mS"/>
+                                            <outlet property="title" destination="rIM-MF-rPQ" id="FVi-Tv-zGy"/>
+                                            <segue destination="Iy0-Dv-cOW" kind="presentation" id="fx0-5W-tdS"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="ZzO-LG-9VX"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="HzP-gq-4wS"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,6 +116,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="collectionView" destination="YeK-LF-I3b" id="r0H-y2-ye6"/>
                         <outlet property="showNowPlaying" destination="oGT-9K-zw4" id="tAj-2M-ZrO"/>
                     </connections>
                 </viewController>
@@ -838,7 +909,9 @@
         <image name="Settings Selected" width="25" height="25"/>
         <image name="Share" width="22" height="22"/>
         <image name="Shuffle" width="16" height="15"/>
+        <image name="blurExample.png" width="300" height="300"/>
         <image name="cast_off" width="24" height="24"/>
+        <image name="headphone4.png" width="20" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UJF-uC-UfX"/>
