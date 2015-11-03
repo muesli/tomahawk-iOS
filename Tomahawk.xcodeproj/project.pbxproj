@@ -39,6 +39,9 @@
 		4DBDE0381BADC2BA00CD02CC /* TomahawkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */; };
 		4DBDE0431BADC2BA00CD02CC /* TomahawkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */; };
 		4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1050C1BE0041400C51EDD /* blurExample1.png */; };
+		4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818A1BE8D59100911581 /* More Than-15.png */; };
+		4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818C1BE8D77F00911581 /* More Than-40.png */; };
+		4DEF818F1BE8D7A300911581 /* More Than-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818E1BE8D7A300911581 /* More Than-25.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomahawkUITests.m; sourceTree = "<group>"; };
 		4DBDE0441BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE1050C1BE0041400C51EDD /* blurExample1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample1.png; sourceTree = "<group>"; };
+		4DEF818A1BE8D59100911581 /* More Than-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-15.png"; sourceTree = "<group>"; };
+		4DEF818C1BE8D77F00911581 /* More Than-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-40.png"; sourceTree = "<group>"; };
+		4DEF818E1BE8D7A300911581 /* More Than-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-25.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +226,9 @@
 				4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */,
 				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
 				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
+				4DEF818E1BE8D7A300911581 /* More Than-25.png */,
+				4DEF818C1BE8D77F00911581 /* More Than-40.png */,
+				4DEF818A1BE8D59100911581 /* More Than-15.png */,
 				4D8FF9E01BE80487001490B6 /* headphone4.png */,
 				4DB094901BE4F39300ACEC72 /* blurExample8.png */,
 				4DAE47C91BE3920A00D6816F /* blurExample7.png */,
@@ -370,15 +379,18 @@
 			files = (
 				4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */,
 				4DAE47C81BE3920400D6816F /* blurExample6.png in Resources */,
+				4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */,
 				4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */,
 				4DAE47C21BE2D56D00D6816F /* blurExample4.png in Resources */,
 				4DAE47C01BE2D1F800D6816F /* blurExample2.png in Resources */,
+				4DEF818F1BE8D7A300911581 /* More Than-25.png in Resources */,
 				4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */,
 				4DAE47BE1BE2D06300D6816F /* blurImage.jpg in Resources */,
 				4D8FF9E11BE80487001490B6 /* headphone4.png in Resources */,
 				4DAE47CA1BE3920A00D6816F /* blurExample7.png in Resources */,
 				4DAE47C41BE2D57B00D6816F /* blurExample3.png in Resources */,
 				4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */,
+				4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */,
 				4DB094911BE4F39300ACEC72 /* blurExample8.png in Resources */,
 				4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */,
 				4DAE47C61BE38A6600D6816F /* blurExample5.png in Resources */,

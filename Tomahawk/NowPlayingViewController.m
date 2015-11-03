@@ -41,7 +41,7 @@
     [_likeSelected setEnabled:NO];
     [_likeSelected setHidden:YES];
     
-    _backgroundImageView.image = [UIImage imageNamed:@"blurExample8"]; //Set Background Image
+    _backgroundImageView.image = [UIImage imageNamed:@"blurExample6"]; //Set Background Image
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]; //Create Blur Effect
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
     effectView.frame = _backgroundImageView.bounds;

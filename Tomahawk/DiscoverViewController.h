@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
+#import "CollectionViewCell.h"
 
-@interface DiscoverViewController : UIViewController <UISearchResultsUpdating>
+@interface DiscoverViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
+@property(nonatomic, strong) IBOutlet UICollectionView *recommendedSongs;
 
 @end

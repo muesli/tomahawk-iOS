@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _recommendedSongs.backgroundColor = [UIColor clearColor];
+    _recommendedSongs.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     //    [self setNeedsStatusBarAppearanceUpdate];
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -64,6 +66,17 @@
     [self.view addSubview:nowPlayingBar];
     [nowPlayingBar addSubview:_showNowPlaying]; //Add button to now playing bar
     
+}
+
+#pragma mark - Collection View
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 14;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedSongs" forIndexPath:indexPath];
+    return recommendedSongs;
 }
 
 - (void)didReceiveMemoryWarning {

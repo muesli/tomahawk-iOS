@@ -20,19 +20,47 @@
     //Insert Code Here
 }
 
+- (IBAction)seeAllReal:(UIButton *)sender {
+    [_seeAll setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+}
+- (IBAction)seeAllRealReleased:(UIButton *)sender {
+    [_seeAll setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
 
+- (IBAction)seeAllPlaylistsReal:(UIButton *)sender {
+    [_seeAllPlaylists setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+}
+- (IBAction)seeAllPlaylistsRealReleased:(UIButton *)sender {
+    [_seeAllPlaylists setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
 
 - (void)viewDidLoad {
-    _collectionView.backgroundColor = [UIColor clearColor];
-    _collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     [super viewDidLoad];
-    
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
+    //Set See All Button Stuff
+    [_seeAll setImage: [UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+    [_seeAll setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+    [_seeAll setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [_seeAll setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [_seeAllPlaylists setImage: [UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+    [_seeAllPlaylists setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+    [_seeAllPlaylists setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [_seeAllPlaylists setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    //Remove Background on Collection Views
+    _songsCollectionView.backgroundColor = [UIColor clearColor];
+    _songsCollectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    _playlistsCollectionView.backgroundColor = [UIColor clearColor];
+    _playlistsCollectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    //Remove 1px border on Navigation controller and set statusbar style to light
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                  forBarPosition:UIBarPositionAny
                                                      barMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    
 #pragma mark - Search Controller
     //Creating Search Controller
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self];
@@ -68,8 +96,14 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CollectionViewCell *recentSongsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentSongsCell" forIndexPath:indexPath];
-    return recentSongsCell;
+    if (collectionView == _songsCollectionView) {
+        CollectionViewCell *recentSongsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentSongsCell" forIndexPath:indexPath];
+            return recentSongsCell;
+    }else if (collectionView == _playlistsCollectionView){
+    CollectionViewCell *recentPlaylistsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentPlaylistsCell" forIndexPath:indexPath];
+    return recentPlaylistsCell;
+    }
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {
