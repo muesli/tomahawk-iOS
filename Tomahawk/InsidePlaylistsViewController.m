@@ -89,6 +89,7 @@
     [shuffle setTranslatesAutoresizingMaskIntoConstraints:NO];
     [shuffle setImage:[UIImage imageNamed:@"Shuffle"] forState:UIControlStateNormal];
     [headerView addSubview:shuffle];
+    
 #pragma mark - AutoLayout Constraints
     
     //More Button Right

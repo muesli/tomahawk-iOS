@@ -8,18 +8,110 @@
 
 #import "DiscoverViewController.h"
 
-@interface DiscoverViewController ()
+
+@interface DiscoverViewController (){
+    UIButton *seeAllButton;
+    UIButton *seeAllInvisible;
+}
 
 @end
 
 @implementation DiscoverViewController
+
 - (IBAction)inboxButton:(id)sender {
     //Insert Code
 }
 
+- (IBAction)simulateButtonPress:(UIButton *)sender {
+    [seeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+}
+- (IBAction)simulateButtonRelease:(UIButton *)sender {
+    [seeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
 
+-(void)reloadView{
+    NSLog(@"Section is: %d", isSection);
+    if (isSection == 0) {
+        //Create Invisible See All Button to Act as A Presser
+        seeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
+        seeAllInvisible.frame = CGRectMake(0, 0, 100, 50);
+        [seeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [seeAllInvisible setBackgroundColor:[UIColor redColor]];
+        [self.view addSubview:seeAllInvisible];
+        [seeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+        [seeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        //Create See All Button
+        seeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [seeAllButton setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+        [seeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [seeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
+        [seeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [seeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [[seeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
+        [seeAllButton setEnabled:NO];
+        [seeAllButton setUserInteractionEnabled:NO];
+        [self.view addSubview:seeAllButton];
+        
+        //Real Button Right
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
+                                                              attribute:NSLayoutAttributeTrailingMargin
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeTrailingMargin
+                                                             multiplier:0.95
+                                                               constant:0.0]];
+        
+        //Real Button Top
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
+                                                              attribute:NSLayoutAttributeCenterY
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeCenterY
+                                                             multiplier:0.7
+                                                               constant:0.0]];
+        
+        //Simulated Button Right
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
+                                                              attribute:NSLayoutAttributeLeft
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:seeAllButton
+                                                              attribute:NSLayoutAttributeLeft
+                                                             multiplier:1.0
+                                                               constant:-49.0]];
+        
+        //Simulated Button Top
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
+                                                              attribute:NSLayoutAttributeCenterY
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:seeAllButton
+                                                              attribute:NSLayoutAttributeCenterY
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        
+        [seeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
+                                                              attribute:NSLayoutAttributeHeight
+                                                              relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                toItem:nil
+                                                              attribute:NSLayoutAttributeHeight
+                                                             multiplier:20.0
+                                                               constant:15.0]];
+        
+        [seeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                    relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                   multiplier:20.0
+                                                                     constant:60.0]];
+        
+    }else{
+    }
+    
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self reloadView];
     _recommendedSongs.backgroundColor = [UIColor clearColor];
     _recommendedSongs.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     //    [self setNeedsStatusBarAppearanceUpdate];
@@ -71,12 +163,18 @@
 #pragma mark - Collection View
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 14;
+    if (isSection == 0) {
+        return 14;
+    }else{
+        return 0;
+    }
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedSongs" forIndexPath:indexPath];
-    return recommendedSongs;
+        return recommendedSongs;
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,7 +183,33 @@
 }
 
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
-    NSLog(@"Selected index %ld (via UIControlEventValueChanged)", segmentedControl.selectedSegmentIndex);
+    if (segmentedControl.selectedSegmentIndex == 0) {
+        isSection = 0;
+    }else if (segmentedControl.selectedSegmentIndex == 1){
+        isSection = 1;
+        for (UIView *subview in self.view.subviews) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [subview removeFromSuperview];
+            }
+        }
+
+    }else if (segmentedControl.selectedSegmentIndex == 2){
+        isSection = 2;
+        for (UIView *subview in self.view.subviews) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [subview removeFromSuperview];
+            }
+        }
+    }else if (segmentedControl.selectedSegmentIndex == 3){
+        isSection = 3;
+        for (UIView *subview in self.view.subviews) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                [subview removeFromSuperview];
+            }
+        }
+    }
+    [_recommendedSongs reloadData];
+    [self reloadView];
 }
 
 //- (UIStatusBarStyle)preferredStatusBarStyle

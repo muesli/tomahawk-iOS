@@ -654,6 +654,13 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RECOMMENDED SONGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-6f-Mof">
+                                <rect key="frame" x="44" y="201" width="79" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-t9-50y">
                                 <rect key="frame" x="0.0" y="505" width="375" height="50"/>
                                 <animations/>
@@ -685,7 +692,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recommendedSongs" id="5gc-Ge-nte" customClass="CollectionViewCell">
-                                        <rect key="frame" x="10" y="22" width="140" height="190"/>
+                                        <rect key="frame" x="10" y="47" width="140" height="190"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="190"/>
@@ -772,6 +779,8 @@
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="9Vt-7B-nKf" secondAttribute="trailing" constant="-20" id="8GV-17-y3Y"/>
+                            <constraint firstItem="4Cy-6f-Mof" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="24" id="9b3-ag-1rA"/>
+                            <constraint firstItem="4Cy-6f-Mof" firstAttribute="top" secondItem="7Ox-tu-BEG" secondAttribute="bottom" constant="201" id="VdQ-z2-oJu"/>
                             <constraint firstItem="f6s-K8-uzf" firstAttribute="top" secondItem="RQ5-t9-50y" secondAttribute="bottom" constant="-1" id="WRm-Yr-vYb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RQ5-t9-50y" secondAttribute="trailing" constant="-20" id="YG8-o9-vVw"/>
                             <constraint firstItem="9Vt-7B-nKf" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="-5" id="Zt4-U8-zeP"/>
@@ -1224,7 +1233,7 @@
         <image name="headphone4.png" width="20" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dae-Wa-aVB"/>
+        <segue reference="fx0-5W-tdS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
