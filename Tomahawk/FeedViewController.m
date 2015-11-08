@@ -34,8 +34,11 @@
     [_seeAllPlaylists setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_button setBackgroundColor:[UIColor redColor]];
+    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     //Set See All Button Stuff
     [_seeAll setImage: [UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];

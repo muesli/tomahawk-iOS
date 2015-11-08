@@ -12,6 +12,7 @@
 @interface DiscoverViewController (){
     UIButton *seeAllButton;
     UIButton *seeAllInvisible;
+    UIImageView *imageView;
 }
 
 @end
@@ -32,12 +33,22 @@
 -(void)reloadView{
     NSLog(@"Section is: %d", isSection);
     if (isSection == 0) {
+        UILabel *songsHeader = [[UILabel alloc]init];
+        songsHeader.text = @"RECOMMENDED SONGS";
+        songsHeader.font = [UIFont systemFontOfSize:12 weight:0.2];
+        songsHeader.alpha = 0.5;
+        songsHeader.textColor = [UIColor whiteColor];
+        [songsHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_scrollView addSubview:songsHeader];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(-10, -22, CGRectGetWidth(self.view.frame)+20, 140.0)];
+        [imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [self.scrollView addSubview:imageView];
+        [imageView setImage:[UIImage imageNamed:@"12.png"]];
         //Create Invisible See All Button to Act as A Presser
         seeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-        seeAllInvisible.frame = CGRectMake(0, 0, 100, 50);
+        //[seeAllInvisible setBackgroundColor:[UIColor redColor]];
         [seeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [seeAllInvisible setBackgroundColor:[UIColor redColor]];
-        [self.view addSubview:seeAllInvisible];
+        [_scrollView addSubview:seeAllInvisible];
         [seeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
         [seeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         //Create See All Button
@@ -46,11 +57,11 @@
         [seeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
         [seeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
         [seeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [seeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
         [[seeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
         [seeAllButton setEnabled:NO];
         [seeAllButton setUserInteractionEnabled:NO];
-        [self.view addSubview:seeAllButton];
+        [seeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_scrollView addSubview:seeAllButton];
         
         //Real Button Right
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
@@ -58,17 +69,17 @@
                                                               relatedBy:NSLayoutRelationEqual
                                                                  toItem:self.view
                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                             multiplier:0.95
-                                                               constant:0.0]];
+                                                             multiplier:1
+                                                               constant:50.0]];
         
         //Real Button Top
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
-                                                              attribute:NSLayoutAttributeCenterY
+        [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
+                                                              attribute:NSLayoutAttributeTop
                                                               relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self.view
-                                                              attribute:NSLayoutAttributeCenterY
-                                                             multiplier:0.7
-                                                               constant:0.0]];
+                                                                 toItem:_scrollView
+                                                              attribute:NSLayoutAttributeTop
+                                                             multiplier:1
+                                                               constant:165]];
         
         //Simulated Button Right
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
@@ -88,6 +99,7 @@
                                                              multiplier:1.0
                                                                constant:0.0]];
         
+        //Simulated Height
         [seeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
                                                               attribute:NSLayoutAttributeHeight
                                                               relatedBy:NSLayoutRelationLessThanOrEqual
@@ -96,6 +108,7 @@
                                                              multiplier:20.0
                                                                constant:15.0]];
         
+        //Simulated Width
         [seeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
                                                                     attribute:NSLayoutAttributeWidth
                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
@@ -103,6 +116,24 @@
                                                                     attribute:NSLayoutAttributeWidth
                                                                    multiplier:20.0
                                                                      constant:60.0]];
+        
+        //Header Left
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
+                                                              attribute:NSLayoutAttributeLeadingMargin
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeLeadingMargin
+                                                             multiplier:1
+                                                               constant:10.0]];
+        
+        //Header Top
+        [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:_scrollView
+                                                                attribute:NSLayoutAttributeTop
+                                                               multiplier:1
+                                                                 constant:165]];
         
     }else{
     }
@@ -112,6 +143,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadView];
+    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     _recommendedSongs.backgroundColor = [UIColor clearColor];
     _recommendedSongs.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     //    [self setNeedsStatusBarAppearanceUpdate];
@@ -187,23 +219,23 @@
         isSection = 0;
     }else if (segmentedControl.selectedSegmentIndex == 1){
         isSection = 1;
-        for (UIView *subview in self.view.subviews) {
-            if ([subview isKindOfClass:[UIButton class]]) {
+        for (UIView *subview in _scrollView.subviews) {
+            if ([subview isKindOfClass:[UIButton class]] || [subview isKindOfClass:[UIImageView class]] || [subview isKindOfClass:[UILabel class]]) {
                 [subview removeFromSuperview];
             }
         }
 
     }else if (segmentedControl.selectedSegmentIndex == 2){
         isSection = 2;
-        for (UIView *subview in self.view.subviews) {
-            if ([subview isKindOfClass:[UIButton class]]) {
+        for (UIView *subview in _scrollView.subviews) {
+            if ([subview isKindOfClass:[UIButton class]] || [subview isKindOfClass:[UIImageView class]] || [subview isKindOfClass:[UILabel class]]) {
                 [subview removeFromSuperview];
             }
         }
     }else if (segmentedControl.selectedSegmentIndex == 3){
         isSection = 3;
-        for (UIView *subview in self.view.subviews) {
-            if ([subview isKindOfClass:[UIButton class]]) {
+        for (UIView *subview in _scrollView.subviews) {
+            if ([subview isKindOfClass:[UIButton class]] || [subview isKindOfClass:[UIImageView class]] || [subview isKindOfClass:[UILabel class]]) {
                 [subview removeFromSuperview];
             }
         }

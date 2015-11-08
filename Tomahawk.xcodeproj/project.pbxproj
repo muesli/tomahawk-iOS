@@ -19,6 +19,7 @@
 		4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CED1BD49853008D2515 /* blurExample.png */; };
 		4D8FF9DF1BE7FD1C001490B6 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */; };
 		4D8FF9E11BE80487001490B6 /* headphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FF9E01BE80487001490B6 /* headphone4.png */; };
+		4D9AB1541BEFF948001AF5F5 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D9AB1531BEFF948001AF5F5 /* 12.png */; };
 		4DAE47B61BE2533D00D6816F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE47B41BE2533D00D6816F /* MBProgressHUD.m */; };
 		4DAE47BB1BE2B93F00D6816F /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE47B81BE2B93F00D6816F /* CCColorCube.m */; };
 		4DAE47BC1BE2B93F00D6816F /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE47BA1BE2B93F00D6816F /* CCLocalMaximum.m */; };
@@ -84,6 +85,7 @@
 		4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		4D8FF9E01BE80487001490B6 /* headphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headphone4.png; sourceTree = "<group>"; };
+		4D9AB1531BEFF948001AF5F5 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
 		4DAE47B41BE2533D00D6816F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Tomahawk/MBProgressHUD.m; sourceTree = "<group>"; };
 		4DAE47B51BE2533D00D6816F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Tomahawk/MBProgressHUD.h; sourceTree = "<group>"; };
 		4DAE47B71BE2B93F00D6816F /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCColorCube.h; path = Tomahawk/CCColorCube.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */,
 				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
 				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
+				4D9AB1531BEFF948001AF5F5 /* 12.png */,
 				4DEF818E1BE8D7A300911581 /* More Than-25.png */,
 				4DEF818C1BE8D77F00911581 /* More Than-40.png */,
 				4DEF818A1BE8D59100911581 /* More Than-15.png */,
@@ -389,6 +392,7 @@
 				4D8FF9E11BE80487001490B6 /* headphone4.png in Resources */,
 				4DAE47CA1BE3920A00D6816F /* blurExample7.png in Resources */,
 				4DAE47C41BE2D57B00D6816F /* blurExample3.png in Resources */,
+				4D9AB1541BEFF948001AF5F5 /* 12.png in Resources */,
 				4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */,
 				4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */,
 				4DB094911BE4F39300ACEC72 /* blurExample8.png in Resources */,

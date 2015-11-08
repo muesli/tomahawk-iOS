@@ -16,6 +16,8 @@
 @property(nonatomic, strong) IBOutlet UICollectionView *playlistsCollectionView;
 @property (weak, nonatomic) IBOutlet UIButton *seeAll;
 @property (weak, nonatomic) IBOutlet UIButton *seeAllPlaylists;
+@property (weak, nonatomic) IBOutlet UIButton *button;
+@property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 @end
