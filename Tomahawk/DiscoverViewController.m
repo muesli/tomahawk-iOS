@@ -10,8 +10,11 @@
 
 
 @interface DiscoverViewController (){
-    UIButton *seeAllButton;
-    UIButton *seeAllInvisible;
+    UIButton *songsSeeAllButton;
+    UIButton *songsSeeAllInvisible;
+    UIButton *playlistsSeeAllButton;
+    UIButton *playlistsSeeAllInvisible;
+    UILabel *playlistsHeader, *songsHeader;
     UIImageView *imageView;
 }
 
@@ -24,16 +27,22 @@
 }
 
 - (IBAction)simulateButtonPress:(UIButton *)sender {
-    [seeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+    [songsSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
 }
 - (IBAction)simulateButtonRelease:(UIButton *)sender {
-    [seeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [songsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+- (IBAction)simulateButtonPress1:(UIButton *)sender {
+    [playlistsSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+}
+- (IBAction)simulateButtonRelease1:(UIButton *)sender {
+    [playlistsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 -(void)reloadView{
     NSLog(@"Section is: %d", isSection);
     if (isSection == 0) {
-        UILabel *songsHeader = [[UILabel alloc]init];
+        songsHeader = [[UILabel alloc]init];
         songsHeader.text = @"RECOMMENDED SONGS";
         songsHeader.font = [UIFont systemFontOfSize:12 weight:0.2];
         songsHeader.alpha = 0.5;
@@ -44,100 +53,205 @@
         [self.scrollView addSubview:imageView];
         [imageView setImage:[UIImage imageNamed:@"12.png"]];
         //Create Invisible See All Button to Act as A Presser
-        seeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
+        songsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
         //[seeAllInvisible setBackgroundColor:[UIColor redColor]];
-        [seeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_scrollView addSubview:seeAllInvisible];
-        [seeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-        [seeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        [songsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_scrollView addSubview:songsSeeAllInvisible];
+        [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+        [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         //Create See All Button
-        seeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [seeAllButton setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-        [seeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
-        [seeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
-        [seeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [[seeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
-        [seeAllButton setEnabled:NO];
-        [seeAllButton setUserInteractionEnabled:NO];
-        [seeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_scrollView addSubview:seeAllButton];
+        songsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [songsSeeAllButton setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+        [songsSeeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [songsSeeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
+        [songsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [[songsSeeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
+        [songsSeeAllButton setEnabled:NO];
+        [songsSeeAllButton setUserInteractionEnabled:NO];
+        [songsSeeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.scrollView addSubview:songsSeeAllButton];
+
         
-        //Real Button Right
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
-                                                              attribute:NSLayoutAttributeTrailingMargin
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self.view
-                                                              attribute:NSLayoutAttributeTrailingMargin
-                                                             multiplier:1
-                                                               constant:50.0]];
-        
-        //Real Button Top
-        [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:seeAllButton
-                                                              attribute:NSLayoutAttributeTop
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:_scrollView
-                                                              attribute:NSLayoutAttributeTop
-                                                             multiplier:1
-                                                               constant:165]];
-        
-        //Simulated Button Right
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
-                                                              attribute:NSLayoutAttributeLeft
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:seeAllButton
-                                                              attribute:NSLayoutAttributeLeft
-                                                             multiplier:1.0
-                                                               constant:-49.0]];
-        
-        //Simulated Button Top
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
-                                                              attribute:NSLayoutAttributeCenterY
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:seeAllButton
-                                                              attribute:NSLayoutAttributeCenterY
-                                                             multiplier:1.0
-                                                               constant:0.0]];
-        
-        //Simulated Height
-        [seeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
-                                                              attribute:NSLayoutAttributeHeight
-                                                              relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                toItem:nil
-                                                              attribute:NSLayoutAttributeHeight
-                                                             multiplier:20.0
-                                                               constant:15.0]];
-        
-        //Simulated Width
-        [seeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:seeAllInvisible
-                                                                    attribute:NSLayoutAttributeWidth
-                                                                    relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                       toItem:nil
-                                                                    attribute:NSLayoutAttributeWidth
-                                                                   multiplier:20.0
-                                                                     constant:60.0]];
-        
-        //Header Left
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
-                                                              attribute:NSLayoutAttributeLeadingMargin
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:self.view
-                                                              attribute:NSLayoutAttributeLeadingMargin
-                                                             multiplier:1
-                                                               constant:10.0]];
-        
-        //Header Top
-        [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
-                                                                attribute:NSLayoutAttributeTop
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:_scrollView
-                                                                attribute:NSLayoutAttributeTop
-                                                               multiplier:1
-                                                                 constant:165]];
-        
+        playlistsHeader = [[UILabel alloc]init];
+        playlistsHeader.text = @"RECOMMENDED PLAYLISTS";
+        playlistsHeader.font = [UIFont systemFontOfSize:12 weight:0.2];
+        playlistsHeader.alpha = 0.5;
+        playlistsHeader.textColor = [UIColor whiteColor];
+        [playlistsHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_scrollView addSubview:playlistsHeader];
+        //Create Invisible See All Button to Act as A Presser
+        playlistsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
+        //[seeAllInvisible setBackgroundColor:[UIColor redColor]];
+        [playlistsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_scrollView addSubview:playlistsSeeAllInvisible];
+        [playlistsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress1:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+        [playlistsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease1:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        //Create See All Button
+        playlistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [playlistsSeeAllButton setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+        [playlistsSeeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [playlistsSeeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
+        [playlistsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [[playlistsSeeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
+        [playlistsSeeAllButton setEnabled:NO];
+        [playlistsSeeAllButton setUserInteractionEnabled:NO];
+        [playlistsSeeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.scrollView addSubview:playlistsSeeAllButton];
+        [self autoLayoutConstraints];
+
     }else{
     }
     
 
+}
+
+#pragma mark - Auto Layout Constraints
+
+- (void)autoLayoutConstraints{
+    
+    //Real Button Right
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllButton
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                         multiplier:1
+                                                           constant:50.0]];
+    
+    //Real Button Top
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllButton
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:165]];
+    
+    //Simulated Button Right
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:songsSeeAllButton
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:-49.0]];
+    
+    //Simulated Button Top
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:songsSeeAllButton
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    //Simulated Height
+    [songsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                    multiplier:20.0
+                                                                      constant:15.0]];
+    
+    //Simulated Width
+    [songsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                    multiplier:20.0
+                                                                      constant:60.0]];
+    
+    //Header Left
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                         multiplier:1
+                                                           constant:10.0]];
+    
+    //Header Top
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:165]];
+    
+    //Real Button Right
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllButton
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                         multiplier:1
+                                                           constant:50.0]];
+    
+    //Real Button Top
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllButton
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:412]];
+    
+    //Simulated Button Right
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:playlistsSeeAllButton
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:-49.0]];
+    
+    //Simulated Button Top
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:playlistsSeeAllButton
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    //Simulated Height
+    [playlistsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                    multiplier:20.0
+                                                                      constant:15.0]];
+    
+    //Simulated Width
+    [playlistsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                    multiplier:20.0
+                                                                      constant:60.0]];
+    
+    //Header Left
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsHeader
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                         multiplier:1
+                                                           constant:10.0]];
+    
+    //Header Top
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:playlistsHeader
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:412]];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -145,6 +259,8 @@
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     _recommendedSongs.backgroundColor = [UIColor clearColor];
     _recommendedSongs.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    _recommendedPlaylists.backgroundColor = [UIColor clearColor];
+    _recommendedPlaylists.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     //    [self setNeedsStatusBarAppearanceUpdate];
     CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
@@ -202,9 +318,14 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedSongs" forIndexPath:indexPath];
+    if (collectionView == _recommendedSongs) {
+        CollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedSongs" forIndexPath:indexPath];
         return recommendedSongs;
-    
+    }else if (collectionView == _recommendedPlaylists){
+        CollectionViewCell *recentPlaylistsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedPlaylists" forIndexPath:indexPath];
+        return recentPlaylistsCell;
+    }
+    return nil;
 
 }
 
@@ -240,6 +361,7 @@
         }
     }
     [_recommendedSongs reloadData];
+    [_recommendedPlaylists reloadData];
     [self reloadView];
 }
 

@@ -16,6 +16,7 @@ int isSection = 0;
 
 @property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedSongs;
+@property(nonatomic, strong) IBOutlet UICollectionView *recommendedPlaylists;
 @property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
