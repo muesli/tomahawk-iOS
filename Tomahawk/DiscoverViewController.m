@@ -40,8 +40,7 @@
         songsHeader.textColor = [UIColor whiteColor];
         [songsHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_scrollView addSubview:songsHeader];
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(-10, -22, CGRectGetWidth(self.view.frame)+20, 140.0)];
-        [imageView setContentMode:UIViewContentModeScaleAspectFill];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 140.0)];
         [self.scrollView addSubview:imageView];
         [imageView setImage:[UIImage imageNamed:@"12.png"]];
         //Create Invisible See All Button to Act as A Presser

@@ -110,6 +110,14 @@
 
 #pragma mark - Table View
 
+- (void)killScroll
+{
+    CGPoint offset = _tableView.contentOffset;
+    offset.x = 0;
+    offset.y = 50;
+    [_tableView setContentOffset:offset animated:NO];
+}
+
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -205,6 +213,9 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0 && indexPath.section == 0) {
+        [self killScroll];
+    }
     //Turn off retarded stuff
     [[self tableView]setAlwaysBounceVertical:NO];
     [[self tableView]setBounces:NO];
