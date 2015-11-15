@@ -18,6 +18,7 @@
 		4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6023E71BC6E8810053F998 /* SettingsViewController.m */; };
 		4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CED1BD49853008D2515 /* blurExample.png */; };
 		4D8133FA1BF50C7200FF1E95 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8133F91BF50C7200FF1E95 /* 12.png */; };
+		4D8DB5CB1BF90335009B3B1F /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */; };
 		4D8FF9DF1BE7FD1C001490B6 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */; };
 		4D8FF9E11BE80487001490B6 /* headphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8FF9E01BE80487001490B6 /* headphone4.png */; };
 		4DAE47B61BE2533D00D6816F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE47B41BE2533D00D6816F /* MBProgressHUD.m */; };
@@ -83,6 +84,8 @@
 		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4D7B0CED1BD49853008D2515 /* blurExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample.png; sourceTree = "<group>"; };
 		4D8133F91BF50C7200FF1E95 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		4D8DB5C91BF90335009B3B1F /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
+		4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
 		4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		4D8FF9E01BE80487001490B6 /* headphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headphone4.png; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */,
 				4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */,
 				4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */,
+				4D8DB5C91BF90335009B3B1F /* CustomTabBar.h */,
+				4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */,
 				4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */,
 				4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */,
 				4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */,
@@ -423,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DAE47BC1BE2B93F00D6816F /* CCLocalMaximum.m in Sources */,
+				4D8DB5CB1BF90335009B3B1F /* CustomTabBar.m in Sources */,
 				4D33B7BF1BDEEF950085D408 /* NowPlayingViewController.m in Sources */,
 				4D2112BA1BD0EEF1001D415D /* DiscoverViewController.m in Sources */,
 				4D1E3DF71BD2BAE200717185 /* InsidePlaylistsViewController.m in Sources */,

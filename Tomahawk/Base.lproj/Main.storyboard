@@ -17,34 +17,9 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-KS-Q04">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-KS-Q04">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="RECENT SONGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofy-mv-nvB">
-                                        <rect key="frame" x="50" y="14" width="79" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="RECENT PLAYLISTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xf-hi-Bn8">
-                                        <rect key="frame" x="50" y="264" width="79" height="21"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGT-9K-zw4">
-                                        <rect key="frame" x="0.0" y="230" width="375" height="50"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="3Dn-A1-YC3"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="Iy0-Dv-cOW" kind="presentation" id="UJF-uC-UfX"/>
-                                        </connections>
-                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-LF-I3b" userLabel="Recent Songs Collection View">
                                         <rect key="frame" x="15" y="0.0" width="360" height="273"/>
                                         <animations/>
@@ -144,46 +119,6 @@
                                             <outlet property="delegate" destination="9pv-A4-QxB" id="HzP-gq-4wS"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOK-HH-LyO">
-                                        <rect key="frame" x="148" y="242" width="79" height="27"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sr2-kI-FjW">
-                                        <rect key="frame" x="157" y="248" width="60" height="15"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="6hq-yb-a5D"/>
-                                            <constraint firstAttribute="width" constant="60" id="ckY-Ib-Dpy"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="seeAllReal:" destination="9pv-A4-QxB" eventType="touchDragInside" id="3z0-ha-WmY"/>
-                                            <action selector="seeAllReal:" destination="9pv-A4-QxB" eventType="touchDown" id="ciD-oG-QUi"/>
-                                            <action selector="seeAllRealReleased:" destination="9pv-A4-QxB" eventType="touchUpOutside" id="JHa-8t-wqT"/>
-                                            <action selector="seeAllRealReleased:" destination="9pv-A4-QxB" eventType="touchDragOutside" id="TWL-cu-JAX"/>
-                                            <action selector="seeAllRealReleased:" destination="9pv-A4-QxB" eventType="touchUpInside" id="VdE-VY-ILU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSj-WJ-yrg">
-                                        <rect key="frame" x="274" y="252" width="79" height="27"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIU-y1-FiA">
-                                        <rect key="frame" x="283" y="258" width="60" height="15"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="Kom-dA-kLz"/>
-                                            <constraint firstAttribute="height" constant="15" id="Wh1-iY-0Hr"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="seeAllPlaylistsReal:" destination="9pv-A4-QxB" eventType="touchDragInside" id="m6B-2P-fht"/>
-                                            <action selector="seeAllPlaylistsReal:" destination="9pv-A4-QxB" eventType="touchDown" id="qHT-fM-8Ys"/>
-                                            <action selector="seeAllPlaylistsRealReleased:" destination="9pv-A4-QxB" eventType="touchUpInside" id="3Fu-0d-Xf2"/>
-                                            <action selector="seeAllPlaylistsRealReleased:" destination="9pv-A4-QxB" eventType="touchDragOutside" id="Kdw-Zq-961"/>
-                                            <action selector="seeAllPlaylistsRealReleased:" destination="9pv-A4-QxB" eventType="touchUpOutside" id="tU5-Kt-Amk"/>
-                                        </connections>
-                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S5e-QF-A07" userLabel="Recent Playlists Collection View">
                                         <rect key="frame" x="15" y="250" width="360" height="273"/>
                                         <animations/>
@@ -285,20 +220,32 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="554" id="pkY-tQ-59F"/>
+                                    <constraint firstAttribute="width" constant="375" id="58P-ZX-HAn"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGT-9K-zw4">
+                                <rect key="frame" x="0.0" y="505" width="375" height="50"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Dn-A1-YC3"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Iy0-Dv-cOW" kind="presentation" id="UJF-uC-UfX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="9xf-hi-Bn8" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="30" id="80u-a7-g73"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S5e-QF-A07" secondAttribute="trailing" constant="-20" id="Sug-IY-Mh2"/>
                             <constraint firstItem="YeK-LF-I3b" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-5" id="To2-fZ-HB4"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="oGT-9K-zw4" secondAttribute="bottom" constant="-1" id="Vl3-0D-cMa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oGT-9K-zw4" secondAttribute="trailing" constant="-20" id="eu7-L2-oUv"/>
+                            <constraint firstItem="oGT-9K-zw4" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="jCP-xC-B1S"/>
                             <constraint firstItem="Byq-KS-Q04" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="mFO-kr-nkq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YeK-LF-I3b" secondAttribute="trailing" constant="-20" id="n56-EE-4dX"/>
                             <constraint firstItem="Byq-KS-Q04" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="qKA-ON-bRS"/>
-                            <constraint firstItem="ofy-mv-nvB" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="30" id="sEO-sv-ESR"/>
                             <constraint firstItem="S5e-QF-A07" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-5" id="zl7-E5-MHk"/>
                         </constraints>
                     </view>
@@ -311,11 +258,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="button" destination="MIU-y1-FiA" id="vfO-gN-pJR"/>
                         <outlet property="playlistsCollectionView" destination="S5e-QF-A07" id="ELV-Hf-vBP"/>
                         <outlet property="scrollView" destination="Byq-KS-Q04" id="pga-aK-NmS"/>
-                        <outlet property="seeAll" destination="pOK-HH-LyO" id="EmB-1l-azk"/>
-                        <outlet property="seeAllPlaylists" destination="GSj-WJ-yrg" id="RUS-6M-9Ys"/>
                         <outlet property="showNowPlaying" destination="oGT-9K-zw4" id="tAj-2M-ZrO"/>
                         <outlet property="songsCollectionView" destination="YeK-LF-I3b" id="44u-0W-br3"/>
                     </connections>
@@ -360,7 +304,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
-                                    <color key="barTintColor" red="0.086274509803921567" green="0.090196078431372548" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="barTintColor" red="0.098768436946124236" green="0.10372841842153242" blue="0.11860836284775689" alpha="1" colorSpace="calibratedRGB"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
@@ -1198,11 +1142,12 @@
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA" customClass="CustomTabBar">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.14509803921568629" green="0.14509803921568629" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="cdh-A4-0Ly" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -1331,7 +1276,7 @@
         <image name="headphone4.png" width="20" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dae-Wa-aVB"/>
+        <segue reference="fx0-5W-tdS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
