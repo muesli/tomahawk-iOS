@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byq-KS-Q04">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YeK-LF-I3b" userLabel="Recent Songs Collection View">
                                         <rect key="frame" x="15" y="0.0" width="360" height="273"/>
@@ -219,33 +219,18 @@
                                     </collectionView>
                                 </subviews>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="58P-ZX-HAn"/>
-                                </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGT-9K-zw4">
-                                <rect key="frame" x="0.0" y="505" width="375" height="50"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="3Dn-A1-YC3"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Iy0-Dv-cOW" kind="presentation" id="UJF-uC-UfX"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Byq-KS-Q04" secondAttribute="trailing" constant="-20" id="4ip-Z4-2r3"/>
+                            <constraint firstItem="Byq-KS-Q04" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Cyk-uw-H2c"/>
+                            <constraint firstItem="Byq-KS-Q04" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" id="Enm-tU-l1A"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S5e-QF-A07" secondAttribute="trailing" constant="-20" id="Sug-IY-Mh2"/>
                             <constraint firstItem="YeK-LF-I3b" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-5" id="To2-fZ-HB4"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="oGT-9K-zw4" secondAttribute="bottom" constant="-1" id="Vl3-0D-cMa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oGT-9K-zw4" secondAttribute="trailing" constant="-20" id="eu7-L2-oUv"/>
-                            <constraint firstItem="oGT-9K-zw4" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="jCP-xC-B1S"/>
-                            <constraint firstItem="Byq-KS-Q04" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="mFO-kr-nkq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="YeK-LF-I3b" secondAttribute="trailing" constant="-20" id="n56-EE-4dX"/>
-                            <constraint firstItem="Byq-KS-Q04" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="qKA-ON-bRS"/>
+                            <constraint firstItem="Byq-KS-Q04" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="vad-m4-Y1e"/>
                             <constraint firstItem="S5e-QF-A07" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-5" id="zl7-E5-MHk"/>
                         </constraints>
                     </view>
@@ -260,7 +245,6 @@
                     <connections>
                         <outlet property="playlistsCollectionView" destination="S5e-QF-A07" id="ELV-Hf-vBP"/>
                         <outlet property="scrollView" destination="Byq-KS-Q04" id="pga-aK-NmS"/>
-                        <outlet property="showNowPlaying" destination="oGT-9K-zw4" id="tAj-2M-ZrO"/>
                         <outlet property="songsCollectionView" destination="YeK-LF-I3b" id="44u-0W-br3"/>
                     </connections>
                 </viewController>
@@ -280,17 +264,6 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31B-7P-YyE">
-                                <rect key="frame" x="-4" y="504" width="375" height="50"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1uZ-Oa-4nc"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Iy0-Dv-cOW" kind="presentation" id="24I-hZ-doh"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s0S-b3-e5C">
                                 <rect key="frame" x="-4" y="40" width="375" height="554"/>
                                 <animations/>
@@ -383,11 +356,8 @@
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="31B-7P-YyE" secondAttribute="trailing" constant="-20" id="2vc-c8-6Dl"/>
                             <constraint firstItem="s0S-b3-e5C" firstAttribute="top" secondItem="7Hp-Sw-DGO" secondAttribute="bottom" constant="40" id="DUT-v8-ufu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s0S-b3-e5C" secondAttribute="trailing" constant="-20" id="Erd-9g-uH6"/>
-                            <constraint firstItem="jPJ-Ht-SIk" firstAttribute="top" secondItem="31B-7P-YyE" secondAttribute="bottom" id="SWq-5p-GJn"/>
-                            <constraint firstItem="31B-7P-YyE" firstAttribute="leading" secondItem="UlJ-7g-m6P" secondAttribute="leadingMargin" constant="-20" id="X77-4b-zU6"/>
                             <constraint firstItem="s0S-b3-e5C" firstAttribute="leading" secondItem="UlJ-7g-m6P" secondAttribute="leadingMargin" constant="-20" id="hBi-Pi-z2t"/>
                         </constraints>
                         <connections>
@@ -406,7 +376,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="showNowPlaying" destination="31B-7P-YyE" id="ttx-sP-Npd"/>
                         <outlet property="tableView" destination="s0S-b3-e5C" id="F0e-Ds-74y"/>
                     </connections>
                 </viewController>
@@ -537,26 +506,8 @@
                     <view key="view" contentMode="scaleToFill" id="BgW-Sn-htL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dr6-8e-lcN">
-                                <rect key="frame" x="-4" y="569" width="375" height="50"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="wUb-9K-Wpl"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Iy0-Dv-cOW" kind="presentation" id="Rcr-xI-XMD"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="9Yd-IQ-jDn" firstAttribute="top" secondItem="dr6-8e-lcN" secondAttribute="bottom" constant="-1" id="GjM-RA-yet"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dr6-8e-lcN" secondAttribute="trailing" constant="-20" id="MZ5-wM-Jgo"/>
-                            <constraint firstItem="dr6-8e-lcN" firstAttribute="leading" secondItem="BgW-Sn-htL" secondAttribute="leadingMargin" constant="-20" id="rXK-O0-27s"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xHn-Su-afa">
                         <barButtonItem key="rightBarButtonItem" image="Inbox" id="u3o-GN-K4Q">
@@ -569,7 +520,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="M5U-Zg-WGf" id="3nR-1m-eiN"/>
-                        <outlet property="showNowPlaying" destination="dr6-8e-lcN" id="ghY-sh-5eH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTa-VE-MeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -596,8 +546,8 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tfO-4L-Bri">
-                                <rect key="frame" x="0.0" y="40" width="375" height="1000"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfO-4L-Bri">
+                                <rect key="frame" x="0.0" y="40" width="375" height="563"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Vt-7B-nKf" userLabel="Recommended Songs Collection View">
                                         <rect key="frame" x="9" y="147" width="360" height="273"/>
@@ -797,36 +747,19 @@
                                     </collectionView>
                                 </subviews>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="We5-jy-nfV"/>
-                                </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQ5-t9-50y">
-                                <rect key="frame" x="-4" y="505" width="375" height="50"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="5c4-iW-4Ad"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Iy0-Dv-cOW" kind="presentation" id="dae-Wa-aVB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="tfO-4L-Bri" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="-20" id="2ot-bL-gtl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9Vt-7B-nKf" secondAttribute="trailing" constant="-18" id="AIO-QF-b6q"/>
+                            <constraint firstItem="tfO-4L-Bri" firstAttribute="height" secondItem="I2U-O3-hqP" secondAttribute="height" id="Htd-hU-haG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="x9Q-RU-WBD" secondAttribute="trailing" constant="-18" id="Nq0-xc-ufU"/>
                             <constraint firstItem="x9Q-RU-WBD" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="-7" id="VxQ-rU-Ckw"/>
-                            <constraint firstItem="tfO-4L-Bri" firstAttribute="top" secondItem="7Ox-tu-BEG" secondAttribute="bottom" constant="40" id="Y2H-LK-OBJ"/>
-                            <constraint firstItem="f6s-K8-uzf" firstAttribute="top" secondItem="RQ5-t9-50y" secondAttribute="bottom" constant="-1" id="ZNE-ec-rtx"/>
-                            <constraint firstItem="tfO-4L-Bri" firstAttribute="centerX" secondItem="I2U-O3-hqP" secondAttribute="centerX" id="f8E-DT-0EV"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RQ5-t9-50y" secondAttribute="trailing" constant="-20" id="jRl-hz-rn8"/>
-                            <constraint firstItem="f6s-K8-uzf" firstAttribute="top" secondItem="tfO-4L-Bri" secondAttribute="bottom" constant="52" id="mQg-wt-75X"/>
-                            <constraint firstItem="tfO-4L-Bri" firstAttribute="width" secondItem="I2U-O3-hqP" secondAttribute="width" id="uUI-xk-5hB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tfO-4L-Bri" secondAttribute="trailing" constant="-20" id="aNN-Mb-yso"/>
+                            <constraint firstItem="tfO-4L-Bri" firstAttribute="top" secondItem="7Ox-tu-BEG" secondAttribute="bottom" constant="40" id="b0B-eZ-5HV"/>
                             <constraint firstItem="9Vt-7B-nKf" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="-7" id="vCy-fK-bge"/>
-                            <constraint firstItem="RQ5-t9-50y" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="-20" id="wwa-gy-Zi6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7qV-2g-Wla">
@@ -840,12 +773,11 @@
                         <outlet property="recommendedPlaylists" destination="x9Q-RU-WBD" id="axO-hO-h7d"/>
                         <outlet property="recommendedSongs" destination="9Vt-7B-nKf" id="pQo-mV-Hv4"/>
                         <outlet property="scrollView" destination="tfO-4L-Bri" id="5Zu-uG-odq"/>
-                        <outlet property="showNowPlaying" destination="RQ5-t9-50y" id="uor-e6-aov"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8p-Ek-HCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73.5" y="-733.5"/>
+            <point key="canvasLocation" x="72.5" y="-757.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="4ao-iD-fNV">
@@ -885,7 +817,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rqh-xP-jI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="-37"/>
+            <point key="canvasLocation" x="72.5" y="-13.5"/>
         </scene>
         <!--Inside Settings-->
         <scene sceneID="y49-WR-0Ec">
@@ -1142,7 +1074,7 @@
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA" customClass="CustomTabBar">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
@@ -1179,6 +1111,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.14509803921568629" green="0.14509803921568629" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="bEp-25-O6s" kind="relationship" relationship="rootViewController" id="gkP-KA-00M"/>
@@ -1191,7 +1124,7 @@
         <!--Radio-->
         <scene sceneID="9xS-xu-lb2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CFu-5n-YUN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="CFu-5n-YUN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Radio" image="Radio" selectedImage="Radio Selected" id="bey-Rf-xaW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LIJ-lW-0pT">
@@ -1201,6 +1134,13 @@
                         <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="iPx-aC-apb">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.14509803921568629" green="0.14509803921568629" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="64d-AS-328" kind="relationship" relationship="rootViewController" id="EsD-nE-XbI"/>
                     </connections>
@@ -1212,7 +1152,7 @@
         <!--Discover-->
         <scene sceneID="rjz-Vw-po0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tpZ-8E-iOE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tpZ-8E-iOE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="Discover" selectedImage="Discover Selected" id="VNo-rw-cuE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nNW-27-Zpa">
@@ -1222,6 +1162,13 @@
                         <color key="barTintColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JkF-Dd-6fi">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.14509803921568629" green="0.14509803921568629" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Xg7-X4-LS6" kind="relationship" relationship="rootViewController" id="aI4-zQ-MG3"/>
                     </connections>
@@ -1248,6 +1195,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.14509803921568629" green="0.14509803921568629" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Vlk-3J-TOC"/>
@@ -1288,7 +1236,7 @@
         <image name="headphone4.png" width="20" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fx0-5W-tdS"/>
+        <segue reference="sLY-AN-5Ko"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

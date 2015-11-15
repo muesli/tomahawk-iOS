@@ -54,9 +54,6 @@
     [self.view addSubview:barbackground];
     [self.view addSubview:segmentedControl];
     
-#pragma mark - Now Playing Bar
-    _showNowPlaying.tintColor = [UIColor clearColor]; //Create invisible button to trigger the now playing segue
-
 }
 
 - (void)didReceiveMemoryWarning {

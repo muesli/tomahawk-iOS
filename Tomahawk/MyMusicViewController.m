@@ -69,10 +69,6 @@
     self.definesPresentationContext = YES;
     searchController.searchBar.frame = CGRectMake(0, 0, 10,CGRectGetHeight(searchController.searchBar.frame));
     self.navigationItem.titleView = searchController.searchBar;
-    
-#pragma mark - Now Playing Bar
-    _showNowPlaying.tintColor = [UIColor clearColor]; //Create invisible button to trigger the now playing segue
-    
 
 #pragma mark - Custom Segmented Control
     HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"PLAYLISTS", @"SONGS"]];

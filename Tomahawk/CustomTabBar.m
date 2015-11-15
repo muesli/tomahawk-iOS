@@ -13,10 +13,8 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     self.backgroundColor = [UIColor clearColor];
+    self.tintColor = [UIColor redColor];
     [self setBackgroundImage:[UIImage new]];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    [self addSubview:imageView];
 }
 
 @end

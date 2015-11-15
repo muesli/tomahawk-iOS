@@ -11,7 +11,6 @@
 
 @interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 @property(nonatomic, strong) IBOutlet UICollectionView *songsCollectionView;
 @property(nonatomic, strong) IBOutlet UICollectionView *playlistsCollectionView;
 @property(weak, nonatomic) IBOutlet UIScrollView *scrollView;

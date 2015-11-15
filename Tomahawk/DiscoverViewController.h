@@ -14,7 +14,6 @@ int isSection = 0;
 
 @interface DiscoverViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedSongs;
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedPlaylists;
 @property(weak, nonatomic) IBOutlet UIScrollView *scrollView;

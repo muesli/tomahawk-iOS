@@ -126,9 +126,6 @@
     self.definesPresentationContext = YES;
     self.navigationItem.titleView = searchController.searchBar;
     
-#pragma mark - Now Playing Bar
-    _showNowPlaying.tintColor = [UIColor clearColor]; //Create invisible button to trigger the now playing segue
-    
 
 }
 

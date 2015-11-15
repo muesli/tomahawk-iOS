@@ -11,6 +11,5 @@
 
 @interface RadioViewController : UIViewController <UISearchResultsUpdating>
 
-@property(nonatomic, strong) IBOutlet UIButton *showNowPlaying;
 
 @end
