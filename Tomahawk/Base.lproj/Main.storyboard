@@ -1142,7 +1142,7 @@
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA" customClass="CustomTabBar">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA" customClass="CustomTabBar">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
@@ -1164,7 +1164,7 @@
         <!--My Music-->
         <scene sceneID="0YR-E9-dcl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pOm-Af-pqI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pOm-Af-pqI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Music" image="My Music" selectedImage="My Music" id="H4J-1D-YEc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qet-DX-ZH4">
@@ -1174,6 +1174,12 @@
                         <color key="barTintColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7gD-bd-DOr">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="bEp-25-O6s" kind="relationship" relationship="rootViewController" id="gkP-KA-00M"/>
                     </connections>
@@ -1227,7 +1233,7 @@
         <!--Feed-->
         <scene sceneID="6zH-Wy-sSJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cdh-A4-0Ly" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1b4-N1-kE8">
@@ -1237,6 +1243,12 @@
                         <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="n3i-td-z1c">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Vlk-3J-TOC"/>
                     </connections>
