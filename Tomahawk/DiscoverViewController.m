@@ -23,7 +23,7 @@
 @implementation DiscoverViewController
 
 - (IBAction)inboxButton:(id)sender {
-    //Insert Code
+    //TODO: Insert Code
 }
 
 - (IBAction)simulateButtonPress:(UIButton *)sender {
@@ -314,8 +314,8 @@
         CollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedSongs" forIndexPath:indexPath];
         return recommendedSongs;
     }else if (collectionView == _recommendedPlaylists){
-        CollectionViewCell *recentPlaylistsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedPlaylists" forIndexPath:indexPath];
-        return recentPlaylistsCell;
+        CollectionViewCell *recommendedPlaylists = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedPlaylists" forIndexPath:indexPath];
+        return recommendedPlaylists;
     }
     return nil;
 

@@ -15,6 +15,7 @@
 		4D32B8E61BCA7CE700C42A85 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */; };
 		4D32E1531BD1AFCE008F9373 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */; };
 		4D33B7BF1BDEEF950085D408 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */; };
+		4D5707BD1BFA24810009C14F /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5707BC1BFA24810009C14F /* 13.png */; };
 		4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6023E71BC6E8810053F998 /* SettingsViewController.m */; };
 		4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CED1BD49853008D2515 /* blurExample.png */; };
 		4D8133FA1BF50C7200FF1E95 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8133F91BF50C7200FF1E95 /* 12.png */; };
@@ -80,6 +81,7 @@
 		4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyMusicViewController.m; path = Tomahawk/MyMusicViewController.m; sourceTree = "<group>"; };
 		4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
 		4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingViewController.m; sourceTree = "<group>"; };
+		4D5707BC1BFA24810009C14F /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
 		4D6023E61BC6E8810053F998 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4D7B0CED1BD49853008D2515 /* blurExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample.png; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */,
 				4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */,
 				4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */,
+				4D5707BC1BFA24810009C14F /* 13.png */,
 				4D8133F91BF50C7200FF1E95 /* 12.png */,
 				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
 				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
@@ -394,6 +397,7 @@
 				4DEF818F1BE8D7A300911581 /* More Than-25.png in Resources */,
 				4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */,
 				4D8133FA1BF50C7200FF1E95 /* 12.png in Resources */,
+				4D5707BD1BFA24810009C14F /* 13.png in Resources */,
 				4DAE47BE1BE2D06300D6816F /* blurImage.jpg in Resources */,
 				4D8FF9E11BE80487001490B6 /* headphone4.png in Resources */,
 				4DAE47CA1BE3920A00D6816F /* blurExample7.png in Resources */,

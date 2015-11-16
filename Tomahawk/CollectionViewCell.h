@@ -10,10 +10,11 @@
 
 @interface CollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *artist;
-@property (weak, nonatomic) IBOutlet UIImageView *detailImage;
-@property (weak, nonatomic) IBOutlet UILabel *detailText;
+@property (strong, nonatomic) UIImageView *image;
+@property (strong, nonatomic) UILabel *title;
+@property (strong, nonatomic) UILabel *artist;
+@property (strong, nonatomic) UIImageView *detailImage;
+@property (strong, nonatomic) UILabel *detailText;
+@property (assign, nonatomic, getter=isBig) BOOL big;
 
 @end

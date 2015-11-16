@@ -43,7 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
-    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     //Set See All Button Stuff
     songsHeader = [[UILabel alloc]init];
     songsHeader.text = @"RECENT SONGS";

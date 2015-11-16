@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
+#import "CollectionViewCell.h"
 
-@interface RadioViewController : UIViewController <UISearchResultsUpdating>
+//int isSection = 0;
 
+@interface RadioViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property(nonatomic, strong) IBOutlet UICollectionView *recommendedStations;
+@property(nonatomic, strong) IBOutlet UICollectionView *recommendedGenres;
+@property(strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
