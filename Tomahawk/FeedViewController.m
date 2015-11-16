@@ -145,8 +145,8 @@
         recentSongsCell.title = [[UILabel alloc]init];
         recentSongsCell.artist = [[UILabel alloc]init];
         recentSongsCell.detailText = [[UILabel alloc]init];
-        recentSongsCell.title.text = @"Cock";
-        recentSongsCell.artist.text = @"Nigger";
+        recentSongsCell.title.text = @"Label";
+        recentSongsCell.artist.text = @"Label";
         recentSongsCell.detailText.text = @"1234";
         recentSongsCell.big = NO;
         return recentSongsCell;
@@ -158,8 +158,8 @@
         recentPlaylistsCell.title = [[UILabel alloc]init];
         recentPlaylistsCell.artist = [[UILabel alloc]init];
         recentPlaylistsCell.detailText = [[UILabel alloc]init];
-        recentPlaylistsCell.title.text = @"Cock";
-        recentPlaylistsCell.artist.text = @"Nigger";
+        recentPlaylistsCell.title.text = @"Label";
+        recentPlaylistsCell.artist.text = @"Label";
         recentPlaylistsCell.detailText.text = @"1234";
         recentPlaylistsCell.big = NO;
         return recentPlaylistsCell;

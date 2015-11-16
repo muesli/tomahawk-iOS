@@ -351,8 +351,8 @@
             recommendedGenres.title = [[UILabel alloc]init];
             recommendedGenres.artist = [[UILabel alloc]init];
             recommendedGenres.detailText = [[UILabel alloc]init];
-            recommendedGenres.title.text = @"Cock";
-            recommendedGenres.artist.text = @"Nigger";
+            recommendedGenres.title.text = @"Label";
+            recommendedGenres.artist.text = @"Label";
             recommendedGenres.detailText.text = @"1234";
             recommendedGenres.big = NO;
             return recommendedGenres;
@@ -365,8 +365,8 @@
         genresCell.title = [[UILabel alloc]init];
         genresCell.artist = [[UILabel alloc]init];
         genresCell.detailText = [[UILabel alloc]init];
-        genresCell.title.text = @"Cock";
-        genresCell.artist.text = @"Nigger";
+        genresCell.title.text = @"Label";
+        genresCell.artist.text = @"Label";
         genresCell.detailText.text = @"1234";
         genresCell.big = YES;
         return genresCell;

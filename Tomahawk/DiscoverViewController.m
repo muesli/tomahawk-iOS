@@ -318,8 +318,8 @@
         recommendedSongs.title = [[UILabel alloc]init];
         recommendedSongs.artist = [[UILabel alloc]init];
         recommendedSongs.detailText = [[UILabel alloc]init];
-        recommendedSongs.title.text = @"Cock";
-        recommendedSongs.artist.text = @"Nigger";
+        recommendedSongs.title.text = @"Label";
+        recommendedSongs.artist.text = @"Label";
         recommendedSongs.detailText.text = @"1234";
         recommendedSongs.big = NO;
         return recommendedSongs;
@@ -331,8 +331,8 @@
         recommendedPlaylists.title = [[UILabel alloc]init];
         recommendedPlaylists.artist = [[UILabel alloc]init];
         recommendedPlaylists.detailText = [[UILabel alloc]init];
-        recommendedPlaylists.title.text = @"Cock";
-        recommendedPlaylists.artist.text = @"Nigger";
+        recommendedPlaylists.title.text = @"Label";
+        recommendedPlaylists.artist.text = @"Label";
         recommendedPlaylists.detailText.text = @"1234";
         recommendedPlaylists.big = NO;
         return recommendedPlaylists;
