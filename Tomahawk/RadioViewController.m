@@ -41,6 +41,7 @@
 }
 
 -(void)reloadView{
+    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width,1000)];
     NSLog(@"Section is: %d", isSection);
     if (isSection == 0) {
         stationsHeader = [[UILabel alloc]init];
@@ -269,8 +270,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _recommendedStations.hidden = NO;
+    _recommendedGenres.hidden = NO;
+    [self.scrollView setUserInteractionEnabled:YES];
+    [self.scrollView setHidden:NO];
     [self reloadView];
-    [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     _recommendedStations.backgroundColor = [UIColor clearColor];
     _recommendedStations.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     _recommendedGenres.backgroundColor = [UIColor clearColor];
@@ -391,12 +395,22 @@
                 [subview removeFromSuperview];
             }
         }
+        for (UIView *subview in self.view.subviews) {
+            if ([subview isKindOfClass:[UICollectionView class]]) {
+                [subview removeFromSuperview];
+            }
+        }
     }else if (segmentedControl.selectedSegmentIndex == 3){
         isSection = 3;
         _recommendedStations.hidden = YES;
         _recommendedGenres.hidden = YES;
         for (UIView *subview in _scrollView.subviews) {
             if ([subview isKindOfClass:[UIButton class]] || [subview isKindOfClass:[UIImageView class]] || [subview isKindOfClass:[UILabel class]]) {
+                [subview removeFromSuperview];
+            }
+        }
+        for (UIView *subview in self.view.subviews) {
+            if ([subview isKindOfClass:[UICollectionView class]]) {
                 [subview removeFromSuperview];
             }
         }

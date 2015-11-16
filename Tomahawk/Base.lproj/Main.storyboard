@@ -507,10 +507,10 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ug4-ek-bhR">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ug4-ek-bhR">
                                 <rect key="frame" x="0.0" y="40" width="375" height="563"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RN0-II-gTS" userLabel="Recommended Stations Collection View">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RN0-II-gTS" userLabel="Recommended Stations Collection View">
                                         <rect key="frame" x="15" y="147" width="360" height="273"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -608,7 +608,7 @@
                                             <outlet property="delegate" destination="64d-AS-328" id="8e0-Wr-5VF"/>
                                         </connections>
                                     </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-UX-GXc" userLabel="Recommended Genres Collection View">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bjs-UX-GXc" userLabel="Recommended Genres Collection View">
                                         <rect key="frame" x="15" y="393" width="360" height="273"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -708,12 +708,6 @@
                                     </collectionView>
                                 </subviews>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="RN0-II-gTS" secondAttribute="trailing" id="K7q-24-QSd"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bjs-UX-GXc" secondAttribute="bottom" constant="-103" id="Lm6-65-HVC"/>
-                                    <constraint firstItem="RN0-II-gTS" firstAttribute="top" secondItem="Ug4-ek-bhR" secondAttribute="top" constant="147" id="ZeQ-cD-LJR"/>
-                                    <constraint firstItem="Bjs-UX-GXc" firstAttribute="top" secondItem="Ug4-ek-bhR" secondAttribute="top" constant="393" id="eKg-hS-he7"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <animations/>
