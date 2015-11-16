@@ -338,8 +338,8 @@
             recommendedStations.title = [[UILabel alloc]init];
             recommendedStations.artist = [[UILabel alloc]init];
             recommendedStations.detailText = [[UILabel alloc]init];
-            recommendedStations.title.text = @"Cock";
-            recommendedStations.artist.text = @"Nigger";
+            recommendedStations.title.text = @"Label";
+            recommendedStations.artist.text = @"Label";
             recommendedStations.detailText.text = @"1234";
             recommendedStations.big = NO;
             return recommendedStations;

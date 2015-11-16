@@ -67,29 +67,29 @@
 /* Begin PBXFileReference section */
 		4D1E3DF51BD2BAE200717185 /* InsidePlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsidePlaylistsViewController.h; path = Tomahawk/InsidePlaylistsViewController.h; sourceTree = "<group>"; };
 		4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsidePlaylistsViewController.m; path = Tomahawk/InsidePlaylistsViewController.m; sourceTree = "<group>"; };
-		4D1EBACB1BC8290000B15A89 /* Inside Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Inside Settings.h"; sourceTree = "<group>"; };
-		4D1EBACC1BC8290000B15A89 /* Inside Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Inside Settings.m"; sourceTree = "<group>"; };
-		4D1EBACE1BC9358A00B15A89 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		4D1EBACF1BC9358A00B15A89 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
-		4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
-		4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		4D1EBACB1BC8290000B15A89 /* Inside Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Inside Settings.h"; path = "Tomahawk/Inside Settings.h"; sourceTree = "<group>"; };
+		4D1EBACC1BC8290000B15A89 /* Inside Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Inside Settings.m"; path = "Tomahawk/Inside Settings.m"; sourceTree = "<group>"; };
+		4D1EBACE1BC9358A00B15A89 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Tomahawk/Settings.h; sourceTree = "<group>"; };
+		4D1EBACF1BC9358A00B15A89 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Tomahawk/Settings.m; sourceTree = "<group>"; };
+		4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverViewController.h; path = Tomahawk/DiscoverViewController.h; sourceTree = "<group>"; };
+		4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverViewController.m; path = Tomahawk/DiscoverViewController.m; sourceTree = "<group>"; };
 		4D32B8DD1BCA7A1D00C42A85 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMSegmentedControl.h; path = Tomahawk/HMSegmentedControl.h; sourceTree = "<group>"; };
 		4D32B8DE1BCA7A1D00C42A85 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMSegmentedControl.m; path = Tomahawk/HMSegmentedControl.m; sourceTree = "<group>"; };
-		4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
-		4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioViewController.h; path = Tomahawk/RadioViewController.h; sourceTree = "<group>"; };
+		4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioViewController.m; path = Tomahawk/RadioViewController.m; sourceTree = "<group>"; };
 		4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyMusicViewController.h; path = Tomahawk/MyMusicViewController.h; sourceTree = "<group>"; };
 		4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyMusicViewController.m; path = Tomahawk/MyMusicViewController.m; sourceTree = "<group>"; };
-		4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingViewController.h; sourceTree = "<group>"; };
-		4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingViewController.m; sourceTree = "<group>"; };
+		4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NowPlayingViewController.h; path = Tomahawk/NowPlayingViewController.h; sourceTree = "<group>"; };
+		4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NowPlayingViewController.m; path = Tomahawk/NowPlayingViewController.m; sourceTree = "<group>"; };
 		4D5707BC1BFA24810009C14F /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
-		4D6023E61BC6E8810053F998 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4D6023E61BC6E8810053F998 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Tomahawk/SettingsViewController.h; sourceTree = "<group>"; };
+		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Tomahawk/SettingsViewController.m; sourceTree = "<group>"; };
 		4D7B0CED1BD49853008D2515 /* blurExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample.png; sourceTree = "<group>"; };
 		4D8133F91BF50C7200FF1E95 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
-		4D8DB5C91BF90335009B3B1F /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBar.h; sourceTree = "<group>"; };
-		4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
-		4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		4D8DB5C91BF90335009B3B1F /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabBar.h; path = Tomahawk/CustomTabBar.h; sourceTree = "<group>"; };
+		4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabBar.m; path = Tomahawk/CustomTabBar.m; sourceTree = "<group>"; };
+		4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = Tomahawk/CollectionViewCell.h; sourceTree = "<group>"; };
+		4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = Tomahawk/CollectionViewCell.m; sourceTree = "<group>"; };
 		4D8FF9E01BE80487001490B6 /* headphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headphone4.png; sourceTree = "<group>"; };
 		4DAE47B41BE2533D00D6816F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Tomahawk/MBProgressHUD.m; sourceTree = "<group>"; };
 		4DAE47B51BE2533D00D6816F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Tomahawk/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -107,10 +107,10 @@
 		4DB094901BE4F39300ACEC72 /* blurExample8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample8.png; sourceTree = "<group>"; };
 		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE01B1BADC2BA00CD02CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
-		4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Tomahawk/AppDelegate.h; sourceTree = "<group>"; };
+		4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Tomahawk/AppDelegate.m; sourceTree = "<group>"; };
+		4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FeedViewController.h; path = Tomahawk/FeedViewController.h; sourceTree = "<group>"; };
+		4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FeedViewController.m; path = Tomahawk/FeedViewController.m; sourceTree = "<group>"; };
 		4DBDE0271BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DBDE02C1BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -152,45 +152,107 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D1E3DF81BD2C8B100717185 /* Music */ = {
-			isa = PBXGroup;
-			children = (
-				4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */,
-				4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */,
-				4D1E3DF51BD2BAE200717185 /* InsidePlaylistsViewController.h */,
-				4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */,
-			);
-			name = Music;
-			sourceTree = "<group>";
-		};
-		4D32B8E01BCA7A2A00C42A85 /* Custom Segmented Control */ = {
+		4D32B8E01BCA7A2A00C42A85 /* CustomSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
 				4D32B8DD1BCA7A1D00C42A85 /* HMSegmentedControl.h */,
 				4D32B8DE1BCA7A1D00C42A85 /* HMSegmentedControl.m */,
 			);
-			name = "Custom Segmented Control";
+			name = CustomSegmentedControl;
 			sourceTree = "<group>";
 		};
-		4D33B7C31BDFD8230085D408 /* Custom Activity Indicator */ = {
+		4D33B7C31BDFD8230085D408 /* CustomActivityIndicator */ = {
 			isa = PBXGroup;
 			children = (
 				4DAE47B41BE2533D00D6816F /* MBProgressHUD.m */,
 				4DAE47B51BE2533D00D6816F /* MBProgressHUD.h */,
 			);
-			name = "Custom Activity Indicator";
+			name = CustomActivityIndicator;
 			sourceTree = "<group>";
 		};
-		4DBDE00E1BADC2B900CD02CC = {
+		4DA4B4CC1BFA7EBB0042DEE0 /* ColorExtractor */ = {
 			isa = PBXGroup;
 			children = (
 				4DAE47B71BE2B93F00D6816F /* CCColorCube.h */,
 				4DAE47B81BE2B93F00D6816F /* CCColorCube.m */,
 				4DAE47B91BE2B93F00D6816F /* CCLocalMaximum.h */,
 				4DAE47BA1BE2B93F00D6816F /* CCLocalMaximum.m */,
-				4D33B7C31BDFD8230085D408 /* Custom Activity Indicator */,
-				4D1E3DF81BD2C8B100717185 /* Music */,
-				4D32B8E01BCA7A2A00C42A85 /* Custom Segmented Control */,
+			);
+			name = ColorExtractor;
+			sourceTree = "<group>";
+		};
+		4DA4B4CD1BFA7EDB0042DEE0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D1EBACB1BC8290000B15A89 /* Inside Settings.h */,
+				4D1EBACC1BC8290000B15A89 /* Inside Settings.m */,
+				4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */,
+				4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */,
+				4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */,
+				4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */,
+				4D1E3DF51BD2BAE200717185 /* InsidePlaylistsViewController.h */,
+				4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */,
+				4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */,
+				4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */,
+				4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */,
+				4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */,
+				4D6023E61BC6E8810053F998 /* SettingsViewController.h */,
+				4D6023E71BC6E8810053F998 /* SettingsViewController.m */,
+				4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */,
+				4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4DA4B4CE1BFA7EFE0042DEE0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
+				4DA4B4D21BFA82680042DEE0 /* CollectionViewCells */,
+				4D33B7C31BDFD8230085D408 /* CustomActivityIndicator */,
+				4D32B8E01BCA7A2A00C42A85 /* CustomSegmentedControl */,
+				4DA4B4CD1BFA7EDB0042DEE0 /* ViewControllers */,
+			);
+			name = UI;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4DA4B4CF1BFA817A0042DEE0 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
+				4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */,
+				4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */,
+			);
+			name = Startup;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4DA4B4D01BFA82240042DEE0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D8DB5C91BF90335009B3B1F /* CustomTabBar.h */,
+				4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */,
+				4D1EBACE1BC9358A00B15A89 /* Settings.h */,
+				4D1EBACF1BC9358A00B15A89 /* Settings.m */,
+				4DA4B4CC1BFA7EBB0042DEE0 /* ColorExtractor */,
+			);
+			name = Resources;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4DA4B4D21BFA82680042DEE0 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */,
+				4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */,
+			);
+			name = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		4DBDE00E1BADC2B900CD02CC = {
+			isa = PBXGroup;
+			children = (
 				4DBDE0191BADC2BA00CD02CC /* Tomahawk */,
 				4DBDE0361BADC2BA00CD02CC /* TomahawkTests */,
 				4DBDE0411BADC2BA00CD02CC /* TomahawkUITests */,
@@ -211,32 +273,21 @@
 		4DBDE0191BADC2BA00CD02CC /* Tomahawk */ = {
 			isa = PBXGroup;
 			children = (
-				4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */,
-				4DBDE01E1BADC2BA00CD02CC /* AppDelegate.m */,
-				4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */,
-				4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */,
-				4D8DB5C91BF90335009B3B1F /* CustomTabBar.h */,
-				4D8DB5CA1BF90335009B3B1F /* CustomTabBar.m */,
-				4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */,
-				4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */,
-				4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */,
-				4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */,
-				4D6023E61BC6E8810053F998 /* SettingsViewController.h */,
-				4D6023E71BC6E8810053F998 /* SettingsViewController.m */,
-				4D1EBACE1BC9358A00B15A89 /* Settings.h */,
-				4D1EBACF1BC9358A00B15A89 /* Settings.m */,
-				4D1EBACB1BC8290000B15A89 /* Inside Settings.h */,
-				4D1EBACC1BC8290000B15A89 /* Inside Settings.m */,
-				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
-				4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */,
-				4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */,
-				4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */,
-				4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */,
+				4DA4B4D01BFA82240042DEE0 /* Resources */,
+				4DA4B4CF1BFA817A0042DEE0 /* Startup */,
+				4DA4B4CE1BFA7EFE0042DEE0 /* UI */,
 				4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */,
+				4DBDE01A1BADC2BA00CD02CC /* Supporting Files */,
+			);
+			path = Tomahawk;
+			sourceTree = "<group>";
+		};
+		4DBDE01A1BADC2BA00CD02CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
 				4D5707BC1BFA24810009C14F /* 13.png */,
 				4D8133F91BF50C7200FF1E95 /* 12.png */,
-				4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */,
-				4DBDE02E1BADC2BA00CD02CC /* Info.plist */,
 				4DEF818E1BE8D7A300911581 /* More Than-25.png */,
 				4DEF818C1BE8D77F00911581 /* More Than-40.png */,
 				4DEF818A1BE8D59100911581 /* More Than-15.png */,
@@ -249,14 +300,6 @@
 				4DAE47C11BE2D56D00D6816F /* blurExample4.png */,
 				4DAE47BF1BE2D1F800D6816F /* blurExample2.png */,
 				4DE1050C1BE0041400C51EDD /* blurExample1.png */,
-				4DBDE01A1BADC2BA00CD02CC /* Supporting Files */,
-			);
-			path = Tomahawk;
-			sourceTree = "<group>";
-		};
-		4DBDE01A1BADC2BA00CD02CC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
 				4DAE47BD1BE2D06300D6816F /* blurImage.jpg */,
 				4D7B0CED1BD49853008D2515 /* blurExample.png */,
 				4DBDE01B1BADC2BA00CD02CC /* main.m */,
@@ -489,6 +532,7 @@
 				4DBDE0271BADC2BA00CD02CC /* Base */,
 			);
 			name = Main.storyboard;
+			path = Tomahawk;
 			sourceTree = "<group>";
 		};
 		4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */ = {
@@ -497,6 +541,7 @@
 				4DBDE02C1BADC2BA00CD02CC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = Tomahawk;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
