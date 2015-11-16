@@ -139,10 +139,30 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == _songsCollectionView) {
         CollectionViewCell *recentSongsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentSongsCell" forIndexPath:indexPath];
-            return recentSongsCell;
+        recentSongsCell.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+        recentSongsCell.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample1"]];
+        recentSongsCell.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
+        recentSongsCell.title = [[UILabel alloc]init];
+        recentSongsCell.artist = [[UILabel alloc]init];
+        recentSongsCell.detailText = [[UILabel alloc]init];
+        recentSongsCell.title.text = @"Cock";
+        recentSongsCell.artist.text = @"Nigger";
+        recentSongsCell.detailText.text = @"1234";
+        recentSongsCell.big = NO;
+        return recentSongsCell;
     }else if (collectionView == _playlistsCollectionView){
-    CollectionViewCell *recentPlaylistsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentPlaylistsCell" forIndexPath:indexPath];
-    return recentPlaylistsCell;
+        CollectionViewCell *recentPlaylistsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentPlaylistsCell" forIndexPath:indexPath];
+        recentPlaylistsCell.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+        recentPlaylistsCell.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample7"]];
+        recentPlaylistsCell.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
+        recentPlaylistsCell.title = [[UILabel alloc]init];
+        recentPlaylistsCell.artist = [[UILabel alloc]init];
+        recentPlaylistsCell.detailText = [[UILabel alloc]init];
+        recentPlaylistsCell.title.text = @"Cock";
+        recentPlaylistsCell.artist.text = @"Nigger";
+        recentPlaylistsCell.detailText.text = @"1234";
+        recentPlaylistsCell.big = NO;
+        return recentPlaylistsCell;
     }
     return nil;
 }

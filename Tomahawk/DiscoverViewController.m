@@ -312,9 +312,29 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (collectionView == _recommendedSongs) {
         CollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedSongs" forIndexPath:indexPath];
+        recommendedSongs.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+        recommendedSongs.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample3"]];
+        recommendedSongs.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
+        recommendedSongs.title = [[UILabel alloc]init];
+        recommendedSongs.artist = [[UILabel alloc]init];
+        recommendedSongs.detailText = [[UILabel alloc]init];
+        recommendedSongs.title.text = @"Cock";
+        recommendedSongs.artist.text = @"Nigger";
+        recommendedSongs.detailText.text = @"1234";
+        recommendedSongs.big = NO;
         return recommendedSongs;
     }else if (collectionView == _recommendedPlaylists){
         CollectionViewCell *recommendedPlaylists = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedPlaylists" forIndexPath:indexPath];
+        recommendedPlaylists.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+        recommendedPlaylists.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample4"]];
+        recommendedPlaylists.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
+        recommendedPlaylists.title = [[UILabel alloc]init];
+        recommendedPlaylists.artist = [[UILabel alloc]init];
+        recommendedPlaylists.detailText = [[UILabel alloc]init];
+        recommendedPlaylists.title.text = @"Cock";
+        recommendedPlaylists.artist.text = @"Nigger";
+        recommendedPlaylists.detailText.text = @"1234";
+        recommendedPlaylists.big = NO;
         return recommendedPlaylists;
     }
     return nil;

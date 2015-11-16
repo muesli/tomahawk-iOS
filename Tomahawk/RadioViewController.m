@@ -51,7 +51,7 @@
         stationsHeader.textColor = [UIColor whiteColor];
         [stationsHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
         [_scrollView addSubview:stationsHeader];
-        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(6, 0, CGRectGetWidth(self.view.frame), 140.0)];
+        imageView = [[UIImageView alloc]initWithFrame:CGRectMake(4, 0, CGRectGetWidth(self.view.frame), 140.0)];
         [self.scrollView addSubview:imageView];
         [imageView setImage:[UIImage imageNamed:@"13.png"]];
         //Create Invisible See All Button to Act as A Presser
@@ -332,10 +332,28 @@
     if (isSection == 0) {
         if ([collectionView isEqual:_recommendedStations]) {
             CollectionViewCell *recommendedStations = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedStations" forIndexPath:indexPath];
+            recommendedStations.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+            recommendedStations.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample5"]];
+            recommendedStations.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
+            recommendedStations.title = [[UILabel alloc]init];
+            recommendedStations.artist = [[UILabel alloc]init];
+            recommendedStations.detailText = [[UILabel alloc]init];
+            recommendedStations.title.text = @"Cock";
+            recommendedStations.artist.text = @"Nigger";
+            recommendedStations.detailText.text = @"1234";
             recommendedStations.big = NO;
             return recommendedStations;
         }else if ([collectionView isEqual:_recommendedGenres]){
             CollectionViewCell *recommendedGenres = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedGenres" forIndexPath:indexPath];
+            recommendedGenres.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
+            recommendedGenres.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample5"]];
+            recommendedGenres.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
+            recommendedGenres.title = [[UILabel alloc]init];
+            recommendedGenres.artist = [[UILabel alloc]init];
+            recommendedGenres.detailText = [[UILabel alloc]init];
+            recommendedGenres.title.text = @"Cock";
+            recommendedGenres.artist.text = @"Nigger";
+            recommendedGenres.detailText.text = @"1234";
             recommendedGenres.big = NO;
             return recommendedGenres;
         }
