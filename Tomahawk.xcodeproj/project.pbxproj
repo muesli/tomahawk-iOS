@@ -39,8 +39,6 @@
 		4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0261BADC2BA00CD02CC /* Main.storyboard */; };
 		4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */; };
 		4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */; };
-		4DBDE0381BADC2BA00CD02CC /* TomahawkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */; };
-		4DBDE0431BADC2BA00CD02CC /* TomahawkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */; };
 		4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1050C1BE0041400C51EDD /* blurExample1.png */; };
 		4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818A1BE8D59100911581 /* More Than-15.png */; };
 		4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818C1BE8D77F00911581 /* More Than-40.png */; };
@@ -116,11 +114,7 @@
 		4DBDE02C1BADC2BA00CD02CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DBDE02E1BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomahawkTests.m; sourceTree = "<group>"; };
-		4DBDE0391BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomahawkUITests.m; sourceTree = "<group>"; };
-		4DBDE0441BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE1050C1BE0041400C51EDD /* blurExample1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample1.png; sourceTree = "<group>"; };
 		4DEF818A1BE8D59100911581 /* More Than-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-15.png"; sourceTree = "<group>"; };
 		4DEF818C1BE8D77F00911581 /* More Than-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-40.png"; sourceTree = "<group>"; };
@@ -254,8 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				4DBDE0191BADC2BA00CD02CC /* Tomahawk */,
-				4DBDE0361BADC2BA00CD02CC /* TomahawkTests */,
-				4DBDE0411BADC2BA00CD02CC /* TomahawkUITests */,
 				4DBDE0181BADC2BA00CD02CC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -305,24 +297,6 @@
 				4DBDE01B1BADC2BA00CD02CC /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4DBDE0361BADC2BA00CD02CC /* TomahawkTests */ = {
-			isa = PBXGroup;
-			children = (
-				4DBDE0371BADC2BA00CD02CC /* TomahawkTests.m */,
-				4DBDE0391BADC2BA00CD02CC /* Info.plist */,
-			);
-			path = TomahawkTests;
-			sourceTree = "<group>";
-		};
-		4DBDE0411BADC2BA00CD02CC /* TomahawkUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4DBDE0421BADC2BA00CD02CC /* TomahawkUITests.m */,
-				4DBDE0441BADC2BA00CD02CC /* Info.plist */,
-			);
-			path = TomahawkUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,7 +472,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBDE0381BADC2BA00CD02CC /* TomahawkTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +479,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DBDE0431BADC2BA00CD02CC /* TomahawkUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
