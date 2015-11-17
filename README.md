@@ -5,6 +5,13 @@ Exclusive just became a little less. Tomahawk is now (sort of) on iOS. This is a
 
 If you are wondering what this is going to look like when it's finished head over to https://invis.io/UX3RGU3GT and check it out. Also PLEASE tell me what you think about the UI. It can only get better with your help.
 
+## Community
+
+Keep track of Tomahawk development and community activity.
+
+* Follow Tomahawk on [Twitter](https://twitter.com/tomahawk), [Facebook](https://www.facebook.com/TomahawkPlayer/) and [Google+](https://plus.google.com/+Gettomahawks/videos).
+* Join in discussions on the [Butter Forum](http://forum.tomahawk-player.org/)
+* Connect with us on IRC at `#tomahawk` on freenode ([web access](http://webchat.freenode.net/?channels=tomahawk))
 
 ## Lisence
 
@@ -23,11 +30,3 @@ Note: some dependencies are external libraries, which might be covered by a diff
 If you want to contact us: [welisten@tomahawk-player.org](mailto:welisten@tomahawk-player.org)
 
 Copyright (c) 2015 Tomahawk Foundation - Released under the [GPL V3 license](https://github.com/mourke/tomahawk-iOS/blob/master/LICENSE.md).
-
-## Community
-
-Keep track of Tomahawk development and community activity.
-
-* Follow Tomahawk on [Twitter](https://twitter.com/tomahawk), [Facebook](https://www.facebook.com/TomahawkPlayer/) and [Google+](https://plus.google.com/+Gettomahawks/videos).
-* Join in discussions on the [Butter Forum](http://forum.tomahawk-player.org/)
- * Connect with us on IRC at `#tomahawk` on freenode ([web access](http://webchat.freenode.net/?channels=tomahawk))
