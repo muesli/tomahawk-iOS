@@ -24,7 +24,7 @@ Copyright (c) 2015 Tomahawk Player and the contributors (tomahawk-player.org)
 Butter Project is released under the GPL
 
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
