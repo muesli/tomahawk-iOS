@@ -16,6 +16,7 @@
     int isSection;
     UICollectionView *genresCollectionView, *artistCollectionView, *internetRadioCollectionView;
     NSArray *myArray;
+    UIBarButtonItem *barButton;
 }
 
 @end
@@ -23,6 +24,9 @@
 @implementation RadioViewController
 
 - (IBAction)inboxButton:(id)sender {
+    //Insert Code
+}
+- (IBAction)internetRadioButton:(id)sender {
     //Insert Code
 }
 - (IBAction)simulateButtonPress:(UIButton *)sender {
@@ -210,6 +214,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadView];
+    barButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
+    self.navigationItem.rightBarButtonItem = barButton;
     _recommendedStations.backgroundColor = [UIColor clearColor];
     _recommendedStations.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     _recommendedGenres.backgroundColor = [UIColor clearColor];
@@ -348,6 +354,8 @@
 - (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
     if (segmentedControl.selectedSegmentIndex == 0) {
         isSection = 0;
+        barButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
+        self.navigationItem.rightBarButtonItem = barButton;
         artistCollectionView.hidden = YES;
         internetRadioCollectionView.hidden = YES;
         _recommendedStations.hidden = NO;
@@ -366,6 +374,8 @@
         [self.scrollView setHidden:NO];
     }else if (segmentedControl.selectedSegmentIndex == 1){
         isSection = 1;
+        barButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
+        self.navigationItem.rightBarButtonItem = barButton;
         _recommendedStations.hidden = YES;
         _recommendedGenres.hidden = YES;
         for (UIView *subview in _scrollView.subviews) {
@@ -378,6 +388,8 @@
         
     }else if (segmentedControl.selectedSegmentIndex == 2){
         isSection = 2;
+        barButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
+        self.navigationItem.rightBarButtonItem = barButton;
         _recommendedStations.hidden = YES;
         _recommendedGenres.hidden = YES;
         for (UIView *subview in _scrollView.subviews) {
@@ -394,6 +406,8 @@
         [self.scrollView setHidden:YES];
     }else if (segmentedControl.selectedSegmentIndex == 3){
         isSection = 3;
+        barButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Microphone Add"] style:UIBarButtonItemStylePlain target:self action:@selector(internetRadioButton:)];
+        self.navigationItem.rightBarButtonItem = barButton;
         internetRadioCollectionView.hidden = NO;
         artistCollectionView.hidden = NO;
         _recommendedStations.hidden = YES;

@@ -465,13 +465,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="RN0-II-gTS" secondAttribute="trailing" constant="-20" id="jFg-CT-M2r"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xHn-Su-afa">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="u3o-GN-K4Q">
-                            <connections>
-                                <action selector="inboxButton:" destination="64d-AS-328" id="hoL-B1-ryq"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="WHo-43-nZy"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="recommendedGenres" destination="Bjs-UX-GXc" id="dzL-fC-8uK"/>
