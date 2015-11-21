@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    self.tabBarController.tabBar.backgroundColor = [UIColor colorWithRed:49.0/255.0 green:49.0/255.0 blue:61.0/255.0 alpha:1];
+    self.tabBarController.tabBar.backgroundImage = [UIImage new];
     self.navigationController.navigationBar.topItem.title = @"Settings";
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 }

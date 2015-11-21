@@ -2,12 +2,13 @@
 //  CustomTabBar.h
 //  Tomahawk
 //
-//  Created by Mark Bourke on 15/11/2015.
+//  Created by Mark Bourke on 21/11/2015.
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "FXBlurView.h"
 
-@interface CustomTabBar : UITabBar
+@interface CustomTabBar : UITabBarController
 
 @end

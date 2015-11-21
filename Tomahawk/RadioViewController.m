@@ -289,7 +289,13 @@
         }else if ([collectionView isEqual:_recommendedGenres]){
             CollectionViewCell *recommendedGenres = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedGenres" forIndexPath:indexPath];
             recommendedGenres.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1];
-            recommendedGenres.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample5"]];
+            if (indexPath.row == 1) {
+                recommendedGenres.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample3"]];
+            }else if (indexPath.row == 2){
+                recommendedGenres.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample2"]];
+            }else{
+                recommendedGenres.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample6"]];
+            }
             recommendedGenres.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
             recommendedGenres.title = [[UILabel alloc]init];
             recommendedGenres.artist = [[UILabel alloc]init];
