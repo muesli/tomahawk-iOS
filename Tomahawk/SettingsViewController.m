@@ -17,6 +17,7 @@
     NSMutableArray *settings;
     long long int selectedSegmentIndex;
     NSString *equaliserQuality;
+
 }
 
 -(IBAction)segmentedControlChangeValue:(UISegmentedControl*)segmentedControl{

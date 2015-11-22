@@ -232,15 +232,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="s0S-b3-e5C" secondAttribute="trailing" constant="-20" id="Erd-9g-uH6"/>
                             <constraint firstItem="s0S-b3-e5C" firstAttribute="leading" secondItem="UlJ-7g-m6P" secondAttribute="leadingMargin" constant="-20" id="hBi-Pi-z2t"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="fDF-LJ-6uT" appends="YES" id="2s9-AI-AYU"/>
-                            <outletCollection property="gestureRecognizers" destination="sO2-ue-5Wb" appends="YES" id="9aB-yE-cPO"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="    " id="iPn-b3-H5s">
-                        <barButtonItem key="backBarButtonItem" title="    " id="42m-fv-mtH">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Inbox" id="Xed-P3-riy">
                             <connections>
                                 <action selector="inboxButton:" destination="bEp-25-O6s" id="dSP-uf-iFW"/>
@@ -252,8 +245,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8O-ks-U8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="fDF-LJ-6uT"/>
-                <swipeGestureRecognizer direction="right" id="sO2-ue-5Wb"/>
             </objects>
             <point key="canvasLocation" x="60.5" y="-2205.5"/>
         </scene>
@@ -919,7 +910,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pOm-Af-pqI" customClass="NowPlayingBar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Music" image="My Music" selectedImage="My Music" id="H4J-1D-YEc"/>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" width="359" id="ECT-rC-AuG">
+                            <connections>
+                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="9Zz-kc-DY7"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qet-DX-ZH4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -947,7 +944,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="CFu-5n-YUN" customClass="NowPlayingBar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Radio" image="Radio" selectedImage="Radio Selected" id="bey-Rf-xaW"/>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" width="356" id="c6A-PH-rV3">
+                            <connections>
+                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="tk4-ri-7qL"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LIJ-lW-0pT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -975,7 +978,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tpZ-8E-iOE" customClass="NowPlayingBar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="Discover" selectedImage="Discover Selected" id="VNo-rw-cuE"/>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" width="361" id="6NW-Gw-IPe">
+                            <connections>
+                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="ngu-Rj-iMU"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nNW-27-Zpa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1003,7 +1012,13 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NowPlayingBar" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" width="359" id="txn-0y-kfC">
+                            <connections>
+                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="r04-Oq-FMF"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1b4-N1-kE8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1052,7 +1067,7 @@
         <image name="cast_off" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fx0-5W-tdS"/>
+        <segue reference="tk4-ri-7qL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
