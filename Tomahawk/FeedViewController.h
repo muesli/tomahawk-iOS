@@ -10,7 +10,7 @@
 #import "CollectionViewCell.h"
 #import "FXBlurView.h"
 
-@interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *songsCollectionView;
 @property(nonatomic, strong) IBOutlet UICollectionView *playlistsCollectionView;

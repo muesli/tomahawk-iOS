@@ -12,7 +12,7 @@
 
 @class Inside_Settings;
 
-@interface SettingsViewController : UITableViewController <UITableViewDataSource>
+@interface SettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 
 
