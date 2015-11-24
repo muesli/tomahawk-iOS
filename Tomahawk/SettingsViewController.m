@@ -121,7 +121,6 @@
     }else{
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.backgroundColor = [UIColor colorWithRed:(37.0/255.0) green:(38.0/255.0) blue:(45.0/255.0) alpha:(1.0)];
     return cell;
    
 }
@@ -133,12 +132,11 @@
                                                                        message:@"Are you sure you want to sign out?"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Sign Out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Sign Out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
             [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             
         }];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *cancel){
-            //[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
             //Do Stuff
         }];
         [alert addAction:defaultAction];
@@ -146,11 +144,16 @@
         
         [self presentViewController:alert animated:YES completion:nil];
         return nil;
-    }
-    if (indexPath.row == 0 && indexPath.section == 0) {
+    }else if (indexPath.row == 0 && indexPath.section == 0) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://itunes.apple.com/us/app/apple-store/id375380948?mt=8"]];
         return nil;
     }else if (indexPath.row == 0 && indexPath.section == 1){
+        return nil;
+    }else if(indexPath.row == 1 && indexPath.section == 0){
+        NSString *myString = @"Tomahawk is good and stuff";
+        NSArray *myArray = @[myString];
+        UIActivityViewController *share = [[UIActivityViewController alloc]initWithActivityItems:myArray applicationActivities:nil];
+        [self presentViewController:share animated:YES completion:nil];
         return nil;
     }else{
     return indexPath;
@@ -161,7 +164,7 @@
  
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
-     Inside_Settings *svc = [segue destinationViewController];
+     InsideSettingsViewController *svc = [segue destinationViewController];
  // Pass the selected object to the new view controller.
      NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
      if (currentCell.section == 0){

@@ -10,7 +10,7 @@
 		4D1304DD1C00E9CF007B7259 /* NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1304DC1C00E9CF007B7259 /* NowPlayingBar.m */; };
 		4D1304E01C00F8F0007B7259 /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1304DF1C00F8F0007B7259 /* CustomTabBar.m */; };
 		4D1E3DF71BD2BAE200717185 /* InsidePlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */; };
-		4D1EBACD1BC8290000B15A89 /* Inside Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EBACC1BC8290000B15A89 /* Inside Settings.m */; };
+		4D1EBACD1BC8290000B15A89 /* InsideSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EBACC1BC8290000B15A89 /* InsideSettingsViewController.m */; };
 		4D1EBAD01BC9358A00B15A89 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EBACF1BC9358A00B15A89 /* Settings.m */; };
 		4D2112BA1BD0EEF1001D415D /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */; };
 		4D32B8DF1BCA7A1D00C42A85 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32B8DE1BCA7A1D00C42A85 /* HMSegmentedControl.m */; };
@@ -41,6 +41,8 @@
 		4DBDE0281BADC2BA00CD02CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0261BADC2BA00CD02CC /* Main.storyboard */; };
 		4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE0291BADC2BA00CD02CC /* Assets.xcassets */; };
 		4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */; };
+		4DC5A5A91C0393C900ED018F /* InsideInsideSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC5A5A81C0393C900ED018F /* InsideInsideSettingsViewController.m */; };
+		4DC5A5AC1C03A43A00ED018F /* ConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC5A5AB1C03A43A00ED018F /* ConnectCell.m */; };
 		4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1050C1BE0041400C51EDD /* blurExample1.png */; };
 		4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818A1BE8D59100911581 /* More Than-15.png */; };
 		4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818C1BE8D77F00911581 /* More Than-40.png */; };
@@ -71,8 +73,8 @@
 		4D1304DF1C00F8F0007B7259 /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBar.m; sourceTree = "<group>"; };
 		4D1E3DF51BD2BAE200717185 /* InsidePlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsidePlaylistsViewController.h; path = Tomahawk/InsidePlaylistsViewController.h; sourceTree = "<group>"; };
 		4D1E3DF61BD2BAE200717185 /* InsidePlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsidePlaylistsViewController.m; path = Tomahawk/InsidePlaylistsViewController.m; sourceTree = "<group>"; };
-		4D1EBACB1BC8290000B15A89 /* Inside Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Inside Settings.h"; path = "Tomahawk/Inside Settings.h"; sourceTree = "<group>"; };
-		4D1EBACC1BC8290000B15A89 /* Inside Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Inside Settings.m"; path = "Tomahawk/Inside Settings.m"; sourceTree = "<group>"; };
+		4D1EBACB1BC8290000B15A89 /* InsideSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsideSettingsViewController.h; path = Tomahawk/InsideSettingsViewController.h; sourceTree = "<group>"; };
+		4D1EBACC1BC8290000B15A89 /* InsideSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsideSettingsViewController.m; path = Tomahawk/InsideSettingsViewController.m; sourceTree = "<group>"; };
 		4D1EBACE1BC9358A00B15A89 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Tomahawk/Settings.h; sourceTree = "<group>"; };
 		4D1EBACF1BC9358A00B15A89 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Tomahawk/Settings.m; sourceTree = "<group>"; };
 		4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverViewController.h; path = Tomahawk/DiscoverViewController.h; sourceTree = "<group>"; };
@@ -121,6 +123,10 @@
 		4DBDE02E1BADC2BA00CD02CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DC5A5A71C0393C900ED018F /* InsideInsideSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InsideInsideSettingsViewController.h; path = Tomahawk/InsideInsideSettingsViewController.h; sourceTree = "<group>"; };
+		4DC5A5A81C0393C900ED018F /* InsideInsideSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InsideInsideSettingsViewController.m; path = Tomahawk/InsideInsideSettingsViewController.m; sourceTree = "<group>"; };
+		4DC5A5AA1C03A43A00ED018F /* ConnectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectCell.h; path = Tomahawk/ConnectCell.h; sourceTree = "<group>"; };
+		4DC5A5AB1C03A43A00ED018F /* ConnectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectCell.m; path = Tomahawk/ConnectCell.m; sourceTree = "<group>"; };
 		4DE1050C1BE0041400C51EDD /* blurExample1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample1.png; sourceTree = "<group>"; };
 		4DEF818A1BE8D59100911581 /* More Than-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-15.png"; sourceTree = "<group>"; };
 		4DEF818C1BE8D77F00911581 /* More Than-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-40.png"; sourceTree = "<group>"; };
@@ -211,8 +217,10 @@
 		4DA4B4CD1BFA7EDB0042DEE0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4D1EBACB1BC8290000B15A89 /* Inside Settings.h */,
-				4D1EBACC1BC8290000B15A89 /* Inside Settings.m */,
+				4DC5A5A71C0393C900ED018F /* InsideInsideSettingsViewController.h */,
+				4DC5A5A81C0393C900ED018F /* InsideInsideSettingsViewController.m */,
+				4D1EBACB1BC8290000B15A89 /* InsideSettingsViewController.h */,
+				4D1EBACC1BC8290000B15A89 /* InsideSettingsViewController.m */,
 				4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */,
 				4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */,
 				4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */,
@@ -237,6 +245,7 @@
 				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
 				4D1304E21C00FB68007B7259 /* NowPlayingBar */,
 				4D1304E31C00FB74007B7259 /* TabBar */,
+				4DC5A5AD1C05102100ED018F /* TableViewCells */,
 				4DA4B4D21BFA82680042DEE0 /* CollectionViewCells */,
 				4D33B7C31BDFD8230085D408 /* CustomActivityIndicator */,
 				4D32B8E01BCA7A2A00C42A85 /* CustomSegmentedControl */,
@@ -272,6 +281,8 @@
 		4DA4B4D21BFA82680042DEE0 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				4DC5A5AA1C03A43A00ED018F /* ConnectCell.h */,
+				4DC5A5AB1C03A43A00ED018F /* ConnectCell.m */,
 				4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */,
 				4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */,
 			);
@@ -331,6 +342,13 @@
 				4DBDE01B1BADC2BA00CD02CC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4DC5A5AD1C05102100ED018F /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,10 +512,12 @@
 				4DBDE01F1BADC2BA00CD02CC /* AppDelegate.m in Sources */,
 				4DAE47BB1BE2B93F00D6816F /* CCColorCube.m in Sources */,
 				4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */,
-				4D1EBACD1BC8290000B15A89 /* Inside Settings.m in Sources */,
+				4D1EBACD1BC8290000B15A89 /* InsideSettingsViewController.m in Sources */,
 				4DBDE0221BADC2BA00CD02CC /* FeedViewController.m in Sources */,
 				4DAE47B61BE2533D00D6816F /* MBProgressHUD.m in Sources */,
+				4DC5A5A91C0393C900ED018F /* InsideInsideSettingsViewController.m in Sources */,
 				4D32B8E61BCA7CE700C42A85 /* RadioViewController.m in Sources */,
+				4DC5A5AC1C03A43A00ED018F /* ConnectCell.m in Sources */,
 				4DBDE01C1BADC2BA00CD02CC /* main.m in Sources */,
 				4D1EBAD01BC9358A00B15A89 /* Settings.m in Sources */,
 				4D8E5A6E1C00C1FD00876A90 /* FXBlurView.m in Sources */,

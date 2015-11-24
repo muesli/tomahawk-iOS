@@ -612,6 +612,7 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="FHh-ft-bV4" kind="show" id="lk1-Rh-cOX"/>
                                 </connections>
@@ -632,10 +633,10 @@
             </objects>
             <point key="canvasLocation" x="72.5" y="-13.5"/>
         </scene>
-        <!--Inside Settings-->
+        <!--Inside Settings View Controller-->
         <scene sceneID="y49-WR-0Ec">
             <objects>
-                <viewController id="FHh-ft-bV4" customClass="Inside_Settings" sceneMemberID="viewController">
+                <viewController title="Inside Settings View Controller" id="FHh-ft-bV4" customClass="InsideSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O1U-69-UkO"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ce-B3-zgz"/>
@@ -643,14 +644,71 @@
                     <view key="view" contentMode="scaleToFill" id="yTx-OY-JK8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="KgS-Jd-Bim">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.20392156862745098" green="0.20784313725490194" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingsCell" id="Kfa-XG-MK8">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kfa-XG-MK8" id="JcW-e9-Meh">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="nD6-h4-Ykb" kind="show" id="VE8-qk-qZl"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FHh-ft-bV4" id="Guc-5s-oeE"/>
+                                    <outlet property="delegate" destination="FHh-ft-bV4" id="Hu0-7C-W9K"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Ce-B3-zgz" firstAttribute="top" secondItem="KgS-Jd-Bim" secondAttribute="bottom" id="31w-x5-fdc"/>
+                            <constraint firstItem="KgS-Jd-Bim" firstAttribute="top" secondItem="O1U-69-UkO" secondAttribute="bottom" id="XXx-P4-Xek"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KgS-Jd-Bim" secondAttribute="trailing" constant="-20" id="c4Q-8v-sxC"/>
+                            <constraint firstItem="KgS-Jd-Bim" firstAttribute="leading" secondItem="yTx-OY-JK8" secondAttribute="leadingMargin" constant="-20" id="cnq-8L-VEm"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="afv-ZH-dac"/>
+                    <navigationItem key="navigationItem" title="   " id="afv-ZH-dac"/>
+                    <connections>
+                        <outlet property="tableView" destination="KgS-Jd-Bim" id="2lj-iT-ulG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKW-no-AiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601.5" y="-37.5"/>
+            <point key="canvasLocation" x="591.5" y="-13.5"/>
+        </scene>
+        <!--Inside Inside Settings View Controller-->
+        <scene sceneID="bjm-vz-jcK">
+            <objects>
+                <viewController id="nD6-h4-Ykb" customClass="InsideInsideSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wad-2Z-gb6"/>
+                        <viewControllerLayoutGuide type="bottom" id="0aS-R0-bou"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MV8-Q4-ObA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TLi-fX-Xql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033.5" y="-13.5"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="VWy-BQ-GhU">
@@ -1067,7 +1125,7 @@
         <image name="cast_off" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tk4-ri-7qL"/>
+        <segue reference="fx0-5W-tdS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

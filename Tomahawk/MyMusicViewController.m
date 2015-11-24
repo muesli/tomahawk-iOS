@@ -38,19 +38,11 @@
     [super viewDidLoad];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
                           atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwipe:)];
-    leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
-    [self.view addGestureRecognizer:leftSwipe];
-    
-    UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwipe:)];
-    rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:rightSwipe];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                        forBarPosition:UIBarPositionAny
                            barMetrics:UIBarMetricsDefault];
     
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     myCellText = @"Placeholder";
@@ -99,8 +91,7 @@
 
 #pragma mark - Table View
 
-- (void)killScroll
-{
+- (void)killScroll{
     CGPoint offset = _tableView.contentOffset;
     offset.x = 0;
     offset.y = 50;
@@ -119,7 +110,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(shouldShowDetails == 1){
-    return 70;
+        return 70;
     }
     return 0;
 }
@@ -222,7 +213,6 @@
     
     if (shouldShowDetails == 1){
         UITableViewCell *songsCell = [tableView dequeueReusableCellWithIdentifier:@"Songs"];
-        //Create Second Cells Using Dot Syntax
         songsCell.accessoryView = more;
         songsCell.textLabel.textColor = [UIColor whiteColor];
         songsCell.textLabel.text = myCellText;
@@ -230,7 +220,6 @@
         return songsCell;
 
     }else if (shouldShowDetails == 0){
-        //Create First Cells Using Normal Syntax
         UITableViewCell *playlistsCell = [tableView dequeueReusableCellWithIdentifier:@"Playlists"];
         [playlistsCell setAccessoryView: more];
         [[playlistsCell textLabel] setTextColor:([UIColor whiteColor])];

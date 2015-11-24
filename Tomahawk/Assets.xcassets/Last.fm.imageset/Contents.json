@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Layer 2-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Layer 2-2.png",
+      "filename" : "Last.fm@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Layer 2.png",
       "scale" : "3x"
     }
   ],

@@ -43,59 +43,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
-    //Set See All Button Stuff
-    songsHeader = [[UILabel alloc]init];
-    songsHeader.text = @"RECENT SONGS";
-    songsHeader.font = [UIFont systemFontOfSize:12 weight:0.2];
-    songsHeader.alpha = 0.5;
-    songsHeader.textColor = [UIColor whiteColor];
-    [songsHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_scrollView addSubview:songsHeader];
-    //Create Invisible See All Button to Act as A Presser
-    songsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-    //[seeAllInvisible setBackgroundColor:[UIColor redColor]];
-    [songsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_scrollView addSubview:songsSeeAllInvisible];
-    [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-    [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
-    //Create See All Button
     songsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [songsSeeAllButton setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-    [songsSeeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
-    [songsSeeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
-    [songsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [[songsSeeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
-    [songsSeeAllButton setEnabled:NO];
-    [songsSeeAllButton setUserInteractionEnabled:NO];
-    [songsSeeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.scrollView addSubview:songsSeeAllButton];
-    
-    
+    playlistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    NSArray *myArray = [[NSArray alloc]initWithObjects:songsSeeAllButton,playlistsSeeAllButton, nil];
+    for (UIButton *buttons in myArray) {
+        [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [buttons setTitle:@"SEE ALL" forState:UIControlStateNormal];
+        [buttons setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [[buttons titleLabel] setFont:[UIFont systemFontOfSize:12]];
+        [buttons setEnabled:NO];
+        [buttons setUserInteractionEnabled:NO];
+        [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self.scrollView addSubview:buttons];
+    }
     playlistsHeader = [[UILabel alloc]init];
     playlistsHeader.text = @"RECENT PLAYLISTS";
-    playlistsHeader.font = [UIFont systemFontOfSize:12 weight:0.2];
-    playlistsHeader.alpha = 0.5;
-    playlistsHeader.textColor = [UIColor whiteColor];
-    [playlistsHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_scrollView addSubview:playlistsHeader];
-    //Create Invisible See All Button to Act as A Presser
+    songsHeader = [[UILabel alloc]init];
+    songsHeader.text = @"RECENT SONGS";
+    myArray = [[NSArray alloc]initWithObjects:songsHeader,playlistsHeader, nil];
+    for (UILabel *headers in myArray) {
+        headers.font = [UIFont systemFontOfSize:12 weight:0.2];
+        headers.alpha = 0.5;
+        headers.textColor = [UIColor whiteColor];
+        [headers setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_scrollView addSubview:headers];
+    }
+    
+    //Create Invisible Buttons to Act as Pressers
     playlistsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-    //[seeAllInvisible setBackgroundColor:[UIColor redColor]];
     [playlistsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
+    songsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
+    [songsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_scrollView addSubview:songsSeeAllInvisible];
     [_scrollView addSubview:playlistsSeeAllInvisible];
     [playlistsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress1:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
     [playlistsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease1:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
-    //Create See All Button
-    playlistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [playlistsSeeAllButton setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-    [playlistsSeeAllButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
-    [playlistsSeeAllButton setTitle:@"SEE ALL" forState:UIControlStateNormal];
-    [playlistsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [[playlistsSeeAllButton titleLabel] setFont:[UIFont systemFontOfSize:12]];
-    [playlistsSeeAllButton setEnabled:NO];
-    [playlistsSeeAllButton setUserInteractionEnabled:NO];
-    [playlistsSeeAllButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.scrollView addSubview:playlistsSeeAllButton];
+    [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+    [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+    
     [self autoLayoutConstraints];
     
     //Remove Background on Collection Views

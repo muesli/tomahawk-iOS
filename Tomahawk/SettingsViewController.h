@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Settings.h"
-#import "Inside Settings.h"
+#import "InsideSettingsViewController.h"
 
-@class Inside_Settings;
+@class InsideSettingsViewController;
 
 @interface SettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
