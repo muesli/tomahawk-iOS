@@ -217,10 +217,6 @@
 		4DA4B4CD1BFA7EDB0042DEE0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DC5A5A71C0393C900ED018F /* InsideInsideSettingsViewController.h */,
-				4DC5A5A81C0393C900ED018F /* InsideInsideSettingsViewController.m */,
-				4D1EBACB1BC8290000B15A89 /* InsideSettingsViewController.h */,
-				4D1EBACC1BC8290000B15A89 /* InsideSettingsViewController.m */,
 				4DBDE0201BADC2BA00CD02CC /* FeedViewController.h */,
 				4DBDE0211BADC2BA00CD02CC /* FeedViewController.m */,
 				4D32E1511BD1AFCE008F9373 /* MyMusicViewController.h */,
@@ -233,6 +229,10 @@
 				4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */,
 				4D6023E61BC6E8810053F998 /* SettingsViewController.h */,
 				4D6023E71BC6E8810053F998 /* SettingsViewController.m */,
+				4D1EBACB1BC8290000B15A89 /* InsideSettingsViewController.h */,
+				4D1EBACC1BC8290000B15A89 /* InsideSettingsViewController.m */,
+				4DC5A5A71C0393C900ED018F /* InsideInsideSettingsViewController.h */,
+				4DC5A5A81C0393C900ED018F /* InsideInsideSettingsViewController.m */,
 				4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */,
 				4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */,
 			);

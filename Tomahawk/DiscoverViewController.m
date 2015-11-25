@@ -97,155 +97,6 @@
 
 }
 
-#pragma mark - Auto Layout Constraints
-
-- (void)autoLayoutConstraints{
-    
-    //Songs Button Right Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllButton
-                                                          attribute:NSLayoutAttributeTrailingMargin
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeTrailingMargin
-                                                         multiplier:1
-                                                           constant:50.0]];
-    
-    //Songs Button Top Constraint
-    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllButton
-                                                            attribute:NSLayoutAttributeTop
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_scrollView
-                                                            attribute:NSLayoutAttributeTop
-                                                           multiplier:1
-                                                             constant:165]];
-    
-    //Songs Invisible Button Right Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
-                                                          attribute:NSLayoutAttributeLeft
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:songsSeeAllButton
-                                                          attribute:NSLayoutAttributeLeft
-                                                         multiplier:1.0
-                                                           constant:-49.0]];
-    
-    //Songs Invisible Button Top Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:songsSeeAllButton
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    //Songs Invisible Button Height Constraint
-    [songsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
-                                                                     attribute:NSLayoutAttributeHeight
-                                                                     relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                        toItem:nil
-                                                                     attribute:NSLayoutAttributeHeight
-                                                                    multiplier:20.0
-                                                                      constant:15.0]];
-    
-    //Songs Invisible Button Width Constraint
-    [songsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
-                                                                     attribute:NSLayoutAttributeWidth
-                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                        toItem:nil
-                                                                     attribute:NSLayoutAttributeWidth
-                                                                    multiplier:20.0
-                                                                      constant:60.0]];
-    
-    //Songs Header Right Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
-                                                          attribute:NSLayoutAttributeLeadingMargin
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeLeadingMargin
-                                                         multiplier:1
-                                                           constant:10.0]];
-    
-    //Songs Header Top Constraint
-    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
-                                                            attribute:NSLayoutAttributeTop
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_scrollView
-                                                            attribute:NSLayoutAttributeTop
-                                                           multiplier:1
-                                                             constant:165]];
-    
-    //Playlists Button Right Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllButton
-                                                          attribute:NSLayoutAttributeTrailingMargin
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeTrailingMargin
-                                                         multiplier:1
-                                                           constant:50.0]];
-    
-    //Playlists Button Top Constraint
-    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllButton
-                                                            attribute:NSLayoutAttributeTop
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_scrollView
-                                                            attribute:NSLayoutAttributeTop
-                                                           multiplier:1
-                                                             constant:412]];
-    
-    //Invisible Playlists Button Right Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
-                                                          attribute:NSLayoutAttributeLeft
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:playlistsSeeAllButton
-                                                          attribute:NSLayoutAttributeLeft
-                                                         multiplier:1.0
-                                                           constant:-49.0]];
-    
-    //Invisible Playlists Button Top Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:playlistsSeeAllButton
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    
-    //Invisible Playlists Button Height Constraint
-    [playlistsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
-                                                                     attribute:NSLayoutAttributeHeight
-                                                                     relatedBy:NSLayoutRelationLessThanOrEqual
-                                                                        toItem:nil
-                                                                     attribute:NSLayoutAttributeHeight
-                                                                    multiplier:20.0
-                                                                      constant:15.0]];
-    
-    //Invisible Playlists Button Width Constraint
-    [playlistsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
-                                                                     attribute:NSLayoutAttributeWidth
-                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                        toItem:nil
-                                                                     attribute:NSLayoutAttributeWidth
-                                                                    multiplier:20.0
-                                                                      constant:60.0]];
-    
-    //Playlists Header Right Constraint
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsHeader
-                                                          attribute:NSLayoutAttributeLeadingMargin
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeLeadingMargin
-                                                         multiplier:1
-                                                           constant:10.0]];
-    
-    //Playlists Header Top Constraint
-    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:playlistsHeader
-                                                            attribute:NSLayoutAttributeTop
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:_scrollView
-                                                            attribute:NSLayoutAttributeTop
-                                                           multiplier:1
-                                                             constant:412]];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadView];
@@ -369,6 +220,155 @@
     [_recommendedSongs reloadData];
     [_recommendedPlaylists reloadData];
     [self reloadView];
+}
+
+#pragma mark - Auto Layout Constraints
+
+- (void)autoLayoutConstraints{
+    
+    //Songs Button Right Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllButton
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                         multiplier:1
+                                                           constant:50.0]];
+    
+    //Songs Button Top Constraint
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllButton
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:165]];
+    
+    //Songs Invisible Button Right Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:songsSeeAllButton
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:-49.0]];
+    
+    //Songs Invisible Button Top Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:songsSeeAllButton
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    //Songs Invisible Button Height Constraint
+    [songsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                     relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                    multiplier:20.0
+                                                                      constant:15.0]];
+    
+    //Songs Invisible Button Width Constraint
+    [songsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:songsSeeAllInvisible
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                     relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                    multiplier:20.0
+                                                                      constant:60.0]];
+    
+    //Songs Header Right Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                         multiplier:1
+                                                           constant:10.0]];
+    
+    //Songs Header Top Constraint
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:songsHeader
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:165]];
+    
+    //Playlists Button Right Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllButton
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTrailingMargin
+                                                         multiplier:1
+                                                           constant:50.0]];
+    
+    //Playlists Button Top Constraint
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllButton
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:412]];
+    
+    //Invisible Playlists Button Right Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeLeft
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:playlistsSeeAllButton
+                                                          attribute:NSLayoutAttributeLeft
+                                                         multiplier:1.0
+                                                           constant:-49.0]];
+    
+    //Invisible Playlists Button Top Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:playlistsSeeAllButton
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    
+    //Invisible Playlists Button Height Constraint
+    [playlistsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                                         attribute:NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationLessThanOrEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeHeight
+                                                                        multiplier:20.0
+                                                                          constant:15.0]];
+    
+    //Invisible Playlists Button Width Constraint
+    [playlistsSeeAllInvisible addConstraint:[NSLayoutConstraint constraintWithItem:playlistsSeeAllInvisible
+                                                                         attribute:NSLayoutAttributeWidth
+                                                                         relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeWidth
+                                                                        multiplier:20.0
+                                                                          constant:60.0]];
+    
+    //Playlists Header Right Constraint
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:playlistsHeader
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeLeadingMargin
+                                                         multiplier:1
+                                                           constant:10.0]];
+    
+    //Playlists Header Top Constraint
+    [_scrollView addConstraint:[NSLayoutConstraint constraintWithItem:playlistsHeader
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:_scrollView
+                                                            attribute:NSLayoutAttributeTop
+                                                           multiplier:1
+                                                             constant:412]];
 }
 
 

@@ -617,15 +617,27 @@
                                     <segue destination="FHh-ft-bV4" kind="show" id="lk1-Rh-cOX"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="equaliserCell" id="GAt-ed-E8D">
+                                <rect key="frame" x="0.0" y="94" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GAt-ed-E8D" id="hvO-q5-4eU">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="nD6-h4-Ykb" kind="show" id="0vd-dG-Rwe"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="XFa-0z-OdK" id="cpx-QH-aaC"/>
                             <outlet property="delegate" destination="XFa-0z-OdK" id="ZPO-j9-9Fb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="      " id="z1H-Lg-z9E">
-                        <barButtonItem key="backBarButtonItem" title="        " id="lme-dz-BSD"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title=" " id="z1H-Lg-z9E"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedTopBarMetrics"/>
                 </tableViewController>
@@ -1125,6 +1137,7 @@
         <image name="cast_off" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0vd-dG-Rwe"/>
         <segue reference="fx0-5W-tdS"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

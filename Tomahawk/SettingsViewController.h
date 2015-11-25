@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Settings.h"
 #import "InsideSettingsViewController.h"
+#import "InsideInsideSettingsViewController.h"
 
 @class InsideSettingsViewController;
 

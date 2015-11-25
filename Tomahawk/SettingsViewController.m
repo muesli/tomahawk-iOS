@@ -68,8 +68,12 @@
         newSettings.name = name;
         [settings addObject:newSettings];
     }
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UITableViewCell *cell;
+    if (indexPath.row == 1 && indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"equaliserCell"];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    }
     [[cell textLabel] setTextColor:([UIColor whiteColor])];
     if (indexPath.row == 0 && indexPath.section == 0){
         cell.textLabel.text = [[settings objectAtIndex:0] valueForKey:@"name"];
@@ -164,18 +168,14 @@
  
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
+     InsideInsideSettingsViewController *iisvc = [segue destinationViewController];
      InsideSettingsViewController *svc = [segue destinationViewController];
  // Pass the selected object to the new view controller.
      NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
-     if (currentCell.section == 0){
-      Settings *c = settings[currentCell.row];
-         svc.currentSetting = c;
-     }
-     else if(currentCell.section == 1){
-         Settings *d = settings[currentCell.row+2];
-         svc.currentSetting = d;
-     }
-    else{
+     if (currentCell.section == 1) {
+         Settings *c = settings[currentCell.row+2];
+         iisvc.currentSetting = c;
+     }else{
          Settings *e = settings[currentCell.row+4];
          svc.currentSetting = e;
      }
