@@ -1,21 +1,22 @@
 //
-//  InsidePlaylistsViewController.m
+//  PlaylistsDetailViewController.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 17/10/2015.
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#import "InsidePlaylistsViewController.h"
+#import "MyMusicDetailViewController.h"
 
-@interface InsidePlaylistsViewController ()
+@interface MyMusicDetailViewController ()
 
 @end
 
-@implementation InsidePlaylistsViewController{
+@implementation MyMusicDetailViewController{
     NSString *myCellText;
     NSString *artistName;
     CMTime time;
+    NSArray *myArray;
 }
 
 
@@ -23,17 +24,19 @@
     [super viewDidLoad];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
                           atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    self.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
+    
+    self.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
+    
     myCellText = @"Placeholder";
-    CGFloat viewWidth = CGRectGetWidth(self.view.frame);
-    UIImageView *insidePlaylistsBackground = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, 161)];
-    insidePlaylistsBackground.image = [UIImage imageNamed:@"blurExample1"];
+    
+    UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 161)];
+    background.image = [UIImage imageNamed:@"blurExample1"];
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-    effectView.frame = insidePlaylistsBackground.bounds;
-    [self.view addSubview:insidePlaylistsBackground];
-    [insidePlaylistsBackground addSubview:effectView];
+    effectView.frame = background.bounds;
+    [self.view addSubview:background];
+    [background addSubview:effectView];
     [_followButton setTitle:@"FOLLOW" forState:UIControlStateNormal];
     _followButton.layer.borderWidth = 0.5;
     _followButton.layer.masksToBounds = YES;
@@ -63,52 +66,45 @@
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    //Create Buttons
-    [[self tableView]setDelaysContentTouches:NO];
-    [[self tableView] setAlwaysBounceVertical:NO];
-    [[self tableView]setBounces:NO];
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 70)];
     headerView.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:43.0/255.0 alpha:1.0];
+    
+    UIButton *more = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *download = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *shuffle = [UIButton buttonWithType:UIButtonTypeCustom];
+    myArray = [NSArray arrayWithObjects: more, download, shuffle, nil];
+    for (UIButton *buttons in myArray) {
+        [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [headerView addSubview:buttons];
+        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:buttons
+                                                               attribute:NSLayoutAttributeCenterY
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:headerView
+                                                               attribute:NSLayoutAttributeCenterY
+                                                              multiplier:1.0
+                                                                constant:0.0]];
+    }
+    
     UILabel *textLabel = [[UILabel alloc]init];
     [textLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     textLabel.text = @"53 Songs in the Playlist";
     textLabel.textColor = [UIColor whiteColor];
     [headerView addSubview:textLabel];
     
-    UIButton *moreHeader = [UIButton buttonWithType:UIButtonTypeCustom];
-    [moreHeader setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [moreHeader setImage:[UIImage imageNamed:@"More"] forState:UIControlStateNormal];
-    [headerView addSubview:moreHeader];
-    
-    UIButton *download = [UIButton buttonWithType:UIButtonTypeCustom];
-    [download setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [more setImage:[UIImage imageNamed:@"More"] forState:UIControlStateNormal];
     [download setImage:[UIImage imageNamed:@"Cloud"] forState:UIControlStateNormal];
-    [headerView addSubview:download];
-    
-    UIButton *shuffle = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shuffle setTranslatesAutoresizingMaskIntoConstraints:NO];
     [shuffle setImage:[UIImage imageNamed:@"Shuffle"] forState:UIControlStateNormal];
-    [headerView addSubview:shuffle];
     
-#pragma mark - AutoLayout Constraints
-    
-    //More Button Right
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:moreHeader
+    //More Button Right Constraint
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:more
                                                            attribute:NSLayoutAttributeTrailingMargin
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:headerView
                                                            attribute:NSLayoutAttributeTrailingMargin
                                                           multiplier:0.95
                                                             constant:0.0]];
-    //More Button Top
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:moreHeader
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    //Download Button Right
+
+    //Download Button Right Constraint
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
                                                            attribute:NSLayoutAttributeTrailingMargin
                                                            relatedBy:NSLayoutRelationEqual
@@ -116,15 +112,8 @@
                                                            attribute:NSLayoutAttributeTrailingMargin
                                                           multiplier:0.83
                                                             constant:0.0]];
-    //Download Button Top
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:download
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
-    //Shuffle Button Right
+    
+    //Shuffle Button Right Constraint
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:shuffle
                                                            attribute:NSLayoutAttributeTrailingMargin
                                                            relatedBy:NSLayoutRelationEqual
@@ -132,16 +121,9 @@
                                                            attribute:NSLayoutAttributeTrailingMargin
                                                           multiplier:0.70
                                                             constant:0.0]];
-    //Shuffle Button Top
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:shuffle
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1.0
-                                                            constant:0.0]];
     
-    //Label Left
+    
+    //Label Left Constraint
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
                                                            attribute:NSLayoutAttributeLeadingMargin
                                                            relatedBy:NSLayoutRelationEqual
@@ -149,7 +131,7 @@
                                                            attribute:NSLayoutAttributeLeadingMargin
                                                           multiplier:3.3
                                                             constant:0.0]];
-    //Label Top
+    //Label Top Constraint
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel
                                                            attribute:NSLayoutAttributeCenterY
                                                            relatedBy:NSLayoutRelationEqual
@@ -162,8 +144,10 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.tableView.delaysContentTouches = NO;   //Removes stupid delay when button selecting
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
+    [[self tableView]setDelaysContentTouches:NO];
+    [[self tableView] setAlwaysBounceVertical:NO];
+    [[self tableView]setBounces:NO];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 //    artistName = @"OMI";
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"ARTIST: %@ • LENGTH: %@", artistName, time];
     UIButton *more=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -190,7 +174,7 @@
     
     // Lookup the index path of the cell whose more button was modified.
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
-    NSLog(@"Cock.jpg");
+    //Do Stuff
 }
 
 -(IBAction) buttonTouchDown:(id)sender {
@@ -241,20 +225,9 @@
     }
 }
 
-
 -(void)follow:(BOOL)isFollow{
     //unfollow person
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

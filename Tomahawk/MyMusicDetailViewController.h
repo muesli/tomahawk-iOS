@@ -1,5 +1,5 @@
 //
-//  InsidePlaylistsViewController.h
+//  MyMusicDetailViewController.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 17/10/2015.
@@ -12,7 +12,7 @@
 
 static BOOL isButtonSelected;
 
-@interface InsidePlaylistsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
+@interface MyMusicDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate>
 
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *followButton;

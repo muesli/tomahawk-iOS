@@ -1,5 +1,5 @@
 //
-//  InsideInsideSettingsViewController.h
+//  SettingsDetailViewController.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 23/11/2015.
@@ -10,7 +10,7 @@
 #import "Settings.h"
 #import "ConnectCell.h"
 
-@interface InsideInsideSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface SettingsDetailDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic) Settings *currentSetting;
 

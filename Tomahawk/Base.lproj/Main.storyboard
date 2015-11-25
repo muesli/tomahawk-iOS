@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="60.5" y="-2205.5"/>
         </scene>
-        <!--Inside Playlists View Controller-->
+        <!--My Music Detail View Controller-->
         <scene sceneID="67x-MZ-vku">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="lW8-sC-NQO" customClass="InsidePlaylistsViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="lW8-sC-NQO" customClass="MyMusicDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cwc-qN-Tde"/>
                         <viewControllerLayoutGuide type="bottom" id="S2I-PS-m81"/>
@@ -273,7 +273,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell1" textLabel="Ke8-xh-7vq" detailTextLabel="l2B-hh-tPR" rowHeight="65" style="IBUITableViewCellStyleSubtitle" id="60R-pe-kJ7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Ke8-xh-7vq" detailTextLabel="l2B-hh-tPR" rowHeight="65" style="IBUITableViewCellStyleSubtitle" id="60R-pe-kJ7">
                                         <rect key="frame" x="0.0" y="72" width="375" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="60R-pe-kJ7" id="JuC-9j-8Ad">
@@ -645,10 +645,10 @@
             </objects>
             <point key="canvasLocation" x="72.5" y="-13.5"/>
         </scene>
-        <!--Inside Settings View Controller-->
+        <!--Settings Detail View Controller-->
         <scene sceneID="y49-WR-0Ec">
             <objects>
-                <viewController title="Inside Settings View Controller" id="FHh-ft-bV4" customClass="InsideSettingsViewController" sceneMemberID="viewController">
+                <viewController title="Settings Detail View Controller" id="FHh-ft-bV4" customClass="SettingsDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O1U-69-UkO"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ce-B3-zgz"/>
@@ -702,10 +702,10 @@
             </objects>
             <point key="canvasLocation" x="591.5" y="-13.5"/>
         </scene>
-        <!--Inside Inside Settings View Controller-->
+        <!--Settings Detail Detail View Controller-->
         <scene sceneID="bjm-vz-jcK">
             <objects>
-                <viewController id="nD6-h4-Ykb" customClass="InsideInsideSettingsViewController" sceneMemberID="viewController">
+                <viewController id="nD6-h4-Ykb" customClass="SettingsDetailDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wad-2Z-gb6"/>
                         <viewControllerLayoutGuide type="bottom" id="0aS-R0-bou"/>
@@ -951,17 +951,16 @@
             </objects>
             <point key="canvasLocation" x="-428.5" y="-13.5"/>
         </scene>
-        <!--Custom Tab Bar-->
+        <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" customClass="CustomTabBar" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <animations/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="cdh-A4-0Ly" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -994,12 +993,11 @@
                         <color key="barTintColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7gD-bd-DOr">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="7gD-bd-DOr">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="bEp-25-O6s" kind="relationship" relationship="rootViewController" id="gkP-KA-00M"/>
@@ -1028,12 +1026,11 @@
                         <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="iPx-aC-apb">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="iPx-aC-apb">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="64d-AS-328" kind="relationship" relationship="rootViewController" id="EsD-nE-XbI"/>
@@ -1062,12 +1059,11 @@
                         <color key="barTintColor" red="0.19215686269999999" green="0.19215686269999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JkF-Dd-6fi">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="JkF-Dd-6fi">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="Xg7-X4-LS6" kind="relationship" relationship="rootViewController" id="aI4-zQ-MG3"/>
@@ -1096,12 +1092,11 @@
                         <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="n3i-td-z1c">
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="n3i-td-z1c">
                         <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Vlk-3J-TOC"/>
@@ -1137,8 +1132,8 @@
         <image name="cast_off" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0vd-dG-Rwe"/>
-        <segue reference="fx0-5W-tdS"/>
+        <segue reference="VE8-qk-qZl"/>
+        <segue reference="Lol-74-RX8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -1,16 +1,16 @@
 //
-//  InsideInsideSettingsViewController.m
+//  SettingsDetailDetailViewController.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 23/11/2015.
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#import "InsideInsideSettingsViewController.h"
+#import "SettingsDetailDetailViewController.h"
 
 int i = 0;
 
-@interface InsideInsideSettingsViewController (){
+@interface SettingsDetailDetailViewController (){
     NSArray *names;
     NSMutableArray *resolvers;
     UILabel *version;
@@ -19,7 +19,7 @@ int i = 0;
 
 @end
 
-@implementation InsideInsideSettingsViewController
+@implementation SettingsDetailDetailViewController
 
 -(IBAction)button:(UIButton *)button{
     if (button == bugReport) {

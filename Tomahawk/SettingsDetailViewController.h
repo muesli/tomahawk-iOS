@@ -1,5 +1,5 @@
 //
-//  InsideSettingsViewController.h
+//  SettingsDetailViewController
 //  Tomahawk
 //
 //  Created by Mark Bourke on 09/10/2015.
@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Settings.h"
-#import "InsideInsideSettingsViewController.h"
+#import "SettingsDetailDetailViewController.h"
 
-@interface InsideSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SettingsDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) Settings *currentSetting;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

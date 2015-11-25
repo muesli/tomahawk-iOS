@@ -168,13 +168,13 @@
  
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
-     InsideInsideSettingsViewController *iisvc = [segue destinationViewController];
-     InsideSettingsViewController *svc = [segue destinationViewController];
+     SettingsDetailDetailViewController *sddv = [segue destinationViewController];
+     SettingsDetailViewController *svc = [segue destinationViewController];
  // Pass the selected object to the new view controller.
      NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
      if (currentCell.section == 1) {
          Settings *c = settings[currentCell.row+2];
-         iisvc.currentSetting = c;
+         sddv.currentSetting = c;
      }else{
          Settings *e = settings[currentCell.row+4];
          svc.currentSetting = e;

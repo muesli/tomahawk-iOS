@@ -1,20 +1,20 @@
 //
-//  InsideSettingsViewController.m
+//  SettingsDetailViewController.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 09/10/2015.
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#import "InsideSettingsViewController.h"
+#import "SettingsDetailViewController.h"
 
-@interface InsideSettingsViewController (){
+@interface SettingsDetailViewController (){
     NSMutableArray *settings;
 }
 
 @end
 
-@implementation InsideSettingsViewController
+@implementation SettingsDetailViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     //Deselect tableview cell before view loads
@@ -74,7 +74,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
-    InsideSettingsViewController *svc = [segue destinationViewController];
+    SettingsDetailDetailViewController *svc = [segue destinationViewController];
     // Pass the selected object to the new view controller.
     NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
     if (currentCell.section == 0){

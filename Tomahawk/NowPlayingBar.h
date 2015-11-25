@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FXBlurView.h"
-#import "NowPlayingViewController.h"
 
 @interface NowPlayingBar : UINavigationController
 

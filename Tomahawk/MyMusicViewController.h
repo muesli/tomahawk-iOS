@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HMSegmentedControl.h"
-#import "InsidePlaylistsViewController.h"
+#import "MyMusicDetailViewController.h"
 
 @class InsidePlaylistsViewController;
 
