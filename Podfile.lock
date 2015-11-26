@@ -1,0 +1,10 @@
+PODS:
+  - 1PasswordExtension (1.6.4)
+
+DEPENDENCIES:
+  - 1PasswordExtension (~> 1.6.4)
+
+SPEC CHECKSUMS:
+  1PasswordExtension: 9f471645d378283cb88c6d4bf502e4381a42c0ad
+
+COCOAPODS: 0.39.0
