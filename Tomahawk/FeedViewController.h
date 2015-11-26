@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
+#import <pmmintrin.h>
 
 @interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 

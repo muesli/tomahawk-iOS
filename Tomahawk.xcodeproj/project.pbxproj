@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C900F718792927A1148D258 /* Pods_Tomahawk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C21C4C970452A04F5C97FF1 /* Pods_Tomahawk.framework */; };
 		4D116C5C1C066AB50094F584 /* NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D116C5B1C066AB50094F584 /* NowPlayingBar.m */; };
 		4D1E3DF71BD2BAE200717185 /* MyMusicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1E3DF61BD2BAE200717185 /* MyMusicDetailViewController.m */; };
 		4D1EBACD1BC8290000B15A89 /* SettingsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EBACC1BC8290000B15A89 /* SettingsDetailViewController.m */; };
@@ -45,6 +46,7 @@
 		4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818A1BE8D59100911581 /* More Than-15.png */; };
 		4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818C1BE8D77F00911581 /* More Than-40.png */; };
 		4DEF818F1BE8D7A300911581 /* More Than-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818E1BE8D7A300911581 /* More Than-25.png */; };
+		C02346C56F8D08EC6FC8041D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6051EF389B7EA6EBB9C85FAC /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03B3B0849C858FC00C774A17 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		0C21C4C970452A04F5C97FF1 /* Pods_Tomahawk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tomahawk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D116C591C066AB50094F584 /* SettingsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsDetailViewController.h; path = Tomahawk/SettingsDetailViewController.h; sourceTree = "<group>"; };
 		4D116C5A1C066AB50094F584 /* NowPlayingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NowPlayingBar.h; path = Tomahawk/NowPlayingBar.h; sourceTree = "<group>"; };
 		4D116C5B1C066AB50094F584 /* NowPlayingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NowPlayingBar.m; path = Tomahawk/NowPlayingBar.m; sourceTree = "<group>"; };
@@ -125,6 +129,9 @@
 		4DEF818A1BE8D59100911581 /* More Than-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-15.png"; sourceTree = "<group>"; };
 		4DEF818C1BE8D77F00911581 /* More Than-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-40.png"; sourceTree = "<group>"; };
 		4DEF818E1BE8D7A300911581 /* More Than-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-25.png"; sourceTree = "<group>"; };
+		6051EF389B7EA6EBB9C85FAC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC5E9DE0527DBAC34319AE41 /* Pods-Tomahawk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomahawk.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tomahawk/Pods-Tomahawk.release.xcconfig"; sourceTree = "<group>"; };
+		E490A9C9B41C9E681EDED3E8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +139,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C02346C56F8D08EC6FC8041D /* Pods.framework in Frameworks */,
+				4C900F718792927A1148D258 /* Pods_Tomahawk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +161,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14AA5BA62EFC5CA82FC2E5A9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03B3B0849C858FC00C774A17 /* Pods.debug.xcconfig */,
+				E490A9C9B41C9E681EDED3E8 /* Pods.release.xcconfig */,
+				AC5E9DE0527DBAC34319AE41 /* Pods-Tomahawk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4D1304E21C00FB68007B7259 /* NowPlayingBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +287,8 @@
 			children = (
 				4DBDE0191BADC2BA00CD02CC /* Tomahawk */,
 				4DBDE0181BADC2BA00CD02CC /* Products */,
+				14AA5BA62EFC5CA82FC2E5A9 /* Pods */,
+				5F36C3A6B7A9FD43F1C3835B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,6 +346,15 @@
 			name = TableViewCells;
 			sourceTree = "<group>";
 		};
+		5F36C3A6B7A9FD43F1C3835B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6051EF389B7EA6EBB9C85FAC /* Pods.framework */,
+				0C21C4C970452A04F5C97FF1 /* Pods_Tomahawk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,9 +362,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DBDE0471BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "Tomahawk" */;
 			buildPhases = (
+				1C4444574E86831BFA789060 /* Check Pods Manifest.lock */,
 				4DBDE0131BADC2BA00CD02CC /* Sources */,
 				4DBDE0141BADC2BA00CD02CC /* Frameworks */,
 				4DBDE0151BADC2BA00CD02CC /* Resources */,
+				E0E20F50A4E87BABF1E3BB73 /* Embed Pods Frameworks */,
+				4911615BEACDD239EF185091 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,6 +502,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1C4444574E86831BFA789060 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4911615BEACDD239EF185091 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tomahawk/Pods-Tomahawk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0E20F50A4E87BABF1E3BB73 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tomahawk/Pods-Tomahawk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4DBDE0131BADC2BA00CD02CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -547,52 +628,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4DBDE0451BADC2BA00CD02CC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: mark.bourke@wriggle.ie (9DAK9VK687)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: mark.bourke@wriggle.ie (9DAK9VK687)";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
 		4DBDE0461BADC2BA00CD02CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC5E9DE0527DBAC34319AE41 /* Pods-Tomahawk.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -629,22 +667,9 @@
 			};
 			name = Release;
 		};
-		4DBDE0481BADC2BA00CD02CC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = Tomahawk/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.Tomahawk;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Debug;
-		};
 		4DBDE0491BADC2BA00CD02CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC5E9DE0527DBAC34319AE41 /* Pods-Tomahawk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -656,21 +681,10 @@
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
-		};
-		4DBDE04B1BADC2BA00CD02CC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = TomahawkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.TomahawkTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tomahawk.app/Tomahawk";
-			};
-			name = Debug;
 		};
 		4DBDE04C1BADC2BA00CD02CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC5E9DE0527DBAC34319AE41 /* Pods-Tomahawk.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TomahawkTests/Info.plist;
@@ -681,20 +695,9 @@
 			};
 			name = Release;
 		};
-		4DBDE04E1BADC2BA00CD02CC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = TomahawkUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mourke.TomahawkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Tomahawk;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
 		4DBDE04F1BADC2BA00CD02CC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC5E9DE0527DBAC34319AE41 /* Pods-Tomahawk.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TomahawkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -711,7 +714,6 @@
 		4DBDE0121BADC2B900CD02CC /* Build configuration list for PBXProject "Tomahawk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DBDE0451BADC2BA00CD02CC /* Debug */,
 				4DBDE0461BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -720,7 +722,6 @@
 		4DBDE0471BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "Tomahawk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DBDE0481BADC2BA00CD02CC /* Debug */,
 				4DBDE0491BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -729,7 +730,6 @@
 		4DBDE04A1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DBDE04B1BADC2BA00CD02CC /* Debug */,
 				4DBDE04C1BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -738,7 +738,6 @@
 		4DBDE04D1BADC2BA00CD02CC /* Build configuration list for PBXNativeTarget "TomahawkUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4DBDE04E1BADC2BA00CD02CC /* Debug */,
 				4DBDE04F1BADC2BA00CD02CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -259,6 +259,7 @@
 
 #pragma mark - Collection View
 
+
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (isSection == 0) {
         return 14;
@@ -433,6 +434,7 @@
     }
     [self reloadView];
 }
+
 
 
 - (UIStatusBarStyle)preferredStatusBarStyle{

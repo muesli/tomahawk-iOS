@@ -12,7 +12,7 @@
 
 //int isSection = 0;
 
-@interface RadioViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface RadioViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedStations;
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedGenres;

@@ -1,0 +1,6 @@
+framework module Pods_Tomahawk {
+  umbrella header "Pods-Tomahawk-umbrella.h"
+
+  export *
+  module * { export * }
+}

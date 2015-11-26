@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <1PasswordExtension/OnePasswordExtension.h>
 
 @interface NowPlayingBar : UINavigationController
 
