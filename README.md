@@ -10,8 +10,19 @@ If you are wondering what this is going to look like when it's finished head ove
 Keep track of Tomahawk development and community activity.
 
 * Follow Tomahawk on [Twitter](https://twitter.com/tomahawk), [Facebook](https://www.facebook.com/TomahawkPlayer/) and [Google+](https://plus.google.com/+Gettomahawks/videos).
-* Join in discussions on the [Butter Forum](http://forum.tomahawk-player.org/)
+* Join in discussions on the [Tomahawk Forum](http://forum.tomahawk-player.org/)
 * Connect with us on IRC at `#tomahawk` on freenode ([web access](http://webchat.freenode.net/?channels=tomahawk))
+
+## Build Instructions ##
+
+This project uses [CocoaPods](http://cocoapods.org/).
+
+``` bash
+$ git clone https://github.com/mourke/tomahawk-iOS.git tomahawk-ios
+$ cd tomahawk-ios/
+$ pod install
+$ open Tomahawk.xcworkspace
+```
 
 ## Lisence
 
