@@ -27,16 +27,35 @@
 }
 
 - (IBAction)simulateButtonPress:(UIButton *)sender {
-    [songsSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+    if (sender == songsSeeAllInvisible) {
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [songsSeeAllButton.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }else{
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [playlistsSeeAllButton.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }
 }
+
 - (IBAction)simulateButtonRelease:(UIButton *)sender {
-    [songsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonPress1:(UIButton *)sender {
-    [playlistsSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonRelease1:(UIButton *)sender {
-    [playlistsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    if (sender == songsSeeAllInvisible) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [songsSeeAllButton.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else{
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [playlistsSeeAllButton.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }
 }
 
 -(void)reloadView{
@@ -77,17 +96,16 @@
         
         //Create Invisible Buttons to Act as Pressers
         songsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-        [songsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
         playlistsSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-        [playlistsSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_scrollView addSubview:playlistsSeeAllInvisible];
-        [_scrollView addSubview:songsSeeAllInvisible];
+        myArray = @[songsSeeAllInvisible, playlistsSeeAllInvisible];
         
-        [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-        [songsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        for (UIButton *buttons in myArray) {
+            [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [_scrollView addSubview:buttons];
+            [buttons addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+            [buttons addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        }
 
-        [playlistsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress1:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-        [playlistsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease1:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         
         [self autoLayoutConstraints];
 

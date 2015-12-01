@@ -15,19 +15,85 @@ int i = 0;
     NSMutableArray *resolvers;
     UILabel *version;
     UIButton *bugReport, *twitter, *website;
+    UITableView *advanced, *info;
+    UISwitch *private;
 }
 
 @end
 
 @implementation SettingsDetailDetailViewController
 
--(IBAction)button:(UIButton *)button{
+
+-(IBAction)buttonHighlight:(UIButton *)button{
     if (button == bugReport) {
-        NSLog(@"Bug Report Button");
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
     }else if (button == twitter){
-        NSLog(@"Twitter Button");
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
     }else{
-        NSLog(@"Website Button");
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }
+
+}
+-(IBAction)buttonUnhighlight:(UIButton *)button{
+    if (button == bugReport) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else if (button == twitter){
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else{
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }
+}
+-(IBAction)buttonSelected:(UIButton *)button{
+    if (button == bugReport) {
+        [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:1];
+                         }
+                         completion:^(BOOL finished){
+                             [self performSegueWithIdentifier:@"bugReport" sender:button];
+                         }];
+    }else if (button == twitter){
+        [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:1];
+                         }
+                         completion:^(BOOL finished){
+                             [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://twitter.com/tomahawk"]];
+                         }];
+    }else{
+        [UIView animateWithDuration:0.0 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [button.titleLabel setAlpha:1];
+                         }
+                         completion:^(BOOL finished){
+                             SFSafariViewController *svc = [[SFSafariViewController alloc]initWithURL:[NSURL URLWithString:@"http://tomahawk-player.org"]];
+                             svc.view.tintColor = self.view.window.tintColor;
+                             [self presentViewController:svc animated:TRUE completion:nil];
+                         }];
     }
 }
 
@@ -67,8 +133,16 @@ int i = 0;
         }
         i = 0;
     }else if ([_currentSetting.name isEqual:@"Advanced"]){
+        advanced = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+        advanced.delaysContentTouches = NO;
+        advanced.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1];
+        advanced.separatorColor = [UIColor colorWithRed:52.0/255.0 green:53.0/255.0 blue:57.0/255.0 alpha:1];
+        advanced.delegate = self;
+        advanced.dataSource = self;
+        [advanced registerClass:[UITableViewCell class] forCellReuseIdentifier:@"advancedCell"];
+        [self.view addSubview:advanced];
     }else if ([_currentSetting.name isEqual:@"Info"]){
-        UITableView *info = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+        info = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
         info.delaysContentTouches = NO;
         info.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1];
         info.separatorColor = [UIColor colorWithRed:52.0/255.0 green:53.0/255.0 blue:57.0/255.0 alpha:1];
@@ -93,13 +167,12 @@ int i = 0;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ConnectCell *connectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"connectCell" forIndexPath:indexPath];
-    long long int j = indexPath.row;
+    unsigned long long int j = indexPath.row;
     j++;
-    for (long long int i = indexPath.row; i<j; i++) {
+    for (unsigned long long int i = indexPath.row; i<j; i++) {
         connectCell.image = [[UIImageView alloc]initWithImage:[[[resolvers objectAtIndex:i]valueForKey:@"image"]valueForKey:@"image"]];
         connectCell.color = [[resolvers objectAtIndex:i]valueForKey:@"color"];
     }
-
     connectCell.backgroundColor = [UIColor clearColor];
 
     return connectCell;
@@ -108,139 +181,168 @@ int i = 0;
 #pragma mark - Info Table View
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    if (tableView == info) {
+        return 3;
+    }else{
+        return 4;
+    }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 1) {
-        return 3;
+    if (tableView == info) {
+        if (section == 1) {
+            return 3;
+        }
+        return 1;
+    }else{
+        return 1;
     }
-    return 1;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return @"VERSION";
-    }else if (section == 1){
-        return @"ABOUT US";
+    if (tableView == info) {
+        if (section == 0) {
+            return @"VERSION";
+        }else if (section == 1){
+            return @"ABOUT US";
+        }else{
+            return @"LICENSES";
+        }
     }else{
-        return @"LICENSES";
+        if (section == 0) {
+            return @"PRIVATE LISTENING";
+        }else{
+            return nil;
+        }
     }
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"infoCell"];
-    infoCell.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:45.0/255.0 alpha:1];
-    if (indexPath.section == 0) {
-        infoCell.textLabel.text = @"Version";
-        infoCell.textLabel.textColor = [UIColor whiteColor];
-        infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (!version) {
-            version = [[UILabel alloc]init];
-            [infoCell addSubview:version];
-        }
-        version.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.3];
-        version.text = @"0.0.1";
-        version.font = [UIFont systemFontOfSize:14];
-        version.translatesAutoresizingMaskIntoConstraints = NO;
-        [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:version
-                                                         attribute:NSLayoutAttributeTrailingMargin
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:infoCell
-                                                         attribute:NSLayoutAttributeTrailingMargin
-                                                        multiplier:1
-                                                          constant:-13.0]];
-        [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:version
-                                                         attribute:NSLayoutAttributeCenterY
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:infoCell
-                                                         attribute:NSLayoutAttributeCenterY
-                                                        multiplier:1
-                                                          constant:0]];
-    }else if (indexPath.section == 1){
-        if (indexPath.row == 0) {
-            infoCell.textLabel.text = @"Bug Report";
-            infoCell.textLabel.textColor = [UIColor whiteColor];
-            if (!bugReport) {
-                bugReport = [UIButton buttonWithType:UIButtonTypeCustom];
-                [infoCell addSubview:bugReport];
-                
-            }
-            [bugReport setTitle:@"Report a Bug" forState:UIControlStateNormal];
-            [bugReport setTitleColor: [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] forState:UIControlStateNormal];
-            [bugReport setTitleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(0.3)] forState:UIControlStateHighlighted];
-            bugReport.translatesAutoresizingMaskIntoConstraints = NO;
-            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:bugReport
-                                                                 attribute:NSLayoutAttributeTrailingMargin
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:infoCell
-                                                                 attribute:NSLayoutAttributeTrailingMargin
-                                                                multiplier:1
-                                                                  constant:-13.0]];
-            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:bugReport
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:infoCell
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1
-                                                                  constant:0]];
-            [bugReport addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
-        }else if (indexPath.row == 1){
-            infoCell.textLabel.text = @"Twitter";
-            infoCell.textLabel.textColor = [UIColor whiteColor];
-            if (!twitter) {
-                twitter = [UIButton buttonWithType:UIButtonTypeCustom];
-                [infoCell addSubview:twitter];
-                
-            }
-            [twitter setTitle:@"@tomahawk" forState:UIControlStateNormal];
-            [twitter setTitleColor: [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] forState:UIControlStateNormal];
-            [twitter setTitleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(0.3)] forState:UIControlStateHighlighted];
-            twitter.translatesAutoresizingMaskIntoConstraints = NO;
-            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:twitter
-                                                                 attribute:NSLayoutAttributeTrailingMargin
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:infoCell
-                                                                 attribute:NSLayoutAttributeTrailingMargin
-                                                                multiplier:1
-                                                                  constant:-13.0]];
-            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:twitter
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:infoCell
-                                                                 attribute:NSLayoutAttributeCenterY
-                                                                multiplier:1
-                                                                  constant:0]];
-            [twitter addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
 
-        }else{
-            infoCell.textLabel.text = @"Website";
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    if (tableView == advanced) {
+        if (section == 0) {
+            return @"Hides your song activity from your friends";
+        }
+    }
+    return nil;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == info) {
+        UITableViewCell *infoCell = [tableView dequeueReusableCellWithIdentifier:@"infoCell"];
+        infoCell.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:45.0/255.0 alpha:1];
+        if (indexPath.section == 0) {
+            infoCell.textLabel.text = @"Version";
             infoCell.textLabel.textColor = [UIColor whiteColor];
-            if (!website) {
-                website = [UIButton buttonWithType:UIButtonTypeCustom];
-                [infoCell addSubview:website];
-                
+            infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            if (!version) {
+                version = [[UILabel alloc]init];
+                [infoCell addSubview:version];
             }
-            [website setTitle:@"tomahawk-player.org" forState:UIControlStateNormal];
-            [website setTitleColor: [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] forState:UIControlStateNormal];
-            [website setTitleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(0.3)] forState:UIControlStateHighlighted];
-            website.translatesAutoresizingMaskIntoConstraints = NO;
-            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:website
+            version.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.3];
+            version.text = @"0.0.1";
+            version.font = [UIFont systemFontOfSize:14];
+            version.translatesAutoresizingMaskIntoConstraints = NO;
+            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:version
                                                                  attribute:NSLayoutAttributeTrailingMargin
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:infoCell
                                                                  attribute:NSLayoutAttributeTrailingMargin
                                                                 multiplier:1
                                                                   constant:-13.0]];
-            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:website
+            [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:version
                                                                  attribute:NSLayoutAttributeCenterY
                                                                  relatedBy:NSLayoutRelationEqual
                                                                     toItem:infoCell
                                                                  attribute:NSLayoutAttributeCenterY
                                                                 multiplier:1
                                                                   constant:0]];
-            [website addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
+        }else if (indexPath.section == 1){
+            NSMutableArray *myArray = [[NSMutableArray alloc]init];
+            if (indexPath.row == 0) {
+                infoCell.textLabel.text = @"Bug Report";
+                infoCell.textLabel.textColor = [UIColor whiteColor];
+                if (!bugReport) {
+                    bugReport = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [infoCell addSubview:bugReport];
+                    [myArray addObject:bugReport];
+                    
+                }
+                [bugReport setTitle:@"Report a Bug" forState:UIControlStateNormal];
+            }else if (indexPath.row == 1){
+                infoCell.textLabel.text = @"Twitter";
+                infoCell.textLabel.textColor = [UIColor whiteColor];
+                if (!twitter) {
+                    twitter = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [infoCell addSubview:twitter];
+                    [myArray addObject:twitter];
+                    
+                }
+                [twitter setTitle:@"@tomahawk" forState:UIControlStateNormal];
+
+                
+            }else{
+                infoCell.textLabel.text = @"Website";
+                infoCell.textLabel.textColor = [UIColor whiteColor];
+                if (!website) {
+                    website = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [infoCell addSubview:website];
+                    [myArray addObject:website];
+                    
+                }
+                [website setTitle:@"tomahawk-player.org" forState:UIControlStateNormal];
+            }
+            for (UIButton *buttons in myArray) {
+                [buttons setTitleColor: [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] forState:UIControlStateNormal];
+                buttons.translatesAutoresizingMaskIntoConstraints = NO;
+                [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:buttons
+                                                                     attribute:NSLayoutAttributeTrailingMargin
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:infoCell
+                                                                     attribute:NSLayoutAttributeTrailingMargin
+                                                                    multiplier:1
+                                                                      constant:-13.0]];
+                [infoCell addConstraint:[NSLayoutConstraint constraintWithItem:buttons
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:infoCell
+                                                                     attribute:NSLayoutAttributeCenterY
+                                                                    multiplier:1
+                                                                      constant:0]];
+                [buttons addTarget:self action:@selector(buttonHighlight:) forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragInside];
+                [buttons addTarget:self action:@selector(buttonUnhighlight:) forControlEvents: UIControlEventTouchUpOutside | UIControlEventTouchDragExit];
+                [buttons addTarget:self action:@selector(buttonSelected:) forControlEvents: UIControlEventTouchUpInside];
+            }
+            infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        infoCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return infoCell;
+    }else{
+        UITableViewCell *advancedCell = [tableView dequeueReusableCellWithIdentifier:@"advancedCell"];
+        advancedCell.backgroundColor = [UIColor colorWithRed:37.0/255.0 green:38.0/255.0 blue:45.0/255.0 alpha:1];
+        [advancedCell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        if (indexPath.section == 0) {
+            advancedCell.textLabel.text = @"Private Listening";
+            advancedCell.textLabel.textColor = [UIColor whiteColor];
+            if (!private) {
+                private = [[UISwitch alloc]init];
+                [advancedCell addSubview:private];
+            }
+            private.translatesAutoresizingMaskIntoConstraints = NO;
+            [private setOnTintColor:self.view.window.tintColor];
+            [advancedCell addConstraint:[NSLayoutConstraint constraintWithItem:private
+                                                                 attribute:NSLayoutAttributeTrailingMargin
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:advancedCell
+                                                                 attribute:NSLayoutAttributeTrailingMargin
+                                                                multiplier:1
+                                                                  constant:-13.0]];
+            
+            [advancedCell addConstraint:[NSLayoutConstraint constraintWithItem:private
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:advancedCell
+                                                                 attribute:NSLayoutAttributeCenterY
+                                                                multiplier:1
+                                                                  constant:0]];
+        }
+        return advancedCell;
     }
-    return infoCell;
 }
 
 

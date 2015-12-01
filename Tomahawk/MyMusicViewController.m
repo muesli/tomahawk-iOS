@@ -15,19 +15,20 @@
     NSString *myCellText;
     int shouldShowDetails;
     NSArray *myArray;
+    UIButton *more;
 }
 
 - (IBAction)inboxButton:(id *)sender {
     //Insert Code Here
 }
 
--(IBAction)moreButtonTouched:(id)sender forEvent:(UIEvent *)event{
+-(IBAction)moreButtonSelected:(UIButton *)button forEvent:(UIEvent *)event{
     NSSet *touches = [event allTouches];
     UITouch *touch = [touches anyObject];
     CGPoint currentTouchPosition = [touch locationInView:self.tableView];
     // Lookup the index path of the cell whose checkbox was modified.
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
-    //Do Stuff
+    NSLog(@"Row is :%ld and Section is: %ld", (long)indexPath.row, indexPath.section);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -199,11 +200,11 @@
     //    artistName = @"OMI";
     //    CMTime time;
     //    cell.detailTextLabel.text = [NSString stringWithFormat:@"ARTIST: %@ • LENGTH: %@", artistName, time];
-    UIButton *more=[UIButton buttonWithType:UIButtonTypeCustom];
+    more = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *image = [UIImage imageNamed:@"More"];
     [more setImage:image forState:UIControlStateNormal];
     more.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    [more addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
+    [more addTarget:self action:@selector(moreButtonSelected:forEvent:) forControlEvents: UIControlEventTouchUpInside];
     [more setContentMode:UIViewContentModeScaleToFill];
     
     if (shouldShowDetails == 1){
@@ -248,7 +249,6 @@
     }
 
 }
-
 
 
 

@@ -30,28 +30,61 @@
     //Insert Code
 }
 - (IBAction)simulateButtonPress:(UIButton *)sender {
-    [stationsSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
+    if (sender == stationsSeeAllInvisible) {
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [stationsSeeAllButton.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }else if (sender == genresSeeAllInvisible){
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [genresSeeAllButton.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }else if (sender == artistSeeAllInvisible){
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [artistSeeAllButton.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }else{
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [internetRadioSeeAllButton.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }
 }
 - (IBAction)simulateButtonRelease:(UIButton *)sender {
+    if (sender == stationsSeeAllInvisible) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [stationsSeeAllButton.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else if (sender == genresSeeAllInvisible){
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [genresSeeAllButton.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else if (sender == artistSeeAllInvisible){
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [artistSeeAllButton.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else{
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [internetRadioSeeAllButton.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }
+}
+- (IBAction)simulateButtonSelected:(UIButton *)sender {
     [stationsSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonPress1:(UIButton *)sender {
-    [genresSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonRelease1:(UIButton *)sender {
-    [genresSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonPress2:(UIButton *)sender {
-    [artistSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonRelease2:(UIButton *)sender {
-    [artistSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonPress3:(UIButton *)sender {
-    [internetRadioSeeAllButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.5] forState:UIControlStateNormal];
-}
-- (IBAction)simulateButtonRelease3:(UIButton *)sender {
-    [internetRadioSeeAllButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 -(void)reloadView{
@@ -87,8 +120,8 @@
         [stationsSeeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
         [stationsSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
     
-        [genresSeeAllInvisible addTarget:self action:@selector(simulateButtonPress1:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-        [genresSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease1:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        [genresSeeAllInvisible addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+        [genresSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         
         
         //Create Header Buttons
@@ -192,18 +225,17 @@
             [self.scrollView addSubview:buttons];
 
         }
-        //Create Invisible Header Buttons to Act as A Presser
-        artistSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-        [artistSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_scrollView addSubview:artistSeeAllInvisible];
-        [artistSeeAllInvisible addTarget:self action:@selector(simulateButtonPress2:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-        [artistSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease2:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         
         internetRadioSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
-        [internetRadioSeeAllInvisible setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [_scrollView addSubview:internetRadioSeeAllInvisible];
-        [internetRadioSeeAllInvisible addTarget:self action:@selector(simulateButtonPress3:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
-        [internetRadioSeeAllInvisible addTarget:self action:@selector(simulateButtonRelease3:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        artistSeeAllInvisible = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        myArray = @[artistSeeAllInvisible, internetRadioSeeAllInvisible];
+        for (UIButton *buttons in myArray) {
+            [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [_scrollView addSubview:buttons];
+            [buttons addTarget:self action:@selector(simulateButtonPress:)forControlEvents:UIControlEventTouchDragInside | UIControlEventTouchDown];
+            [buttons addTarget:self action:@selector(simulateButtonRelease:)forControlEvents:UIControlEventTouchDragOutside | UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+        }
         
         [self autoLayoutConstraints];
         

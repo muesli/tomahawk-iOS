@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Settings.h"
 #import "ConnectCell.h"
+#import <SafariServices/SafariServices.h>
 
-@interface SettingsDetailDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface SettingsDetailDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SFSafariViewControllerDelegate>
 
 @property (nonatomic) Settings *currentSetting;
 
