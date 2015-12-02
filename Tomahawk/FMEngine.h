@@ -9,13 +9,25 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FMEngine : NSObject
+enum searchSongs{
+    namesOfSongs,
+    namesOfArtists,
+};
 
--(instancetype)initWithArtist:(NSString *)artist album:(NSString *)album;
+enum searchAlbums{
+    namesOfAlbums,
+    namesOfAlbumArtists,
+    smallAlbumImages,
+    mediumAlbumImages,
+    largeAlbumImages,
+    XLAlbumImages,
+};
+
+@interface FMEngine : NSObject
 
 #pragma mark - Album
 
--(NSArray *)albumInfo:(NSString *)artist album:(NSString *)album;
+-(NSArray *)searchAlbums:(enum searchAlbums)pref album:(NSString *)album;
 
 #pragma mark - Artist
 
@@ -39,9 +51,7 @@
 
 #pragma mark - Track
 
--(NSArray *)searchSongs:(NSString *)songs artist:(NSString *)artist;
-
--(NSMutableDictionary *)songInfo:(NSString *)song artist:(NSString *)artist;
+-(NSArray *)searchSongs:(enum searchSongs)pref song:(NSString *)song artist:(NSString *)artist;
 
 #pragma mark - User
 

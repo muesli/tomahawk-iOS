@@ -112,14 +112,29 @@
                                 <action selector="inboxButton:" destination="9pv-A4-QxB" id="gaJ-HY-sLp"/>
                             </connections>
                         </barButtonItem>
+                        <connections>
+                            <outlet property="titleView" destination="Ng6-4k-fGs" id="opn-xC-1AW"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="playlistsCollectionView" destination="S5e-QF-A07" id="ELV-Hf-vBP"/>
                         <outlet property="scrollView" destination="Byq-KS-Q04" id="pga-aK-NmS"/>
+                        <outlet property="searchBar" destination="Ng6-4k-fGs" id="5mo-RB-UlK"/>
                         <outlet property="songsCollectionView" destination="YeK-LF-I3b" id="44u-0W-br3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" barStyle="black" searchBarStyle="prominent" placeholder="Search Artists, Songs, Albums etc." id="Ng6-4k-fGs" customClass="SearchBar">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                    <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
+                    <connections>
+                        <outlet property="delegate" destination="9pv-A4-QxB" id="mWK-qC-izH"/>
+                    </connections>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="298" y="-3031"/>
         </scene>

@@ -41,6 +41,7 @@
 		4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DBDE02B1BADC2BA00CD02CC /* LaunchScreen.storyboard */; };
 		4DC5A5A91C0393C900ED018F /* SettingsDetailDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC5A5A81C0393C900ED018F /* SettingsDetailDetailViewController.m */; };
 		4DC5A5AC1C03A43A00ED018F /* ConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC5A5AB1C03A43A00ED018F /* ConnectCell.m */; };
+		4DDCC3E21C0E4B92003CA4AD /* SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCC3E11C0E4B92003CA4AD /* SearchBar.m */; };
 		4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DE1050C1BE0041400C51EDD /* blurExample1.png */; };
 		4DEF818B1BE8D59100911581 /* More Than-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818A1BE8D59100911581 /* More Than-15.png */; };
 		4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEF818C1BE8D77F00911581 /* More Than-40.png */; };
@@ -124,6 +125,8 @@
 		4DC5A5A81C0393C900ED018F /* SettingsDetailDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsDetailDetailViewController.m; path = Tomahawk/SettingsDetailDetailViewController.m; sourceTree = "<group>"; };
 		4DC5A5AA1C03A43A00ED018F /* ConnectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectCell.h; path = Tomahawk/ConnectCell.h; sourceTree = "<group>"; };
 		4DC5A5AB1C03A43A00ED018F /* ConnectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectCell.m; path = Tomahawk/ConnectCell.m; sourceTree = "<group>"; };
+		4DDCC3E01C0E4B92003CA4AD /* SearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchBar.h; path = Tomahawk/SearchBar.h; sourceTree = "<group>"; };
+		4DDCC3E11C0E4B92003CA4AD /* SearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchBar.m; path = Tomahawk/SearchBar.m; sourceTree = "<group>"; };
 		4DE1050C1BE0041400C51EDD /* blurExample1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample1.png; sourceTree = "<group>"; };
 		4DEF818A1BE8D59100911581 /* More Than-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-15.png"; sourceTree = "<group>"; };
 		4DEF818C1BE8D77F00911581 /* More Than-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "More Than-40.png"; sourceTree = "<group>"; };
@@ -238,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
+				4DDCC3E31C0E4FDE003CA4AD /* Custom Search Bar */,
 				4D1304E21C00FB68007B7259 /* NowPlayingBar */,
 				4DC5A5AD1C05102100ED018F /* TableViewCells */,
 				4DA4B4D21BFA82680042DEE0 /* CollectionViewCells */,
@@ -347,6 +351,15 @@
 			children = (
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		4DDCC3E31C0E4FDE003CA4AD /* Custom Search Bar */ = {
+			isa = PBXGroup;
+			children = (
+				4DDCC3E01C0E4B92003CA4AD /* SearchBar.h */,
+				4DDCC3E11C0E4B92003CA4AD /* SearchBar.m */,
+			);
+			name = "Custom Search Bar";
 			sourceTree = "<group>";
 		};
 		4DF2B41C1C0A66750033FA58 /* Last.fm API */ = {
@@ -534,6 +547,7 @@
 				4D32E1531BD1AFCE008F9373 /* MyMusicViewController.m in Sources */,
 				4D8FF9DF1BE7FD1C001490B6 /* CollectionViewCell.m in Sources */,
 				4DBDE01F1BADC2BA00CD02CC /* AppDelegate.m in Sources */,
+				4DDCC3E21C0E4B92003CA4AD /* SearchBar.m in Sources */,
 				4DAE47BB1BE2B93F00D6816F /* CCColorCube.m in Sources */,
 				4DF2B41B1C09F8A30033FA58 /* KMPlaceholderTextView.swift in Sources */,
 				4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */,

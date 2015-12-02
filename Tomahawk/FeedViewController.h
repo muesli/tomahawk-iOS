@@ -10,11 +10,12 @@
 #import "CollectionViewCell.h"
 #import "FMEngine.h"
 
-@interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *songsCollectionView;
 @property(nonatomic, strong) IBOutlet UICollectionView *playlistsCollectionView;
 @property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @end

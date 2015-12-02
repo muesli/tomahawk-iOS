@@ -8,15 +8,16 @@
 
 #import "FeedViewController.h"
 
+//CRASHES WHEN YOU SPELL SOMETHING WRONG AND WHEN YOU ARE TOO SPECIFIC IN THE SONG YOU ARE SEARCHING
+
 @interface FeedViewController (){
-    UIButton *songsSeeAllButton;
-    UIButton *songsSeeAllInvisible;
-    UIButton *playlistsSeeAllButton;
-    UIButton *playlistsSeeAllInvisible;
-    UILabel *playlistsHeader, *songsHeader;
+    UIButton *songsSeeAllButton, *songsSeeAllInvisible, *playlistsSeeAllButton, *playlistsSeeAllInvisible, *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton;
+    UILabel *playlistsHeader, *songsHeader, *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader;
+    UITableView *searchResultsTableView;
+    NSString *searchedText;
+    int onlyRunOnce, onlyRunOnce1;
+    NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages;
 }
-
-
 
 @end
 
@@ -58,20 +59,20 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    onlyRunOnce = 0; //Create Variable that will stop memory leak when searching
+    onlyRunOnce1 = 0;
     
-    
-    FMEngine *albumInfo = [[FMEngine alloc]initWithArtist:@"Justin Bieber" album:@"Believe"];
-    
-    NSArray *searchResults = [albumInfo searchSongs:@"Boyfriend" artist:@"Justin Bieber"];
-    
-    NSString *imageURLAsString = [[[searchResults objectAtIndex:3]objectForKey:@"images"]objectAtIndex:3];
-    NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
-    NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
-    UIImageView *image = [[UIImageView alloc]initWithImage:[UIImage imageWithData:rawImageData]];
-    [self.view addSubview:image];
-    
+    searchResultsTableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    searchResultsTableView.delegate = self;
+    searchResultsTableView.dataSource = self;
+    searchResultsTableView.delaysContentTouches = NO;
+    searchResultsTableView.contentInset = UIEdgeInsetsZero;
+    searchResultsTableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1];
+    searchResultsTableView.separatorColor = [UIColor colorWithRed:52.0/255.0 green:53.0/255.0 blue:57.0/255.0 alpha:1];
+
     
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     songsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,25 +129,215 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
-#pragma mark - Search Controller
-    //Creating Search Controller
-    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self];
-    // Use the current view controller to update the search results.
-    searchController.searchResultsUpdater = self;
-    //Setting Style
-    searchController.searchBar.barStyle = UIBarStyleBlack;
-    searchController.searchBar.barTintColor = [UIColor colorWithRed:49.0/255.0 green:49.0/255.0 blue:61.0/255.0 alpha:1.0];
-    searchController.searchBar.backgroundImage = [UIImage imageNamed:@"BG"];
-    searchController.searchBar.placeholder = @"Search Artists, Songs, Albums etc.";
-    searchController.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.definesPresentationContext = YES;
-    self.navigationItem.titleView = searchController.searchBar;
-    
+}
 
+#pragma mark - Search Controller
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSString *searchString = searchController.searchBar.text;
+}
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    searchBar.showsCancelButton = YES;
+    self.definesPresentationContext = YES;
+    [self.searchBar sizeToFit];
+    return YES;
+}
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
+    searchBar.showsCancelButton = NO;
+    [searchResultsTableView removeFromSuperview];
+}
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.navigationItem.rightBarButtonItem = nil;
+     NSString *searchString = self.searchBar.text;
+    NSLog(@"%@",searchString);
+    [self.view addSubview:searchResultsTableView];
+    
+}
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    searchedText = searchText;
+    onlyRunOnce1 = 0;
+    onlyRunOnce = 0;
+    [searchResultsTableView reloadData];
+    NSLog(@"text is %@", searchedText);
+}
+
+#pragma mark - Table View
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *searchCell = [searchResultsTableView dequeueReusableCellWithIdentifier:@"searchCell"];
+    if (!searchCell) {
+        searchCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"searchCell"];
+    }
+    
+    if (indexPath.section == 0) {
+        
+        //Only get the song array once as you don't need to get it anymore
+        for (onlyRunOnce; onlyRunOnce<1; onlyRunOnce++) {
+            FMEngine *apiCall = [FMEngine new];
+            dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
+            dispatch_async(getSongInfo, ^{
+                songNames = [apiCall searchSongs:namesOfSongs song:searchedText artist:nil];
+                songArtists = [apiCall searchSongs:namesOfArtists song:searchedText artist:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [tableView reloadData];
+                });
+            });
+        }
+        
+        //Create temp variables so selected code will only run once
+        int j = indexPath.row;
+        j++;
+        for (int i = indexPath.row; i<j; i++) {
+            if (!songNames && !songArtists) {
+                NSLog(@"Song names array and song artist array doesnt exist");
+            }
+            searchCell.textLabel.text = [songNames objectAtIndex:i];
+            searchCell.detailTextLabel.text = [songArtists objectAtIndex:i];
+        }
+
+    }else if (indexPath.section == 1){
+        searchCell.imageView.image = [UIImage imageNamed:@"PlaceholderMedium"];
+        //Only get the song array once as you don't need to get it anymore
+        for (onlyRunOnce1; onlyRunOnce1<1; onlyRunOnce1++) {
+            FMEngine *apiCall = [FMEngine new];
+            dispatch_queue_t getAlbumInfo = dispatch_queue_create("getAlbumInfo", NULL);
+            dispatch_async(getAlbumInfo, ^{
+                albumNames = [apiCall searchAlbums:namesOfAlbums album:searchedText];
+                albumArtists = [apiCall searchAlbums:namesOfAlbumArtists album:searchedText];
+                albumImages = [apiCall searchAlbums:mediumAlbumImages album:searchedText];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [tableView reloadData];
+                });
+            });
+        }
+        
+        //Create temp variables so selected code will only run once
+        int j = indexPath.row;
+        j++;
+        for (int i = indexPath.row; i<j; i++) {
+            searchCell.textLabel.text = [albumNames objectAtIndex:i];
+            searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
+            searchCell.imageView.image = [albumImages objectAtIndex:i];
+        }
+    }
+    
+    
+    searchCell.backgroundColor = [UIColor clearColor];
+    searchCell.textLabel.textColor = [UIColor whiteColor];
+    searchCell.detailTextLabel.textColor = [UIColor whiteColor];
+    searchCell.detailTextLabel.alpha = 0.5;
+    searchCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return searchCell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 4;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 3;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+    headerView.backgroundColor = [UIColor clearColor];
+    NSArray *myArray;
+    if (section == 0) {
+        searchSongsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        myArray = @[searchSongsSeeAllButton];
+    }else if (section == 1){
+        searchAlbumsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        myArray = @[searchAlbumsSeeAllButton];
+    }else{
+        searchPlaylistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        myArray = @[searchPlaylistsSeeAllButton];
+    }
+    
+    for (UIButton *buttons in myArray) {
+        [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [buttons setTitle:@"SEE ALL" forState:UIControlStateNormal];
+        [buttons setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [[buttons titleLabel] setFont:[UIFont systemFontOfSize:12]];
+        [buttons setEnabled:NO];
+        [buttons setUserInteractionEnabled:NO];
+        [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [headerView addSubview:buttons];
+
+        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:buttons
+                                                               attribute:NSLayoutAttributeTrailingMargin
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:headerView
+                                                               attribute:NSLayoutAttributeTrailingMargin
+                                                              multiplier:1
+                                                                constant:38]];
+        
+        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:buttons
+                                                               attribute:NSLayoutAttributeCenterY
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:headerView
+                                                               attribute:NSLayoutAttributeCenterY
+                                                              multiplier:1
+                                                                constant:0]];
+        
+    }
+    
+    if (section == 0) {
+        searchSongsHeader = [[UILabel alloc]init];
+        searchSongsHeader.text = @"SONGS";
+        myArray = @[searchSongsHeader];
+    }else if (section == 1){
+        searchAlbumsHeader = [[UILabel alloc]init];
+        searchAlbumsHeader.text = @"ALBUMS";
+        myArray = @[searchAlbumsHeader];
+    }else{
+        searchPlaylistsHeader = [[UILabel alloc]init];
+        searchPlaylistsHeader.text = @"PLAYLISTS";
+        myArray = @[searchPlaylistsHeader];
+    }
+
+    for (UILabel *headers in myArray) {
+        headers.font = [UIFont systemFontOfSize:12 weight:0.2];
+        headers.alpha = 0.5;
+        headers.textColor = [UIColor whiteColor];
+        [headers setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [headerView addSubview:headers];
+        
+        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headers
+                                                               attribute:NSLayoutAttributeLeadingMargin
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:headerView
+                                                               attribute:NSLayoutAttributeLeadingMargin
+                                                              multiplier:1
+                                                                constant:20]];
+        
+        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headers
+                                                               attribute:NSLayoutAttributeCenterY
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:headerView
+                                                               attribute:NSLayoutAttributeCenterY
+                                                              multiplier:1
+                                                                constant:0]];
+    }
+    return headerView;
 }
 
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return CGFLOAT_MIN;
+}
 #pragma mark - Collection View
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 3;
 }
@@ -184,6 +375,7 @@
     }
     return nil;
 }
+
 
 #pragma mark - Auto Layout Constraints
 

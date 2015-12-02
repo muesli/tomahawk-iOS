@@ -39,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Tomahawk Icon" width="152" height="152"/>
+        <image name="Tomahawk Icon" width="200" height="200"/>
     </resources>
 </document>
