@@ -8,6 +8,9 @@
 
 #import "FeedViewController.h"
 
+
+//ALBUMS DON'T LOAD UNLESS THEIR IMAGES DO WHICH COULD TAKE A WHILE ON SLOW CONNECTIONS
+
 @interface FeedViewController (){
     UIButton *songsSeeAllButton, *songsSeeAllInvisible, *playlistsSeeAllButton, *playlistsSeeAllInvisible, *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton;
     UILabel *playlistsHeader, *songsHeader, *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader;
@@ -173,7 +176,7 @@ static CGFloat searchBlockDelay = 0.2;
             //We "enqueue" this block with a certain delay. It will be canceled if the user types faster than the delay, otherwise it will be executed after the specified delay
             [self search:searchText];
         });
-    }
+    }else{
     //If there is nothing in the search field, force remove everything from table View;
     songArtists = nil;
     songNames = nil;
@@ -181,6 +184,7 @@ static CGFloat searchBlockDelay = 0.2;
     albumImages = nil;
     albumNames = nil;
     [searchResultsTableView reloadData];
+    }
 
 }
 
@@ -204,6 +208,9 @@ static CGFloat searchBlockDelay = 0.2;
         NSDictionary *myDict = [apiCall searchAlbums:searchText];
         albumNames = [myDict objectForKey:@"albumNames"];
         albumArtists = [myDict objectForKey:@"artistNames"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [searchResultsTableView reloadData];
+        });
         albumImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [searchResultsTableView reloadData];
