@@ -11,8 +11,8 @@
 @interface NowPlayingBar (){
     UIButton *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton;
     UILabel  *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader;
-    NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages;
-    FMEngine *apiCall;
+    NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages;
+    TEngine *apiCall;
     __block dispatch_cancelable_block_t searchBlock;
 }
 
@@ -124,13 +124,15 @@ static CGFloat searchBlockDelay = 0.25;
     NSLog(@"text after wait is %@", searchText);
     
     if(!apiCall){
-        apiCall = [FMEngine new];
+        apiCall = [TEngine new];
     }
     dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
     dispatch_async(getSongInfo, ^{
-        NSDictionary *myDict = [apiCall searchSongs:searchText artist:nil];
+        NSDictionary *myDict = [apiCall searchSongs:searchText];
         songNames = [myDict objectForKey:@"songNames"];
+        songAlbums = [myDict objectForKey:@"albumName"];
         songArtists = [myDict objectForKey:@"artistNames"];
+        songImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
         });
@@ -167,8 +169,10 @@ static CGFloat searchBlockDelay = 0.25;
         int j = indexPath.row;
         j++;
         for (int i = indexPath.row; i<j && i<songNames.count; i++) {
-            searchCell.textLabel.text = [songNames objectAtIndex:i];
-            searchCell.detailTextLabel.text = [songArtists objectAtIndex:i];
+            searchCell.textLabel.text =  [songNames objectAtIndex:i];
+            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]];
+            searchCell.detailTextLabel.text = text;
+            searchCell.imageView.image = [songImages objectAtIndex:i];
         }
         
     }else if (indexPath.section == 1){
@@ -188,6 +192,10 @@ static CGFloat searchBlockDelay = 0.25;
     searchCell.detailTextLabel.textColor = [UIColor whiteColor];
     searchCell.detailTextLabel.alpha = 0.5;
     searchCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //Make cell image not the whole size
+    CGFloat widthScale = 60 / searchCell.imageView.image.size.width;
+    CGFloat heightScale = 60 / searchCell.imageView.image.size.height;
+    searchCell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
     return searchCell;
 }
 
@@ -323,7 +331,7 @@ static CGFloat searchBlockDelay = 0.25;
     [UIView animateWithDuration:rate.floatValue animations:^{
         UIEdgeInsets contentInsets;
         if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])) {
-            contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height - 85), 0.0);
+            contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height + 5), 0.0);
         } else {
             contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.width), 0.0);
         }

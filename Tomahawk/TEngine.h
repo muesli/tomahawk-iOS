@@ -1,5 +1,5 @@
 //
-//  FMEngine.h
+//  TEngine.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 28/11/2015.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FMEngine : NSObject
+@interface TEngine : NSObject
 
 #pragma mark - Album
 
@@ -39,9 +39,9 @@
 
 #pragma mark - Track
 
--(NSDictionary *)searchSongs:(NSString *)song artist:(NSString *)artist;
+-(NSDictionary *)searchSongs:(NSString *)song;
 
--(NSDictionary *)songInfo:(NSString *)song artist:(NSString *)artist;
+-(NSDictionary *)songInfo:(NSString *)song;
 
 #pragma mark - User
 
