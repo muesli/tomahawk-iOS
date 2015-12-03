@@ -260,19 +260,6 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     
-#pragma mark - Search Controller
-    //Creating Search Controller
-    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self];
-    // Use the current view controller to update the search results.
-    searchController.searchResultsUpdater = self;
-    //Setting Style
-    searchController.searchBar.barStyle = UIBarStyleBlack;
-    searchController.searchBar.barTintColor = [UIColor colorWithRed:49.0/255.0 green:49.0/255.0 blue:61.0/255.0 alpha:1.0];
-    searchController.searchBar.backgroundImage = [UIImage imageNamed:@"BG"];
-    searchController.searchBar.placeholder = @"Search Artists, Songs, Albums etc.";
-    searchController.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.definesPresentationContext = YES;
-    self.navigationItem.titleView = searchController.searchBar;
 
 #pragma mark - Custom Segmented Control
     

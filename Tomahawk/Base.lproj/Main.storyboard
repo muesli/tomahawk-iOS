@@ -106,35 +106,14 @@
                             <constraint firstItem="S5e-QF-A07" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-5" id="zl7-E5-MHk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YhL-ta-wef">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="7pH-mz-AcI">
-                            <connections>
-                                <action selector="inboxButton:" destination="9pv-A4-QxB" id="gaJ-HY-sLp"/>
-                            </connections>
-                        </barButtonItem>
-                        <connections>
-                            <outlet property="titleView" destination="Ng6-4k-fGs" id="opn-xC-1AW"/>
-                        </connections>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="YhL-ta-wef"/>
                     <connections>
                         <outlet property="playlistsCollectionView" destination="S5e-QF-A07" id="ELV-Hf-vBP"/>
                         <outlet property="scrollView" destination="Byq-KS-Q04" id="pga-aK-NmS"/>
-                        <outlet property="searchBar" destination="Ng6-4k-fGs" id="5mo-RB-UlK"/>
                         <outlet property="songsCollectionView" destination="YeK-LF-I3b" id="44u-0W-br3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" barStyle="black" searchBarStyle="prominent" placeholder="Search for Songs, People and Playlists" id="Ng6-4k-fGs" customClass="SearchBar">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
-                    <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
-                    <connections>
-                        <outlet property="delegate" destination="9pv-A4-QxB" id="mWK-qC-izH"/>
-                    </connections>
-                </searchBar>
             </objects>
             <point key="canvasLocation" x="298" y="-3031"/>
         </scene>
@@ -245,13 +224,7 @@
                             <constraint firstItem="s0S-b3-e5C" firstAttribute="leading" secondItem="UlJ-7g-m6P" secondAttribute="leadingMargin" constant="-20" id="hBi-Pi-z2t"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="    " id="iPn-b3-H5s">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="Xed-P3-riy">
-                            <connections>
-                                <action selector="inboxButton:" destination="bEp-25-O6s" id="dSP-uf-iFW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="    " id="iPn-b3-H5s"/>
                     <connections>
                         <outlet property="tableView" destination="s0S-b3-e5C" id="F0e-Ds-74y"/>
                     </connections>
@@ -587,13 +560,7 @@
                             <constraint firstItem="9Vt-7B-nKf" firstAttribute="leading" secondItem="I2U-O3-hqP" secondAttribute="leadingMargin" constant="-5" id="x3M-d1-0wb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7qV-2g-Wla">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="gsO-ux-GF6">
-                            <connections>
-                                <action selector="inboxButton:" destination="Xg7-X4-LS6" id="J4K-CB-k4o"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="7qV-2g-Wla"/>
                     <connections>
                         <outlet property="recommendedPlaylists" destination="x9Q-RU-WBD" id="axO-hO-h7d"/>
                         <outlet property="recommendedSongs" destination="9Vt-7B-nKf" id="pQo-mV-Hv4"/>
@@ -1311,7 +1278,6 @@
         <image name="Expand Arrow" width="15" height="15"/>
         <image name="Feed" width="25" height="25"/>
         <image name="Feed Selected" width="25" height="25"/>
-        <image name="Inbox" width="22" height="22"/>
         <image name="Like" width="22" height="22"/>
         <image name="Like Selected" width="22" height="22"/>
         <image name="Lyrics" width="22" height="22"/>
@@ -1331,7 +1297,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VE8-qk-qZl"/>
-        <segue reference="r04-Oq-FMF"/>
+        <segue reference="sLY-AN-5Ko"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

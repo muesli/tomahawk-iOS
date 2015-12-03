@@ -49,21 +49,6 @@
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     myCellText = @"Placeholder";
-    
-#pragma mark - Search Controller
-    //Creating Search Controller
-    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self];
-    // Use the current view controller to update the search results.
-    searchController.searchResultsUpdater = self;
-    //Setting Style
-    searchController.searchBar.barStyle = UIBarStyleBlack;
-    searchController.searchBar.barTintColor = [UIColor colorWithRed:49.0/255.0 green:49.0/255.0 blue:61.0/255.0 alpha:1.0];
-    searchController.searchBar.backgroundImage = [UIImage imageNamed:@"BG"];
-    searchController.searchBar.placeholder = @"Search Artists, Songs, Albums etc.";
-    searchController.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
-    self.definesPresentationContext = YES;
-    searchController.searchBar.frame = CGRectMake(0, 0, 10,CGRectGetHeight(searchController.searchBar.frame));
-    self.navigationItem.titleView = searchController.searchBar;
 
 #pragma mark - Custom Segmented Control
     HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"PLAYLISTS", @"SONGS"]];

@@ -13,7 +13,7 @@
 
 int isSection = 0;
 
-@interface DiscoverViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DiscoverViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedSongs;
 @property(nonatomic, strong) IBOutlet UICollectionView *recommendedPlaylists;

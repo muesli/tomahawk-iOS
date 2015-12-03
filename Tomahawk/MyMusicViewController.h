@@ -12,7 +12,7 @@
 
 @class InsidePlaylistsViewController;
 
-@interface MyMusicViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
+@interface MyMusicViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UITableView *tableView;
 
