@@ -15,7 +15,7 @@
 
 @implementation FMEngine
 
--(NSArray *)searchSongs:(enum searchSongs)pref song:(NSString *)song artist:(NSString *)artist {
+-(NSDictionary *)searchSongs:(NSString *)song artist:(NSString *)artist {
     if (!artist && !song) {
         return nil;
     }
@@ -38,26 +38,23 @@
         return nil;
     }
     
-    switch (pref) {
-        case searchSongsNamesOfSongs:{
-            NSArray *songNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"trackmatches"]valueForKey:@"track"]valueForKey:@"name"];
-            return songNames;
-        }
-        case searchSongsNamesOfArtists:{
-            NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"trackmatches"]valueForKey:@"track"]valueForKey:@"artist"];
-            return artistNames;
-        }
-        default:
-            return nil;
-    }
+     NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *songNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"trackmatches"]valueForKey:@"track"]valueForKey:@"name"];
+    [myDict setObject:songNames forKey:@"songNames"]; //Returns array of song names which is accessed by: NSString *name = [[myDict objectForKey:@"songNames"]objectAtIndex:index];
+    
+    NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"trackmatches"]valueForKey:@"track"]valueForKey:@"artist"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    return myDict;
 }
 
--(nullable NSArray *)searchAlbums:(enum searchAlbums)pref album:(nonnull NSString *)album{
+-(NSDictionary *)searchAlbums:(NSString *)album{
+    
     if (!album){
         return nil;
     }
-    
-    
+
     NSString *searchAlbums = [[NSString alloc]init];
     searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"%@album.search&album=%@&api_key=%@&limit=10&format=json", API_BASE, album, API_KEY]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
@@ -68,87 +65,34 @@
         return nil;
     }
     
-    switch (pref) {
-        case searchAlbumsNamesOfAlbums:{
-            NSArray *albumNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"name"];
-            return albumNames;
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *albumNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"name"];
+    [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
+    
+    NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"artist"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+
+    
+    NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<albumImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"#text"];
+        if ([imageURLAsString  isEqual: @""]) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]]; //If there is no album image, set it to the placeholder one
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
         }
-        case searchAlbumsNamesOfAlbumArtists:{
-            NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"artist"];
-            return artistNames;
-        }
-        case searchAlbumsSmallAlbumImages:{
-            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
-            NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<albumImages.count; i++) {
-                //Get All small images
-                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:0]valueForKey:@"#text"];
-                if ([imageURLAsString  isEqual: @""]) {
-                    [images addObject:[UIImage imageNamed:@"PlaceholderSmall"]];
-                }else{
-                    NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
-                    NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
-                    UIImage *image = [UIImage imageWithData:rawImageData];
-                    [images addObject:image];
-                }
-            }
-            return images;
-        }
-        case searchAlbumsMediumAlbumImages:{
-            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
-            NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<albumImages.count; i++) {
-                //Get All medium images
-                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"#text"];
-                if ([imageURLAsString  isEqual: @""]) {
-                    [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
-                }else{
-                NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
-                NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
-                UIImage *image = [UIImage imageWithData:rawImageData];
-                [images addObject:image];
-                }
-            }
-            return images;
-            
-        }
-        case searchAlbumsLargeAlbumImages:{
-            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
-            NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<albumImages.count; i++) {
-                //Get All Large images
-                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
-                if ([imageURLAsString  isEqual: @""]) {
-                    [images addObject:[UIImage imageNamed:@"PlaceholderLarge"]];
-                }else{
-                    NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
-                    NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
-                    UIImage *image = [UIImage imageWithData:rawImageData];
-                    [images addObject:image];
-                }
-            }
-            return images;
-        }
-        case searchAlbumsXLAlbumImages:{
-            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
-            NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<albumImages.count; i++) {
-                //Get All XL images
-                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:3]valueForKey:@"#text"];
-                if ([imageURLAsString  isEqual: @""]) {
-                    [images addObject:[UIImage imageNamed:@"PlaceholderXL"]];
-                }else{
-                    NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
-                    NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
-                    UIImage *image = [UIImage imageWithData:rawImageData];
-                    [images addObject:image];
-                }
-            }
-            return images;
-        }
-        default:
-            return nil;
     }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
     
 }
 
@@ -211,7 +155,7 @@
     return albumInfoArray;
 }*/
 
--(NSDictionary *)songInfo:(nonnull NSString *)song artist:(nonnull NSString *)artist{
+-(NSDictionary *)songInfo:(NSString *)song artist:(NSString *)artist{
     NSString *songInfo = API_BASE;
     songInfo = [songInfo stringByAppendingString:[NSString stringWithFormat:@"track.getInfo&artist=%@&track=%@&api_key=%@&limit=10&format=json&autocorrect=1", artist, song, API_KEY]];
     
@@ -286,6 +230,7 @@
         NSLog(@"Error in parsing Data --> %@", error);
         return nil;
     }
+    NSLog(@"Parsed!");
     
     return jsonDict;
 }

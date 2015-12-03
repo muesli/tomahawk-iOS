@@ -8,8 +8,6 @@
 
 #import "FeedViewController.h"
 
-//REMEMBER TO ADD ALL PLAYLISTS STUFF
-
 @interface FeedViewController (){
     UIButton *songsSeeAllButton, *songsSeeAllInvisible, *playlistsSeeAllButton, *playlistsSeeAllInvisible, *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton;
     UILabel *playlistsHeader, *songsHeader, *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader;
@@ -165,6 +163,7 @@ static CGFloat searchBlockDelay = 0.2;
     
 }
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (![searchText isEqualToString:@""]){
         // to limit network activity, reload half a second after last key press.
         if (searchBlock != nil) {
             //We cancel the currently scheduled block
@@ -174,33 +173,43 @@ static CGFloat searchBlockDelay = 0.2;
             //We "enqueue" this block with a certain delay. It will be canceled if the user types faster than the delay, otherwise it will be executed after the specified delay
             [self search:searchText];
         });
-    
-    //When user starts typing, refresh tableview
+    }
+    //If there is nothing in the search field, force remove everything from table View;
+    songArtists = nil;
+    songNames = nil;
+    albumArtists = nil;
+    albumImages = nil;
+    albumNames = nil;
+    [searchResultsTableView reloadData];
 
 }
 
 -(void)search:(NSString *)searchText{
     NSLog(@"text after wait is %@", searchText);
+    
     if(!apiCall){
         apiCall = [FMEngine new];
     }
     dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
     dispatch_async(getSongInfo, ^{
-        songNames = [apiCall searchSongs:searchSongsNamesOfSongs song:searchText artist:nil];
-        songArtists = [apiCall searchSongs:searchSongsNamesOfArtists song:searchText artist:nil];
+        NSDictionary *myDict = [apiCall searchSongs:searchText artist:nil];
+        songNames = [myDict objectForKey:@"songNames"];
+        songArtists = [myDict objectForKey:@"artistNames"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [searchResultsTableView reloadData];
         });
     });
     dispatch_queue_t getAlbumInfo = dispatch_queue_create("getAlbumInfo", NULL);
     dispatch_async(getAlbumInfo, ^{
-        albumNames = [apiCall searchAlbums:searchAlbumsNamesOfAlbums album:searchText];
-        albumArtists = [apiCall searchAlbums:searchAlbumsNamesOfAlbumArtists album:searchText];
-        albumImages = [apiCall searchAlbums:searchAlbumsMediumAlbumImages album:searchText];
+        NSDictionary *myDict = [apiCall searchAlbums:searchText];
+        albumNames = [myDict objectForKey:@"albumNames"];
+        albumArtists = [myDict objectForKey:@"artistNames"];
+        albumImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
             [searchResultsTableView reloadData];
         });
     });
+a:;
 }
 
 #pragma mark - Table View

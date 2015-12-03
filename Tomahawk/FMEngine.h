@@ -9,35 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-enum searchSongs{
-    searchSongsNamesOfSongs,
-    searchSongsNamesOfArtists,
-};
-
-enum searchAlbums{
-    searchAlbumsNamesOfAlbums,
-    searchAlbumsNamesOfAlbumArtists,
-    searchAlbumsSmallAlbumImages,
-    searchAlbumsMediumAlbumImages,
-    searchAlbumsLargeAlbumImages,
-    searchAlbumsXLAlbumImages,
-};
-
-enum searchArtists{
-    searchArtistNamesOfArtists,
-    searchArtistsListeners,
-    searchArtists
-};
-
 @interface FMEngine : NSObject
 
 #pragma mark - Album
 
--(nullable NSArray *)searchAlbums:(enum searchAlbums)pref album:(nonnull NSString *)album;
+-(NSDictionary *)searchAlbums:(NSString *)album;
 
 #pragma mark - Artist
 
--(nullable NSArray *)searchArtists:(enum searchArtists)pref artist:(nonnull NSString *)artist;
+-(NSDictionary *)searchArtists:(NSString *)artist;
 
 #pragma mark - Authentication
 
@@ -59,9 +39,9 @@ enum searchArtists{
 
 #pragma mark - Track
 
--(nullable NSArray *)searchSongs:(enum searchSongs)pref song:(nullable NSString *)song artist:(nullable NSString *)artist;
+-(NSDictionary *)searchSongs:(NSString *)song artist:(NSString *)artist;
 
--(nullable NSDictionary *)songInfo:(nonnull NSString *)song artist:(nonnull NSString *)artist;
+-(NSDictionary *)songInfo:(NSString *)song artist:(NSString *)artist;
 
 #pragma mark - User
 
