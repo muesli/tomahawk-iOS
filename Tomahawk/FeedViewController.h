@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
 #import "FMEngine.h"
+#import "dispatch_cancelable_block.h"
 
 @interface FeedViewController : UIViewController <UISearchResultsUpdating, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -16,6 +17,7 @@
 @property(nonatomic, strong) IBOutlet UICollectionView *playlistsCollectionView;
 @property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property(nonatomic, strong) NSIndexPath *editingIndexPath;
 
 
 @end

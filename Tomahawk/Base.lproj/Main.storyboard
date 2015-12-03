@@ -124,7 +124,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" barStyle="black" searchBarStyle="prominent" placeholder="Search Artists, Songs, Albums etc." id="Ng6-4k-fGs" customClass="SearchBar">
+                <searchBar contentMode="redraw" barStyle="black" searchBarStyle="prominent" placeholder="Search for Songs, People and Playlists" id="Ng6-4k-fGs" customClass="SearchBar">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
@@ -1331,7 +1331,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VE8-qk-qZl"/>
-        <segue reference="ngu-Rj-iMU"/>
+        <segue reference="r04-Oq-FMF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

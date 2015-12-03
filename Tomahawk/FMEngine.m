@@ -11,10 +11,9 @@
 
 #import "FMEngine.h"
 
+//CRASHES WHEN YOU SPELL SEARCH WRONG
+
 @implementation FMEngine
-
-
-//Bu
 
 -(NSArray *)searchSongs:(enum searchSongs)pref song:(NSString *)song artist:(NSString *)artist {
     if (!artist && !song) {
@@ -22,49 +21,29 @@
     }
     
     NSString *searchSongs = API_BASE;
-    
     searchSongs = [searchSongs stringByAppendingString:@"track.search"];
     
     //If there is no artist specified, continue
     if (!artist);
     else{
-        searchSongs = [searchSongs stringByAppendingString:@"&artist="];
-        searchSongs = [searchSongs stringByAppendingString:artist];
+        searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"%@=%@", @"&artist", artist]];
     }
-    searchSongs = [searchSongs stringByAppendingString:@"&track="];
-    searchSongs = [searchSongs stringByAppendingString:song];
-    searchSongs = [searchSongs stringByAppendingString:@"&api_key="];
-    searchSongs = [searchSongs stringByAppendingString:API_KEY];
-    searchSongs = [searchSongs stringByAppendingString:@"&limit=10"];
+    
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"&track=%@&api_key=%@&limit=10&format=json", song, API_KEY]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    searchSongs = [searchSongs stringByAppendingString:@"&format=json"];
-    NSLog(@"String is %@", searchSongs);
-
-    //Create Errors
-    NSError *error;
     
-    NSData *jsonString = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:searchSongs] options:NSDataReadingUncached error:&error]; //Get all raw JSON from the URL and read it into a variable
-    
-    if (!jsonString) {
-        NSLog(@"Error in reading the website --> %@", error);
-        if (error.code == 256) {
-            NSLog(@"Blank Field!");
-            return nil;
-        }
-    }
-    
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonString options:NSJSONReadingMutableContainers error:&error];//Parse all raw JSON into a dictionary
+    NSDictionary *jsonDict = [self parseURL:searchSongs];
     
     if (!jsonDict) {
-        NSLog(@"Error in parsing Data --> %@", error);
+        return nil;
     }
     
     switch (pref) {
-        case namesOfSongs:{
+        case searchSongsNamesOfSongs:{
             NSArray *songNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"trackmatches"]valueForKey:@"track"]valueForKey:@"name"];
             return songNames;
         }
-        case namesOfArtists:{
+        case searchSongsNamesOfArtists:{
             NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"trackmatches"]valueForKey:@"track"]valueForKey:@"artist"];
             return artistNames;
         }
@@ -73,54 +52,37 @@
     }
 }
 
--(NSArray *)searchAlbums:(enum searchAlbums)pref album:(NSString *)album{
+-(nullable NSArray *)searchAlbums:(enum searchAlbums)pref album:(nonnull NSString *)album{
     if (!album){
         return nil;
     }
-    NSString *searchAlbums = API_BASE;
-    searchAlbums = [searchAlbums stringByAppendingString:@"album.search"];
-    searchAlbums = [searchAlbums stringByAppendingString:@"&album="];
-    searchAlbums = [searchAlbums stringByAppendingString:album];
-    searchAlbums = [searchAlbums stringByAppendingString:@"&api_key="];
-    searchAlbums = [searchAlbums stringByAppendingString:API_KEY];
-    searchAlbums = [searchAlbums stringByAppendingString:@"&limit=9"];
+    
+    
+    NSString *searchAlbums = [[NSString alloc]init];
+    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"%@album.search&album=%@&api_key=%@&limit=10&format=json", API_BASE, album, API_KEY]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    searchAlbums = [searchAlbums stringByAppendingString:@"&format=json"];
     
-    //Create Errors
-    NSError *error;
-    
-    NSData *jsonString = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:searchAlbums] options:NSDataReadingUncached error:&error]; //Get all raw JSON from the URL and read it into a variable
-    
-    if (!jsonString) {
-        NSLog(@"Error in reading the website --> %@", error);
-        if (error.code == 256) {
-            NSLog(@"Blank Field!");
-            return nil;
-        }
-    }
-    
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonString options:NSJSONReadingMutableContainers error:&error]; //Parse all raw JSON into a dictionary
+    NSDictionary *jsonDict = [self parseURL:searchAlbums];
     
     if (!jsonDict) {
-        NSLog(@"Error in parsing Data --> %@", error);
+        return nil;
     }
     
     switch (pref) {
-        case namesOfAlbums:{
+        case searchAlbumsNamesOfAlbums:{
             NSArray *albumNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"name"];
             return albumNames;
         }
-        case namesOfArtists:{
+        case searchAlbumsNamesOfAlbumArtists:{
             NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"artist"];
             return artistNames;
         }
-        case smallAlbumImages:{
-            NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
+        case searchAlbumsSmallAlbumImages:{
+            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
             NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<artistNames.count; i++) {
+            for (int i = 0; i<albumImages.count; i++) {
                 //Get All small images
-                NSString *imageURLAsString = [[[artistNames objectAtIndex:i]objectAtIndex:0]valueForKey:@"#text"];
+                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:0]valueForKey:@"#text"];
                 if ([imageURLAsString  isEqual: @""]) {
                     [images addObject:[UIImage imageNamed:@"PlaceholderSmall"]];
                 }else{
@@ -132,12 +94,12 @@
             }
             return images;
         }
-        case mediumAlbumImages:{
-            NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
+        case searchAlbumsMediumAlbumImages:{
+            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
             NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<artistNames.count; i++) {
+            for (int i = 0; i<albumImages.count; i++) {
                 //Get All medium images
-                NSString *imageURLAsString = [[[artistNames objectAtIndex:i]objectAtIndex:1]valueForKey:@"#text"];
+                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"#text"];
                 if ([imageURLAsString  isEqual: @""]) {
                     [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
                 }else{
@@ -150,12 +112,12 @@
             return images;
             
         }
-        case largeAlbumImages:{
-            NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
+        case searchAlbumsLargeAlbumImages:{
+            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
             NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<artistNames.count; i++) {
+            for (int i = 0; i<albumImages.count; i++) {
                 //Get All Large images
-                NSString *imageURLAsString = [[[artistNames objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
+                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
                 if ([imageURLAsString  isEqual: @""]) {
                     [images addObject:[UIImage imageNamed:@"PlaceholderLarge"]];
                 }else{
@@ -167,12 +129,12 @@
             }
             return images;
         }
-        case XLAlbumImages:{
-            NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
+        case searchAlbumsXLAlbumImages:{
+            NSArray *albumImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"albummatches"]valueForKey:@"album"]valueForKey:@"image"];
             NSMutableArray *images = [NSMutableArray new];
-            for (int i = 0; i<artistNames.count; i++) {
+            for (int i = 0; i<albumImages.count; i++) {
                 //Get All XL images
-                NSString *imageURLAsString = [[[artistNames objectAtIndex:i]objectAtIndex:3]valueForKey:@"#text"];
+                NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:3]valueForKey:@"#text"];
                 if ([imageURLAsString  isEqual: @""]) {
                     [images addObject:[UIImage imageNamed:@"PlaceholderXL"]];
                 }else{
@@ -249,38 +211,84 @@
     return albumInfoArray;
 }*/
 
-/*-(NSMutableDictionary *)songInfo:(NSString *)song artist:(NSString *)artist{
+-(NSDictionary *)songInfo:(nonnull NSString *)song artist:(nonnull NSString *)artist{
     NSString *songInfo = API_BASE;
-    songInfo = [songInfo stringByAppendingString:@"track.getInfo"];
-    songInfo = [songInfo stringByAppendingString:@"&artist="];
-    songInfo = [songInfo stringByAppendingString:artist];
-    songInfo = [songInfo stringByAppendingString:@"&track="];
-    songInfo = [songInfo stringByAppendingString:song];
-    songInfo = [songInfo stringByAppendingString:@"&api_key="];
-    songInfo = [songInfo stringByAppendingString:API_KEY];
-    songInfo = [songInfo stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    songInfo = [songInfo stringByAppendingString:@"&format=json"];
-    //NSLog(@"Song Info Adress is %@", songInfo);
+    songInfo = [songInfo stringByAppendingString:[NSString stringWithFormat:@"track.getInfo&artist=%@&track=%@&api_key=%@&limit=10&format=json&autocorrect=1", artist, song, API_KEY]];
     
-    NSData *jsonString = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:songInfo] options:NSDataReadingUncached error:nil];
+    songInfo = [songInfo stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSDictionary *jsonDict = [self parseURL:songInfo];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSString *songName = [[jsonDict valueForKey:@"track"]valueForKey:@"name"];
+    [myDict setObject:songName forKey:@"songName"]; //Returns Song Name
+
+    NSString *songArtist = [[[jsonDict valueForKey:@"track"]valueForKey:@"artist"]valueForKey:@"name"];
+    [myDict setObject:songArtist forKey:@"songArtist"]; //Returns Song Artist
+
+    NSArray *tags = @[[[[jsonDict valueForKey:@"track"]valueForKey:@"toptags"]valueForKey:@"tag"]];
+    [myDict setObject:tags forKey:@"tags"]; //Returns array of tags. Access name property by: [[[myDictionary objectForKey:tags]objectAtIndex:index]valueForKey:@"name"];
+
+    NSString *albumArtist = [[[jsonDict valueForKey:@"track"]valueForKey:@"album"]valueForKey:@"artist"];
+    [myDict setObject:albumArtist forKey:@"albumArtist"]; //Returns Album artist. Some songs do not have albums so remember to check if result is nil when implementing or a crash will occur
+    
+    NSString *albumTitle = [[[jsonDict valueForKey:@"track"]valueForKey:@"album"]valueForKey:@"title"];
+    [myDict setObject:albumTitle forKey:@"albumTitle"]; //Returns Album title. Some songs do not have albums so remember to check if result is nil when implementing or a crash will occur
+
+    NSNumber *listenerCount = [[jsonDict valueForKey:@"track"]valueForKey:@"listeners"];
+    [myDict setObject:listenerCount forKey:@"listenerCount"];//Returns the number of people who listened to the track. Remember to unwrap the NSNumber when implementing if needs be
+
+    NSNumber *playCount = [[jsonDict valueForKey:@"track"]valueForKey:@"playcount"];
+    [myDict setObject:playCount forKey:@"playCount"];//Returns the number of times the track has been played. Remember to unwrap the NSNumber when implementing if needs be
+    
+    NSArray *albumImages = [[[jsonDict valueForKey:@"track"]valueForKey:@"album"]valueForKey:@"image"];
+    NSMutableArray *tempArray = [NSMutableArray new];
+    if (albumImages) {
+        for (int i = 0; i<albumImages.count; i++) {
+            NSString *imageURLAsString = [[albumImages objectAtIndex:i]valueForKey:@"#text"];
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [tempArray addObject:image];
+        }
+        [myDict setObject:[tempArray objectAtIndex:0] forKey:@"smallAlbumImage"];//Returns small UIImage of album art if any. Some songs do not have albums so remember to check if result is nil when implementing or a crash will occur
+        [myDict setObject:[tempArray objectAtIndex:1] forKey:@"mediumAlbumImage"];//Returns medium UIImage of album art if any. Some songs do not have albums so remember to check if result is nil when implementing or a crash will occur
+        [myDict setObject:[tempArray objectAtIndex:2] forKey:@"largeAlbumImage"];//Returns large UIImage of album art if any. Some songs do not have albums so remember to check if result is nil when implementing or a crash will occur
+        [myDict setObject:[tempArray objectAtIndex:3] forKey:@"XLAlbumImage"];//Returns XL UIImage of album art if any. Some songs do not have albums so remember to check if result is nil when implementing or a crash will occur
+    }
+    return myDict;
+
+}
+
+-(NSDictionary *)parseURL:(NSString *)URLAsString{
     
     NSError *error;
     
-    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonString options:NSJSONReadingMutableContainers error:&error];
+    NSData *jsonString = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:URLAsString] options:NSDataReadingUncached error:&error]; //Get all raw JSON from the URL and read it into a variable
     
-    NSMutableDictionary *songInfoDictionary = [NSMutableDictionary new];
-    
-    NSString *songName = [[jsonDict valueForKey:@"track"]valueForKey:@"name"];
-    NSString *albumName = [[[jsonDict valueForKey:@"track"]valueForKey:@"album"]valueForKey:@"title"];
-    if (!albumName) {
-        albumName = @"Single";
+    if (!jsonString) {
+        NSLog(@"Error in reading the website --> %@", error);
+        if (error.code == 256) {
+            //Blank Field
+            return nil;
+        }
     }
     
-    [songInfoDictionary setObject:songName forKey:@"songName"];
-    [songInfoDictionary setObject:albumName forKey:@"albumName"];
-
-    return songInfoDictionary;
-}*/
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonString options:NSJSONReadingMutableContainers error:&error];//Parse all raw JSON into a dictionary
+    
+    
+    if (!jsonDict) {
+        NSLog(@"Error in parsing Data --> %@", error);
+        return nil;
+    }
+    
+    return jsonDict;
+}
 
 @end
 

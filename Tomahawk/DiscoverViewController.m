@@ -118,6 +118,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self reloadView];
+    
     //Set Height of ScrollView
     [_scrollView setContentSize:CGSizeMake(self.view.frame.size.width, 1000)];
     //Set background colour to invisible

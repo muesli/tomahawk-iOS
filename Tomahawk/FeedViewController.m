@@ -8,18 +8,20 @@
 
 #import "FeedViewController.h"
 
-//CRASHES WHEN YOU SPELL SOMETHING WRONG AND WHEN YOU ARE TOO SPECIFIC IN THE SONG YOU ARE SEARCHING
+//REMEMBER TO ADD ALL PLAYLISTS STUFF
 
 @interface FeedViewController (){
     UIButton *songsSeeAllButton, *songsSeeAllInvisible, *playlistsSeeAllButton, *playlistsSeeAllInvisible, *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton;
     UILabel *playlistsHeader, *songsHeader, *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader;
     UITableView *searchResultsTableView;
-    NSString *searchedText;
-    int onlyRunOnce, onlyRunOnce1;
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages;
+    FMEngine *apiCall;
+    __block dispatch_cancelable_block_t searchBlock;
 }
 
 @end
+
+static CGFloat searchBlockDelay = 0.2;
 
 @implementation FeedViewController
 
@@ -62,10 +64,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    onlyRunOnce = 0; //Create Variable that will stop memory leak when searching
-    onlyRunOnce1 = 0;
+    //Regester for keyboard notifications so you can resize tableview when it closes
     
-    searchResultsTableView = [[UITableView alloc]initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    searchResultsTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (self.view.frame.size.height - 110)) style:UITableViewStyleGrouped];
     searchResultsTableView.delegate = self;
     searchResultsTableView.dataSource = self;
     searchResultsTableView.delaysContentTouches = NO;
@@ -133,9 +144,6 @@
 
 #pragma mark - Search Controller
 
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    NSString *searchString = searchController.searchBar.text;
-}
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
     searchBar.showsCancelButton = YES;
@@ -157,11 +165,42 @@
     
 }
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    searchedText = searchText;
-    onlyRunOnce1 = 0;
-    onlyRunOnce = 0;
-    [searchResultsTableView reloadData];
-    NSLog(@"text is %@", searchedText);
+        // to limit network activity, reload half a second after last key press.
+        if (searchBlock != nil) {
+            //We cancel the currently scheduled block
+            cancel_block(searchBlock);
+        }
+        searchBlock = dispatch_after_delay(searchBlockDelay, ^{
+            //We "enqueue" this block with a certain delay. It will be canceled if the user types faster than the delay, otherwise it will be executed after the specified delay
+            [self search:searchText];
+        });
+    
+    //When user starts typing, refresh tableview
+
+}
+
+-(void)search:(NSString *)searchText{
+    NSLog(@"text after wait is %@", searchText);
+    if(!apiCall){
+        apiCall = [FMEngine new];
+    }
+    dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
+    dispatch_async(getSongInfo, ^{
+        songNames = [apiCall searchSongs:searchSongsNamesOfSongs song:searchText artist:nil];
+        songArtists = [apiCall searchSongs:searchSongsNamesOfArtists song:searchText artist:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [searchResultsTableView reloadData];
+        });
+    });
+    dispatch_queue_t getAlbumInfo = dispatch_queue_create("getAlbumInfo", NULL);
+    dispatch_async(getAlbumInfo, ^{
+        albumNames = [apiCall searchAlbums:searchAlbumsNamesOfAlbums album:searchText];
+        albumArtists = [apiCall searchAlbums:searchAlbumsNamesOfAlbumArtists album:searchText];
+        albumImages = [apiCall searchAlbums:searchAlbumsMediumAlbumImages album:searchText];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [searchResultsTableView reloadData];
+        });
+    });
 }
 
 #pragma mark - Table View
@@ -178,50 +217,21 @@
     
     if (indexPath.section == 0) {
         
-        //Only get the song array once as you don't need to get it anymore
-        for (onlyRunOnce; onlyRunOnce<1; onlyRunOnce++) {
-            FMEngine *apiCall = [FMEngine new];
-            dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
-            dispatch_async(getSongInfo, ^{
-                songNames = [apiCall searchSongs:namesOfSongs song:searchedText artist:nil];
-                songArtists = [apiCall searchSongs:namesOfArtists song:searchedText artist:nil];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [tableView reloadData];
-                });
-            });
-        }
+        searchCell.imageView.image = [UIImage new];
         
         //Create temp variables so selected code will only run once
         int j = indexPath.row;
         j++;
-        for (int i = indexPath.row; i<j; i++) {
-            if (!songNames && !songArtists) {
-                NSLog(@"Song names array and song artist array doesnt exist");
-            }
+        for (int i = indexPath.row; i<j && i<songNames.count; i++) {
             searchCell.textLabel.text = [songNames objectAtIndex:i];
             searchCell.detailTextLabel.text = [songArtists objectAtIndex:i];
         }
 
     }else if (indexPath.section == 1){
-        searchCell.imageView.image = [UIImage imageNamed:@"PlaceholderMedium"];
-        //Only get the song array once as you don't need to get it anymore
-        for (onlyRunOnce1; onlyRunOnce1<1; onlyRunOnce1++) {
-            FMEngine *apiCall = [FMEngine new];
-            dispatch_queue_t getAlbumInfo = dispatch_queue_create("getAlbumInfo", NULL);
-            dispatch_async(getAlbumInfo, ^{
-                albumNames = [apiCall searchAlbums:namesOfAlbums album:searchedText];
-                albumArtists = [apiCall searchAlbums:namesOfAlbumArtists album:searchedText];
-                albumImages = [apiCall searchAlbums:mediumAlbumImages album:searchedText];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [tableView reloadData];
-                });
-            });
-        }
-        
         //Create temp variables so selected code will only run once
         int j = indexPath.row;
         j++;
-        for (int i = indexPath.row; i<j; i++) {
+        for (int i = indexPath.row; i<j && i<albumNames.count; i++) {
             searchCell.textLabel.text = [albumNames objectAtIndex:i];
             searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
             searchCell.imageView.image = [albumImages objectAtIndex:i];
@@ -238,7 +248,26 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    if (section == 0) {
+        if (songNames.count >= 4) {
+            return 4;
+        }else{
+            return songNames.count;
+        }
+    }else if (section == 1){
+        if (albumNames.count >= 4) {
+            return 4;
+        }else{
+            return albumNames.count;
+        }
+    }else{
+//        if ( >= 4) {
+//            return 4;
+//        }
+//        else{
+            return 0;
+        }
+    
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -248,6 +277,9 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     headerView.backgroundColor = [UIColor clearColor];
+    if([tableView numberOfRowsInSection:section] == 0){
+        return headerView;
+    }
     NSArray *myArray;
     if (section == 0) {
         searchSongsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -376,6 +408,37 @@
     return nil;
 }
 
+
+
+
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow:(NSNotification *)notification{
+    
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    [UIView animateWithDuration:rate.floatValue animations:^{
+    UIEdgeInsets contentInsets;
+    if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])) {
+        contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height - 85), 0.0);
+    } else {
+        contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.width), 0.0);
+    }
+    searchResultsTableView.contentInset = contentInsets;
+    searchResultsTableView.scrollIndicatorInsets = contentInsets;
+    [searchResultsTableView scrollToRowAtIndexPath:self.editingIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification{
+    NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+    [UIView animateWithDuration:rate.floatValue animations:^{
+    searchResultsTableView.contentInset = UIEdgeInsetsZero;
+    searchResultsTableView.scrollIndicatorInsets = UIEdgeInsetsZero;
+    }];
+}
 
 #pragma mark - Auto Layout Constraints
 
@@ -530,6 +593,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end

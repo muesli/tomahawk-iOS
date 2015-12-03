@@ -109,6 +109,7 @@
 		4DAE47C71BE3920400D6816F /* blurExample6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample6.png; sourceTree = "<group>"; };
 		4DAE47C91BE3920A00D6816F /* blurExample7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample7.png; sourceTree = "<group>"; };
 		4DB094901BE4F39300ACEC72 /* blurExample8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample8.png; sourceTree = "<group>"; };
+		4DBC780A1C105D7900E5F712 /* dispatch_cancelable_block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dispatch_cancelable_block.h; sourceTree = "<group>"; };
 		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE01B1BADC2BA00CD02CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4DBDE01D1BADC2BA00CD02CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Tomahawk/AppDelegate.h; sourceTree = "<group>"; };
@@ -267,6 +268,7 @@
 		4DA4B4D01BFA82240042DEE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DBC780A1C105D7900E5F712 /* dispatch_cancelable_block.h */,
 				4DF2B4191C09F8A30033FA58 /* KMPlaceholderTextView.h */,
 				4DF2B41A1C09F8A30033FA58 /* KMPlaceholderTextView.swift */,
 				4D1EBACE1BC9358A00B15A89 /* Settings.h */,
