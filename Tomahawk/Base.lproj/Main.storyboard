@@ -1142,7 +1142,7 @@
         <!--My Music-->
         <scene sceneID="0YR-E9-dcl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pOm-Af-pqI" customClass="NowPlayingBar" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pOm-Af-pqI" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Music" image="My Music" selectedImage="My Music" id="H4J-1D-YEc"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="359" id="ECT-rC-AuG">
@@ -1175,7 +1175,7 @@
         <!--Radio-->
         <scene sceneID="9xS-xu-lb2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="CFu-5n-YUN" customClass="NowPlayingBar" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="CFu-5n-YUN" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Radio" image="Radio" selectedImage="Radio Selected" id="bey-Rf-xaW"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="356" id="c6A-PH-rV3">
@@ -1208,7 +1208,7 @@
         <!--Discover-->
         <scene sceneID="rjz-Vw-po0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tpZ-8E-iOE" customClass="NowPlayingBar" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tpZ-8E-iOE" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="Discover" selectedImage="Discover Selected" id="VNo-rw-cuE"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="361" id="6NW-Gw-IPe">
@@ -1241,7 +1241,7 @@
         <!--Feed-->
         <scene sceneID="6zH-Wy-sSJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NowPlayingBar" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="359" id="txn-0y-kfC">
@@ -1297,7 +1297,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="VE8-qk-qZl"/>
-        <segue reference="sLY-AN-5Ko"/>
+        <segue reference="ngu-Rj-iMU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

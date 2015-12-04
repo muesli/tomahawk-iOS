@@ -6,21 +6,23 @@
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#import "NowPlayingBar.h"
+#import "NavigationController.h"
 
-@interface NowPlayingBar (){
+@interface NavigationController (){
     UIButton *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton;
     UILabel  *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader;
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages;
     TEngine *apiCall;
     __block dispatch_cancelable_block_t searchBlock;
+    DGActivityIndicatorView *activityIndicatorView;
+    UIView *loadingDimmer;
 }
 
 @end
 
 static CGFloat searchBlockDelay = 0.25;
 
-@implementation NowPlayingBar
+@implementation NavigationController
 
 - (IBAction)inboxButton:(id *)sender {
     //Insert Code Here
@@ -38,6 +40,9 @@ static CGFloat searchBlockDelay = 0.25;
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    loadingDimmer = [[UIView alloc]initWithFrame:self.view.frame]; //View to dim whats behind it when new content is loading
+    loadingDimmer.backgroundColor = [UIColor blackColor];
+    loadingDimmer.alpha = 0.3;
     UIBarButtonItem *inboxButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
     self.viewControllers[0].navigationItem.rightBarButtonItem = inboxButton;
     //Regester for keyboard notifications so you can resize tableview when it closes
@@ -64,7 +69,7 @@ static CGFloat searchBlockDelay = 0.25;
     
     self.viewControllers[0].navigationItem.titleView = self.searchBar;
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 65, self.view.frame.size.width, (self.view.frame.size.height-20)) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 63, self.view.frame.size.width, (self.view.frame.size.height-20)) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.delaysContentTouches = NO;
@@ -78,25 +83,48 @@ static CGFloat searchBlockDelay = 0.25;
 
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    self.viewControllers[0].view.userInteractionEnabled = NO;
+    if (!activityIndicatorView) {
+        activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScalePulseOut tintColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] size:20.0f];
+    }
     searchBar.showsCancelButton = YES;
     [self.searchBar sizeToFit];
+    self.viewControllers[0].navigationItem.rightBarButtonItem = nil;
+    self.viewControllers[0].tabBarController.tabBar.hidden = YES;
+    [self.view addSubview:self.tableView];
+    [activityIndicatorView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.tableView addSubview:activityIndicatorView];
+    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.tableView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1
+                                                           constant:0]];
+    
+    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView
+                                                            attribute:NSLayoutAttributeCenterY
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:self.tableView
+                                                            attribute:NSLayoutAttributeCenterY
+                                                           multiplier:1
+                                                             constant:-40]];
+    activityIndicatorView.hidden = YES;
+    [self.tableView addSubview:loadingDimmer];
+    loadingDimmer.hidden = YES;
     return YES;
 }
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.viewControllers[0].view.userInteractionEnabled = YES;
     [searchBar resignFirstResponder];
     self.viewControllers[0].navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
     self.viewControllers[0].tabBarController.tabBar.hidden = NO;
     searchBar.showsCancelButton = NO;
+    [activityIndicatorView removeFromSuperview];
     [self.tableView removeFromSuperview];
+    [loadingDimmer removeFromSuperview];
 }
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    self.viewControllers[0].navigationItem.rightBarButtonItem = nil;
-    self.viewControllers[0].tabBarController.tabBar.hidden = YES;
-    NSString *searchString = self.searchBar.text;
-    NSLog(@"%@",searchString);
-    [self.view addSubview:self.tableView];
-    
-}
+
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (![searchText isEqualToString:@""]){
         // to limit network activity, reload half a second after last key press.
@@ -128,22 +156,43 @@ static CGFloat searchBlockDelay = 0.25;
     }
     dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
     dispatch_async(getSongInfo, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:NO];
+            loadingDimmer.hidden = NO;
+            [activityIndicatorView setHidden:NO];
+            [activityIndicatorView startAnimating];
+        });
         NSDictionary *myDict = [apiCall searchSongs:searchText];
         songNames = [myDict objectForKey:@"songNames"];
         songAlbums = [myDict objectForKey:@"albumName"];
         songArtists = [myDict objectForKey:@"artistNames"];
         songImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:YES];
+            loadingDimmer.hidden = YES;
+            [activityIndicatorView stopAnimating];
+            [activityIndicatorView setHidden:YES];
             [self.tableView reloadData];
+            
         });
     });
     dispatch_queue_t getAlbumInfo = dispatch_queue_create("getAlbumInfo", NULL);
     dispatch_async(getAlbumInfo, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:NO];
+            loadingDimmer.hidden = NO;
+            [activityIndicatorView setHidden:NO];
+            [activityIndicatorView startAnimating];
+        });
         NSDictionary *myDict = [apiCall searchAlbums:searchText];
         albumNames = [myDict objectForKey:@"albumNames"];
         albumArtists = [myDict objectForKey:@"artistNames"];
         albumImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:YES];
+            loadingDimmer.hidden = YES;
+            [activityIndicatorView stopAnimating];
+            [activityIndicatorView setHidden:YES];
             [self.tableView reloadData];
         });
     });

@@ -9,6 +9,8 @@
 #import "DiscoverViewController.h"
 
 
+//BUG WHERE YOU EXIT SEARCH AND IT CHANGES BAR BUTTON ITEM FROM MICROPHONE ADD TO INBOX ON STATIONS VIEW
+
 @interface DiscoverViewController (){
     UIButton *songsSeeAllButton;
     UIButton *songsSeeAllInvisible;

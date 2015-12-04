@@ -8,26 +8,30 @@
 
 #import <UIKit/UIKit.h>
 #import "CCColorCube.h"
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 
 @interface NowPlayingViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIButton *expandArrow;
-@property (strong, nonatomic) IBOutlet UIButton *googleCast;
-@property (strong, nonatomic) IBOutlet UIButton *playPause;
-@property (strong, nonatomic) IBOutlet UIButton *next;
-@property (strong, nonatomic) IBOutlet UIButton *previous;
-@property (strong, nonatomic) IBOutlet UIButton *shuffle;
-@property (strong, nonatomic) IBOutlet UIButton *repeat;
-@property (strong, nonatomic) IBOutlet UIButton *like;
-@property (strong, nonatomic) IBOutlet UIButton *likeSelected;
-@property (strong, nonatomic) IBOutlet UIButton *queue;
-@property (strong, nonatomic) IBOutlet UIButton *share;
-@property (strong, nonatomic) IBOutlet UIButton *lyrics;
-@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (strong, nonatomic) IBOutlet UILabel *playlistTitle;
-@property (strong, nonatomic) IBOutlet UILabel *playlistArtist;
-@property (strong, nonatomic) IBOutlet UILabel *songTitle;
-@property (strong, nonatomic) IBOutlet UILabel *songArtist;
+@property (weak, nonatomic) IBOutlet UIButton *expandArrow;
+@property (weak, nonatomic) IBOutlet UIButton *googleCast;
+@property (weak, nonatomic) IBOutlet UIButton *playPause;
+@property (weak, nonatomic) IBOutlet UIButton *next;
+@property (weak, nonatomic) IBOutlet UIButton *previous;
+@property (weak, nonatomic) IBOutlet UIButton *shuffle;
+@property (weak, nonatomic) IBOutlet UIButton *repeat;
+@property (weak, nonatomic) IBOutlet UIButton *like;
+@property (weak, nonatomic) IBOutlet UIButton *likeSelected;
+@property (weak, nonatomic) IBOutlet UIButton *queue;
+@property (weak, nonatomic) IBOutlet UIButton *share;
+@property (weak, nonatomic) IBOutlet UIButton *lyrics;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UILabel *playlistTitle;
+@property (weak, nonatomic) IBOutlet UILabel *playlistArtist;
+@property (weak, nonatomic) IBOutlet UILabel *songTitle;
+@property (weak, nonatomic) IBOutlet UILabel *songArtist;
+@property (strong, nonatomic) AVAudioPlayer *player;
 
 
 @end

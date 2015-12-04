@@ -1,5 +1,5 @@
 //
-//  FMEngine.m
+//  TEngine.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 28/11/2015.
@@ -21,7 +21,7 @@
     }
     
     NSString *searchSongs = API_BASE;
-    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=musicTrack&limit=10", song]];
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=musicTrack&limit=4", song]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     NSDictionary *jsonDict = [self parseURL:searchSongs];
@@ -71,7 +71,7 @@
     }
 
     NSString *searchAlbums = API_BASE;
-    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=album&limit=10", album]];
+    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=album&limit=4", album]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
     NSDictionary *jsonDict = [self parseURL:searchAlbums];
@@ -110,6 +110,55 @@
     return myDict;
     
 }
+
+/*-(NSDictionary *)songInfo:(NSString *)song{
+    if (!song) {
+        return nil;
+    }
+    
+    NSString *searchSongs = API_BASE;
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=musicTrack&limit=4", song]];
+    searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    
+    NSDictionary *jsonDict = [self parseURL:searchSongs];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSNumber *resultCount = [jsonDict valueForKey:@"resultCount"];
+    [myDict setObject:resultCount forKey:@"resultCount"];
+    
+    NSArray *songNames = [[jsonDict valueForKey:@"results"]valueForKey:@"trackName"];
+    [myDict setObject:songNames forKey:@"songNames"]; //Returns array of song names which is accessed by: NSString *name = [[myDict objectForKey:@"songNames"]objectAtIndex:index];
+    
+    NSArray *artistNames = [[jsonDict valueForKey:@"results"]valueForKey:@"artistName"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    NSArray *albumName = [[jsonDict valueForKey:@"results"]valueForKey:@"collectionName"];
+    [myDict setObject:albumName forKey:@"albumName"];
+    
+    NSArray *albumImages = [[jsonDict valueForKey:@"results"]valueForKey:@"artworkUrl100"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<albumImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [albumImages objectAtIndex:i];
+        if ([imageURLAsString  isEqual: @""]) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]]; //If there is no album image, set it to the placeholder one
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+}*/
 
 /*-(NSArray *)albumInfo:(NSString *)artist album:(NSString *)album{
     

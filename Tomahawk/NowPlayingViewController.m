@@ -9,13 +9,24 @@
 #import "NowPlayingViewController.h"
 
 @interface NowPlayingViewController (){
-    UIColor *primaryColor;
-    UIColor *secondaryColor;
+    UIColor *primaryColor, *secondaryColor;
 }
 
 @end
 
 @implementation NowPlayingViewController
+
+-(IBAction)buttonTouched:(UIButton *)sender{
+    if (sender == _playPause) {
+        //set Play button to pause icon if it is play and visa versa
+        [_playPause setImage:[UIImage imageNamed:@"Pause"] forState:UIControlStateNormal];
+        NSError *error;
+        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:nil] error:&error];
+        [self.player play];
+        
+        
+    }
+}
 
 - (IBAction)likeButtonTouched:(id)sender{
     [sender setEnabled:NO];
@@ -38,6 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [_likeSelected setEnabled:NO];
     [_likeSelected setHidden:YES];
     
@@ -66,7 +78,7 @@
     }
     
     
-    NSArray *buttons = [NSArray arrayWithObjects:_expandArrow, _googleCast, _lyrics, _like, _queue, _share, _playPause, _next, _previous, _repeat, _shuffle, nil]; //Create array of all buttons
+    NSArray *buttons = @[_expandArrow, _googleCast, _lyrics, _like, _queue, _share, _playPause, _next, _previous, _repeat, _shuffle]; //Create array of all buttons
     
     //Set Button Properties
     for (UIButton *myButton in buttons) {

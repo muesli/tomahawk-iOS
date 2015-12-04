@@ -1,5 +1,5 @@
 //
-//  NowPlayingBar.h
+//  NavigationController.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 21/11/2015.
@@ -10,8 +10,9 @@
 #import "SearchBar.h"
 #import "TEngine.h"
 #import "dispatch_cancelable_block.h"
+#import "DGActivityIndicatorView.h"
 
-@interface NowPlayingBar : UINavigationController <UISearchControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface NavigationController : UINavigationController <UISearchControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) SearchBar *searchBar;
 @property (strong, nonatomic) UITableView *tableView;
