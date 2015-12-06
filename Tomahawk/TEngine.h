@@ -17,7 +17,7 @@
 -(NSDictionary *)searchArtistsiTunes:(NSString *)artist;
 -(NSDictionary *)searchSongsiTunes:(NSString *)song;
 
--(NSDictionary *)searchAlbumsSoundcloud:(NSString *)album;
+-(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist;
 -(NSDictionary *)searchArtistsSoundcloud:(NSString *)artist;
 -(NSDictionary *)searchSongsSoundcloud:(NSString *)song;
 

@@ -162,9 +162,10 @@ static CGFloat searchBlockDelay = 0.25;
             [activityIndicatorView setHidden:NO];
             [activityIndicatorView startAnimating];
         });
-        NSDictionary *myDict = [apiCall searchSongsiTunes:searchText];
+//        NSDictionary *myDict = [apiCall searchSongsiTunes:searchText];
+        NSDictionary *myDict = [apiCall searchSongsSoundcloud:searchText];
         songNames = [myDict objectForKey:@"songNames"];
-        songAlbums = [myDict objectForKey:@"albumName"];
+//        songAlbums = [myDict objectForKey:@"albumName"];
         songArtists = [myDict objectForKey:@"artistNames"];
         songImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -214,18 +215,19 @@ static CGFloat searchBlockDelay = 0.25;
         
         searchCell.imageView.image = [UIImage new];
         
-        //Create temp variables so selected code will only run once
+        //Create temp variables so code will only run once
         int j = indexPath.row;
         j++;
         for (int i = indexPath.row; i<j && i<songNames.count; i++) {
             searchCell.textLabel.text =  [songNames objectAtIndex:i];
-            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]];
+//            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]];
+            NSString *text = [songArtists objectAtIndex:i];
             searchCell.detailTextLabel.text = text;
             searchCell.imageView.image = [songImages objectAtIndex:i];
         }
         
     }else if (indexPath.section == 1){
-        //Create temp variables so selected code will only run once
+        //Create temp variables so code will only run once
         int j = indexPath.row;
         j++;
         for (int i = indexPath.row; i<j && i<albumNames.count; i++) {

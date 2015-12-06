@@ -20,6 +20,34 @@
                ReferencedContainer = "container:Tomahawk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4DBDE0321BADC2BA00CD02CC"
+               BuildableName = "TomahawkTests.xctest"
+               BlueprintName = "TomahawkTests"
+               ReferencedContainer = "container:Tomahawk.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4DBDE03D1BADC2BA00CD02CC"
+               BuildableName = "TomahawkUITests.xctest"
+               BlueprintName = "TomahawkUITests"
+               ReferencedContainer = "container:Tomahawk.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,26 +56,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DBDE0321BADC2BA00CD02CC"
-               BuildableName = "TomahawkTests.xctest"
-               BlueprintName = "TomahawkTests"
-               ReferencedContainer = "container:Tomahawk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4DBDE03D1BADC2BA00CD02CC"
-               BuildableName = "TomahawkUITests.xctest"
-               BlueprintName = "TomahawkUITests"
-               ReferencedContainer = "container:Tomahawk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

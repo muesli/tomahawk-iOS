@@ -14,7 +14,9 @@
 
 #import "TEngine.h"
 
-@implementation TEngine
+@implementation TEngine{
+    BOOL exceptionThrown;
+}
 
 -(NSDictionary *)searchSongsiTunes:(NSString *)song{
     if (!song) {
@@ -275,13 +277,123 @@
 //}
 //
 
+-(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist{
+    
+    //TODO: WHEN PLAYLIST DOESNT HAVE AN IMAGE, CREATE ONE FROM THE TRACKS INSIDE IT. NOTE: WHEN TRACK NUMBER IS LOWER THAN 4, ONLY USE THE FIRST IMAGE AS THE PLAYLIST IMAGE.
+    
+    
+    if (!playlist) {
+        return nil;
+    }
+    
+    NSString *searchPlaylists = SOUNDCLOUD_BASE;
+    searchPlaylists = [searchPlaylists stringByAppendingString:[NSString stringWithFormat:@"playlists/?q=%@&client_id=%@&limit=4", playlist, SOUNDCLOUD_CLIENT_ID]];
+    searchPlaylists = [searchPlaylists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSDictionary *jsonDict = [self parseURL:searchPlaylists];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *playlistNames = [jsonDict valueForKey:@"title"];
+    [myDict setObject:playlistNames forKey:@"playlistNames"]; //Returns array of playlist names which is accessed by: NSString *name = [[myDict objectForKey:@"playlistNames"]objectAtIndex:index];
+    
+    NSArray *songNumber = [jsonDict valueForKey:@"track_count"];
+    [myDict setObject:songNumber forKey:@"songNumber"]; //Returns array of song numbers wrapped in an nsnumber which is accessed by: NSNumber *songNumber = [[myDict objectForKey:@"songNumber"]objectAtIndex:index];
+    
+    NSArray *playlistImages = [jsonDict valueForKey:@"artwork_url"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<playlistImages.count; i++) {
+        exceptionThrown = FALSE;
+        //Get All medium images
+        NSString *imageURLAsString = [playlistImages objectAtIndex:i];
+        NSLog(@"image url is %@", imageURLAsString);
+        
+        //check if there is no album image. If not, set it to the placeholder one.
+        @try {
+            [[playlistImages objectAtIndex:i] isEqualToString:@"<null>"];
+        }
+        @catch (NSException *exception) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderArtistMedium"]];
+            exceptionThrown = TRUE;
+        }
+        @finally {}
+        if (exceptionThrown == FALSE) {
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+}
+
+-(NSDictionary *)searchArtistsSoundcloud:(NSString *)artist{
+    if (!artist) {
+        return nil;
+    }
+    
+    NSString *searchArtists = SOUNDCLOUD_BASE;
+    searchArtists = [searchArtists stringByAppendingString:[NSString stringWithFormat:@"users/?q=%@&client_id=%@&limit=4", artist, SOUNDCLOUD_CLIENT_ID]];
+    searchArtists = [searchArtists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSDictionary *jsonDict = [self parseURL:searchArtists];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *artistNames = [jsonDict valueForKey:@"username"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    NSArray *artistImages = [jsonDict valueForKey:@"avatar_url"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<artistImages.count; i++) {
+        exceptionThrown = FALSE;
+        //Get All medium images
+        NSString *imageURLAsString = [artistImages objectAtIndex:i];
+        NSLog(@"image url is %@", imageURLAsString);
+        
+        //check if there is no album image. If not, set it to the placeholder one.
+        @try {
+            [[artistImages objectAtIndex:i] isEqualToString:@"<null>"];
+        }
+        @catch (NSException *exception) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderArtistMedium"]];
+            exceptionThrown = TRUE;
+        }
+        @finally {}
+        if (exceptionThrown == FALSE) {
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+
+}
+
 -(NSDictionary *)searchSongsSoundcloud:(NSString *)song{
     if (!song) {
         return nil;
     }
     
     NSString *searchSongs = SOUNDCLOUD_BASE;
-    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"tracks/?q=%@&client_id=%@", song, SOUNDCLOUD_CLIENT_ID]];
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"tracks/?q=%@&client_id=%@&limit=4", song, SOUNDCLOUD_CLIENT_ID]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
     NSDictionary *jsonDict = [self parseURL:searchSongs];
@@ -303,11 +415,20 @@
     NSMutableArray *images = [NSMutableArray new];
     
     for (int i = 0; i<songImages.count; i++) {
+        exceptionThrown = FALSE;
         //Get All medium images
         NSString *imageURLAsString = [songImages objectAtIndex:i];
-        if ([imageURLAsString  isEqual: @""]) {
-            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]]; //If there is no album image, set it to the placeholder one
-        }else{
+        NSLog(@"image url is %@", imageURLAsString);
+        //check if there is no album image. If not, set it to the placeholder one.
+        @try {
+            [[songImages objectAtIndex:i] isEqualToString:@"<null>"];
+        }
+        @catch (NSException *exception) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
+            exceptionThrown = TRUE;
+        }
+        @finally {}
+        if (exceptionThrown == FALSE) {
             NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
             NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
             UIImage *image = [UIImage imageWithData:rawImageData];
@@ -323,6 +444,8 @@
 -(NSDictionary *)parseURL:(NSString *)URLAsString{
     
     //TAKES 5 SECONDS TO GET FROM TOP TO BOTTOM. FIX
+    
+    NSLog(@"string is %@", URLAsString);
     
     NSError *error;
     
