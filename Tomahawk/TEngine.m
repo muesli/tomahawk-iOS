@@ -6,21 +6,22 @@
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#define API_BASE @"https://itunes.apple.com/search?"
+#define ITUNES_BASE @"https://itunes.apple.com/search?"
 #define API_KEY @"94f82a0fccbf54bee207afdd5d44de97"
+
+#define SOUNDCLOUD_CLIENT_ID @"3e69fb6130301f668be328e2f8fad38b"
+#define SOUNDCLOUD_BASE @"https://api.soundcloud.com/"
 
 #import "TEngine.h"
 
-//CRASHES WHEN YOU SPELL SEARCH WRONG
-
 @implementation TEngine
 
--(NSDictionary *)searchSongs:(NSString *)song{
+-(NSDictionary *)searchSongsiTunes:(NSString *)song{
     if (!song) {
         return nil;
     }
     
-    NSString *searchSongs = API_BASE;
+    NSString *searchSongs = ITUNES_BASE;
     searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=musicTrack&limit=4", song]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
@@ -64,13 +65,13 @@
     return myDict;
 }
 
--(NSDictionary *)searchAlbums:(NSString *)album{
+-(NSDictionary *)searchAlbumsiTunes:(NSString *)album{
     
     if (!album){
         return nil;
     }
 
-    NSString *searchAlbums = API_BASE;
+    NSString *searchAlbums = ITUNES_BASE;
     searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=album&limit=4", album]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
@@ -116,7 +117,7 @@
         return nil;
     }
     
-    NSString *searchSongs = API_BASE;
+    NSString *searchSongs = ITUNES_BASE;
     searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"term=%@&entity=musicTrack&limit=4", song]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     
@@ -163,7 +164,7 @@
 /*-(NSArray *)albumInfo:(NSString *)artist album:(NSString *)album{
     
     //Setup API adress
-    NSString *getAlbumInfo = API_BASE;
+    NSString *getAlbumInfo = ITUNES_BASE;
     getAlbumInfo = [getAlbumInfo stringByAppendingString:@"album.getInfo"];
     getAlbumInfo = [getAlbumInfo stringByAppendingString:@"&artist="];
     getAlbumInfo = [getAlbumInfo stringByAppendingString:artist];
@@ -220,7 +221,7 @@
 }*/
 
 //-(NSDictionary *)songInfo:(NSString *)song artist:(NSString *)artist{
-//    NSString *songInfo = API_BASE;
+//    NSString *songInfo = ITUNES_BASE;
 //    songInfo = [songInfo stringByAppendingString:[NSString stringWithFormat:@"track.getInfo&artist=%@&track=%@&api_key=%@&limit=10&format=json&autocorrect=1", artist, song, API_KEY]];
 //    
 //    songInfo = [songInfo stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
@@ -274,11 +275,54 @@
 //}
 //
 
+-(NSDictionary *)searchSongsSoundcloud:(NSString *)song{
+    if (!song) {
+        return nil;
+    }
+    
+    NSString *searchSongs = SOUNDCLOUD_BASE;
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"tracks/?q=%@&client_id=%@", song, SOUNDCLOUD_CLIENT_ID]];
+    searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSDictionary *jsonDict = [self parseURL:searchSongs];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *songNames = [jsonDict valueForKey:@"title"];
+    [myDict setObject:songNames forKey:@"songNames"]; //Returns array of song names which is accessed by: NSString *name = [[myDict objectForKey:@"songNames"]objectAtIndex:index];
+    
+    NSArray *artistNames = [[jsonDict valueForKey:@"user"]valueForKey:@"username"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    NSArray *songImages = [jsonDict valueForKey:@"artwork_url"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<songImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [songImages objectAtIndex:i];
+        if ([imageURLAsString  isEqual: @""]) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]]; //If there is no album image, set it to the placeholder one
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+
+}
+
 -(NSDictionary *)parseURL:(NSString *)URLAsString{
     
     //TAKES 5 SECONDS TO GET FROM TOP TO BOTTOM. FIX
-    
-    NSLog(@"We have reached the start");
     
     NSError *error;
     
@@ -292,8 +336,6 @@
         }
     }
     
-    NSLog(@"We passed fase 1");
-    
     NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonString options:NSJSONReadingMutableContainers error:&error];//Parse all raw JSON into a dictionary
     
     
@@ -301,7 +343,6 @@
         NSLog(@"Error in parsing Data --> %@", error);
         return nil;
     }
-    NSLog(@"Parsed!");
     
     return jsonDict;
 }

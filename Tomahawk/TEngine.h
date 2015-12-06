@@ -11,13 +11,18 @@
 
 @interface TEngine : NSObject
 
-#pragma mark - Album
+#pragma mark - Search
 
--(NSDictionary *)searchAlbums:(NSString *)album;
+-(NSDictionary *)searchAlbumsiTunes:(NSString *)album;
+-(NSDictionary *)searchArtistsiTunes:(NSString *)artist;
+-(NSDictionary *)searchSongsiTunes:(NSString *)song;
+
+-(NSDictionary *)searchAlbumsSoundcloud:(NSString *)album;
+-(NSDictionary *)searchArtistsSoundcloud:(NSString *)artist;
+-(NSDictionary *)searchSongsSoundcloud:(NSString *)song;
+
 
 #pragma mark - Artist
-
--(NSDictionary *)searchArtists:(NSString *)artist;
 
 #pragma mark - Authentication
 
@@ -38,8 +43,6 @@
 #pragma mark - Tag
 
 #pragma mark - Track
-
--(NSDictionary *)searchSongs:(NSString *)song;
 
 -(NSDictionary *)songInfo:(NSString *)song;
 
