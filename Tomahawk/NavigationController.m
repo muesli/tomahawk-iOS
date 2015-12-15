@@ -162,10 +162,9 @@ static CGFloat searchBlockDelay = 0.25;
             [activityIndicatorView setHidden:NO];
             [activityIndicatorView startAnimating];
         });
-//        NSDictionary *myDict = [apiCall searchSongsiTunes:searchText];
-        NSDictionary *myDict = [apiCall searchSongsSoundcloud:searchText];
+        NSDictionary *myDict = [apiCall searchSongsiTunes:searchText];
         songNames = [myDict objectForKey:@"songNames"];
-//        songAlbums = [myDict objectForKey:@"albumName"];
+        songAlbums = [myDict objectForKey:@"albumName"];
         songArtists = [myDict objectForKey:@"artistNames"];
         songImages = [myDict objectForKey:@"mediumImages"];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -220,8 +219,7 @@ static CGFloat searchBlockDelay = 0.25;
         j++;
         for (int i = indexPath.row; i<j && i<songNames.count; i++) {
             searchCell.textLabel.text =  [songNames objectAtIndex:i];
-//            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]];
-            NSString *text = [songArtists objectAtIndex:i];
+            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]];
             searchCell.detailTextLabel.text = text;
             searchCell.imageView.image = [songImages objectAtIndex:i];
         }

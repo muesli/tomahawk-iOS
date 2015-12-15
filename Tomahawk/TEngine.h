@@ -21,6 +21,10 @@
 -(NSDictionary *)searchArtistsSoundcloud:(NSString *)artist;
 -(NSDictionary *)searchSongsSoundcloud:(NSString *)song;
 
+-(NSDictionary *)searchPlaylistsSpotify:(NSString *)playlist;
+-(NSDictionary *)searchArtistsSpotify:(NSString *)artist;
+-(NSDictionary *)searchSongsSpotify:(NSString *)song;
+
 
 #pragma mark - Artist
 

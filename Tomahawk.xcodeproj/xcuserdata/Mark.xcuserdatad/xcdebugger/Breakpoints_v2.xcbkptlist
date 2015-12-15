@@ -553,7 +553,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "310"
             endingLineNumber = "310"
-            landmarkName = "-searchSongsSoundcloud:"
+            landmarkName = "-searchPlaylistsSoundcloud:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
