@@ -9,12 +9,17 @@
 #define ITUNES_BASE @"https://itunes.apple.com/search?"
 #define API_KEY @"94f82a0fccbf54bee207afdd5d44de97"
 
-#define SOUNDCLOUD_CLIENT_ID @"3e69fb6130301f668be328e2f8fad38b"
 #define SOUNDCLOUD_BASE @"https://api.soundcloud.com/"
+#define SOUNDCLOUD_CLIENT_ID @"3e69fb6130301f668be328e2f8fad38b"
 
 #define SPOTIFY_BASE @"https://api.spotify.com/v1/search?"
 
+
 #import "TEngine.h"
+
+
+//POSSIBLE BUG WHERE NO ALBUMS ARE SHOWN IN SEARCH SONGS
+//BUG IN SEARCH. MAYBE BECAUSE TOO SPECIFIC IN SEARCHING. TYPE MAP ADAM TO REPRODUCE
 
 @implementation TEngine{
     BOOL exceptionThrown;
@@ -70,7 +75,6 @@
 }
 
 -(NSDictionary *)searchAlbumsiTunes:(NSString *)album{
-    
     if (!album){
         return nil;
     }
@@ -117,8 +121,6 @@
 }
 
 
-
-
 -(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist{
     
     //TODO: WHEN PLAYLIST DOESNT HAVE AN IMAGE, CREATE ONE FROM THE TRACKS INSIDE IT. NOTE: WHEN TRACK NUMBER IS LOWER THAN 4, ONLY USE THE FIRST IMAGE AS THE PLAYLIST IMAGE.
@@ -154,7 +156,6 @@
         exceptionThrown = FALSE;
         //Get All medium images
         NSString *imageURLAsString = [playlistImages objectAtIndex:i];
-        NSLog(@"image url is %@", imageURLAsString);
         
         //check if there is a playlist image. If not, set it to the placeholder one.
         @try {
@@ -205,7 +206,6 @@
         exceptionThrown = FALSE;
         //Get All medium images
         NSString *imageURLAsString = [artistImages objectAtIndex:i];
-        NSLog(@"image url is %@", imageURLAsString);
         
         //check if there is no album image. If not, set it to the placeholder one.
         @try {
@@ -260,7 +260,6 @@
         exceptionThrown = FALSE;
         //Get All medium images
         NSString *imageURLAsString = [songImages objectAtIndex:i];
-        NSLog(@"image url is %@", imageURLAsString);
         //check if there is no album image. If not, set it to the placeholder one.
         @try {
             [[songImages objectAtIndex:i] isEqualToString:@"<null>"];
@@ -283,6 +282,7 @@
 
 }
 
+
 -(NSDictionary *)searchSongsSpotify:(NSString *)song{
     if (!song) {
         return nil;
@@ -304,18 +304,34 @@
     [myDict setObject:songNames forKey:@"songNames"]; //Returns array of song names which is accessed by: NSString *name = [[myDict objectForKey:@"songNames"]objectAtIndex:index];
     
     NSArray *artistNames = [[[[jsonDict valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"artists"]valueForKey:@"name"];
-    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
     
-    NSArray *songImages = [[[[[[[jsonDict valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"images"]objectAtIndex:2]valueForKey:@"url"];
+    NSMutableArray *artists = [NSMutableArray new];
+    
+    for (int i = 0; i<artistNames.count; i++) {
+        NSString *artist1 = [[artistNames objectAtIndex:i]objectAtIndex:0];
+        @try {
+            NSString *artist2 = [[artistNames objectAtIndex:i]objectAtIndex:1];
+            artist1 = [NSString stringWithFormat:@"%@ (feat. %@)", artist1, artist2];
+        }
+        @catch (NSException *exception) {}
+        @finally {
+            [artists addObject:artist1];
+        }
+    }
+    [myDict setObject:artists forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[[myDict objectForKey:@"artistNames"]objectAtIndex:index]objectAtIndex:0];
+    
+    NSArray *albumNames = [[[[jsonDict valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"name"];
+    [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
+    
+    NSArray *songImages = [[[[jsonDict valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"images"];
     
     NSMutableArray *images = [NSMutableArray new];
     
     for (int i = 0; i<songImages.count; i++) {
         //Get All medium images
-        NSString *imageURLAsString = [songImages objectAtIndex:i];
-        NSLog(@"image url is %@", imageURLAsString);
+        NSString *imageURLAsString = [[[songImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
         //check if there is no album image. If not, set it to the placeholder one.
-        if (![songImages objectAtIndex:i]) {
+        if (!imageURLAsString) {
             [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
         }else{
             NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
@@ -325,15 +341,71 @@
         }
     }
     [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
-    
     return myDict;
 }
+
+-(NSDictionary *)searchAlbumsSpotify:(NSString *)album{
+    if (!album) {
+        return nil;
+    }
+    
+    NSString *searchAlbums = SPOTIFY_BASE;
+    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=album&limit=5", album]];
+    searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSDictionary *jsonDict = [self parseURL:searchAlbums];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSArray *identifier = [[[jsonDict valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"id"];
+    
+    NSMutableArray *artistNames = [NSMutableArray new];
+    
+    for (int i = 0; i<identifier.count; i++) {
+        NSString *albumArtistURL = @"https://api.spotify.com/v1/albums/";
+        albumArtistURL = [albumArtistURL stringByAppendingString:[identifier objectAtIndex:i]];
+        NSDictionary *albumArtist = [self parseURL:albumArtistURL];
+    
+        NSString *artists = [[[albumArtist valueForKey:@"artists"]valueForKey:@"name"]objectAtIndex:0];
+        [artistNames addObject:artists];
+    }
+    
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[[myDict objectForKey:@"artistNames"]objectAtIndex:index]objectAtIndex:0];
+    
+    NSArray *albumNames = [[[jsonDict valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"name"];
+    [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
+    
+    NSArray *albumImages = [[[jsonDict valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"images"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<albumImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
+        //check if there is no album image. If not, set it to the placeholder one.
+        if (!imageURLAsString) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+
+    return myDict;
+}
+
 
 -(NSDictionary *)parseURL:(NSString *)URLAsString{
     
     //TAKES 5 SECONDS TO GET FROM TOP TO BOTTOM. FIX
-    
-    NSLog(@"string is %@", URLAsString);
     
     NSError *error;
     

@@ -162,7 +162,7 @@ static CGFloat searchBlockDelay = 0.25;
             [activityIndicatorView setHidden:NO];
             [activityIndicatorView startAnimating];
         });
-        NSDictionary *myDict = [apiCall searchSongsiTunes:searchText];
+        NSDictionary *myDict = [apiCall searchSongsSpotify:searchText];
         songNames = [myDict objectForKey:@"songNames"];
         songAlbums = [myDict objectForKey:@"albumName"];
         songArtists = [myDict objectForKey:@"artistNames"];
@@ -184,7 +184,7 @@ static CGFloat searchBlockDelay = 0.25;
             [activityIndicatorView setHidden:NO];
             [activityIndicatorView startAnimating];
         });
-        NSDictionary *myDict = [apiCall searchAlbumsiTunes:searchText];
+        NSDictionary *myDict = [apiCall searchAlbumsSpotify:searchText];
         albumNames = [myDict objectForKey:@"albumNames"];
         albumArtists = [myDict objectForKey:@"artistNames"];
         albumImages = [myDict objectForKey:@"mediumImages"];
@@ -211,15 +211,18 @@ static CGFloat searchBlockDelay = 0.25;
     }
     
     if (indexPath.section == 0) {
-        
         searchCell.imageView.image = [UIImage new];
-        
         //Create temp variables so code will only run once
         int j = indexPath.row;
         j++;
         for (int i = indexPath.row; i<j && i<songNames.count; i++) {
             searchCell.textLabel.text =  [songNames objectAtIndex:i];
-            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]];
+            NSString *albums = [songAlbums objectAtIndex:i];
+            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums];
+            //If there are no albums, remove the album thing ^
+            if (!albums) {
+                text = [songArtists objectAtIndex:i];
+            }
             searchCell.detailTextLabel.text = text;
             searchCell.imageView.image = [songImages objectAtIndex:i];
         }

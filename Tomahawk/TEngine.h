@@ -24,6 +24,7 @@
 -(NSDictionary *)searchPlaylistsSpotify:(NSString *)playlist;
 -(NSDictionary *)searchArtistsSpotify:(NSString *)artist;
 -(NSDictionary *)searchSongsSpotify:(NSString *)song;
+-(NSDictionary *)searchAlbumsSpotify:(NSString *)album;
 
 
 #pragma mark - Artist
