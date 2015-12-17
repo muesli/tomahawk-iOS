@@ -17,9 +17,7 @@
 
 #import "TEngine.h"
 
-
-//POSSIBLE BUG WHERE NO ALBUMS ARE SHOWN IN SEARCH SONGS
-//BUG IN SEARCH. MAYBE BECAUSE TOO SPECIFIC IN SEARCHING. TYPE MAP ADAM TO REPRODUCE
+//SPOTIFY ARTIST IMAGES ARE MESSED UP SO objectAtIndex:2 ISNT ALWAYS GETTING 200*200 IMAGES, SOMETIMES ITS GETTING HIHGHER RES AND SOMETIMES ITS GETTING LOWER RES. FIX
 
 @implementation TEngine{
     BOOL exceptionThrown;
@@ -289,8 +287,10 @@
     }
     
     NSString *searchSongs = SPOTIFY_BASE;
-    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=track&limit=5", song]];
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=track&limit=4", song]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSLog(@"Search songs text is %@", searchSongs);
     
     NSDictionary *jsonDict = [self parseURL:searchSongs];
     
@@ -350,8 +350,10 @@
     }
     
     NSString *searchAlbums = SPOTIFY_BASE;
-    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=album&limit=5", album]];
+    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=album&limit=4", album]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSLog(@"Search album text is %@", searchAlbums);
     
     NSDictionary *jsonDict = [self parseURL:searchAlbums];
     
@@ -402,10 +404,60 @@
     return myDict;
 }
 
+-(NSDictionary *)searchArtistsSpotify:(NSString *)artist{
+    if (!artist) {
+        return nil;
+    }
+    
+    NSString *searchArtists = SPOTIFY_BASE;
+    searchArtists = [searchArtists stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=artist&limit=4", artist]];
+    searchArtists = [searchArtists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSDictionary *jsonDict = [self parseURL:searchArtists];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *artistNames = [[[jsonDict valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"name"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    
+    NSArray *artistFollowers = [[[[jsonDict valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"followers"]valueForKey:@"total"];
+    [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
+    NSArray *artistImages = [[[jsonDict valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"images"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    for (int i = 0; i<artistImages.count; i++) {
+        exceptionThrown = FALSE;
+        //Get All medium images
+        NSString *imageURLAsString;
+        //If there are no artist images, set to placeholder one
+        @try {
+            imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"url"];
+        }
+        @catch (NSException *exception) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderArtistMedium"]];
+            exceptionThrown = TRUE;
+        }
+        @finally {
+            if (exceptionThrown == FALSE) {
+                NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+                NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+                UIImage *image = [UIImage imageWithData:rawImageData];
+                [images addObject:image];
+            }
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+
+}
+
 
 -(NSDictionary *)parseURL:(NSString *)URLAsString{
-    
-    //TAKES 5 SECONDS TO GET FROM TOP TO BOTTOM. FIX
     
     NSError *error;
     

@@ -49,8 +49,6 @@
 
 #pragma mark - Track
 
--(NSDictionary *)songInfo:(NSString *)song;
-
 #pragma mark - User
 
 #pragma mark - Venue
