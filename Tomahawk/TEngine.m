@@ -290,8 +290,6 @@
     searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=track&limit=4", song]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
-    NSLog(@"Search songs text is %@", searchSongs);
-    
     NSDictionary *jsonDict = [self parseURL:searchSongs];
     
     if (!jsonDict) {
@@ -454,6 +452,55 @@
     
     return myDict;
 
+}
+
+-(NSDictionary *)searchPlaylistsSpotify:(NSString *)playlist{
+    if (!playlist) {
+        return nil;
+    }
+    
+    NSString *searchPlaylists = SPOTIFY_BASE;
+    searchPlaylists = [searchPlaylists stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=playlist&limit=4", playlist]];
+    searchPlaylists = [searchPlaylists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    
+    NSDictionary *jsonDict = [self parseURL:searchPlaylists];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *playlistNames = [[[jsonDict valueForKey:@"playlists"]valueForKey:@"items"]valueForKey:@"name"];
+    [myDict setObject:playlistNames forKey:@"playlistNames"]; //Returns array of song playlist which is accessed by: NSString *name = [[myDict objectForKey:@"playlistNames"]objectAtIndex:index];
+    
+    NSArray *playlistArtists = [[[[jsonDict valueForKey:@"playlists"]valueForKey:@"items"]valueForKey:@"owner"]valueForKey:@"id"];
+    [myDict setObject:playlistArtists forKey:@"playlistArtists"]; //Returns array of artist names which is accessed by: NSString *name = [[[myDict objectForKey:@"artistNames"]objectAtIndex:index]objectAtIndex:0];
+    
+    NSArray *trackCount = [[[[jsonDict valueForKey:@"playlists"]valueForKey:@"items"]valueForKey:@"tracks"]valueForKey:@"total"];
+    [myDict setObject:trackCount forKey:@"trackCount"]; //Returns array of track counts wrapped in an NSNumber, accessed by: NSNumber *trackCount = [[[myDict objectForKey:@"trackCount"]objectAtIndex:index]intValue];
+    
+    NSArray *playlistImages = [[[jsonDict valueForKey:@"playlists"]valueForKey:@"items"]valueForKey:@"images"];
+    NSLog(@"playlistImages are: %@", playlistImages);
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<playlistImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [[[playlistImages objectAtIndex:i]objectAtIndex:0]valueForKey:@"url"];
+        //check if there is no album image. If not, set it to the placeholder one.
+        if (!imageURLAsString) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    return myDict;
 }
 
 

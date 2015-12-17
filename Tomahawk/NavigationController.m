@@ -8,11 +8,13 @@
 
 #import "NavigationController.h"
 
+//UI BUG WHERE IF THERE ARE NONE OF A CERTAIN FIELD, EG. ARTISTS, THE HEADER WILL NOT FULLY REMOVE MEANING THE HEADER FOR THE OTHER ONES WILL DOUBLE IN SIZE
+
 
 @interface NavigationController (){
     UIButton *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton, *searchArtistsSeeAllButton;
     UILabel  *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader, *searchArtistsHeader;
-    NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers;
+    NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers, *playlistCount, *playlistNames, *playlistImages, *playlistArtists;
     TEngine *apiCall;
     __block dispatch_cancelable_block_t searchBlock;
     DGActivityIndicatorView *activityIndicatorView;
@@ -147,6 +149,9 @@ static CGFloat searchBlockDelay = 0.25;
         artistNames = nil;
         artistFollowers = nil;
         artistImages = nil;
+        playlistNames = nil;
+        playlistImages = nil;
+        playlistCount = nil;
         [self.tableView reloadData];
     }
     
@@ -224,6 +229,29 @@ static CGFloat searchBlockDelay = 0.25;
             
         });
     });
+    
+    dispatch_queue_t getPlaylistInfo = dispatch_queue_create("getPlaylistInfo", NULL);
+    dispatch_async(getPlaylistInfo, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:NO];
+            loadingDimmer.hidden = NO;
+            [activityIndicatorView setHidden:NO];
+            [activityIndicatorView startAnimating];
+        });
+        NSDictionary *myDict = [apiCall searchPlaylistsSpotify:searchText];
+        playlistNames = [myDict objectForKey:@"playlistNames"];
+        playlistArtists = [myDict objectForKey:@"playlistArtists"];
+        playlistCount = [myDict objectForKey:@"trackCount"];
+        playlistImages = [myDict objectForKey:@"mediumImages"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView setUserInteractionEnabled:YES];
+            loadingDimmer.hidden = YES;
+            [activityIndicatorView stopAnimating];
+            [activityIndicatorView setHidden:YES];
+            [self.tableView reloadData];
+            
+        });
+    });
 }
 
 #pragma mark - Table View
@@ -277,6 +305,20 @@ static CGFloat searchBlockDelay = 0.25;
             searchCell.detailTextLabel.text = followers;
             searchCell.imageView.image = [artistImages objectAtIndex:i];
         }
+    }else if (indexPath.section == 3){
+        //Create temp variables so code will only run once
+        int j = indexPath.row;
+        j++;
+        
+        for (int i = indexPath.row; i<j && i<playlistNames.count; i++) {
+            searchCell.textLabel.text = [playlistNames objectAtIndex:i];
+            NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
+            searchCell.detailTextLabel.text = count;
+            searchCell.imageView.image = [playlistImages objectAtIndex:i];
+        }
+
     }
     
     
@@ -311,12 +353,18 @@ static CGFloat searchBlockDelay = 0.25;
         }else{
             return artistNames.count;
         }
+    }else if(section == 3){
+        if (playlistNames.count >= 4) {
+            return 4;
+        }else{
+            return playlistNames.count;
+        }
     }
     return 0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -336,6 +384,9 @@ static CGFloat searchBlockDelay = 0.25;
     }else if (section == 2){
         searchArtistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
         myArray = @[searchArtistsSeeAllButton];
+    }else if (section == 3){
+        searchPlaylistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        myArray = @[searchPlaylistsSeeAllButton];
     }
     
     for (UIButton *buttons in myArray) {
@@ -379,6 +430,10 @@ static CGFloat searchBlockDelay = 0.25;
         searchArtistsHeader = [[UILabel alloc]init];
         searchArtistsHeader.text = @"ARTISTS";
         myArray = @[searchArtistsHeader];
+    }else if (section == 3){
+        searchPlaylistsHeader = [[UILabel alloc]init];
+        searchPlaylistsHeader.text = @"PLAYLISTS";
+        myArray = @[searchPlaylistsHeader];
     }
     
     for (UILabel *headers in myArray) {
