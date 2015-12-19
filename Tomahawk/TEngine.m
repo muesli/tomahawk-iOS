@@ -7,17 +7,24 @@
 //
 
 #define ITUNES_BASE @"https://itunes.apple.com/search?"
-#define API_KEY @"94f82a0fccbf54bee207afdd5d44de97"
 
 #define SOUNDCLOUD_BASE @"https://api.soundcloud.com/"
 #define SOUNDCLOUD_CLIENT_ID @"3e69fb6130301f668be328e2f8fad38b"
 
 #define SPOTIFY_BASE @"https://api.spotify.com/v1/search?"
 
+#define LASTFM_BASE @"http://ws.audioscrobbler.com/2.0/?method="
+#define LASTFM_API_KEY @"94f82a0fccbf54bee207afdd5d44de97"
+
+#define DEEZER_BASE @"http://api.deezer.com/search/"
+
+
 
 #import "TEngine.h"
 
 //SPOTIFY ARTIST IMAGES ARE MESSED UP SO objectAtIndex:2 ISNT ALWAYS GETTING 200*200 IMAGES, SOMETIMES ITS GETTING HIHGHER RES AND SOMETIMES ITS GETTING LOWER RES. FIX
+
+//LAST.FM ARTIST FOLLOWERS DONT WORK FOR SOME REASON. FIX
 
 @implementation TEngine{
     BOOL exceptionThrown;
@@ -118,6 +125,52 @@
     
 }
 
+-(NSDictionary *)searchArtists:(NSString *)artist{
+    if (!artist) {
+        return nil;
+    }
+    
+    NSString *searchArtists = LASTFM_BASE;
+    searchArtists = [searchArtists stringByAppendingString:[NSString stringWithFormat:@"artist.search&artist=%@&api_key=%@&limit=4&format=json", artist, LASTFM_API_KEY]];
+    searchArtists = [searchArtists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    
+    NSDictionary *jsonDict = [self parseURL:searchArtists];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *artistNames = [[[[jsonDict valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"name"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    NSArray *artistFollowers = [[[[jsonDict valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"listeners"];
+    [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
+    
+    NSArray *artistImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"image"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    for (int i = 0; i<artistImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
+        if ([imageURLAsString isEqualToString:@""]) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderArtistMedium"]];
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    
+    
+    return myDict;
+}
+
 
 -(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist{
     
@@ -192,6 +245,9 @@
     }
     
     NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *artistFollowers = [jsonDict valueForKey:@"followers_count"];
+    [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
     
     NSArray *artistNames = [jsonDict valueForKey:@"username"];
     [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
@@ -350,8 +406,7 @@
     NSString *searchAlbums = SPOTIFY_BASE;
     searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"q=%@&type=album&limit=4", album]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    
-    NSLog(@"Search album text is %@", searchAlbums);
+
     
     NSDictionary *jsonDict = [self parseURL:searchAlbums];
     
@@ -482,7 +537,6 @@
     [myDict setObject:trackCount forKey:@"trackCount"]; //Returns array of track counts wrapped in an NSNumber, accessed by: NSNumber *trackCount = [[[myDict objectForKey:@"trackCount"]objectAtIndex:index]intValue];
     
     NSArray *playlistImages = [[[jsonDict valueForKey:@"playlists"]valueForKey:@"items"]valueForKey:@"images"];
-    NSLog(@"playlistImages are: %@", playlistImages);
     
     NSMutableArray *images = [NSMutableArray new];
     
@@ -502,6 +556,151 @@
     [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     return myDict;
 }
+
+
+-(NSDictionary *)searchSongsDeezer:(NSString *)song{
+    if (!song) {
+        return nil;
+    }
+    
+    NSString *searchSongs = DEEZER_BASE;
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"track?q=%@&limit=4", song]];
+    searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+
+    
+    NSDictionary *jsonDict = [self parseURL:searchSongs];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *songNames = [[jsonDict valueForKey:@"data"]valueForKey:@"title"];
+    [myDict setObject:songNames forKey:@"songNames"]; //Returns array of song names which is accessed by: NSString *name = [[myDict objectForKey:@"songNames"]objectAtIndex:index];
+    
+    NSArray *artistNames = [[[jsonDict valueForKey:@"data"]valueForKey:@"artist"]valueForKey:@"name"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    NSArray *albumNames = [[[jsonDict valueForKey:@"data"]valueForKey:@"album"]valueForKey:@"title"];
+    [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
+    
+    NSArray *songImages = [[[jsonDict valueForKey:@"data"]valueForKey:@"album"]valueForKey:@"cover"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<songImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [songImages objectAtIndex:i];
+        //check if there is no album image. If not, set it to the placeholder one.
+        if (!imageURLAsString) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+}
+
+-(NSDictionary *)searchAlbumsDeezer:(NSString *)album{
+    if (!album) {
+        return nil;
+    }
+    
+    NSString *searchAlbums = DEEZER_BASE;
+    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"album?q=%@&limit=4", album]];
+    searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    NSDictionary *jsonDict = [self parseURL:searchAlbums];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *albumNames = [[jsonDict valueForKey:@"data"]valueForKey:@"title"];
+    [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
+    
+    NSArray *artistNames = [[[jsonDict valueForKey:@"data"]valueForKey:@"artist"]valueForKey:@"name"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    NSArray *albumImages = [[jsonDict valueForKey:@"data"]valueForKey:@"cover"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<albumImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [albumImages objectAtIndex:i];
+        //check if there is no album image. If not, set it to the placeholder one.
+        if (!imageURLAsString) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderMedium"]];
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+
+}
+
+-(NSDictionary *)searchArtistsDeezer:(NSString *)artist{
+    if (!artist) {
+        return nil;
+    }
+    
+    NSString *searchArtists = DEEZER_BASE;
+    searchArtists = [searchArtists stringByAppendingString:[NSString stringWithFormat:@"artist?q=%@&limit=4", artist]];
+    searchArtists = [searchArtists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    
+    
+    
+    NSDictionary *jsonDict = [self parseURL:searchArtists];
+    
+    if (!jsonDict) {
+        return nil;
+    }
+    
+    NSMutableDictionary *myDict = [NSMutableDictionary new];
+    
+    NSArray *artistNames = [[jsonDict valueForKey:@"data"]valueForKey:@"name"];
+    [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
+    
+    NSArray *artistFollowers = [[jsonDict valueForKey:@"data"]valueForKey:@"nb_fan"];
+    [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
+    
+    NSArray *artistImages = [[jsonDict valueForKey:@"data"]valueForKey:@"picture_medium"];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<artistImages.count; i++) {
+        //Get All medium images
+        NSString *imageURLAsString = [artistImages objectAtIndex:i];
+        if (!imageURLAsString) {
+            [images addObject:[UIImage imageNamed:@"PlaceholderArtistLarge"]];
+        }else{
+            NSURL *imageURL = [NSURL URLWithString:imageURLAsString];
+            NSData *rawImageData = [[NSData alloc]initWithContentsOfURL:imageURL];
+            UIImage *image = [UIImage imageWithData:rawImageData];
+            [images addObject:image];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    return myDict;
+  
+}
+
 
 
 -(NSDictionary *)parseURL:(NSString *)URLAsString{

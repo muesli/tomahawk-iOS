@@ -13,8 +13,10 @@
 
 #pragma mark - Search
 
+-(NSDictionary *)searchArtists:(NSString *)artist;
+-(NSDictionary *)searchPlaylists:(NSString *)playlist;
+
 -(NSDictionary *)searchAlbumsiTunes:(NSString *)album;
--(NSDictionary *)searchArtistsiTunes:(NSString *)artist;
 -(NSDictionary *)searchSongsiTunes:(NSString *)song;
 
 -(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist;
@@ -25,6 +27,17 @@
 -(NSDictionary *)searchArtistsSpotify:(NSString *)artist;
 -(NSDictionary *)searchSongsSpotify:(NSString *)song;
 -(NSDictionary *)searchAlbumsSpotify:(NSString *)album;
+
+-(NSDictionary *)searchArtistsYoutube:(NSString *)artist;
+-(NSDictionary *)searchSongsYoutube:(NSString *)song;
+
+-(NSDictionary *)searchArtistsDeezer:(NSString *)artist;
+-(NSDictionary *)searchSongsDeezer:(NSString *)song;
+-(NSDictionary *)searchAlbumsDeezer:(NSString *)album;
+
+-(NSDictionary *)searchArtistsRdio:(NSString *)artist;
+-(NSDictionary *)searchSongsRdio:(NSString *)song;
+-(NSDictionary *)searchAlbumsRdio:(NSString *)album;
 
 
 #pragma mark - Artist
