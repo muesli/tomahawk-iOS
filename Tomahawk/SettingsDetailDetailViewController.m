@@ -174,8 +174,16 @@ int i = 0;
         connectCell.color = [[resolvers objectAtIndex:i]valueForKey:@"color"];
     }
     connectCell.backgroundColor = [UIColor clearColor];
-
     return connectCell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ConnectAlertController *connect = [ConnectAlertController alertControllerWithTitle:@"Cock" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    connect.color = [[resolvers objectAtIndex:indexPath.row]valueForKey:@"color"];
+    NSLog(@"name is %@", [names objectAtIndex:indexPath.row]);
+    connect.resolverTitle = [names objectAtIndex:indexPath.row];
+    connect.resolverImage = [[[resolvers objectAtIndex:indexPath.row]valueForKey:@"image"]valueForKey:@"image"];
+    [self presentViewController:connect animated:YES completion:nil];
 }
 
 #pragma mark - Info Table View

@@ -10,6 +10,8 @@
 #import "Settings.h"
 #import "ConnectCell.h"
 #import <SafariServices/SafariServices.h>
+#import "ConnectAlertController.h"
+
 
 @interface SettingsDetailDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, SFSafariViewControllerDelegate>
 
