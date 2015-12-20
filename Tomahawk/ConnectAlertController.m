@@ -101,10 +101,12 @@
     UIImageView *serviceImage = [UIImageView new];
     serviceImage.image = [UIImage image:self.resolverImage withColor:[UIColor whiteColor]];
     [serviceImage setFrame:CGRectMake(235, 7, 25, 35)];
+    [serviceImage.layer setMinificationFilter:kCAFilterTrilinear];
     [headerView addSubview:serviceImage];
     
     UIButton *connect = [UIButton buttonWithType:UIButtonTypeCustom];
     [connect setImage:[UIImage image:[UIImage imageNamed:@"Connect Resolvers"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [connect.imageView.layer setMinificationFilter:kCAFilterTrilinear]; //Anti-Aliasing 
     connect.frame = CGRectMake(10, 10, 20, 28); //In ratio 5:7
     [headerView addSubview:connect];
     
