@@ -10,6 +10,47 @@
 
 @implementation ConnectAlertController{
     NSArray *myArray;
+    UIButton *signIn;
+    UIButton *cancel;
+}
+
+- (IBAction)buttonPress:(UIButton *)sender {
+    if (sender == cancel) {
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [cancel.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }else if (sender == signIn){
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [signIn.titleLabel setAlpha:0.3];
+                         }
+                         completion:nil];
+    }
+}
+- (IBAction)buttonRelease:(UIButton *)sender {
+    if (sender == cancel) {
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [cancel.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }else if (sender == signIn){
+        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             [signIn.titleLabel setAlpha:1];
+                         }
+                         completion:nil];
+    }
+}
+- (IBAction)buttonSelected:(UIButton *)sender {
+    if (sender == cancel) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        //Sign In
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 -(void)viewDidLoad{
@@ -110,11 +151,21 @@
     connect.frame = CGRectMake(10, 10, 20, 28); //In ratio 5:7
     [headerView addSubview:connect];
     
-    UIButton *signIn = [[UIButton alloc]initWithFrame:CGRectMake(170, 190, 100, 28)];
+    signIn = [[UIButton alloc]initWithFrame:CGRectMake(170, 190, 100, 28)];
     [signIn setTitle:@"Sign In" forState:UIControlStateNormal];
-    [signIn.titleLabel setFont:[UIFont systemFontOfSize:17 weight:0.2]];
-    [signIn setTitleColor:self.color forState:UIControlStateNormal];
-    [self.view addSubview:signIn];
+    cancel = [[UIButton alloc]initWithFrame:CGRectMake(0, 190, 100, 28)];
+    [cancel setTitle:@"Cancel" forState:UIControlStateNormal];
+    
+    myArray = @[signIn, cancel];
+    for (UIButton *buttons in myArray) {
+        [buttons.titleLabel setFont:[UIFont systemFontOfSize:17 weight:0.2]];
+        [buttons setTitleColor:self.color forState:UIControlStateNormal];
+        [buttons addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
+        [buttons addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchDragExit | UIControlEventTouchUpOutside];
+        [buttons addTarget:self action:@selector(buttonSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:buttons];
+
+    }
 }
 
 -(void)makeLineLayer:(CALayer *)layer lineFromPointA:(CGPoint)pointA toPointB:(CGPoint)pointB withColor:(UIColor *)color{

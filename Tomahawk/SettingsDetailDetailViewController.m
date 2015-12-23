@@ -117,7 +117,9 @@ int i = 0;
         [self.view addSubview:connect];
         names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Rdio", @"Soundcloud"];
             resolvers = [[NSMutableArray alloc]init];
+        
         NSArray *colors = [[NSArray alloc]initWithObjects:[UIColor colorWithRed:204.0/255.0 green:61.0/255.0 blue:67.0/255.0 alpha:1], [UIColor colorWithRed:30.0/255.0 green:215.0/255.0 blue:96.0/255.0 alpha:1], [UIColor colorWithRed:236.0/255.0 green:138.0/255.0 blue:61.0/255.0 alpha:1], [UIColor colorWithRed:60.0/255.0 green:128.0/255.0 blue:197.0/255.0 alpha:1], [UIColor colorWithRed:236.0/255.0 green:100.0/255.0 blue:51.0/255.0 alpha:1], nil];
+        
         for (NSString *name in names) {
             ConnectCell *connectioncell = [ConnectCell new];
             connectioncell.title = [[UILabel alloc]init];
@@ -180,7 +182,6 @@ int i = 0;
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ConnectAlertController *connect = [ConnectAlertController alertControllerWithTitle:@"Cock" message:nil preferredStyle:UIAlertControllerStyleAlert];
     connect.color = [[resolvers objectAtIndex:indexPath.row]valueForKey:@"color"];
-    NSLog(@"name is %@", [names objectAtIndex:indexPath.row]);
     connect.resolverTitle = [names objectAtIndex:indexPath.row];
     connect.resolverImage = [[[resolvers objectAtIndex:indexPath.row]valueForKey:@"image"]valueForKey:@"image"];
     [self presentViewController:connect animated:YES completion:nil];
