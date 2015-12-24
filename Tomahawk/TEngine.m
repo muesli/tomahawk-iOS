@@ -714,7 +714,7 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
+                                                       timeoutInterval:15.0];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
@@ -723,27 +723,21 @@
     [request setHTTPBody:[post dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        NSString *sessionKey = [[jsonDict valueForKey:@"session"]valueForKey:@"key"];
-        NSNumber *errors = [jsonDict valueForKey:@"error"];
-        
-        if (!sessionKey) {
-            NSDictionary *userInfo;
-            switch ([errors intValue]) {
-                case 4:{//Invalid Username/Password
-                    userInfo = @{@"Description": @"Invalid Username and/or Password"};
-                    break;
-                }
-                default:
-                    break;
-            }
-            NSError *myError = [NSError errorWithDomain:@"com.Tomahawk.ErrorDomain" code:0 userInfo: userInfo];
-            completion (myError);
-            
+        if (error){
+            NSLog(@"error is %@", [error userInfo]);
+            completion (error);
         }else{
-            completion(sessionKey);
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+            NSString *sessionKey = [[jsonDict valueForKey:@"session"]valueForKey:@"key"];
+        
+            if (!sessionKey) {
+                NSError *myError = [NSError errorWithDomain:@"com.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : @"Invalid Username and/or Password"}];
+                completion (myError);
+            
+            }else{
+                completion(sessionKey);
+            }
         }
         
     }];

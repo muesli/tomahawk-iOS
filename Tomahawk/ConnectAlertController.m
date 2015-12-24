@@ -48,15 +48,34 @@
     if (sender == cancel) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
+        MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:HUD];
+        // Set custom view mode
+        HUD.mode = MBProgressHUDModeIndeterminate;
+        HUD.delegate = self;
+        [HUD show:YES];
         //Sign In
         TEngine *apiCall = [TEngine new];
         [apiCall signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
             if ([response isKindOfClass:[NSString class]]) {
-                NSLog(@"Session key is %@", response);
+                [HUD hide:YES];
+                //DO stuff with session key
+                [self dismissViewControllerAnimated:YES completion:nil];
             }else if ([response isKindOfClass:[NSError class]]){
-                NSLog(@"Error is %@", [[response userInfo]objectForKey:@"Description"]);
+                //If there is an error, make an alert controller and present it on the main thread
+                UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
+                error.view.tintColor = self.color;
+                [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                
+                dispatch_sync(dispatch_get_main_queue(), ^(void){
+                    [self presentViewController:error animated:YES completion:^(void){
+                        error.view.tintColor = self.color; //This is repeated because of a bug in iOS. Still not fixed as of 9.1
+                        [HUD hide:YES];
+                        [signIn.titleLabel setAlpha:1];
+                    }];
+                    error.view.tintColor = self.color;
+                });
             }
-            [self dismissViewControllerAnimated:YES completion:nil];
         }];
     }
 }
@@ -75,6 +94,7 @@
     self.usernameField = [[UITextField alloc]initWithFrame:CGRectMake(17, 72, 200, 30)];
     self.passwordField = [[UITextField alloc]initWithFrame:CGRectMake(17, 130, 200, 30)];
     self.usernameField.placeholder = @"Username";
+    self.usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.passwordField.placeholder = @"Password";
     self.passwordField.secureTextEntry = YES;
     

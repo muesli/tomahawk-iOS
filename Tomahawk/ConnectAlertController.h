@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MyAdditions.h"
 #import "TEngine.h"
+#import "MBProgressHUD.h"
 
-@interface ConnectAlertController : UIAlertController <UITextFieldDelegate>
+@interface ConnectAlertController : UIAlertController <UITextFieldDelegate, MBProgressHUDDelegate>
 
 @property (strong, nonatomic) UITextField *passwordField;
 @property (strong, nonatomic) UITextField *usernameField;
