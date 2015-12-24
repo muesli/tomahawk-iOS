@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIImage+ImageWithColor.h"
+#import "MyAdditions.h"
+#import "TEngine.h"
 
 @interface ConnectAlertController : UIAlertController <UITextFieldDelegate>
 

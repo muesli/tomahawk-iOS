@@ -15,6 +15,7 @@
 
 #define LASTFM_BASE @"http://ws.audioscrobbler.com/2.0/?method="
 #define LASTFM_API_KEY @"94f82a0fccbf54bee207afdd5d44de97"
+#define LASTFM_SECRET_KEY @"da737cc6a8f1a6325979e3dba3972c1a"
 
 #define DEEZER_BASE @"http://api.deezer.com/search/"
 
@@ -29,6 +30,8 @@
 @implementation TEngine{
     BOOL exceptionThrown;
 }
+
+#pragma mark - Arguments
 
 -(NSDictionary *)searchSongsiTunes:(NSString *)song{
     if (!song) {
@@ -701,6 +704,52 @@
   
 }
 
+#pragma mark - Authentication
+
+-(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion{
+    NSString *api_sig = [NSString stringWithFormat:@"api_key%@methodauth.getMobileSessionpassword%@username%@%@", LASTFM_API_KEY, password, username, LASTFM_SECRET_KEY];//API signature
+    
+    NSURL *url = [NSURL URLWithString:@"https://ws.audioscrobbler.com/2.0/"];
+    NSString *post = [NSString stringWithFormat:@"method=auth.getMobileSession&api_key=94f82a0fccbf54bee207afdd5d44de97&format=json&username=%@&password=%@&api_sig=%@", username, password, [api_sig md5]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[post dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        NSString *sessionKey = [[jsonDict valueForKey:@"session"]valueForKey:@"key"];
+        NSNumber *errors = [jsonDict valueForKey:@"error"];
+        
+        if (!sessionKey) {
+            NSDictionary *userInfo;
+            switch ([errors intValue]) {
+                case 4:{//Invalid Username/Password
+                    userInfo = @{@"Description": @"Invalid Username and/or Password"};
+                    break;
+                }
+                default:
+                    break;
+            }
+            NSError *myError = [NSError errorWithDomain:@"com.Tomahawk.ErrorDomain" code:0 userInfo: userInfo];
+            completion (myError);
+            
+        }else{
+            completion(sessionKey);
+        }
+        
+    }];
+    
+    [task resume];
+}
 
 
 -(NSDictionary *)parseURL:(NSString *)URLAsString{

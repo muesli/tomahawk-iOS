@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "MyAdditions.h"
 
-@interface TEngine : NSObject
+@interface TEngine : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate>
 
 #pragma mark - Search
 
@@ -43,6 +44,8 @@
 #pragma mark - Artist
 
 #pragma mark - Authentication
+
+-(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion;
 
 #pragma mark - Chart
 

@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (ImageWithColor)
+@interface UIImage (MyAdditions)
 
 +(UIImage *)image:(UIImage *)image withColor:(UIColor *)color;
+
+@end
+
+@interface NSString (MyAdditions)
+
+- (NSString *)md5;
+
+@end
+
+@interface NSData (MyAdditions)
+
+- (NSString*)md5;
 
 @end

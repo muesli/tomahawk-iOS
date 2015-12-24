@@ -49,21 +49,28 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         //Sign In
-        [self dismissViewControllerAnimated:YES completion:nil];
+        TEngine *apiCall = [TEngine new];
+        [apiCall signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
+            if ([response isKindOfClass:[NSString class]]) {
+                NSLog(@"Session key is %@", response);
+            }else if ([response isKindOfClass:[NSError class]]){
+                NSLog(@"Error is %@", [[response userInfo]objectForKey:@"Description"]);
+            }
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
     }
 }
 
 -(void)viewDidLoad{
     
-    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.view
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view
                                                               attribute:NSLayoutAttributeHeight
                                                               relatedBy:NSLayoutRelationEqual
                                                                  toItem:nil
                                                               attribute:NSLayoutAttributeNotAnAttribute
                                                              multiplier:1
-                                                               constant:240];
+                                                               constant:240]];
     
-    [self.view addConstraint:height];
     
     self.usernameField = [[UITextField alloc]initWithFrame:CGRectMake(17, 72, 200, 30)];
     self.passwordField = [[UITextField alloc]initWithFrame:CGRectMake(17, 130, 200, 30)];
@@ -97,7 +104,6 @@
     [headerView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:headerView];
     
-    //Height
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerView
                                                            attribute:NSLayoutAttributeHeight
                                                            relatedBy:NSLayoutRelationEqual

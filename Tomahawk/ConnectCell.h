@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "UIImage+ImageWithColor.h"
+#import "MyAdditions.h"
 
 @interface ConnectCell : UICollectionViewCell
 
