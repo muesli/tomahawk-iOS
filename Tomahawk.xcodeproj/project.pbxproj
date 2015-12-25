@@ -18,6 +18,10 @@
 		4D32E1531BD1AFCE008F9373 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */; };
 		4D33B7BF1BDEEF950085D408 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */; };
 		4D5707BD1BFA24810009C14F /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5707BC1BFA24810009C14F /* 13.png */; };
+		4D5973061C2D931F002EEE3A /* ForYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5973051C2D931F002EEE3A /* ForYouViewController.m */; };
+		4D5973091C2D933B002EEE3A /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5973081C2D933B002EEE3A /* GenresViewController.m */; };
+		4D59730C1C2D934B002EEE3A /* StationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D59730B1C2D934B002EEE3A /* StationsViewController.m */; };
+		4D59730F1C2D935E002EEE3A /* MoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D59730E1C2D935E002EEE3A /* MoodsViewController.m */; };
 		4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6023E71BC6E8810053F998 /* SettingsViewController.m */; };
 		4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CED1BD49853008D2515 /* blurExample.png */; };
 		4D8133FA1BF50C7200FF1E95 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8133F91BF50C7200FF1E95 /* 12.png */; };
@@ -125,6 +129,14 @@
 		4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NowPlayingViewController.h; path = Tomahawk/NowPlayingViewController.h; sourceTree = "<group>"; };
 		4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NowPlayingViewController.m; path = Tomahawk/NowPlayingViewController.m; sourceTree = "<group>"; };
 		4D5707BC1BFA24810009C14F /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		4D5973041C2D931F002EEE3A /* ForYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForYouViewController.h; path = Tomahawk/ForYouViewController.h; sourceTree = "<group>"; };
+		4D5973051C2D931F002EEE3A /* ForYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForYouViewController.m; path = Tomahawk/ForYouViewController.m; sourceTree = "<group>"; };
+		4D5973071C2D933B002EEE3A /* GenresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenresViewController.h; path = Tomahawk/GenresViewController.h; sourceTree = "<group>"; };
+		4D5973081C2D933B002EEE3A /* GenresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GenresViewController.m; path = Tomahawk/GenresViewController.m; sourceTree = "<group>"; };
+		4D59730A1C2D934B002EEE3A /* StationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationsViewController.h; path = Tomahawk/StationsViewController.h; sourceTree = "<group>"; };
+		4D59730B1C2D934B002EEE3A /* StationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationsViewController.m; path = Tomahawk/StationsViewController.m; sourceTree = "<group>"; };
+		4D59730D1C2D935E002EEE3A /* MoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoodsViewController.h; path = Tomahawk/MoodsViewController.h; sourceTree = "<group>"; };
+		4D59730E1C2D935E002EEE3A /* MoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoodsViewController.m; path = Tomahawk/MoodsViewController.m; sourceTree = "<group>"; };
 		4D6023E61BC6E8810053F998 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Tomahawk/SettingsViewController.h; sourceTree = "<group>"; };
 		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Tomahawk/SettingsViewController.m; sourceTree = "<group>"; };
 		4D7B0CED1BD49853008D2515 /* blurExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample.png; sourceTree = "<group>"; };
@@ -306,6 +318,15 @@
 			name = CustomActivityIndicator;
 			sourceTree = "<group>";
 		};
+		4D5972BB1C2C6E90002EEE3A /* CustomAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				4DFDD04C1C261239000060A5 /* ConnectAlertController.h */,
+				4DFDD04D1C261239000060A5 /* ConnectAlertController.m */,
+			);
+			name = CustomAlertController;
+			sourceTree = "<group>";
+		};
 		4DA4B4CC1BFA7EBB0042DEE0 /* ColorExtractor */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,10 +361,6 @@
 				4DF2B4131C09E7CC0033FA58 /* BugReportViewController.m */,
 				4D33B7BD1BDEEF950085D408 /* NowPlayingViewController.h */,
 				4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */,
-				4DFDD04C1C261239000060A5 /* ConnectAlertController.h */,
-				4DFDD04D1C261239000060A5 /* ConnectAlertController.m */,
-				4D1B5B631C26CDA100A5CDF6 /* MyAdditions.h */,
-				4D1B5B641C26CDA100A5CDF6 /* MyAdditions.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -352,11 +369,20 @@
 			isa = PBXGroup;
 			children = (
 				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
+				4D5973071C2D933B002EEE3A /* GenresViewController.h */,
+				4D5973081C2D933B002EEE3A /* GenresViewController.m */,
+				4D59730A1C2D934B002EEE3A /* StationsViewController.h */,
+				4D59730B1C2D934B002EEE3A /* StationsViewController.m */,
+				4D59730D1C2D935E002EEE3A /* MoodsViewController.h */,
+				4D59730E1C2D935E002EEE3A /* MoodsViewController.m */,
+				4D5973041C2D931F002EEE3A /* ForYouViewController.h */,
+				4D5973051C2D931F002EEE3A /* ForYouViewController.m */,
 				4DDCC3E31C0E4FDE003CA4AD /* Custom Search Bar */,
 				4D1304E21C00FB68007B7259 /* Custom Navigation Controller */,
 				4DC5A5AD1C05102100ED018F /* TableViewCells */,
 				4DA4B4D21BFA82680042DEE0 /* CollectionViewCells */,
 				4D33B7C31BDFD8230085D408 /* CustomActivityIndicator */,
+				4D5972BB1C2C6E90002EEE3A /* CustomAlertController */,
 				4D32B8E01BCA7A2A00C42A85 /* CustomSegmentedControl */,
 				4DA4B4CD1BFA7EDB0042DEE0 /* ViewControllers */,
 			);
@@ -379,6 +405,9 @@
 			isa = PBXGroup;
 			children = (
 				4DD932FC1C11DD4900F2778A /* Loading Indicator */,
+				4DF2B4181C09F8A20033FA58 /* Tomahawk-Bridging-Header.h */,
+				4D1B5B631C26CDA100A5CDF6 /* MyAdditions.h */,
+				4D1B5B641C26CDA100A5CDF6 /* MyAdditions.m */,
 				4DBC780A1C105D7900E5F712 /* dispatch_cancelable_block.h */,
 				4DF2B4191C09F8A30033FA58 /* KMPlaceholderTextView.h */,
 				4DF2B41A1C09F8A30033FA58 /* KMPlaceholderTextView.swift */,
@@ -406,7 +435,6 @@
 			children = (
 				4DBDE0191BADC2BA00CD02CC /* Tomahawk */,
 				4DBDE0181BADC2BA00CD02CC /* Products */,
-				4DF2B4181C09F8A20033FA58 /* Tomahawk-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -736,6 +764,7 @@
 				4DD9335D1C11DD6500F2778A /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				4DAE47BC1BE2B93F00D6816F /* CCLocalMaximum.m in Sources */,
 				4DD933561C11DD6500F2778A /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
+				4D5973091C2D933B002EEE3A /* GenresViewController.m in Sources */,
 				4DF2B41E1C0A66980033FA58 /* TEngine.m in Sources */,
 				4DD933541C11DD6500F2778A /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				4DF2B4141C09E7CC0033FA58 /* BugReportViewController.m in Sources */,
@@ -784,6 +813,9 @@
 				4D32B8E61BCA7CE700C42A85 /* RadioViewController.m in Sources */,
 				4DC5A5AC1C03A43A00ED018F /* ConnectCell.m in Sources */,
 				4DFDD04E1C261239000060A5 /* ConnectAlertController.m in Sources */,
+				4D5973061C2D931F002EEE3A /* ForYouViewController.m in Sources */,
+				4D59730C1C2D934B002EEE3A /* StationsViewController.m in Sources */,
+				4D59730F1C2D935E002EEE3A /* MoodsViewController.m in Sources */,
 				4DD933451C11DD6500F2778A /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
 				4DD933511C11DD6500F2778A /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				4DD933501C11DD6500F2778A /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
