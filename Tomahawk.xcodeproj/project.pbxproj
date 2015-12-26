@@ -90,6 +90,8 @@
 		4DF2B4141C09E7CC0033FA58 /* BugReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2B4131C09E7CC0033FA58 /* BugReportViewController.m */; };
 		4DF2B41B1C09F8A30033FA58 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2B41A1C09F8A30033FA58 /* KMPlaceholderTextView.swift */; };
 		4DF2B41E1C0A66980033FA58 /* TEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF2B41D1C0A66980033FA58 /* TEngine.m */; };
+		4DF4A13B1C2F073E0094B917 /* GenresCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF4A13A1C2F073E0094B917 /* GenresCollectionViewController.xib */; };
+		4DF4A13D1C2F5BF40094B917 /* StationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DF4A13C1C2F5BF40094B917 /* StationsViewController.xib */; };
 		4DFDD04E1C261239000060A5 /* ConnectAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDD04D1C261239000060A5 /* ConnectAlertController.m */; };
 /* End PBXBuildFile section */
 
@@ -262,6 +264,8 @@
 		4DF2B41A1C09F8A30033FA58 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KMPlaceholderTextView.swift; path = Tomahawk/KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		4DF2B41D1C0A66980033FA58 /* TEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEngine.m; sourceTree = "<group>"; };
 		4DF2B45B1C0A69210033FA58 /* TEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEngine.h; sourceTree = "<group>"; };
+		4DF4A13A1C2F073E0094B917 /* GenresCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenresCollectionViewController.xib; sourceTree = "<group>"; };
+		4DF4A13C1C2F5BF40094B917 /* StationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationsViewController.xib; sourceTree = "<group>"; };
 		4DFDD04C1C261239000060A5 /* ConnectAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectAlertController.h; path = Tomahawk/ConnectAlertController.h; sourceTree = "<group>"; };
 		4DFDD04D1C261239000060A5 /* ConnectAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectAlertController.m; path = Tomahawk/ConnectAlertController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -621,10 +625,12 @@
 				4D5973151C2DB321002EEE3A /* ForYouViewController.xib */,
 				4D5973071C2D933B002EEE3A /* GenresCollectionViewController.h */,
 				4D5973081C2D933B002EEE3A /* GenresCollectionViewController.m */,
+				4DF4A13A1C2F073E0094B917 /* GenresCollectionViewController.xib */,
 				4D59730D1C2D935E002EEE3A /* MoodsViewController.h */,
 				4D59730E1C2D935E002EEE3A /* MoodsViewController.m */,
 				4D59730A1C2D934B002EEE3A /* StationsViewController.h */,
 				4D59730B1C2D934B002EEE3A /* StationsViewController.m */,
+				4DF4A13C1C2F5BF40094B917 /* StationsViewController.xib */,
 			);
 			name = "Radio View Controllers";
 			sourceTree = "<group>";
@@ -743,9 +749,11 @@
 				4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */,
 				4DAE47C21BE2D56D00D6816F /* blurExample4.png in Resources */,
 				4D5973161C2DB321002EEE3A /* ForYouViewController.xib in Resources */,
+				4DF4A13D1C2F5BF40094B917 /* StationsViewController.xib in Resources */,
 				4DAE47C01BE2D1F800D6816F /* blurExample2.png in Resources */,
 				4DEF818F1BE8D7A300911581 /* More Than-25.png in Resources */,
 				4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */,
+				4DF4A13B1C2F073E0094B917 /* GenresCollectionViewController.xib in Resources */,
 				4D8133FA1BF50C7200FF1E95 /* 12.png in Resources */,
 				4D5707BD1BFA24810009C14F /* 13.png in Resources */,
 				4DAE47BE1BE2D06300D6816F /* blurImage.jpg in Resources */,

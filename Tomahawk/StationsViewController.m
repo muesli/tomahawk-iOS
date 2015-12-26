@@ -49,13 +49,20 @@
     }
 }
 
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = self.contentView.bounds.size;
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self.internetRadio registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [self.followedArtists registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     self.internetRadio.backgroundColor = [UIColor clearColor];
     self.internetRadio.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     self.followedArtists.backgroundColor = [UIColor clearColor];
     self.followedArtists.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width,1000)];
     
     NSArray *myArray = @[self.artistsSeeAllButton, self.internetRadioSeeAllButton];
     for (UIButton *buttons in myArray) {
@@ -74,22 +81,16 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:self.followedArtists]) {
         CollectionViewCell *followedArtists = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        followedArtists.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample1"]];
-        followedArtists.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
-        followedArtists.title = [[UILabel alloc]init];
-        followedArtists.artist = [[UILabel alloc]init];
-        followedArtists.detailText = [[UILabel alloc]init];
+        followedArtists.image.image = [UIImage imageNamed:@"blurExample1"];
+        followedArtists.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
         followedArtists.title.text = @"Label";
         followedArtists.artist.text = @"Label";
         followedArtists.detailText.text = @"1234";
         return followedArtists;
     }else{
         CollectionViewCell *internetRadio = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        internetRadio.image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"blurExample2"]];
-        internetRadio.detailImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"headphone4.png"]];
-        internetRadio.title = [[UILabel alloc]init];
-        internetRadio.artist = [[UILabel alloc]init];
-        internetRadio.detailText = [[UILabel alloc]init];
+        internetRadio.image.image = [UIImage imageNamed:@"blurExample2"];
+        internetRadio.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
         internetRadio.title.text = @"Label";
         internetRadio.artist.text = @"Label";
         internetRadio.detailText.text = @"1234";

@@ -17,9 +17,6 @@
 
 @implementation RadioViewController
 
-- (IBAction)inboxButton:(id)sender {
-    //Insert Code
-}
 - (IBAction)internetRadioButton:(id)sender {
     //Insert Code
 }
@@ -35,7 +32,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor orangeColor]};
     ForYouViewController *forYouController = [[ForYouViewController alloc]initWithNibName:@"ForYouViewController" bundle:nil];
     forYouController.title = @"FOR YOU";
-    GenresCollectionViewController *genresController = [GenresCollectionViewController new];
+    GenresCollectionViewController *genresController = [[GenresCollectionViewController alloc]initWithNibName:@"GenresCollectionViewController" bundle:nil];
     genresController.title = @"GENRES";
     MoodsViewController *moodsController = [MoodsViewController new];
     moodsController.title = @"MOODS";

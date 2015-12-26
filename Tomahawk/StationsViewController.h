@@ -14,6 +14,7 @@
 @property(nonatomic, strong) IBOutlet UICollectionView *followedArtists;
 @property(nonatomic, strong) IBOutlet UICollectionView *internetRadio;
 @property(strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property(strong, nonatomic) IBOutlet UIButton *artistsSeeAllButton;
 @property(strong, nonatomic) IBOutlet UIButton *artistsSeeAllInvisibleButton;
 @property(strong, nonatomic) IBOutlet UIButton *internetRadioSeeAllButton;
