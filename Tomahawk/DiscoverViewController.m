@@ -174,7 +174,6 @@
         recommendedSongs.title.text = @"Label";
         recommendedSongs.artist.text = @"Label";
         recommendedSongs.detailText.text = @"1234";
-        recommendedSongs.big = NO;
         return recommendedSongs;
     }else if (collectionView == _recommendedPlaylists){
         CollectionViewCell *recommendedPlaylists = [collectionView dequeueReusableCellWithReuseIdentifier:@"recommendedPlaylists" forIndexPath:indexPath];
@@ -187,7 +186,6 @@
         recommendedPlaylists.title.text = @"Label";
         recommendedPlaylists.artist.text = @"Label";
         recommendedPlaylists.detailText.text = @"1234";
-        recommendedPlaylists.big = NO;
         return recommendedPlaylists;
     }
     return nil;

@@ -139,7 +139,6 @@
         recentSongsCell.title.text = @"Label";
         recentSongsCell.artist.text = @"Label";
         recentSongsCell.detailText.text = @"1234";
-        recentSongsCell.big = NO;
         return recentSongsCell;
     }else if (collectionView == _playlistsCollectionView){
         CollectionViewCell *recentPlaylistsCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"recentPlaylistsCell" forIndexPath:indexPath];
@@ -152,7 +151,6 @@
         recentPlaylistsCell.title.text = @"Label";
         recentPlaylistsCell.artist.text = @"Label";
         recentPlaylistsCell.detailText.text = @"1234";
-        recentPlaylistsCell.big = NO;
         return recentPlaylistsCell;
     }
     return nil;

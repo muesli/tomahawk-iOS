@@ -19,9 +19,12 @@
 		4D33B7BF1BDEEF950085D408 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33B7BE1BDEEF950085D408 /* NowPlayingViewController.m */; };
 		4D5707BD1BFA24810009C14F /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5707BC1BFA24810009C14F /* 13.png */; };
 		4D5973061C2D931F002EEE3A /* ForYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5973051C2D931F002EEE3A /* ForYouViewController.m */; };
-		4D5973091C2D933B002EEE3A /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5973081C2D933B002EEE3A /* GenresViewController.m */; };
+		4D5973091C2D933B002EEE3A /* GenresCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5973081C2D933B002EEE3A /* GenresCollectionViewController.m */; };
 		4D59730C1C2D934B002EEE3A /* StationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D59730B1C2D934B002EEE3A /* StationsViewController.m */; };
 		4D59730F1C2D935E002EEE3A /* MoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D59730E1C2D935E002EEE3A /* MoodsViewController.m */; };
+		4D5973121C2DA601002EEE3A /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5973111C2DA601002EEE3A /* CAPSPageMenu.m */; };
+		4D5973161C2DB321002EEE3A /* ForYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5973151C2DB321002EEE3A /* ForYouViewController.xib */; };
+		4D5973181C2DBAAB002EEE3A /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D5973171C2DBAAB002EEE3A /* CollectionView.xib */; };
 		4D6023E81BC6E8810053F998 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6023E71BC6E8810053F998 /* SettingsViewController.m */; };
 		4D7B0CEE1BD49853008D2515 /* blurExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B0CED1BD49853008D2515 /* blurExample.png */; };
 		4D8133FA1BF50C7200FF1E95 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D8133F91BF50C7200FF1E95 /* 12.png */; };
@@ -131,12 +134,16 @@
 		4D5707BC1BFA24810009C14F /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
 		4D5973041C2D931F002EEE3A /* ForYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForYouViewController.h; path = Tomahawk/ForYouViewController.h; sourceTree = "<group>"; };
 		4D5973051C2D931F002EEE3A /* ForYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForYouViewController.m; path = Tomahawk/ForYouViewController.m; sourceTree = "<group>"; };
-		4D5973071C2D933B002EEE3A /* GenresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenresViewController.h; path = Tomahawk/GenresViewController.h; sourceTree = "<group>"; };
-		4D5973081C2D933B002EEE3A /* GenresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GenresViewController.m; path = Tomahawk/GenresViewController.m; sourceTree = "<group>"; };
+		4D5973071C2D933B002EEE3A /* GenresCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenresCollectionViewController.h; path = Tomahawk/GenresCollectionViewController.h; sourceTree = "<group>"; };
+		4D5973081C2D933B002EEE3A /* GenresCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GenresCollectionViewController.m; path = Tomahawk/GenresCollectionViewController.m; sourceTree = "<group>"; };
 		4D59730A1C2D934B002EEE3A /* StationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationsViewController.h; path = Tomahawk/StationsViewController.h; sourceTree = "<group>"; };
 		4D59730B1C2D934B002EEE3A /* StationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationsViewController.m; path = Tomahawk/StationsViewController.m; sourceTree = "<group>"; };
 		4D59730D1C2D935E002EEE3A /* MoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoodsViewController.h; path = Tomahawk/MoodsViewController.h; sourceTree = "<group>"; };
 		4D59730E1C2D935E002EEE3A /* MoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoodsViewController.m; path = Tomahawk/MoodsViewController.m; sourceTree = "<group>"; };
+		4D5973101C2DA601002EEE3A /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPSPageMenu.h; path = Tomahawk/CAPSPageMenu.h; sourceTree = "<group>"; };
+		4D5973111C2DA601002EEE3A /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPSPageMenu.m; path = Tomahawk/CAPSPageMenu.m; sourceTree = "<group>"; };
+		4D5973151C2DB321002EEE3A /* ForYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForYouViewController.xib; sourceTree = "<group>"; };
+		4D5973171C2DBAAB002EEE3A /* CollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionView.xib; sourceTree = "<group>"; };
 		4D6023E61BC6E8810053F998 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Tomahawk/SettingsViewController.h; sourceTree = "<group>"; };
 		4D6023E71BC6E8810053F998 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Tomahawk/SettingsViewController.m; sourceTree = "<group>"; };
 		4D7B0CED1BD49853008D2515 /* blurExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blurExample.png; sourceTree = "<group>"; };
@@ -347,8 +354,7 @@
 				4D32E1521BD1AFCE008F9373 /* MyMusicViewController.m */,
 				4D1E3DF51BD2BAE200717185 /* MyMusicDetailViewController.h */,
 				4D1E3DF61BD2BAE200717185 /* MyMusicDetailViewController.m */,
-				4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */,
-				4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */,
+				4DF4A1391C2EE9930094B917 /* Radio View Controllers */,
 				4D2112B81BD0EEF1001D415D /* DiscoverViewController.h */,
 				4D2112B91BD0EEF1001D415D /* DiscoverViewController.m */,
 				4D6023E61BC6E8810053F998 /* SettingsViewController.h */,
@@ -369,14 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				4DBDE0261BADC2BA00CD02CC /* Main.storyboard */,
-				4D5973071C2D933B002EEE3A /* GenresViewController.h */,
-				4D5973081C2D933B002EEE3A /* GenresViewController.m */,
-				4D59730A1C2D934B002EEE3A /* StationsViewController.h */,
-				4D59730B1C2D934B002EEE3A /* StationsViewController.m */,
-				4D59730D1C2D935E002EEE3A /* MoodsViewController.h */,
-				4D59730E1C2D935E002EEE3A /* MoodsViewController.m */,
-				4D5973041C2D931F002EEE3A /* ForYouViewController.h */,
-				4D5973051C2D931F002EEE3A /* ForYouViewController.m */,
 				4DDCC3E31C0E4FDE003CA4AD /* Custom Search Bar */,
 				4D1304E21C00FB68007B7259 /* Custom Navigation Controller */,
 				4DC5A5AD1C05102100ED018F /* TableViewCells */,
@@ -404,6 +402,8 @@
 		4DA4B4D01BFA82240042DEE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D5973101C2DA601002EEE3A /* CAPSPageMenu.h */,
+				4D5973111C2DA601002EEE3A /* CAPSPageMenu.m */,
 				4DD932FC1C11DD4900F2778A /* Loading Indicator */,
 				4DF2B4181C09F8A20033FA58 /* Tomahawk-Bridging-Header.h */,
 				4D1B5B631C26CDA100A5CDF6 /* MyAdditions.h */,
@@ -426,6 +426,7 @@
 				4DC5A5AB1C03A43A00ED018F /* ConnectCell.m */,
 				4D8FF9DD1BE7FD1C001490B6 /* CollectionViewCell.h */,
 				4D8FF9DE1BE7FD1C001490B6 /* CollectionViewCell.m */,
+				4D5973171C2DBAAB002EEE3A /* CollectionView.xib */,
 			);
 			name = CollectionViewCells;
 			sourceTree = "<group>";
@@ -610,6 +611,24 @@
 			name = AFNetworking;
 			sourceTree = "<group>";
 		};
+		4DF4A1391C2EE9930094B917 /* Radio View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D32B8E41BCA7CE700C42A85 /* RadioViewController.h */,
+				4D32B8E51BCA7CE700C42A85 /* RadioViewController.m */,
+				4D5973041C2D931F002EEE3A /* ForYouViewController.h */,
+				4D5973051C2D931F002EEE3A /* ForYouViewController.m */,
+				4D5973151C2DB321002EEE3A /* ForYouViewController.xib */,
+				4D5973071C2D933B002EEE3A /* GenresCollectionViewController.h */,
+				4D5973081C2D933B002EEE3A /* GenresCollectionViewController.m */,
+				4D59730D1C2D935E002EEE3A /* MoodsViewController.h */,
+				4D59730E1C2D935E002EEE3A /* MoodsViewController.m */,
+				4D59730A1C2D934B002EEE3A /* StationsViewController.h */,
+				4D59730B1C2D934B002EEE3A /* StationsViewController.m */,
+			);
+			name = "Radio View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -720,8 +739,10 @@
 				4DBDE02D1BADC2BA00CD02CC /* LaunchScreen.storyboard in Resources */,
 				4DAE47C81BE3920400D6816F /* blurExample6.png in Resources */,
 				4DEF818D1BE8D77F00911581 /* More Than-40.png in Resources */,
+				4D5973181C2DBAAB002EEE3A /* CollectionView.xib in Resources */,
 				4DBDE02A1BADC2BA00CD02CC /* Assets.xcassets in Resources */,
 				4DAE47C21BE2D56D00D6816F /* blurExample4.png in Resources */,
+				4D5973161C2DB321002EEE3A /* ForYouViewController.xib in Resources */,
 				4DAE47C01BE2D1F800D6816F /* blurExample2.png in Resources */,
 				4DEF818F1BE8D7A300911581 /* More Than-25.png in Resources */,
 				4DE1050D1BE0041400C51EDD /* blurExample1.png in Resources */,
@@ -764,7 +785,7 @@
 				4DD9335D1C11DD6500F2778A /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				4DAE47BC1BE2B93F00D6816F /* CCLocalMaximum.m in Sources */,
 				4DD933561C11DD6500F2778A /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
-				4D5973091C2D933B002EEE3A /* GenresViewController.m in Sources */,
+				4D5973091C2D933B002EEE3A /* GenresCollectionViewController.m in Sources */,
 				4DF2B41E1C0A66980033FA58 /* TEngine.m in Sources */,
 				4DD933541C11DD6500F2778A /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				4DF2B4141C09E7CC0033FA58 /* BugReportViewController.m in Sources */,
@@ -780,6 +801,7 @@
 				4DD933471C11DD6500F2778A /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				4D32B8DF1BCA7A1D00C42A85 /* HMSegmentedControl.m in Sources */,
 				4DD9334A1C11DD6500F2778A /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
+				4D5973121C2DA601002EEE3A /* CAPSPageMenu.m in Sources */,
 				4DD9333E1C11DD6500F2778A /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				4DD9334B1C11DD6500F2778A /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
 				4D32E1531BD1AFCE008F9373 /* MyMusicViewController.m in Sources */,

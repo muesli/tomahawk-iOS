@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HMSegmentedControl.h"
-#import "CollectionViewCell.h"
+#import "ForYouViewController.h"
+#import "GenresCollectionViewController.h"
+#import "MoodsViewController.h"
+#import "StationsViewController.h"
+#import "CAPSPageMenu.h"
 
-//int isSection = 0;
-
-@interface RadioViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
-
-@property(nonatomic, strong) IBOutlet UICollectionView *recommendedStations;
-@property(nonatomic, strong) IBOutlet UICollectionView *recommendedGenres;
-@property(strong, nonatomic) IBOutlet UIScrollView *scrollView;
-
+@interface RadioViewController : UIViewController <CAPSPageMenuDelegate>
 @end

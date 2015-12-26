@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionViewCell.h"
 
-@interface StationsViewController : UIViewController
+@interface StationsViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property(nonatomic, strong) IBOutlet UICollectionView *followedArtists;
+@property(nonatomic, strong) IBOutlet UICollectionView *internetRadio;
+@property(strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property(strong, nonatomic) IBOutlet UIButton *artistsSeeAllButton;
+@property(strong, nonatomic) IBOutlet UIButton *artistsSeeAllInvisibleButton;
+@property(strong, nonatomic) IBOutlet UIButton *internetRadioSeeAllButton;
+@property(strong, nonatomic) IBOutlet UIButton *internetRadioSeeAllInvisibleButton;
 
 @end
