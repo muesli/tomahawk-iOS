@@ -28,11 +28,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *share;
 @property (weak, nonatomic) IBOutlet UIButton *lyrics;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *previousSongImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *currentSongImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *nextSongImageView;
 @property (weak, nonatomic) IBOutlet UILabel *playlistTitle;
 @property (weak, nonatomic) IBOutlet UILabel *playlistArtist;
 @property (weak, nonatomic) IBOutlet UILabel *songTitle;
 @property (weak, nonatomic) IBOutlet UILabel *songArtist;
 @property (strong, nonatomic) AVAudioPlayer *player;
+@property (weak, nonatomic) IBOutlet UIProgressView *progress;
 
 
 @end

@@ -53,15 +53,21 @@
     [_likeSelected setEnabled:NO];
     [_likeSelected setHidden:YES];
     
-    _backgroundImageView.image = [UIImage imageNamed:@"blurExample5"];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]];
-    effectView.frame = self.view.frame;
+    _backgroundImageView.image = [UIImage imageNamed:@"blurExample"];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    effectView.frame = CGRectMake(0, 0, self.view.frame.size.width+10, self.view.frame.size.height);
     [_backgroundImageView addSubview:effectView];
     [self.view sendSubviewToBack:self.backgroundImageView];
     
+    NSArray *myArray = @[self.currentSongImageView, self.previousSongImageView, self.nextSongImageView];
+    for (UIImageView *imageView in myArray) {
+        imageView.layer.cornerRadius = 5.0;
+        imageView.layer.masksToBounds = YES;
+    }
+    
     //Get Dark Colors from Background
     CCColorCube *colorCube = [[CCColorCube alloc] init];
-    NSArray *myArray = [colorCube extractColorsFromImage:_backgroundImageView.image flags:CCOrderByBrightness &CCAvoidWhite & CCOnlyBrightColors count:2];
+    myArray = [colorCube extractColorsFromImage:_backgroundImageView.image flags:CCOrderByBrightness &CCAvoidWhite & CCOnlyBrightColors count:2];
     
     //Set Primary and Secondary Colors from Results
     primaryColor = [UIColor colorWithRed:[[[myArray objectAtIndex:0]valueForKey:@"redComponent"] floatValue] green:[[[myArray objectAtIndex:0]valueForKey:@"greenComponent"] floatValue] blue:[[[myArray objectAtIndex:0]valueForKey:@"blueComponent"] floatValue] alpha:1.0f];

@@ -46,6 +46,7 @@
     return coloredImg;
 }
 
+
 @end
 
 @implementation NSString (MyAdditions)
