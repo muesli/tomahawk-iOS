@@ -67,10 +67,8 @@
     NSArray *myArray = @[self.artistsSeeAllButton, self.internetRadioSeeAllButton];
     for (UIButton *buttons in myArray) {
         [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
         [buttons setTitle:@"SEE ALL" forState:UIControlStateNormal];
-        [buttons setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [[buttons titleLabel] setFont:[UIFont systemFontOfSize:12]];
     }
 }
 

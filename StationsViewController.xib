@@ -77,6 +77,13 @@
                                     <state key="normal">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDown" id="bQs-GQ-4TM"/>
+                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDragInside" id="e75-Ds-mPo"/>
+                                        <action selector="buttonSelected:" destination="-1" eventType="touchUpInside" id="5VD-dT-PJ1"/>
+                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchDragOutside" id="4ML-A8-grw"/>
+                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchUpOutside" id="TD7-5H-5h8"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORT-yh-6cf">
                                     <rect key="frame" x="577" y="279" width="48" height="15"/>
@@ -93,6 +100,13 @@
                                         <constraint firstAttribute="width" constant="57" id="igI-Kb-ldD"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <connections>
+                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDragInside" id="pRv-9j-xWa"/>
+                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDown" id="uSq-HW-U3n"/>
+                                        <action selector="buttonSelected:" destination="-1" eventType="touchUpInside" id="1Qp-LJ-Qi1"/>
+                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchUpOutside" id="R77-Lm-aAG"/>
+                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchDragOutside" id="jqk-Wp-nQn"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOLLOWED ARTISTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n97-qM-rvG">
                                     <rect key="frame" x="25" y="31" width="169" height="15"/>

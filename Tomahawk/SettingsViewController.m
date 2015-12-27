@@ -13,15 +13,9 @@
 @end
 
 
-@implementation SettingsViewController{
-    NSMutableArray *settings;
-    long long int selectedSegmentIndex;
-    NSString *equaliserQuality;
-
-}
+@implementation SettingsViewController
 
 -(IBAction)segmentedControlChangeValue:(UISegmentedControl*)segmentedControl{
-    selectedSegmentIndex = segmentedControl.selectedSegmentIndex;
     switch (segmentedControl.selectedSegmentIndex) {
         case 0:
             //save value in CoreData and change thing to Low
@@ -84,24 +78,6 @@
     return indexPath;
     }
 }
-
- #pragma mark - Navigation
- 
-// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-// // Get the new view controller using [segue destinationViewController].
-//     SettingsDetailDetailViewController *sddv = [segue destinationViewController];
-//     SettingsDetailViewController *svc = [segue destinationViewController];
-// // Pass the selected object to the new view controller.
-//     NSIndexPath *currentCell = [[self tableView]indexPathForSelectedRow];
-//     if (currentCell.section == 1) {
-//         Settings *c = settings[currentCell.row+2];
-//         sddv.currentSetting = c;
-//     }else{
-//         Settings *e = settings[currentCell.row+4];
-//         svc.currentSetting = e;
-//     }
-//     
-// }
 
 
 
