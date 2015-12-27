@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (MyAdditions)
-
 +(UIImage *)image:(UIImage *)image withColor:(UIColor *)color;
 
 @end

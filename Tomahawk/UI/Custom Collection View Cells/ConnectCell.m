@@ -13,6 +13,7 @@
 
 
 -(void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
     NSNumber *redComponent = [_color valueForKey:@"redComponent"];
     NSNumber *greenComponent = [_color valueForKey:@"greenComponent"];
     NSNumber *blueComponent = [_color valueForKey:@"blueComponent"];
@@ -23,15 +24,13 @@
         CGContextSetRGBFillColor(context, [redComponent floatValue], [greenComponent floatValue], [blueComponent floatValue], 1);
         CGContextFillEllipseInRect(context, self.bounds);
     }
-    [super drawRect:rect];
     self.layer.borderColor = _color.CGColor;
     self.layer.borderWidth = 2.0f;
-    self.layer.cornerRadius = 60;
-    _image.frame = CGRectMake(CGRectGetMidX(self.bounds)-(38/2), CGRectGetMidY(self.bounds)-(53/2), 40, 55);
+    self.layer.cornerRadius = 60.0f;
+    self.image.frame = CGRectMake(CGRectGetMidX(self.bounds)-(38/2), CGRectGetMidY(self.bounds)-(53/2), 40, 55);
     [self.image.layer setMinificationFilter:kCAFilterTrilinear];
-    [self addSubview:_image];
+    [self addSubview:self.image];
 }
-
 
 -(void)setHighlighted:(BOOL)highlighted{
     [super setHighlighted:highlighted];

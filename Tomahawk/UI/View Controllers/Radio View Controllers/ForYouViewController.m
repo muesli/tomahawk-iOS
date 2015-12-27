@@ -21,10 +21,6 @@
     [super viewDidLoad];
     [self.recommendedGenres registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [self.recommendedStations registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-    self.recommendedGenres.backgroundColor = [UIColor clearColor];
-    self.recommendedGenres.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.recommendedStations.backgroundColor = [UIColor clearColor];
-    self.recommendedStations.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
 
 }
 

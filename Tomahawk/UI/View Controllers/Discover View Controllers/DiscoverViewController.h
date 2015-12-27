@@ -7,17 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HMSegmentedControl.h"
-#import "CollectionViewCell.h"
+#import "CAPSPageMenu.h"
+#import "ForYouDiscoverViewController.h"
+#import "ChartsViewController.h"
+#import "LikesViewController.h"
+#import "NewTracksViewController.h"
 
-int isSection = 0;
-
-@interface DiscoverViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-
-@property(nonatomic, strong) IBOutlet UICollectionView *recommendedSongs;
-@property(nonatomic, strong) IBOutlet UICollectionView *recommendedPlaylists;
-@property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
+@interface DiscoverViewController : UIViewController <CAPSPageMenuDelegate>
 
 
 @end

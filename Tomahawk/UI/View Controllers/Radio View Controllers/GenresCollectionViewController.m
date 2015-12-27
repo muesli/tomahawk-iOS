@@ -13,9 +13,6 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

@@ -20,10 +20,6 @@
     [super viewDidLoad];
     [self.internetRadio registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [self.followedArtists registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-    self.internetRadio.backgroundColor = [UIColor clearColor];
-    self.internetRadio.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.followedArtists.backgroundColor = [UIColor clearColor];
-    self.followedArtists.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

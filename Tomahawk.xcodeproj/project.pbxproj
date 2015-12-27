@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D022F621C305D2C00F9D896 /* ForYouDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F601C305D2C00F9D896 /* ForYouDiscoverViewController.m */; };
+		4D022F631C305D2C00F9D896 /* ForYouDiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F611C305D2C00F9D896 /* ForYouDiscoverViewController.xib */; };
+		4D022F671C3060B100F9D896 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F651C3060B100F9D896 /* ChartsViewController.m */; };
+		4D022F681C3060B100F9D896 /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F661C3060B100F9D896 /* ChartsViewController.xib */; };
+		4D022F6B1C3060F300F9D896 /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F6A1C3060F300F9D896 /* LikesViewController.m */; };
+		4D022F6D1C30612400F9D896 /* LikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F6C1C30612400F9D896 /* LikesViewController.xib */; };
+		4D022F711C30627700F9D896 /* NewTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F6F1C30627700F9D896 /* NewTracksViewController.m */; };
+		4D022F721C30627700F9D896 /* NewTracksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F701C30627700F9D896 /* NewTracksViewController.xib */; };
 		4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */; };
 		4DA5D1DD1C2F815D0031FBE5 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1DB1C2F815D0031FBE5 /* HMSegmentedControl.m */; };
 		4DA5D1EA1C2F817B0031FBE5 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E01C2F817B0031FBE5 /* FeedViewController.m */; };
@@ -109,6 +117,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D022F5F1C305D2C00F9D896 /* ForYouDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForYouDiscoverViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ForYouDiscoverViewController.h"; sourceTree = "<group>"; };
+		4D022F601C305D2C00F9D896 /* ForYouDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForYouDiscoverViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ForYouDiscoverViewController.m"; sourceTree = "<group>"; };
+		4D022F611C305D2C00F9D896 /* ForYouDiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForYouDiscoverViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ForYouDiscoverViewController.xib"; sourceTree = "<group>"; };
+		4D022F641C3060B100F9D896 /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartsViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ChartsViewController.h"; sourceTree = "<group>"; };
+		4D022F651C3060B100F9D896 /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartsViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ChartsViewController.m"; sourceTree = "<group>"; };
+		4D022F661C3060B100F9D896 /* ChartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChartsViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ChartsViewController.xib"; sourceTree = "<group>"; };
+		4D022F691C3060F300F9D896 /* LikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LikesViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/LikesViewController.h"; sourceTree = "<group>"; };
+		4D022F6A1C3060F300F9D896 /* LikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LikesViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/LikesViewController.m"; sourceTree = "<group>"; };
+		4D022F6C1C30612400F9D896 /* LikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikesViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/LikesViewController.xib"; sourceTree = "<group>"; };
+		4D022F6E1C30627700F9D896 /* NewTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewTracksViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/NewTracksViewController.h"; sourceTree = "<group>"; };
+		4D022F6F1C30627700F9D896 /* NewTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewTracksViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/NewTracksViewController.m"; sourceTree = "<group>"; };
+		4D022F701C30627700F9D896 /* NewTracksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewTracksViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/NewTracksViewController.xib"; sourceTree = "<group>"; };
 		4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomahawk/Images.xcassets; sourceTree = "<group>"; };
 		4DA5D1DB1C2F815D0031FBE5 /* HMSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMSegmentedControl.m; path = Tomahawk/UI/HMSegmentedControl.m; sourceTree = "<group>"; };
 		4DA5D1DC1C2F815D0031FBE5 /* HMSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSegmentedControl.h; path = Tomahawk/UI/HMSegmentedControl.h; sourceTree = "<group>"; };
@@ -482,6 +502,18 @@
 			children = (
 				4DA5D3081C2F88810031FBE5 /* DiscoverViewController.h */,
 				4DA5D3071C2F88810031FBE5 /* DiscoverViewController.m */,
+				4D022F5F1C305D2C00F9D896 /* ForYouDiscoverViewController.h */,
+				4D022F601C305D2C00F9D896 /* ForYouDiscoverViewController.m */,
+				4D022F611C305D2C00F9D896 /* ForYouDiscoverViewController.xib */,
+				4D022F641C3060B100F9D896 /* ChartsViewController.h */,
+				4D022F651C3060B100F9D896 /* ChartsViewController.m */,
+				4D022F661C3060B100F9D896 /* ChartsViewController.xib */,
+				4D022F691C3060F300F9D896 /* LikesViewController.h */,
+				4D022F6A1C3060F300F9D896 /* LikesViewController.m */,
+				4D022F6C1C30612400F9D896 /* LikesViewController.xib */,
+				4D022F6E1C30627700F9D896 /* NewTracksViewController.h */,
+				4D022F6F1C30627700F9D896 /* NewTracksViewController.m */,
+				4D022F701C30627700F9D896 /* NewTracksViewController.xib */,
 			);
 			name = "Discover View Controllers";
 			sourceTree = "<group>";
@@ -489,12 +521,12 @@
 		4DA5D3111C2F88C70031FBE5 /* Settings View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D20B1C2F81D30031FBE5 /* InfoTableViewController.m */,
-				4DA5D20C1C2F81D30031FBE5 /* InfoTableViewController.h */,
-				4DA5D20D1C2F81D30031FBE5 /* ConnectCollectionViewController.m */,
-				4DA5D20E1C2F81D30031FBE5 /* ConnectCollectionViewController.h */,
 				4DA5D20F1C2F81D30031FBE5 /* SettingsViewController.h */,
 				4DA5D2101C2F81D30031FBE5 /* SettingsViewController.m */,
+				4DA5D20B1C2F81D30031FBE5 /* InfoTableViewController.m */,
+				4DA5D20C1C2F81D30031FBE5 /* InfoTableViewController.h */,
+				4DA5D20E1C2F81D30031FBE5 /* ConnectCollectionViewController.h */,
+				4DA5D20D1C2F81D30031FBE5 /* ConnectCollectionViewController.m */,
 				4DA5D2111C2F81D30031FBE5 /* BugReportViewController.h */,
 				4DA5D2121C2F81D30031FBE5 /* BugReportViewController.m */,
 			);
@@ -560,8 +592,8 @@
 		4DA5D3171C2F89A00031FBE5 /* Custom Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */,
 				4DA5D2221C2F82190031FBE5 /* CollectionViewCell.h */,
+				4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */,
 				4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */,
 				4DA5D2231C2F82190031FBE5 /* ConnectCell.h */,
 				4DA5D2241C2F82190031FBE5 /* ConnectCell.m */,
@@ -719,7 +751,10 @@
 				4DA5D2E51C2F830B0031FBE5 /* 12.png in Resources */,
 				4DA5D2E61C2F830B0031FBE5 /* headphone4.png in Resources */,
 				4DA5D2E71C2F830B0031FBE5 /* blurExample8.png in Resources */,
+				4D022F631C305D2C00F9D896 /* ForYouDiscoverViewController.xib in Resources */,
+				4D022F681C3060B100F9D896 /* ChartsViewController.xib in Resources */,
 				4DA5D2E81C2F830B0031FBE5 /* blurExample6.png in Resources */,
+				4D022F721C30627700F9D896 /* NewTracksViewController.xib in Resources */,
 				4DA5D2E91C2F830B0031FBE5 /* blurExample7.png in Resources */,
 				4DA5D2EA1C2F830B0031FBE5 /* blurExample5.png in Resources */,
 				4DA5D2EB1C2F830B0031FBE5 /* blurExample3.png in Resources */,
@@ -727,6 +762,7 @@
 				4DA5D2ED1C2F830B0031FBE5 /* blurExample2.png in Resources */,
 				4DA5D2EE1C2F830B0031FBE5 /* blurImage.jpg in Resources */,
 				4DA5D2EF1C2F830B0031FBE5 /* blurExample1.png in Resources */,
+				4D022F6D1C30612400F9D896 /* LikesViewController.xib in Resources */,
 				4DA5D2F01C2F830B0031FBE5 /* blurExample.png in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
 			);
@@ -753,6 +789,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D022F6B1C3060F300F9D896 /* LikesViewController.m in Sources */,
 				4DA5D2D61C2F82E80031FBE5 /* CAPSPageMenu.m in Sources */,
 				4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */,
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
@@ -774,6 +811,7 @@
 				4DA5D29C1C2F82780031FBE5 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
 				4DA5D3091C2F88810031FBE5 /* DiscoverViewController.m in Sources */,
 				4DA5D29E1C2F82790031FBE5 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
+				4D022F671C3060B100F9D896 /* ChartsViewController.m in Sources */,
 				4DA5D2A01C2F82790031FBE5 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
 				4DA5D2A21C2F82790031FBE5 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				4DA5D2A41C2F82790031FBE5 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
@@ -804,6 +842,7 @@
 				4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */,
 				4DA5D2181C2F81D30031FBE5 /* SettingsViewController.m in Sources */,
 				4DA5D21A1C2F81D30031FBE5 /* BugReportViewController.m in Sources */,
+				4D022F621C305D2C00F9D896 /* ForYouDiscoverViewController.m in Sources */,
 				4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */,
 				4DA5D1FD1C2F81A00031FBE5 /* StationsViewController.m in Sources */,
 				4DA5D1FE1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
@@ -811,6 +850,7 @@
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
 				4DA5D2061C2F81A00031FBE5 /* MoodsViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* FeedViewController.m in Sources */,
+				4D022F711C30627700F9D896 /* NewTracksViewController.m in Sources */,
 				4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */,
 				4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */,
 				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,
