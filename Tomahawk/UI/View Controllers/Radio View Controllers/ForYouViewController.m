@@ -10,44 +10,6 @@
 
 @implementation ForYouViewController
 
--(IBAction)buttonHighlight:(UIButton *)button{
-    if (button == self.stationsSeeAllInvisibleButton) {
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.stationsSeeAllButton.titleLabel setAlpha:0.3];
-                         }
-                         completion:nil];
-    }else if (button == self.genresSeeAllInvisibleButton){
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.genresSeeAllButton.titleLabel setAlpha:0.3];
-                         }
-                         completion:nil];
-    }
-    
-}
--(IBAction)buttonUnhighlight:(UIButton *)button{
-    if (button == self.stationsSeeAllInvisibleButton) {
-        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.stationsSeeAllButton.titleLabel setAlpha:1];
-                         }
-                         completion:nil];
-    }else if (button == self.genresSeeAllInvisibleButton){
-        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.genresSeeAllButton.titleLabel setAlpha:1];
-                         }
-                         completion:nil];
-    }
-}
--(IBAction)buttonSelected:(UIButton *)button{
-    if (button == self.stationsSeeAllInvisibleButton) {
-        [self.stationsSeeAllButton.titleLabel setAlpha:1];
-    }else if (button == self.genresSeeAllInvisibleButton){
-        [self.genresSeeAllButton.titleLabel setAlpha:1];
-    }
-}
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
@@ -63,12 +25,6 @@
     self.recommendedGenres.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     self.recommendedStations.backgroundColor = [UIColor clearColor];
     self.recommendedStations.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    NSArray *myArray = @[self.stationsSeeAllButton, self.genresSeeAllButton];
-    for (UIButton *buttons in myArray) {
-        [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
-    }
 
 }
 

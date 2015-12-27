@@ -82,9 +82,8 @@
     
     //Set Button Properties
     for (UIButton *myButton in buttons) {
-        myButton.imageView.image = [myButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [myButton setImage:myButton.imageView.image forState:UIControlStateNormal];
-        myButton.tintColor = primaryColor;
+        UIImage *buttonImage = [UIImage image:myButton.imageView.image withColor:primaryColor];
+        [myButton setImage:buttonImage forState:UIControlStateNormal];
     }
     
     

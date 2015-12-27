@@ -345,7 +345,6 @@
 		4DA5D3011C2F86EB0031FBE5 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */,
 				4DA5D2F31C2F83300031FBE5 /* Main.storyboard */,
 				4DA5D3151C2F898F0031FBE5 /* Custom Page View */,
 				4DA5D3161C2F89970031FBE5 /* Custom Alert Controller */,
@@ -563,6 +562,7 @@
 			children = (
 				4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */,
 				4DA5D2221C2F82190031FBE5 /* CollectionViewCell.h */,
+				4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */,
 				4DA5D2231C2F82190031FBE5 /* ConnectCell.h */,
 				4DA5D2241C2F82190031FBE5 /* ConnectCell.m */,
 			);
@@ -587,8 +587,8 @@
 				4DA5D3011C2F86EB0031FBE5 /* UI */,
 				4DA5D2FF1C2F86D40031FBE5 /* Supporting FIles */,
 				4DA5D2FD1C2F86BA0031FBE5 /* Resources */,
-				4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */,
 				4DBDE0181BADC2BA00CD02CC /* Products */,
+				4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */,
 			);
 			sourceTree = "<group>";
 		};

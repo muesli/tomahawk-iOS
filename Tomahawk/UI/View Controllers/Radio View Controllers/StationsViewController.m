@@ -10,45 +10,6 @@
 
 @implementation StationsViewController
 
--(IBAction)buttonHighlight:(UIButton *)button{
-    if (button == self.artistsSeeAllInvisibleButton) {
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.artistsSeeAllButton.titleLabel setAlpha:0.3];
-                         }
-                         completion:nil];
-    }else if (button == self.internetRadioSeeAllInvisibleButton){
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.internetRadioSeeAllButton.titleLabel setAlpha:0.3];
-                         }
-                         completion:nil];
-    }
-    
-}
--(IBAction)buttonUnhighlight:(UIButton *)button{
-    if (button == self.artistsSeeAllInvisibleButton) {
-        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.artistsSeeAllButton.titleLabel setAlpha:1];
-                         }
-                         completion:nil];
-    }else if (button == self.internetRadioSeeAllInvisibleButton){
-        [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
-                         animations:^{
-                             [self.internetRadioSeeAllButton.titleLabel setAlpha:1];
-                         }
-                         completion:nil];
-    }
-}
--(IBAction)buttonSelected:(UIButton *)button{
-    if (button == self.artistsSeeAllInvisibleButton) {
-        [self.artistsSeeAllButton.titleLabel setAlpha:1];
-    }else if (button == self.internetRadioSeeAllInvisibleButton){
-        [self.internetRadioSeeAllButton.titleLabel setAlpha:1];
-    }
-}
-
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [self.scrollView layoutIfNeeded];
@@ -63,13 +24,6 @@
     self.internetRadio.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
     self.followedArtists.backgroundColor = [UIColor clearColor];
     self.followedArtists.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    NSArray *myArray = @[self.artistsSeeAllButton, self.internetRadioSeeAllButton];
-    for (UIButton *buttons in myArray) {
-        [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
-        [buttons setTitle:@"SEE ALL" forState:UIControlStateNormal];
-    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

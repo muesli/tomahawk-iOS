@@ -6,13 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StationsViewController">
             <connections>
-                <outlet property="artistsSeeAllButton" destination="ifG-Gm-xbb" id="sMt-uC-Xtu"/>
-                <outlet property="artistsSeeAllInvisibleButton" destination="R1D-R1-IQL" id="z37-WC-MGf"/>
                 <outlet property="contentView" destination="qfB-kR-kKk" id="RX5-UO-5Zy"/>
                 <outlet property="followedArtists" destination="xz2-E7-khZ" id="HLv-fz-1xb"/>
                 <outlet property="internetRadio" destination="GCH-aM-9yz" id="rdo-wy-PvL"/>
-                <outlet property="internetRadioSeeAllButton" destination="ORT-yh-6cf" id="VpD-Rn-BmV"/>
-                <outlet property="internetRadioSeeAllInvisibleButton" destination="cXu-yU-eXG" id="Tnz-2p-HAb"/>
                 <outlet property="scrollView" destination="PfH-yY-q9p" id="8i5-jX-jl2"/>
                 <outlet property="view" destination="2E9-FF-I2W" id="nwe-Xz-hE3"/>
             </connections>
@@ -26,7 +22,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfB-kR-kKk" userLabel="ContentView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xz2-E7-khZ">
                                     <rect key="frame" x="15" y="17" width="585" height="267"/>
@@ -58,55 +54,29 @@
                                         <outlet property="delegate" destination="-1" id="8K2-MT-FUy"/>
                                     </connections>
                                 </collectionView>
-                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifG-Gm-xbb">
-                                    <rect key="frame" x="577" y="31" width="48" height="15"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifG-Gm-xbb">
+                                    <rect key="frame" x="527" y="31" width="70" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="4QU-hc-TKk"/>
-                                        <constraint firstAttribute="width" constant="48" id="UiV-Sl-jbN"/>
+                                        <constraint firstAttribute="width" constant="70" id="UiV-Sl-jbN"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" title="SEE ALL">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
+                                    <inset key="contentEdgeInsets" minX="66" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="-105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-2" minY="3" maxX="18" maxY="3"/>
+                                    <state key="normal" title="SEE ALL" image="More Than"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R1D-R1-IQL">
-                                    <rect key="frame" x="531" y="31" width="57" height="15"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORT-yh-6cf">
+                                    <rect key="frame" x="527" y="279" width="70" height="15"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="57" id="4cK-NE-6ou"/>
-                                    </constraints>
-                                    <state key="normal">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDown" id="bQs-GQ-4TM"/>
-                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDragInside" id="e75-Ds-mPo"/>
-                                        <action selector="buttonSelected:" destination="-1" eventType="touchUpInside" id="5VD-dT-PJ1"/>
-                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchDragOutside" id="4ML-A8-grw"/>
-                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchUpOutside" id="TD7-5H-5h8"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORT-yh-6cf">
-                                    <rect key="frame" x="577" y="279" width="48" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="48" id="K01-5j-U7O"/>
+                                        <constraint firstAttribute="width" constant="70" id="K01-5j-U7O"/>
                                         <constraint firstAttribute="height" constant="15" id="a74-9w-Hql"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" title="SEE ALL"/>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXu-yU-eXG">
-                                    <rect key="frame" x="531" y="279" width="57" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="57" id="igI-Kb-ldD"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <connections>
-                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDragInside" id="pRv-9j-xWa"/>
-                                        <action selector="buttonHighlight:" destination="-1" eventType="touchDown" id="uSq-HW-U3n"/>
-                                        <action selector="buttonSelected:" destination="-1" eventType="touchUpInside" id="1Qp-LJ-Qi1"/>
-                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchUpOutside" id="R77-Lm-aAG"/>
-                                        <action selector="buttonUnhighlight:" destination="-1" eventType="touchDragOutside" id="jqk-Wp-nQn"/>
-                                    </connections>
+                                    <inset key="contentEdgeInsets" minX="66" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="-105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="imageEdgeInsets" minX="-2" minY="3" maxX="18" maxY="3"/>
+                                    <state key="normal" title="SEE ALL" image="More Than"/>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOLLOWED ARTISTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n97-qM-rvG">
                                     <rect key="frame" x="25" y="31" width="169" height="15"/>
@@ -124,43 +94,37 @@
                                         <constraint firstAttribute="width" constant="151" id="DgG-nI-txq"/>
                                         <constraint firstAttribute="height" constant="15" id="GyB-9h-DVW"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ORT-yh-6cf" secondAttribute="trailing" constant="-25" id="0Hq-Pn-z9o"/>
-                                <constraint firstItem="R1D-R1-IQL" firstAttribute="leading" secondItem="ifG-Gm-xbb" secondAttribute="leading" constant="-46" id="1DH-at-S2i"/>
+                                <constraint firstAttribute="trailing" secondItem="ORT-yh-6cf" secondAttribute="trailing" constant="3" id="0Hq-Pn-z9o"/>
                                 <constraint firstItem="GCH-aM-9yz" firstAttribute="leading" secondItem="qfB-kR-kKk" secondAttribute="leading" constant="15" id="1f9-WC-lZr"/>
                                 <constraint firstItem="n97-qM-rvG" firstAttribute="top" secondItem="qfB-kR-kKk" secondAttribute="top" constant="31" id="295-dI-nHE"/>
                                 <constraint firstItem="GCH-aM-9yz" firstAttribute="top" secondItem="qfB-kR-kKk" secondAttribute="top" constant="263" id="3cl-13-yIZ"/>
                                 <constraint firstItem="ifG-Gm-xbb" firstAttribute="top" secondItem="qfB-kR-kKk" secondAttribute="top" constant="31" id="5kz-oq-4pC"/>
-                                <constraint firstItem="cXu-yU-eXG" firstAttribute="height" secondItem="ORT-yh-6cf" secondAttribute="height" id="8Ge-YM-LKK"/>
-                                <constraint firstItem="R1D-R1-IQL" firstAttribute="top" secondItem="ifG-Gm-xbb" secondAttribute="top" id="CbG-sS-N56"/>
                                 <constraint firstAttribute="trailing" secondItem="xz2-E7-khZ" secondAttribute="trailing" id="DEp-7H-pwn"/>
                                 <constraint firstItem="jUa-6y-Poz" firstAttribute="leading" secondItem="qfB-kR-kKk" secondAttribute="leading" constant="25" id="Gr0-oN-FYW"/>
                                 <constraint firstAttribute="trailing" secondItem="GCH-aM-9yz" secondAttribute="trailing" id="Mpq-pa-TVm"/>
                                 <constraint firstItem="xz2-E7-khZ" firstAttribute="centerX" secondItem="qfB-kR-kKk" secondAttribute="centerX" constant="7.5" id="Q9B-M8-2Da"/>
-                                <constraint firstAttribute="bottom" secondItem="GCH-aM-9yz" secondAttribute="bottom" constant="470" id="SLt-oe-rT1"/>
-                                <constraint firstItem="cXu-yU-eXG" firstAttribute="top" secondItem="ORT-yh-6cf" secondAttribute="top" id="U9Y-Rx-Dp1"/>
-                                <constraint firstItem="cXu-yU-eXG" firstAttribute="leading" secondItem="ORT-yh-6cf" secondAttribute="leading" constant="-46" id="VPM-xr-otp"/>
-                                <constraint firstAttribute="bottom" secondItem="jUa-6y-Poz" secondAttribute="bottom" constant="706" id="W6F-Jl-RXq"/>
+                                <constraint firstAttribute="bottom" secondItem="GCH-aM-9yz" secondAttribute="bottom" constant="70" id="SLt-oe-rT1"/>
+                                <constraint firstAttribute="bottom" secondItem="jUa-6y-Poz" secondAttribute="bottom" constant="306" id="W6F-Jl-RXq"/>
                                 <constraint firstItem="n97-qM-rvG" firstAttribute="leading" secondItem="qfB-kR-kKk" secondAttribute="leading" constant="25" id="XSk-b1-kd4"/>
                                 <constraint firstItem="xz2-E7-khZ" firstAttribute="top" secondItem="qfB-kR-kKk" secondAttribute="top" constant="17" id="doZ-Ie-2wc"/>
-                                <constraint firstItem="R1D-R1-IQL" firstAttribute="height" secondItem="ifG-Gm-xbb" secondAttribute="height" id="fHe-UY-MLe"/>
                                 <constraint firstItem="jUa-6y-Poz" firstAttribute="top" secondItem="qfB-kR-kKk" secondAttribute="top" constant="279" id="lLf-mF-aEf"/>
                                 <constraint firstItem="ORT-yh-6cf" firstAttribute="top" secondItem="qfB-kR-kKk" secondAttribute="top" constant="279" id="nG0-zv-gB5"/>
-                                <constraint firstAttribute="trailing" secondItem="ifG-Gm-xbb" secondAttribute="trailing" constant="-25" id="oLR-mP-TF9"/>
-                                <constraint firstAttribute="bottom" secondItem="xz2-E7-khZ" secondAttribute="bottom" constant="716" id="pYD-lZ-gcB"/>
+                                <constraint firstAttribute="trailing" secondItem="ifG-Gm-xbb" secondAttribute="trailing" constant="3" id="oLR-mP-TF9"/>
+                                <constraint firstAttribute="bottom" secondItem="xz2-E7-khZ" secondAttribute="bottom" constant="316" id="pYD-lZ-gcB"/>
                                 <constraint firstItem="xz2-E7-khZ" firstAttribute="leading" secondItem="qfB-kR-kKk" secondAttribute="leading" constant="15" id="zZU-KJ-MnU"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="qfB-kR-kKk" secondAttribute="trailing" id="Anx-7f-APt"/>
-                        <constraint firstAttribute="bottom" secondItem="qfB-kR-kKk" secondAttribute="bottom" constant="-400" id="P6r-hl-Gey"/>
+                        <constraint firstAttribute="bottom" secondItem="qfB-kR-kKk" secondAttribute="bottom" id="P6r-hl-Gey"/>
                         <constraint firstItem="qfB-kR-kKk" firstAttribute="top" secondItem="PfH-yY-q9p" secondAttribute="top" id="WtO-Jd-1AQ"/>
                         <constraint firstItem="qfB-kR-kKk" firstAttribute="leading" secondItem="PfH-yY-q9p" secondAttribute="leading" id="cnj-mQ-M0H"/>
                         <constraint firstItem="qfB-kR-kKk" firstAttribute="width" secondItem="PfH-yY-q9p" secondAttribute="width" id="nRD-I3-bly"/>
@@ -179,4 +143,7 @@
             <point key="canvasLocation" x="233" y="-25.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="More Than" width="22" height="22"/>
+    </resources>
 </document>

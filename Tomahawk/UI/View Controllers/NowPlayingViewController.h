@@ -10,6 +10,7 @@
 #import "CCColorCube.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import "MyAdditions.h"
 
 
 @interface NowPlayingViewController : UIViewController

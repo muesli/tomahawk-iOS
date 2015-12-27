@@ -362,14 +362,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate the App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x11-LN-cc5">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Rate the App" id="4SY-F7-iVa">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -384,14 +384,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Tell Your Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qzK-nV-tId">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Tell Your Friends" id="xMw-Em-u8K">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -419,14 +419,14 @@
                                                     <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 </segmentedControl>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Quality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jcH-iY-Pwt">
-                                                    <rect key="frame" x="50" y="0.0" width="535" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="523" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Quality" id="SCt-lP-PjN">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -441,14 +441,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Equaliser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pWt-5r-xLT">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Equaliser" id="IOG-7z-bqb">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -467,14 +467,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Qp-6V-w9b">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Account" id="sEa-5c-BdZ">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -492,14 +492,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RX2-ma-kc4">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Sign Out" id="tRt-6u-r6i">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -577,14 +577,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sbx-si-wju">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Connect" id="0bz-yR-vTr">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -606,14 +606,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Advanced" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FvD-X4-A6I">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Advanced" id="0D9-JA-Y1j">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -635,14 +635,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aOe-p7-601">
-                                                    <rect key="frame" x="50" y="0.0" width="515" height="43"/>
+                                                    <rect key="frame" x="62" y="0.0" width="503" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Info" id="E5y-Y3-35W">
-                                                    <rect key="frame" x="15" y="11" width="20" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -966,7 +966,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l7I-CP-vAP" customClass="KMPlaceholderTextView" customModule="Tomahawk" customModuleProvider="target">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l7I-CP-vAP" customClass="KMPlaceholderTextView" customModule="Tomahawk" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="584" height="152"/>
                                                     <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1037,7 +1037,7 @@
                                 <state key="normal" image="Expand Arrow"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ui-OYt">
-                                <rect key="frame" x="556" y="36" width="24" height="24"/>
+                                <rect key="frame" x="-16" y="36" width="596" height="842"/>
                                 <state key="normal" image="cast_off"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLe-iE-FRl">
@@ -1057,7 +1057,7 @@
                                 <state key="normal" image="Lyrics"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZL-gG-XXj">
-                                <rect key="frame" x="558" y="563" width="22" height="22"/>
+                                <rect key="frame" x="548" y="553" width="32" height="32"/>
                                 <state key="normal" image="Like"/>
                                 <connections>
                                     <action selector="likeButtonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="LYe-oN-2tj"/>
@@ -1125,7 +1125,7 @@
                                 <state key="normal" image="Next"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFR-CO-6Cg">
-                                <rect key="frame" x="558" y="563" width="22" height="22"/>
+                                <rect key="frame" x="548" y="553" width="32" height="32"/>
                                 <state key="normal" image="Like Selected"/>
                                 <connections>
                                     <action selector="likeSelectedButtonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="p7M-lY-pVS"/>
@@ -1256,7 +1256,7 @@
         <scene sceneID="0YR-E9-dcl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pOm-Af-pqI" customClass="NavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Music" image="My Music" selectedImage="My Music" id="H4J-1D-YEc"/>
+                    <tabBarItem key="tabBarItem" title="My Music" image="My Music" selectedImage="My Music Selected" id="H4J-1D-YEc"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="359" id="ECT-rC-AuG">
                             <connections>
@@ -1345,11 +1345,11 @@
             </objects>
             <point key="canvasLocation" x="-428.5" y="-757.5"/>
         </scene>
-        <!--Feed-->
+        <!--Activity-->
         <scene sceneID="6zH-Wy-sSJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="359" id="txn-0y-kfC">
                             <connections>
@@ -1378,39 +1378,40 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Account" width="20" height="20"/>
-        <image name="Advanced" width="20" height="20"/>
-        <image name="Connect" width="20" height="20"/>
-        <image name="Discover" width="25" height="25"/>
-        <image name="Discover Selected" width="25" height="25"/>
-        <image name="Equaliser" width="20" height="20"/>
+        <image name="Account" width="32" height="32"/>
+        <image name="Advanced" width="32" height="32"/>
+        <image name="Connect" width="32" height="32"/>
+        <image name="Discover" width="32" height="32"/>
+        <image name="Discover Selected" width="32" height="32"/>
+        <image name="Equaliser" width="32" height="32"/>
         <image name="Expand Arrow" width="15" height="15"/>
-        <image name="Feed" width="25" height="25"/>
-        <image name="Feed Selected" width="25" height="25"/>
-        <image name="Info" width="20" height="20"/>
-        <image name="Like" width="22" height="22"/>
-        <image name="Like Selected" width="22" height="22"/>
+        <image name="Feed" width="32" height="32"/>
+        <image name="Feed Selected" width="32" height="32"/>
+        <image name="Info" width="32" height="32"/>
+        <image name="Like" width="32" height="32"/>
+        <image name="Like Selected" width="32" height="32"/>
         <image name="Lyrics" width="22" height="22"/>
-        <image name="My Music" width="25" height="25"/>
+        <image name="My Music" width="32" height="32"/>
+        <image name="My Music Selected" width="32" height="32"/>
         <image name="Next" width="14" height="14"/>
         <image name="Pause" width="14" height="14"/>
         <image name="Previous" width="14" height="14"/>
-        <image name="Quality" width="20" height="20"/>
-        <image name="Queue" width="22" height="22"/>
-        <image name="Radio" width="25" height="25"/>
-        <image name="Radio Selected" width="25" height="25"/>
-        <image name="Rate the App" width="20" height="20"/>
+        <image name="Quality" width="32" height="32"/>
+        <image name="Queue" width="32" height="32"/>
+        <image name="Radio" width="32" height="32"/>
+        <image name="Radio Selected" width="32" height="32"/>
+        <image name="Rate the App" width="32" height="32"/>
         <image name="Repeat" width="17" height="17"/>
-        <image name="Settings" width="25" height="25"/>
-        <image name="Settings Selected" width="25" height="25"/>
-        <image name="Share" width="22" height="22"/>
+        <image name="Settings" width="32" height="32"/>
+        <image name="Settings Selected" width="32" height="32"/>
+        <image name="Share" width="32" height="32"/>
         <image name="Shuffle" width="16" height="15"/>
-        <image name="Sign Out" width="20" height="20"/>
-        <image name="Tell Your Friends" width="20" height="20"/>
-        <image name="cast_off" width="24" height="24"/>
+        <image name="Sign Out" width="32" height="32"/>
+        <image name="Tell Your Friends" width="32" height="32"/>
+        <image name="cast_off" width="596" height="842"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r04-Oq-FMF"/>
+        <segue reference="9Zz-kc-DY7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
