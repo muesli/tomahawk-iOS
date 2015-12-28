@@ -1,7 +1,7 @@
 Tomahawk Player - Gathering Music into one Place
 Copyright (c) 2015 Tomahawk Player and the contributors (tomahawk-player.org)
 
-If you distribute a copy or make a fork of the project, you have to credit this project as source.
+If you distribute a copy or make a fork of the project, you have to credit this project as source. You may NOT use any of the icons included in the Images.xcassets file inside of this project in any project other than this one. 
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,9 +19,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/ .
 If you want to contact us : welisten@tomahawk-player.org
 
 
-Tomahawk Player - Gathering Music into one Place
-Copyright (c) 2015 Tomahawk Player and the contributors (tomahawk-player.org)
-Butter Project is released under the GPL
+Tomahawk is released under the GPL
 
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
