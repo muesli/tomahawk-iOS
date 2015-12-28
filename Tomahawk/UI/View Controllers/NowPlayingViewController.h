@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *shuffle;
 @property (weak, nonatomic) IBOutlet UIButton *repeat;
 @property (weak, nonatomic) IBOutlet UIButton *like;
-@property (weak, nonatomic) IBOutlet UIButton *likeSelected;
 @property (weak, nonatomic) IBOutlet UIButton *queue;
 @property (weak, nonatomic) IBOutlet UIButton *share;
 @property (weak, nonatomic) IBOutlet UIButton *lyrics;

@@ -11,4 +11,6 @@
 
 @interface InfoTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *version;
+
 @end

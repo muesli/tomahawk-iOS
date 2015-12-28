@@ -707,7 +707,7 @@
 #pragma mark - Authentication
 
 -(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion{
-    NSString *api_sig = [NSString stringWithFormat:@"api_key%@methodauth.getMobileSessionpassword%@username%@%@", LASTFM_API_KEY, password, username, LASTFM_SECRET_KEY];//API signature
+    NSString *api_sig = [NSString stringWithFormat:@"api_key%@methodauth.getMobileSessionpassword%@username%@%@", LASTFM_API_KEY, password, username, LASTFM_SECRET_KEY];
     
     NSURL *url = [NSURL URLWithString:@"https://ws.audioscrobbler.com/2.0/"];
     NSString *post = [NSString stringWithFormat:@"method=auth.getMobileSession&api_key=94f82a0fccbf54bee207afdd5d44de97&format=json&username=%@&password=%@&api_sig=%@", username, password, [api_sig md5]];

@@ -28,30 +28,14 @@
     }
 }
 
-- (IBAction)likeButtonTouched:(id)sender{
-    [sender setEnabled:NO];
-    [sender setHidden:YES];
-    [_likeSelected setEnabled:YES];
-    [_likeSelected setHidden:NO];
-    _likeSelected.imageView.image = [_likeSelected.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [_likeSelected setImage:[UIImage imageNamed:@"Like Selected"] forState:UIControlStateNormal];
-    _likeSelected.tintColor = secondaryColor;
-    //Follow Code
-}
-
-- (IBAction)likeSelectedButtonTouched:(id)sender {
-    [sender setEnabled:NO];
-    [sender setHidden:YES];
-    [_like setEnabled:YES];
-    [_like setHidden:NO];
-    //Unfollow Code
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+     NSLog(@"Current song image view width and height are %f", self.currentSongImageView.frame.size.width);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [_likeSelected setEnabled:NO];
-    [_likeSelected setHidden:YES];
+   
     
     _backgroundImageView.image = [UIImage imageNamed:@"blurExample"];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];

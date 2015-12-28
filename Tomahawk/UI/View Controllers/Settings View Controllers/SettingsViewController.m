@@ -15,23 +15,6 @@
 
 @implementation SettingsViewController
 
--(IBAction)segmentedControlChangeValue:(UISegmentedControl*)segmentedControl{
-    switch (segmentedControl.selectedSegmentIndex) {
-        case 0:
-            //save value in CoreData and change thing to Low
-            break;
-        case 1:
-            //save value in CoreData and change thing to Medium
-            break;
-        case 2:
-            //save value in CoreData and change thing to Low
-            break;
-        default:
-            break;
-    }
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
