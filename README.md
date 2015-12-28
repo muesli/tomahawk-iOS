@@ -26,7 +26,7 @@ $ open Tomahawk.xcworkspace
 
 ## Lisence
 
-If you distribute a copy or make a fork of the project, you have to credit this project as source.
+If you distribute a copy or make a fork of the project, you have to credit this project as source. You may NOT use any of the icons included in the Images.xcassets file inside of this project in any project other than this one.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
