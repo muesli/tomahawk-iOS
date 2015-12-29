@@ -12,8 +12,6 @@
 
 
 @interface NavigationController (){
-    UIButton *searchSongsSeeAllButton, *searchAlbumsSeeAllButton, *searchPlaylistsSeeAllButton, *searchArtistsSeeAllButton;
-    UILabel  *searchSongsHeader, *searchAlbumsHeader, *searchPlaylistsHeader, *searchArtistsHeader;
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers, *playlistCount, *playlistNames, *playlistImages, *playlistArtists;
     TEngine *apiCall;
     __block dispatch_cancelable_block_t searchBlock;
@@ -48,6 +46,7 @@ static CGFloat searchBlockDelay = 0.25;
     loadingDimmer.alpha = 0.3;
     UIBarButtonItem *inboxButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButton:)];
     self.viewControllers[0].navigationItem.rightBarButtonItem = inboxButton;
+    
     //Regester for keyboard notifications so you can resize tableview when it closes
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -115,6 +114,7 @@ static CGFloat searchBlockDelay = 0.25;
     loadingDimmer.hidden = YES;
     return YES;
 }
+
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     self.viewControllers[0].view.userInteractionEnabled = YES;
     [searchBar resignFirstResponder];
@@ -250,7 +250,7 @@ static CGFloat searchBlockDelay = 0.25;
     });
 }
 
-#pragma mark - Table View
+#pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
@@ -262,59 +262,46 @@ static CGFloat searchBlockDelay = 0.25;
         searchCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"searchCell"];
     }
     
-    if (indexPath.section == 0) {
-        searchCell.imageView.image = [UIImage new];
-        //Create temp variables so code will only run once
-        int j = indexPath.row;
-        j++;
-        for (int i = indexPath.row; i<j && i<songNames.count; i++) {
-            searchCell.textLabel.text =  [songNames objectAtIndex:i];
-            NSString *albums = [songAlbums objectAtIndex:i];
-            NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums];
-            //If there are no albums, remove the album thing ^
-            if (!albums) {
-                text = [songArtists objectAtIndex:i];
+    switch (indexPath.section) {
+        case 0:
+            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<songNames.count; i++) {
+                searchCell.textLabel.text =  [songNames objectAtIndex:i];
+                NSString *albums = [songAlbums objectAtIndex:i];
+                NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums];
+                //If there are no albums, remove the album thing ^
+                if (!albums) {
+                    text = [songArtists objectAtIndex:i];
+                }
+                searchCell.detailTextLabel.text = text;
+                searchCell.imageView.image = [songImages objectAtIndex:i];
             }
-            searchCell.detailTextLabel.text = text;
-            searchCell.imageView.image = [songImages objectAtIndex:i];
-        }
-        
-    }else if (indexPath.section == 1){
-        //Create temp variables so code will only run once
-        int j = indexPath.row;
-        j++;
-        for (int i = indexPath.row; i<j && i<albumNames.count; i++) {
-            searchCell.textLabel.text = [albumNames objectAtIndex:i];
-            searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
-            searchCell.imageView.image = [albumImages objectAtIndex:i];
-        }
-    }else if (indexPath.section == 2){
-        //Create temp variables so code will only run once
-        int j = indexPath.row;
-        j++;
-        
-        for (int i = indexPath.row; i<j && i<artistNames.count; i++) {
-            searchCell.textLabel.text = [artistNames objectAtIndex:i];
-            NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
-            searchCell.detailTextLabel.text = followers;
-            searchCell.imageView.image = [artistImages objectAtIndex:i];
-        }
-    }else if (indexPath.section == 3){
-        //Create temp variables so code will only run once
-        int j = indexPath.row;
-        j++;
-        
-        for (int i = indexPath.row; i<j && i<playlistNames.count; i++) {
-            searchCell.textLabel.text = [playlistNames objectAtIndex:i];
-            NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
-            searchCell.detailTextLabel.text = count;
-            searchCell.imageView.image = [playlistImages objectAtIndex:i];
-        }
-
+            break;
+        case 1:
+            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<albumNames.count; i++) {
+                searchCell.textLabel.text = [albumNames objectAtIndex:i];
+                searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
+                searchCell.imageView.image = [albumImages objectAtIndex:i];
+            }
+        case 2:
+            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<artistNames.count; i++) {
+                searchCell.textLabel.text = [artistNames objectAtIndex:i];
+                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+                [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
+                searchCell.detailTextLabel.text = followers;
+                searchCell.imageView.image = [artistImages objectAtIndex:i];
+            }
+        case 3:
+            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<playlistNames.count; i++) {
+                searchCell.textLabel.text = [playlistNames objectAtIndex:i];
+                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+                [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
+                searchCell.detailTextLabel.text = count;
+                searchCell.imageView.image = [playlistImages objectAtIndex:i];
+            }
+        default:
+            break;
     }
     
     
@@ -327,141 +314,130 @@ static CGFloat searchBlockDelay = 0.25;
     CGFloat widthScale = 60 / searchCell.imageView.image.size.width;
     CGFloat heightScale = 60 / searchCell.imageView.image.size.height;
     searchCell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+    
     return searchCell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        if (songNames.count >= 4) {
-            return 4;
-        }else{
-            return songNames.count;
-        }
-    }else if (section == 1){
-        if (albumNames.count >= 4) {
-            return 4;
-        }else{
-            return albumNames.count;
-        }
-    }else if (section == 2){
-        if (artistNames.count >= 4) {
-            return 4;
-        }else{
-            return artistNames.count;
-        }
-    }else if(section == 3){
-        if (playlistNames.count >= 4) {
-            return 4;
-        }else{
-            return playlistNames.count;
-        }
+    switch (section) {
+        case 0:
+            if (songNames.count >= 4) return 4;
+            else return songNames.count;
+        case 1:
+            if (albumNames.count >= 4)return 4;
+            else return albumNames.count;
+        case 2:
+            if (artistNames.count >= 4) return 4;
+            else return artistNames.count;
+        case 3:
+            if (playlistNames.count >= 4)return 4;
+            else return playlistNames.count;
+        default:
+            return 0;
     }
-    return 0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
 
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     headerView.backgroundColor = [UIColor clearColor];
+    
     if([tableView numberOfRowsInSection:section] == 0){
-        return headerView;
-    }
-    NSArray *myArray;
-    
-    if (section == 0) {
-        searchSongsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        myArray = @[searchSongsSeeAllButton];
-    }else if (section == 1){
-        searchAlbumsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        myArray = @[searchAlbumsSeeAllButton];
-    }else if (section == 2){
-        searchArtistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        myArray = @[searchArtistsSeeAllButton];
-    }else if (section == 3){
-        searchPlaylistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        myArray = @[searchPlaylistsSeeAllButton];
+        return nil;
     }
     
-    for (UIButton *buttons in myArray) {
-        [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
-        [buttons setImageEdgeInsets:UIEdgeInsetsMake(3, -2, 3, 18)];
-        [buttons setContentEdgeInsets:UIEdgeInsetsMake(0, 66, 0, 0)];
-        [buttons setTitle:@"SEE ALL" forState:UIControlStateNormal];
-        [buttons setReversesTitleShadowWhenHighlighted:YES];
-        [buttons setTintColor:[UIColor whiteColor]];
-        [[buttons titleLabel] setFont:[UIFont systemFontOfSize:12]];
-        [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [headerView addSubview:buttons];
-        
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:buttons
-                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeTrailingMargin
-                                                              multiplier:1
-                                                                constant:-3]];
-        
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:buttons
-                                                               attribute:NSLayoutAttributeCenterY
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                              multiplier:1
-                                                                constant:0]];
-        
-        [buttons addConstraint:[NSLayoutConstraint constraintWithItem:buttons attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:15]];
-        [buttons addConstraint:[NSLayoutConstraint constraintWithItem:buttons attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:70]];
-        
+    UILabel *headerTitle = [UILabel new];
+    switch (section) {
+        case 0:
+            headerTitle.text = @"SONGS";
+            break;
+        case 1:
+            headerTitle.text = @"ALBUMS";
+            break;
+        case 2:
+            headerTitle.text = @"ARTISTS";
+            break;
+        case 3:
+            headerTitle.text = @"PLAYLISTS";
+            break;
+        default:
+            break;
     }
     
-    if (section == 0) {
-        searchSongsHeader = [[UILabel alloc]init];
-        searchSongsHeader.text = @"SONGS";
-        myArray = @[searchSongsHeader];
-    }else if (section == 1){
-        searchAlbumsHeader = [[UILabel alloc]init];
-        searchAlbumsHeader.text = @"ALBUMS";
-        myArray = @[searchAlbumsHeader];
-    }else if (section == 2){
-        searchArtistsHeader = [[UILabel alloc]init];
-        searchArtistsHeader.text = @"ARTISTS";
-        myArray = @[searchArtistsHeader];
-    }else if (section == 3){
-        searchPlaylistsHeader = [[UILabel alloc]init];
-        searchPlaylistsHeader.text = @"PLAYLISTS";
-        myArray = @[searchPlaylistsHeader];
-    }
+    headerTitle.font = [UIFont systemFontOfSize:12 weight:0.2];
+    headerTitle.alpha = 0.5;
+    headerTitle.textColor = [UIColor whiteColor];
+    [headerTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [headerView addSubview:headerTitle];
     
-    for (UILabel *headers in myArray) {
-        headers.font = [UIFont systemFontOfSize:12 weight:0.2];
-        headers.alpha = 0.5;
-        headers.textColor = [UIColor whiteColor];
-        [headers setTranslatesAutoresizingMaskIntoConstraints:NO];
-        [headerView addSubview:headers];
+    
+    UIButton *seeAll = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [seeAll setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+    [seeAll setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
+    [seeAll setImageEdgeInsets:UIEdgeInsetsMake(3, -2, 3, 18)];
+    [seeAll setContentEdgeInsets:UIEdgeInsetsMake(0, 66, 0, 0)];
+    [seeAll setTitle:@"SEE ALL" forState:UIControlStateNormal];
+    [seeAll setReversesTitleShadowWhenHighlighted:YES];
+    [seeAll setTintColor:[UIColor whiteColor]];
+    [[seeAll titleLabel] setFont:[UIFont systemFontOfSize:12]];
+    [seeAll setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [headerView addSubview:seeAll];
+    
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
+                                                            attribute:NSLayoutAttributeTrailingMargin
+                                                            relatedBy:NSLayoutRelationEqual
+                                                            toItem:headerView
+                                                            attribute:NSLayoutAttributeTrailingMargin
+                                                            multiplier:1
+                                                            constant:-3]];
         
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headers
-                                                               attribute:NSLayoutAttributeLeadingMargin
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeLeadingMargin
-                                                              multiplier:1
-                                                                constant:20]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
+                                                            attribute:NSLayoutAttributeCenterY
+                                                            relatedBy:NSLayoutRelationEqual
+                                                            toItem:headerView
+                                                            attribute:NSLayoutAttributeCenterY
+                                                            multiplier:1
+                                                            constant:0]];
         
-        [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headers
-                                                               attribute:NSLayoutAttributeCenterY
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:headerView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                              multiplier:1
-                                                                constant:0]];
-    }
+    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
+                                                        attribute:NSLayoutAttributeHeight
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:0
+                                                        constant:15]];
+    
+    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
+                                                        attribute:NSLayoutAttributeWidth
+                                                        relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:0
+                                                        constant:70]];
+    
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle
+                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeLeadingMargin
+                                                          multiplier:1
+                                                            constant:20]];
+    
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle
+                                                           attribute:NSLayoutAttributeCenterY
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:headerView
+                                                           attribute:NSLayoutAttributeCenterY
+                                                          multiplier:1
+                                                            constant:0]];
     return headerView;
-}
 
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 40;
