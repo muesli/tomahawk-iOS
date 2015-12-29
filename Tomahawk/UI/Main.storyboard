@@ -7,10 +7,19 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Activity Feed View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="ActivityFeedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fmh-d9-L5e"/>
+                        <viewControllerLayoutGuide type="bottom" id="HiN-h1-lVo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TkB-Lf-MYB">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                     <navigationItem key="navigationItem" id="YhL-ta-wef"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -825,10 +834,6 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y0i-Kh-BtM">
                                                     <rect key="frame" x="13" y="8" width="579" height="28"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="kSP-vb-Avb"/>
-                                                        <constraint firstAttribute="width" constant="579" id="mbc-0h-DAt"/>
-                                                    </constraints>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -836,9 +841,10 @@
                                             </subviews>
                                             <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Y0i-Kh-BtM" secondAttribute="trailing" id="nX2-hQ-IqH"/>
-                                                <constraint firstItem="Y0i-Kh-BtM" firstAttribute="centerY" secondItem="KJa-p1-oDM" secondAttribute="centerY" id="wO3-uU-LKR"/>
-                                                <constraint firstItem="Y0i-Kh-BtM" firstAttribute="leading" secondItem="KJa-p1-oDM" secondAttribute="leadingMargin" constant="5" id="wYi-cw-pnN"/>
+                                                <constraint firstItem="Y0i-Kh-BtM" firstAttribute="leading" secondItem="KJa-p1-oDM" secondAttribute="leadingMargin" constant="5" id="2jt-lQ-Pgc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Y0i-Kh-BtM" secondAttribute="bottom" constant="-1" id="NHL-kK-wTb"/>
+                                                <constraint firstAttribute="topMargin" secondItem="Y0i-Kh-BtM" secondAttribute="top" id="SrO-BR-Afa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Y0i-Kh-BtM" secondAttribute="trailing" id="kUF-Bt-z3x"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -853,19 +859,16 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="14m-Om-8Tp">
                                                     <rect key="frame" x="13" y="8" width="579" height="28"/>
                                                     <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="208-3t-AqU"/>
-                                                        <constraint firstAttribute="width" constant="579" id="tYF-Zf-eWW"/>
-                                                    </constraints>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="14m-Om-8Tp" firstAttribute="leading" secondItem="mDk-vS-K5k" secondAttribute="leadingMargin" constant="5" id="1mO-ZA-sYN"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="14m-Om-8Tp" secondAttribute="trailing" id="P4w-aM-BPX"/>
-                                                <constraint firstItem="14m-Om-8Tp" firstAttribute="centerY" secondItem="mDk-vS-K5k" secondAttribute="centerY" id="orP-hj-BFx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="14m-Om-8Tp" secondAttribute="trailing" id="1n3-Je-nZl"/>
+                                                <constraint firstItem="14m-Om-8Tp" firstAttribute="leading" secondItem="mDk-vS-K5k" secondAttribute="leadingMargin" constant="5" id="91Q-Ll-mXd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="14m-Om-8Tp" secondAttribute="bottom" constant="-1" id="B99-CD-n2x"/>
+                                                <constraint firstAttribute="topMargin" secondItem="14m-Om-8Tp" secondAttribute="top" id="zm7-9d-QnZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -884,19 +887,16 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NTp-5n-kHG">
                                                     <rect key="frame" x="13" y="8" width="579" height="28"/>
                                                     <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="28" id="B3m-3a-Bm2"/>
-                                                        <constraint firstAttribute="width" constant="579" id="rg9-R1-ucJ"/>
-                                                    </constraints>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NTp-5n-kHG" firstAttribute="centerY" secondItem="ya1-i5-ZMy" secondAttribute="centerY" id="8hw-CX-hx7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="NTp-5n-kHG" secondAttribute="trailing" id="KKA-0u-HdT"/>
-                                                <constraint firstItem="NTp-5n-kHG" firstAttribute="leading" secondItem="ya1-i5-ZMy" secondAttribute="leadingMargin" constant="5" id="jGp-U1-dkB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NTp-5n-kHG" secondAttribute="trailing" id="LgW-q9-c0q"/>
+                                                <constraint firstAttribute="topMargin" secondItem="NTp-5n-kHG" secondAttribute="top" id="kBO-5v-cT9"/>
+                                                <constraint firstItem="NTp-5n-kHG" firstAttribute="leading" secondItem="ya1-i5-ZMy" secondAttribute="leadingMargin" constant="5" id="me9-Is-uIP"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="NTp-5n-kHG" secondAttribute="bottom" constant="-1" id="u6C-9s-QTE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -909,7 +909,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l7I-CP-vAP" customClass="KMPlaceholderTextView" customModule="Tomahawk" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="584" height="152"/>
+                                                    <rect key="frame" x="13" y="8" width="579" height="152"/>
                                                     <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -923,12 +923,10 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="l7I-CP-vAP" secondAttribute="trailing" id="5hU-sm-EV8"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="l7I-CP-vAP" secondAttribute="bottom" id="Eax-y3-FAm"/>
-                                                <constraint firstItem="l7I-CP-vAP" firstAttribute="centerX" secondItem="89H-IS-n89" secondAttribute="centerX" id="U7o-wh-hKo"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="l7I-CP-vAP" secondAttribute="leading" id="lGp-7u-jAK"/>
-                                                <constraint firstItem="l7I-CP-vAP" firstAttribute="centerY" secondItem="89H-IS-n89" secondAttribute="centerY" id="nnD-QK-bSg"/>
-                                                <constraint firstAttribute="topMargin" secondItem="l7I-CP-vAP" secondAttribute="top" id="p9O-nC-GIA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="l7I-CP-vAP" secondAttribute="trailing" id="Gax-Vm-sIk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="l7I-CP-vAP" secondAttribute="bottom" id="qCs-Td-Egm"/>
+                                                <constraint firstItem="l7I-CP-vAP" firstAttribute="leading" secondItem="89H-IS-n89" secondAttribute="leadingMargin" constant="5" id="sNS-hh-ImI"/>
+                                                <constraint firstAttribute="topMargin" secondItem="l7I-CP-vAP" secondAttribute="top" id="wdE-eD-CMa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -989,6 +987,9 @@
                                     <constraint firstAttribute="width" constant="22" id="wCh-Yv-3uI"/>
                                 </constraints>
                                 <state key="normal" image="Expand Arrow"/>
+                                <connections>
+                                    <action selector="buttonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="uDz-KS-4Qh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ui-OYt">
                                 <rect key="frame" x="550" y="36" width="24" height="24"/>
@@ -1371,10 +1372,10 @@
             </objects>
             <point key="canvasLocation" x="-428.5" y="-757.5"/>
         </scene>
-        <!--Activity-->
+        <!--Activity Feed Scene-->
         <scene sceneID="6zH-Wy-sSJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NavigationController" sceneMemberID="viewController">
+                <navigationController title="Activity Feed Scene" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
                     <toolbarItems>
                         <barButtonItem title="Item" width="359" id="txn-0y-kfC">
@@ -1440,7 +1441,7 @@
         <image name="cast_off" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tk4-ri-7qL"/>
+        <segue reference="r04-Oq-FMF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

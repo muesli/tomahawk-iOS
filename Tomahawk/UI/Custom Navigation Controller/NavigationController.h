@@ -7,15 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchBar.h"
-#import "TEngine.h"
-#import "dispatch_cancelable_block.h"
-#import "DGActivityIndicatorView.h"
+#import "SearchTableViewController.h"
 
-@interface NavigationController : UINavigationController <UISearchControllerDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface NavigationController : UINavigationController <UISearchBarDelegate>
 
-@property (strong, nonatomic) SearchBar *searchBar;
-@property (strong, nonatomic) UITableView *tableView;
-@property(nonatomic, strong) NSIndexPath *editingIndexPath;
+@property (strong, nonatomic) UISearchBar *searchBar;
 
 @end

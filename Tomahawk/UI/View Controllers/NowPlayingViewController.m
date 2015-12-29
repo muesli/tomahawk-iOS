@@ -25,6 +25,8 @@
         [self.player play];
         
         
+    }else if (sender == self.expandArrow){
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
