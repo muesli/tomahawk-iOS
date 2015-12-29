@@ -26,6 +26,10 @@
 
 #pragma mark - Table view data source
 
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 1 && indexPath.section == 2) {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sign Out" message:@"Are you sure you want to sign out?" preferredStyle:UIAlertControllerStyleAlert];

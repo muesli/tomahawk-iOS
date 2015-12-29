@@ -69,9 +69,7 @@ static CGFloat searchBlockDelay = 0.25;
     self.searchBar.tintColor = self.view.window.tintColor;
     [self.searchBar setTintColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)]];
     self.searchBar.delegate = self;
-    
     self.viewControllers[0].navigationItem.titleView = self.searchBar;
-    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 63, self.view.frame.size.width, (self.view.frame.size.height-63)) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -158,8 +156,6 @@ static CGFloat searchBlockDelay = 0.25;
 }
 
 -(void)search:(NSString *)searchText{
-//    NSLog(@"text after wait is %@", searchText);
-    
     if(!apiCall){
         apiCall = [TEngine new];
     }
@@ -376,27 +372,28 @@ static CGFloat searchBlockDelay = 0.25;
     NSArray *myArray;
     
     if (section == 0) {
-        searchSongsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchSongsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
         myArray = @[searchSongsSeeAllButton];
     }else if (section == 1){
-        searchAlbumsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchAlbumsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
         myArray = @[searchAlbumsSeeAllButton];
     }else if (section == 2){
-        searchArtistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchArtistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
         myArray = @[searchArtistsSeeAllButton];
     }else if (section == 3){
-        searchPlaylistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        searchPlaylistsSeeAllButton = [UIButton buttonWithType:UIButtonTypeSystem];
         myArray = @[searchPlaylistsSeeAllButton];
     }
     
     for (UIButton *buttons in myArray) {
         [buttons setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
-        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -120.0, 0, 0)];
+        [buttons setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
+        [buttons setImageEdgeInsets:UIEdgeInsetsMake(3, -2, 3, 18)];
+        [buttons setContentEdgeInsets:UIEdgeInsetsMake(0, 66, 0, 0)];
         [buttons setTitle:@"SEE ALL" forState:UIControlStateNormal];
-        [buttons setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [buttons setReversesTitleShadowWhenHighlighted:YES];
+        [buttons setTintColor:[UIColor whiteColor]];
         [[buttons titleLabel] setFont:[UIFont systemFontOfSize:12]];
-        [buttons setEnabled:NO];
-        [buttons setUserInteractionEnabled:NO];
         [buttons setTranslatesAutoresizingMaskIntoConstraints:NO];
         [headerView addSubview:buttons];
         
@@ -406,7 +403,7 @@ static CGFloat searchBlockDelay = 0.25;
                                                                   toItem:headerView
                                                                attribute:NSLayoutAttributeTrailingMargin
                                                               multiplier:1
-                                                                constant:38]];
+                                                                constant:-3]];
         
         [headerView addConstraint:[NSLayoutConstraint constraintWithItem:buttons
                                                                attribute:NSLayoutAttributeCenterY
@@ -415,6 +412,9 @@ static CGFloat searchBlockDelay = 0.25;
                                                                attribute:NSLayoutAttributeCenterY
                                                               multiplier:1
                                                                 constant:0]];
+        
+        [buttons addConstraint:[NSLayoutConstraint constraintWithItem:buttons attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:15]];
+        [buttons addConstraint:[NSLayoutConstraint constraintWithItem:buttons attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:70]];
         
     }
     

@@ -31,7 +31,7 @@
     BOOL exceptionThrown;
 }
 
-#pragma mark - Arguments
+#pragma mark - Search
 
 -(NSDictionary *)searchSongsiTunes:(NSString *)song{
     if (!song) {

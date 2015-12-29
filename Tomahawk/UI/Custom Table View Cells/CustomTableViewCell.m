@@ -45,6 +45,7 @@
         qualitySelector.frame = CGRectMake(0, 0, 177, 29);
         [qualitySelector setContentMode:UIViewContentModeScaleToFill];
         [qualitySelector addTarget:self action:@selector(segmentedControlChangeValue:) forControlEvents:UIControlEventValueChanged];
+        qualitySelector.selectedSegmentIndex = 0;
         self.accessoryView = qualitySelector;
     }
 }
