@@ -15,7 +15,7 @@ Keep track of Tomahawk development and community activity.
 
 ## Build Instructions ##
 
-This project does not use  [CocoaPods](http://cocoapods.org/) because I'm stupid and don't know how they work. I will add functionality when I am bothered to learn about them. These are the build instructions for when I do set it up:
+This project uses  [CocoaPods](http://cocoapods.org/) Build instructions:
 
 ``` bash
 $ git clone https://github.com/mourke/tomahawk-iOS.git tomahawk-ios
