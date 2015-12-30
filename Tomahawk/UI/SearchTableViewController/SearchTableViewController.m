@@ -23,11 +23,12 @@ static CGFloat searchBlockDelay = 0.25;
 
 @implementation SearchTableViewController
 
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.tabBarController.tabBar.hidden = YES;
     self.navigationController.toolbar.hidden = YES;
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.tabBarController.tabBar.hidden = NO;
@@ -43,18 +44,7 @@ static CGFloat searchBlockDelay = 0.25;
     loadingDimmer = [[UIView alloc]initWithFrame:self.view.frame]; //View to dim whats behind it when new content is loading
     loadingDimmer.backgroundColor = [UIColor blackColor];
     loadingDimmer.alpha = 0.3;
-    
-    //Regester for keyboard notifications so you can resize tableview when it closes
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+    self.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
     
 }
 
@@ -404,34 +394,6 @@ static CGFloat searchBlockDelay = 0.25;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return CGFLOAT_MIN;
-}
-
-#pragma mark - Keyboard
-
-- (void)keyboardWillShow:(NSNotification *)notification{
-    
-    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
-    [UIView animateWithDuration:rate.floatValue animations:^{
-        UIEdgeInsets contentInsets;
-        if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation])) {
-            contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height + 5), 0.0);
-        } else {
-            contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.width), 0.0);
-        }
-        self.tableView.contentInset = contentInsets;
-        self.tableView.scrollIndicatorInsets = contentInsets;
-        [self.tableView scrollToRowAtIndexPath:self.editingIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification{
-    NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
-    [UIView animateWithDuration:rate.floatValue animations:^{
-        self.tableView.contentInset = UIEdgeInsetsZero;
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsZero;
-    }];
 }
 
 @end

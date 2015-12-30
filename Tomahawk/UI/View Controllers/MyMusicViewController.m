@@ -49,23 +49,23 @@
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     myCellText = @"Placeholder";
 
-#pragma mark - Custom Segmented Control
-    HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"PLAYLISTS", @"SONGS"]];
-    segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
-    segmentedControl1.frame = CGRectMake(7, 0, CGRectGetWidth(self.view.frame)*0.95, 40);
-    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    segmentedControl1.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-    segmentedControl1.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    segmentedControl1.verticalDividerEnabled = NO;
-    [segmentedControl1 setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
-        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:12.0f weight:0.3f]}];
-        return attString;
-    }];
-    [segmentedControl1 addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    UIView *barbackground = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMinY(segmentedControl1.frame),  CGRectGetWidth(self.view.frame), CGRectGetHeight(segmentedControl1.frame))];
-    barbackground.backgroundColor = [UIColor colorWithRed:49.0f/255.0f green:49.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
-    [self.view addSubview:barbackground];
-    [self.view addSubview:segmentedControl1];
+//#pragma mark - Custom Segmented Control
+//    HMSegmentedControl *segmentedControl1 = [[HMSegmentedControl alloc] initWithSectionTitles:@[@"PLAYLISTS", @"SONGS"]];
+//    segmentedControl1.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth;
+//    segmentedControl1.frame = CGRectMake(7, 0, CGRectGetWidth(self.view.frame)*0.95, 40);
+//    segmentedControl1.segmentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//    segmentedControl1.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
+//    segmentedControl1.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
+//    segmentedControl1.verticalDividerEnabled = NO;
+//    [segmentedControl1 setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
+//        NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor], NSFontAttributeName : [UIFont systemFontOfSize:12.0f weight:0.3f]}];
+//        return attString;
+//    }];
+//    [segmentedControl1 addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+//    UIView *barbackground = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMinY(segmentedControl1.frame),  CGRectGetWidth(self.view.frame), CGRectGetHeight(segmentedControl1.frame))];
+//    barbackground.backgroundColor = [UIColor colorWithRed:49.0f/255.0f green:49.0f/255.0f blue:61.0f/255.0f alpha:1.0f];
+//    [self.view addSubview:barbackground];
+//    [self.view addSubview:segmentedControl1];
     
 }
 
@@ -211,28 +211,6 @@
 }
 
 
-
-#pragma mark - Segmented Control changes
-
-- (void)segmentedControlChangedValue:(HMSegmentedControl *)segmentedControl {
-    if(segmentedControl.selectedSegmentIndex == 1){
-        myCellText = @"PLACEHOLDER";
-        //Reset Scroll Position when change Segment
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
-                         atScrollPosition:UITableViewScrollPositionTop animated:NO];
-        shouldShowDetails = 1;
-        [self.tableView reloadData];
-        
-    }else{
-        shouldShowDetails = 0;
-        myCellText = @"Placeholder";
-        //Reset Scroll Position when change Segment
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
-                              atScrollPosition:UITableViewScrollPositionTop animated:NO];
-        [self.tableView reloadData];
-    }
-
-}
 
 
 

@@ -20,7 +20,6 @@
 		4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA41C33231F00244532 /* SearchTableViewController.m */; };
 		4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */; };
 		4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */; };
-		4DA5D1DD1C2F815D0031FBE5 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1DB1C2F815D0031FBE5 /* HMSegmentedControl.m */; };
 		4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */; };
 		4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E21C2F817B0031FBE5 /* MyMusicDetailViewController.m */; };
 		4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */; };
@@ -75,7 +74,6 @@
 		4DA5D2BE1C2F82790031FBE5 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D27E1C2F82780031FBE5 /* DGActivityIndicatorTriplePulseAnimation.m */; };
 		4DA5D2C01C2F82790031FBE5 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2801C2F82780031FBE5 /* DGActivityIndicatorTripleRingsAnimation.m */; };
 		4DA5D2C21C2F82790031FBE5 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2821C2F82780031FBE5 /* DGActivityIndicatorTwoDotsAnimation.m */; };
-		4DA5D2C51C2F82910031FBE5 /* SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2C31C2F82910031FBE5 /* SearchBar.m */; };
 		4DA5D2C91C2F82A20031FBE5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2C71C2F82A20031FBE5 /* MBProgressHUD.m */; };
 		4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */; };
 		4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CF1C2F82D80031FBE5 /* ConnectAlertController.m */; };
@@ -139,8 +137,6 @@
 		4D0A0FA41C33231F00244532 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.m; sourceTree = "<group>"; };
 		4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewController.xib; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.xib; sourceTree = "<group>"; };
 		4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomahawk/Images.xcassets; sourceTree = "<group>"; };
-		4DA5D1DB1C2F815D0031FBE5 /* HMSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HMSegmentedControl.m; path = Tomahawk/UI/HMSegmentedControl.m; sourceTree = "<group>"; };
-		4DA5D1DC1C2F815D0031FBE5 /* HMSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMSegmentedControl.h; path = Tomahawk/UI/HMSegmentedControl.h; sourceTree = "<group>"; };
 		4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ActivityFeedViewController.h; path = "Tomahawk/UI/View Controllers/ActivityFeedViewController.h"; sourceTree = "<group>"; };
 		4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ActivityFeedViewController.m; path = "Tomahawk/UI/View Controllers/ActivityFeedViewController.m"; sourceTree = "<group>"; };
 		4DA5D1E21C2F817B0031FBE5 /* MyMusicDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyMusicDetailViewController.m; path = "Tomahawk/UI/View Controllers/MyMusicDetailViewController.m"; sourceTree = "<group>"; };
@@ -250,8 +246,6 @@
 		4DA5D2801C2F82780031FBE5 /* DGActivityIndicatorTripleRingsAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorTripleRingsAnimation.m; path = "Tomahawk/Resources/Loading Indicator/Animations/DGActivityIndicatorTripleRingsAnimation.m"; sourceTree = "<group>"; };
 		4DA5D2811C2F82780031FBE5 /* DGActivityIndicatorTwoDotsAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorTwoDotsAnimation.h; path = "Tomahawk/Resources/Loading Indicator/Animations/DGActivityIndicatorTwoDotsAnimation.h"; sourceTree = "<group>"; };
 		4DA5D2821C2F82780031FBE5 /* DGActivityIndicatorTwoDotsAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorTwoDotsAnimation.m; path = "Tomahawk/Resources/Loading Indicator/Animations/DGActivityIndicatorTwoDotsAnimation.m"; sourceTree = "<group>"; };
-		4DA5D2C31C2F82910031FBE5 /* SearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SearchBar.m; path = "Tomahawk/UI/Custom Search Bar/SearchBar.m"; sourceTree = "<group>"; };
-		4DA5D2C41C2F82910031FBE5 /* SearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SearchBar.h; path = "Tomahawk/UI/Custom Search Bar/SearchBar.h"; sourceTree = "<group>"; };
 		4DA5D2C71C2F82A20031FBE5 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = "Tomahawk/UI/Custom Activity Indicator/MBProgressHUD.m"; sourceTree = "<group>"; };
 		4DA5D2C81C2F82A20031FBE5 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "Tomahawk/UI/Custom Activity Indicator/MBProgressHUD.h"; sourceTree = "<group>"; };
 		4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TEngine.m; path = "Tomahawk/Tomahawk API/TEngine.m"; sourceTree = "<group>"; };
@@ -396,11 +390,8 @@
 				4DA5D3151C2F898F0031FBE5 /* Custom Page View */,
 				4DA5D3161C2F89970031FBE5 /* Custom Alert Controller */,
 				4DA5D3131C2F89740031FBE5 /* Custom Activity Indicator */,
-				4DA5D3141C2F897D0031FBE5 /* Custom Search Bar */,
 				4DA5D3171C2F89A00031FBE5 /* Custom Collection View Cells */,
 				4DA5D3181C2F89AF0031FBE5 /* Custom Navigation Controller */,
-				4DA5D1DB1C2F815D0031FBE5 /* HMSegmentedControl.m */,
-				4DA5D1DC1C2F815D0031FBE5 /* HMSegmentedControl.h */,
 				4DA5D3061C2F88470031FBE5 /* View Controllers */,
 			);
 			name = UI;
@@ -588,15 +579,6 @@
 				4DA5D2C81C2F82A20031FBE5 /* MBProgressHUD.h */,
 			);
 			name = "Custom Activity Indicator";
-			sourceTree = "<group>";
-		};
-		4DA5D3141C2F897D0031FBE5 /* Custom Search Bar */ = {
-			isa = PBXGroup;
-			children = (
-				4DA5D2C41C2F82910031FBE5 /* SearchBar.h */,
-				4DA5D2C31C2F82910031FBE5 /* SearchBar.m */,
-			);
-			name = "Custom Search Bar";
 			sourceTree = "<group>";
 		};
 		4DA5D3151C2F898F0031FBE5 /* Custom Page View */ = {
@@ -824,7 +806,6 @@
 				4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */,
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
 				4DA5D2C91C2F82A20031FBE5 /* MBProgressHUD.m in Sources */,
-				4DA5D2C51C2F82910031FBE5 /* SearchBar.m in Sources */,
 				4DA5D2841C2F82780031FBE5 /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				4DA5D2861C2F82780031FBE5 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
 				4DA5D2881C2F82780031FBE5 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
@@ -886,7 +867,6 @@
 				4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */,
 				4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */,
 				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,
-				4DA5D1DD1C2F815D0031FBE5 /* HMSegmentedControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
