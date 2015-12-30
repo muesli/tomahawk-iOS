@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MyAdditions.h"
+#import "AFNetworking.h"
 
 @interface TEngine : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate>
 
