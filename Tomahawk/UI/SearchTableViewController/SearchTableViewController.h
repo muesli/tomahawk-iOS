@@ -10,6 +10,7 @@
 #import "TEngine.h"
 #import "dispatch_cancelable_block.h"
 #import "DGActivityIndicatorView.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
 

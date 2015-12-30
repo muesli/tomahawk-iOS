@@ -18,17 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    self.title = @"Settings";
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Table view data source
-
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//}
+#pragma mark - Table View
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 1 && indexPath.section == 2) {

@@ -49,32 +49,25 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }else{
         MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [signIn.titleLabel setAlpha:1];
         [self.view addSubview:HUD];
         // Set custom view mode
         HUD.mode = MBProgressHUDModeIndeterminate;
         HUD.delegate = self;
         [HUD show:YES];
-        //Sign In
-        TEngine *apiCall = [TEngine new];
-        [apiCall signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
+        [TEngine signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
             if ([response isKindOfClass:[NSString class]]) {
                 [HUD hide:YES];
                 //DO stuff with session key
                 [self dismissViewControllerAnimated:YES completion:nil];
             }else if ([response isKindOfClass:[NSError class]]){
-                //If there is an error, make an alert controller and present it on the main thread
                 UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
-                error.view.tintColor = self.color;
                 [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-                
-                dispatch_sync(dispatch_get_main_queue(), ^(void){
-                    [self presentViewController:error animated:YES completion:^(void){
-                        error.view.tintColor = self.color; //This is repeated because of a bug in iOS. Still not fixed as of 9.1
-                        [HUD hide:YES];
-                        [signIn.titleLabel setAlpha:1];
-                    }];
+                [self presentViewController:error animated:YES completion:^(void){
                     error.view.tintColor = self.color;
-                });
+                    [HUD hide:YES];
+                }];
+                error.view.tintColor = self.color;
             }
         }];
     }

@@ -10,7 +10,6 @@
 
 @interface SearchTableViewController (){
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers, *playlistCount, *playlistNames, *playlistImages, *playlistArtists;
-    TEngine *apiCall;
     __block dispatch_cancelable_block_t searchBlock;
     DGActivityIndicatorView *activityIndicatorView;
     UIView *loadingDimmer;
@@ -108,96 +107,53 @@ static CGFloat searchBlockDelay = 0.25;
     
 }
 -(void)search:(NSString *)searchText{
-    if(!apiCall){
-        apiCall = [TEngine new];
-    }
     
-    dispatch_queue_t getSongInfo = dispatch_queue_create("getSongInfo", NULL);
-    dispatch_async(getSongInfo, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:NO];
-            loadingDimmer.hidden = NO;
-            [activityIndicatorView setHidden:NO];
-            [activityIndicatorView startAnimating];
-        });
-        NSDictionary *myDict = [apiCall searchSongsSoundcloud:searchText];
+    [self.tableView setUserInteractionEnabled:NO];
+    loadingDimmer.hidden = NO;
+    [activityIndicatorView setHidden:NO];
+    [activityIndicatorView startAnimating];
+    
+//#error Everything will crash because the values being returned for images are not always in string format
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_async(group, queue, ^{
+        NSDictionary *myDict = [TEngine searchSongsDeezer:searchText];
         songNames = [myDict objectForKey:@"songNames"];
         songAlbums = [myDict objectForKey:@"albumNames"];
         songArtists = [myDict objectForKey:@"artistNames"];
         songImages = [myDict objectForKey:@"mediumImages"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:YES];
-            loadingDimmer.hidden = YES;
-            [activityIndicatorView stopAnimating];
-            [activityIndicatorView setHidden:YES];
-            [self.tableView reloadData];
-            
-        });
     });
     
-    dispatch_queue_t getAlbumInfo = dispatch_queue_create("getAlbumInfo", NULL);
-    dispatch_async(getAlbumInfo, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:NO];
-            loadingDimmer.hidden = NO;
-            [activityIndicatorView setHidden:NO];
-            [activityIndicatorView startAnimating];
-        });
-        NSDictionary *myDict = [apiCall searchAlbumsDeezer:searchText];
+    dispatch_group_async(group, queue, ^{
+        NSDictionary *myDict = [TEngine searchAlbumsDeezer:searchText];
         albumNames = [myDict objectForKey:@"albumNames"];
         albumArtists = [myDict objectForKey:@"artistNames"];
         albumImages = [myDict objectForKey:@"mediumImages"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:YES];
-            loadingDimmer.hidden = YES;
-            [activityIndicatorView stopAnimating];
-            [activityIndicatorView setHidden:YES];
-            [self.tableView reloadData];
-        });
     });
     
-    dispatch_queue_t getArtistInfo = dispatch_queue_create("getArtistInfo", NULL);
-    dispatch_async(getArtistInfo, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:NO];
-            loadingDimmer.hidden = NO;
-            [activityIndicatorView setHidden:NO];
-            [activityIndicatorView startAnimating];
-        });
-        NSDictionary *myDict = [apiCall searchArtistsSoundcloud:searchText];
+    dispatch_group_async(group, queue, ^{
+        NSDictionary *myDict = [TEngine searchArtistsDeezer:searchText];
         artistFollowers = [myDict objectForKey:@"artistFollowers"];
         artistImages = [myDict objectForKey:@"mediumImages"];
         artistNames = [myDict objectForKey:@"artistNames"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:YES];
-            loadingDimmer.hidden = YES;
-            [activityIndicatorView stopAnimating];
-            [activityIndicatorView setHidden:YES];
-            [self.tableView reloadData];
-            
-        });
     });
-    
-    dispatch_queue_t getPlaylistInfo = dispatch_queue_create("getPlaylistInfo", NULL);
-    dispatch_async(getPlaylistInfo, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView setUserInteractionEnabled:NO];
-            loadingDimmer.hidden = NO;
-            [activityIndicatorView setHidden:NO];
-            [activityIndicatorView startAnimating];
-        });
-        NSDictionary *myDict = [apiCall searchPlaylistsSpotify:searchText];
-        playlistNames = [myDict objectForKey:@"playlistNames"];
-        playlistArtists = [myDict objectForKey:@"playlistArtists"];
-        playlistCount = [myDict objectForKey:@"trackCount"];
-        playlistImages = [myDict objectForKey:@"mediumImages"];
-        dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_group_async(group, queue, ^{
+//        NSDictionary *myDict = [TEngine searchPlaylistsSpotify:searchText];
+//        playlistNames = [myDict objectForKey:@"playlistNames"];
+//        playlistArtists = [myDict objectForKey:@"playlistArtists"];
+//        playlistCount = [myDict objectForKey:@"trackCount"];
+//        playlistImages = [myDict objectForKey:@"mediumImages"];
+    });
+
+    dispatch_group_notify(group, queue, ^{
+        dispatch_sync(dispatch_get_main_queue(), ^(void){
             [self.tableView setUserInteractionEnabled:YES];
             loadingDimmer.hidden = YES;
             [activityIndicatorView stopAnimating];
             [activityIndicatorView setHidden:YES];
             [self.tableView reloadData];
-            
         });
     });
 }
@@ -223,15 +179,16 @@ static CGFloat searchBlockDelay = 0.25;
                     text = [songArtists objectAtIndex:i];
                 }
                 searchCell.detailTextLabel.text = text;
-                searchCell.imageView.image = [songImages objectAtIndex:i];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderLarge"]];
             }
             break;
         case 1:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<albumNames.count; i++) {
                 searchCell.textLabel.text = [albumNames objectAtIndex:i];
                 searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
-                searchCell.imageView.image = [albumImages objectAtIndex:i];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderLarge"]];
             }
+            break;
         case 2:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<artistNames.count; i++) {
                 searchCell.textLabel.text = [artistNames objectAtIndex:i];
@@ -239,8 +196,9 @@ static CGFloat searchBlockDelay = 0.25;
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
                 searchCell.detailTextLabel.text = followers;
-                searchCell.imageView.image = [artistImages objectAtIndex:i];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtistLarge"]];
             }
+            break;
         case 3:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<playlistNames.count; i++) {
                 searchCell.textLabel.text = [playlistNames objectAtIndex:i];
@@ -248,8 +206,9 @@ static CGFloat searchBlockDelay = 0.25;
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
                 searchCell.detailTextLabel.text = count;
-                searchCell.imageView.image = [playlistImages objectAtIndex:i];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[playlistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderLarge"]];;
             }
+            break;
         default:
             break;
     }
