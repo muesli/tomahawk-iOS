@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionViewCell.h"
 
-@interface ActivityFeedViewController : UIViewController
+@interface ActivityFeedViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property(nonatomic, strong) IBOutlet UICollectionView *recentSongs;
+@property(nonatomic, strong) IBOutlet UICollectionView *recentPlaylists;
+@property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 

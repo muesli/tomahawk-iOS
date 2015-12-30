@@ -50,9 +50,7 @@
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ConnectCell *connectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"connectCell" forIndexPath:indexPath];
-    unsigned long long int j = indexPath.row;
-    j++;
-    for (unsigned long long int i = indexPath.row; i<j; i++) {
+    for (NSUInteger i = indexPath.row; i<=indexPath.row; i++) {
         connectCell.image = [[UIImageView alloc]initWithImage:[[[resolvers objectAtIndex:i]valueForKey:@"image"]valueForKey:@"image"]];
         connectCell.color = [[resolvers objectAtIndex:i]valueForKey:@"color"];
     }

@@ -82,7 +82,6 @@
 		4DA5D2D61C2F82E80031FBE5 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2D41C2F82E80031FBE5 /* CAPSPageMenu.m */; };
 		4DA5D2E41C2F830B0031FBE5 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2D71C2F830B0031FBE5 /* 13.png */; };
 		4DA5D2E51C2F830B0031FBE5 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2D81C2F830B0031FBE5 /* 12.png */; };
-		4DA5D2E61C2F830B0031FBE5 /* headphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2D91C2F830B0031FBE5 /* headphone4.png */; };
 		4DA5D2E71C2F830B0031FBE5 /* blurExample8.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2DA1C2F830B0031FBE5 /* blurExample8.png */; };
 		4DA5D2E81C2F830B0031FBE5 /* blurExample6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2DB1C2F830B0031FBE5 /* blurExample6.png */; };
 		4DA5D2E91C2F830B0031FBE5 /* blurExample7.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2DC1C2F830B0031FBE5 /* blurExample7.png */; };
@@ -263,7 +262,6 @@
 		4DA5D2D41C2F82E80031FBE5 /* CAPSPageMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CAPSPageMenu.m; path = "Tomahawk/UI/Custom Page View/CAPSPageMenu.m"; sourceTree = "<group>"; };
 		4DA5D2D71C2F830B0031FBE5 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 13.png; path = "Tomahawk/Supporting Files/13.png"; sourceTree = "<group>"; };
 		4DA5D2D81C2F830B0031FBE5 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 12.png; path = "Tomahawk/Supporting Files/12.png"; sourceTree = "<group>"; };
-		4DA5D2D91C2F830B0031FBE5 /* headphone4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headphone4.png; path = "Tomahawk/Supporting Files/headphone4.png"; sourceTree = "<group>"; };
 		4DA5D2DA1C2F830B0031FBE5 /* blurExample8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blurExample8.png; path = "Tomahawk/Supporting Files/blurExample8.png"; sourceTree = "<group>"; };
 		4DA5D2DB1C2F830B0031FBE5 /* blurExample6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blurExample6.png; path = "Tomahawk/Supporting Files/blurExample6.png"; sourceTree = "<group>"; };
 		4DA5D2DC1C2F830B0031FBE5 /* blurExample7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blurExample7.png; path = "Tomahawk/Supporting Files/blurExample7.png"; sourceTree = "<group>"; };
@@ -325,6 +323,16 @@
 			name = "Custom Table View Cells";
 			sourceTree = "<group>";
 		};
+		4D0A0FA81C34168200244532 /* Search Table View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4D0A0FA31C33231F00244532 /* SearchTableViewController.h */,
+				4D0A0FA41C33231F00244532 /* SearchTableViewController.m */,
+				4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */,
+			);
+			name = "Search Table View Controller";
+			sourceTree = "<group>";
+		};
 		4DA5D2FD1C2F86BA0031FBE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,7 +364,6 @@
 				4DA5D2F51C2F84950031FBE5 /* Info.plist */,
 				4DA5D2D71C2F830B0031FBE5 /* 13.png */,
 				4DA5D2D81C2F830B0031FBE5 /* 12.png */,
-				4DA5D2D91C2F830B0031FBE5 /* headphone4.png */,
 				4DA5D2DA1C2F830B0031FBE5 /* blurExample8.png */,
 				4DA5D2DB1C2F830B0031FBE5 /* blurExample6.png */,
 				4DA5D2DC1C2F830B0031FBE5 /* blurExample7.png */,
@@ -504,9 +511,7 @@
 			children = (
 				4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */,
 				4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */,
-				4D0A0FA31C33231F00244532 /* SearchTableViewController.h */,
-				4D0A0FA41C33231F00244532 /* SearchTableViewController.m */,
-				4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */,
+				4D0A0FA81C34168200244532 /* Search Table View Controller */,
 				4DA5D1E61C2F817B0031FBE5 /* MyMusicViewController.h */,
 				4DA5D1E71C2F817B0031FBE5 /* MyMusicViewController.m */,
 				4DA5D1E81C2F817B0031FBE5 /* MyMusicDetailViewController.h */,
@@ -773,7 +778,6 @@
 				4DA5D2E41C2F830B0031FBE5 /* 13.png in Resources */,
 				4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */,
 				4DA5D2E51C2F830B0031FBE5 /* 12.png in Resources */,
-				4DA5D2E61C2F830B0031FBE5 /* headphone4.png in Resources */,
 				4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */,
 				4DA5D2E71C2F830B0031FBE5 /* blurExample8.png in Resources */,
 				4D022F631C305D2C00F9D896 /* ForYouDiscoverViewController.xib in Resources */,

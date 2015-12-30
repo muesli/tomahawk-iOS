@@ -14,6 +14,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *title;
 @property (strong, nonatomic) IBOutlet UILabel *artist;
 @property (strong, nonatomic) IBOutlet UIImageView *detailImage;
-@property (strong, nonatomic) IBOutlet UILabel *detailText;
+@property (strong, nonatomic) IBOutlet UILabel *listeners;
 
 @end

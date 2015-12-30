@@ -18,9 +18,141 @@
                     <view key="view" contentMode="scaleToFill" id="TkB-Lf-MYB">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEz-gb-1pw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxE-Ge-wb0" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tfr-CI-JCX">
+                                                <rect key="frame" x="15" y="17" width="585" height="267"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mAu-hc-a1U">
+                                                    <size key="itemSize" width="140" height="190"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="5JF-Ip-zBs"/>
+                                                    <outlet property="delegate" destination="9pv-A4-QxB" id="2aY-ab-34t"/>
+                                                </connections>
+                                            </collectionView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GAU-jo-K16" userLabel="Recent Playlists">
+                                                <rect key="frame" x="15" y="263" width="585" height="267"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lcq-v3-Mp9">
+                                                    <size key="itemSize" width="140" height="190"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="7TB-so-ggG"/>
+                                                    <outlet property="delegate" destination="9pv-A4-QxB" id="BKQ-Dw-K33"/>
+                                                </connections>
+                                            </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhP-pP-o0Q">
+                                                <rect key="frame" x="527" y="31" width="70" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="YjG-aS-64K"/>
+                                                    <constraint firstAttribute="height" constant="15" id="zw8-Oo-nqs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="contentEdgeInsets" minX="66" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="-105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-2" minY="3" maxX="18" maxY="3"/>
+                                                <state key="normal" title="SEE ALL" image="More Than"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fz-fs-Iya">
+                                                <rect key="frame" x="527" y="279" width="70" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="G0B-Su-qUe"/>
+                                                    <constraint firstAttribute="width" constant="70" id="tdz-uH-vi8"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="contentEdgeInsets" minX="66" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="-105" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="-2" minY="3" maxX="18" maxY="3"/>
+                                                <state key="normal" title="SEE ALL" image="More Than"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECENT SONGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mb1-De-Apg">
+                                                <rect key="frame" x="25" y="31" width="169" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="169" id="KVp-47-2PK"/>
+                                                    <constraint firstAttribute="height" constant="15" id="vjM-Gt-INz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECENT PLAYLISTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bS-JT-EGw">
+                                                <rect key="frame" x="25" y="279" width="151" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="ejy-Aq-MBQ"/>
+                                                    <constraint firstAttribute="width" constant="151" id="yNI-IE-HbL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Mb1-De-Apg" firstAttribute="top" secondItem="hxE-Ge-wb0" secondAttribute="top" constant="31" id="1im-7G-P0J"/>
+                                            <constraint firstAttribute="trailing" secondItem="lhP-pP-o0Q" secondAttribute="trailing" constant="3" id="2MT-8s-pRe"/>
+                                            <constraint firstAttribute="bottom" secondItem="4bS-JT-EGw" secondAttribute="bottom" constant="306" id="57w-eZ-Arq"/>
+                                            <constraint firstItem="lhP-pP-o0Q" firstAttribute="top" secondItem="hxE-Ge-wb0" secondAttribute="top" constant="31" id="5qQ-gJ-UhY"/>
+                                            <constraint firstItem="Tfr-CI-JCX" firstAttribute="top" secondItem="hxE-Ge-wb0" secondAttribute="top" constant="17" id="8JS-gH-Bhh"/>
+                                            <constraint firstAttribute="bottom" secondItem="Tfr-CI-JCX" secondAttribute="bottom" constant="316" id="9UO-Jm-9Q3"/>
+                                            <constraint firstItem="GAU-jo-K16" firstAttribute="leading" secondItem="hxE-Ge-wb0" secondAttribute="leading" constant="15" id="KF5-aS-lrc"/>
+                                            <constraint firstAttribute="trailing" secondItem="3Fz-fs-Iya" secondAttribute="trailing" constant="3" id="Kmo-r5-rM5"/>
+                                            <constraint firstItem="3Fz-fs-Iya" firstAttribute="top" secondItem="hxE-Ge-wb0" secondAttribute="top" constant="279" id="OaP-Sy-f2s"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tfr-CI-JCX" secondAttribute="trailing" id="QFa-cQ-rm1"/>
+                                            <constraint firstItem="Mb1-De-Apg" firstAttribute="leading" secondItem="hxE-Ge-wb0" secondAttribute="leading" constant="25" id="WZV-Cm-fYB"/>
+                                            <constraint firstItem="4bS-JT-EGw" firstAttribute="top" secondItem="hxE-Ge-wb0" secondAttribute="top" constant="279" id="b4h-v5-7pR"/>
+                                            <constraint firstAttribute="trailing" secondItem="GAU-jo-K16" secondAttribute="trailing" id="cnz-EW-vh7"/>
+                                            <constraint firstItem="GAU-jo-K16" firstAttribute="top" secondItem="hxE-Ge-wb0" secondAttribute="top" constant="263" id="dS1-44-lEW"/>
+                                            <constraint firstItem="Tfr-CI-JCX" firstAttribute="leading" secondItem="hxE-Ge-wb0" secondAttribute="leading" constant="15" id="jOh-gH-cQn"/>
+                                            <constraint firstAttribute="bottom" secondItem="GAU-jo-K16" secondAttribute="bottom" constant="70" id="lLY-NM-uSH"/>
+                                            <constraint firstItem="Tfr-CI-JCX" firstAttribute="centerX" secondItem="hxE-Ge-wb0" secondAttribute="centerX" constant="7.5" id="mKY-CR-pXo"/>
+                                            <constraint firstItem="4bS-JT-EGw" firstAttribute="leading" secondItem="hxE-Ge-wb0" secondAttribute="leading" constant="25" id="vPe-ds-vVC"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hxE-Ge-wb0" firstAttribute="width" secondItem="fEz-gb-1pw" secondAttribute="width" id="A4z-ig-b1Z"/>
+                                    <constraint firstItem="hxE-Ge-wb0" firstAttribute="top" secondItem="fEz-gb-1pw" secondAttribute="top" id="Hmm-W2-Eh4"/>
+                                    <constraint firstItem="hxE-Ge-wb0" firstAttribute="leading" secondItem="fEz-gb-1pw" secondAttribute="leading" id="OYx-lU-y6a"/>
+                                    <constraint firstAttribute="bottom" secondItem="hxE-Ge-wb0" secondAttribute="bottom" constant="-64" id="b9a-s1-Fdp"/>
+                                    <constraint firstAttribute="trailing" secondItem="hxE-Ge-wb0" secondAttribute="trailing" id="bav-Xh-gGT"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fEz-gb-1pw" firstAttribute="leading" secondItem="TkB-Lf-MYB" secondAttribute="leading" id="XWK-T3-bPY"/>
+                            <constraint firstAttribute="trailing" secondItem="fEz-gb-1pw" secondAttribute="trailing" id="it1-3s-axe"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fEz-gb-1pw" secondAttribute="bottom" id="n8b-Oe-icA"/>
+                            <constraint firstAttribute="topMargin" secondItem="fEz-gb-1pw" secondAttribute="top" id="vVo-Ey-okV"/>
+                            <constraint firstItem="fEz-gb-1pw" firstAttribute="width" secondItem="TkB-Lf-MYB" secondAttribute="width" id="ywh-Mx-S3g"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YhL-ta-wef"/>
+                    <navigationItem key="navigationItem" id="YhL-ta-wef">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" style="done" id="yAG-gl-Cra"/>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="contentView" destination="hxE-Ge-wb0" id="fEV-q8-7D0"/>
+                        <outlet property="recentPlaylists" destination="GAU-jo-K16" id="dPV-vt-00y"/>
+                        <outlet property="recentSongs" destination="Tfr-CI-JCX" id="rsw-jp-RnO"/>
+                        <outlet property="scrollView" destination="fEz-gb-1pw" id="Zxf-Jc-mv2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,7 +254,9 @@
                             <constraint firstItem="s0S-b3-e5C" firstAttribute="leading" secondItem="UlJ-7g-m6P" secondAttribute="leadingMargin" constant="-20" id="hBi-Pi-z2t"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="    " id="iPn-b3-H5s"/>
+                    <navigationItem key="navigationItem" title="    " id="iPn-b3-H5s">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" style="done" id="5ye-b3-aQw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="s0S-b3-e5C" id="F0e-Ds-74y"/>
                     </connections>
@@ -245,7 +379,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WHo-43-nZy"/>
+                    <navigationItem key="navigationItem" id="WHo-43-nZy">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" style="done" id="6Kp-Ga-tca"/>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTa-VE-MeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +401,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7qV-2g-Wla"/>
+                    <navigationItem key="navigationItem" id="7qV-2g-Wla">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" style="done" id="5IE-cM-O2I"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8p-Ek-HCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1414,10 +1552,12 @@
         <image name="Expand Arrow" width="32" height="32"/>
         <image name="Feed" width="32" height="32"/>
         <image name="Feed Selected" width="32" height="32"/>
+        <image name="Inbox" width="22" height="22"/>
         <image name="Info" width="22" height="22"/>
         <image name="Like" width="32" height="32"/>
         <image name="Like Selected" width="32" height="32"/>
         <image name="Lyrics" width="32" height="32"/>
+        <image name="More Than" width="22" height="22"/>
         <image name="My Music" width="32" height="32"/>
         <image name="My Music Selected" width="32" height="32"/>
         <image name="Next" width="14" height="14"/>
@@ -1441,7 +1581,7 @@
         <image name="cast_off" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r04-Oq-FMF"/>
+        <segue reference="sLY-AN-5Ko"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

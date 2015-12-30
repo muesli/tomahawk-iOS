@@ -22,10 +22,6 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *genres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     genres.image.image = [UIImage imageNamed:@"blurExample5"];
-    genres.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-    genres.title.text = @"Label";
-    genres.artist.text = @"Label";
-    genres.detailText.text = @"1234";
     return genres;
 }
 

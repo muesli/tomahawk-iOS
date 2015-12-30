@@ -28,7 +28,6 @@
     CGPoint currentTouchPosition = [touch locationInView:self.tableView];
     // Lookup the index path of the cell whose checkbox was modified.
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
-    NSLog(@"Row is :%ld and Section is: %ld", (long)indexPath.row, indexPath.section);
 }
 
 -(void)viewWillAppear:(BOOL)animated{

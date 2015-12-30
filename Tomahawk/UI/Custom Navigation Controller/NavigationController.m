@@ -30,7 +30,7 @@
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.barStyle = UIBarStyleBlack;
     self.searchBar.barTintColor = [UIColor colorWithRed:49.0/255.0 green:49.0/255.0 blue:61.0/255.0 alpha:1.0];
-    self.searchBar.placeholder = @"Search for Music, Albums and Playlists";
+    self.searchBar.placeholder = @"Search for Songs, Albums and Playlists";
     self.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
     [self.searchBar sizeToFit];
     self.searchBar.tintColor = self.view.window.tintColor;

@@ -35,10 +35,6 @@
     if ([collectionView isEqual:self.recommendedSongs]) {
         CollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
         recommendedSongs.image.image = [UIImage imageNamed:@"blurExample8"];
-        recommendedSongs.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-        recommendedSongs.title.text = @"Label";
-        recommendedSongs.artist.text = @"Label";
-        recommendedSongs.detailText.text = @"1234";
         return recommendedSongs;
     }else{
         CollectionViewCell *recommendedPlaylists = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -49,10 +45,6 @@
         }else{
             recommendedPlaylists.image.image = [UIImage imageNamed:@"blurExample4"];
         }
-        recommendedPlaylists.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-        recommendedPlaylists.title.text = @"Label";
-        recommendedPlaylists.artist.text = @"Label";
-        recommendedPlaylists.detailText.text = @"1234";
         return recommendedPlaylists;
     }
 }

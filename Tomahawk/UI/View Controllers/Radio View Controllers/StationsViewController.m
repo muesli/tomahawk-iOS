@@ -30,18 +30,10 @@
     if ([collectionView isEqual:self.followedArtists]) {
         CollectionViewCell *followedArtists = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
         followedArtists.image.image = [UIImage imageNamed:@"blurExample1"];
-        followedArtists.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-        followedArtists.title.text = @"Label";
-        followedArtists.artist.text = @"Label";
-        followedArtists.detailText.text = @"1234";
         return followedArtists;
     }else{
         CollectionViewCell *internetRadio = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
         internetRadio.image.image = [UIImage imageNamed:@"blurExample2"];
-        internetRadio.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-        internetRadio.title.text = @"Label";
-        internetRadio.artist.text = @"Label";
-        internetRadio.detailText.text = @"1234";
         return internetRadio;
     }
 }

@@ -32,10 +32,6 @@
     if ([collectionView isEqual:_recommendedStations]) {
         CollectionViewCell *recommendedStations = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
         recommendedStations.image.image = [UIImage imageNamed:@"blurExample5"];
-        recommendedStations.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-        recommendedStations.title.text = @"Label";
-        recommendedStations.artist.text = @"Label";
-        recommendedStations.detailText.text = @"1234";
         return recommendedStations;
     }else{
         CollectionViewCell *recommendedGenres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -46,10 +42,6 @@
         }else{
             recommendedGenres.image.image = [UIImage imageNamed:@"blurExample6"];
         }
-        recommendedGenres.detailImage.image = [UIImage imageNamed:@"headphone4.png"];
-        recommendedGenres.title.text = @"Label";
-        recommendedGenres.artist.text = @"Label";
-        recommendedGenres.detailText.text = @"1234";
         return recommendedGenres;
     }
 }

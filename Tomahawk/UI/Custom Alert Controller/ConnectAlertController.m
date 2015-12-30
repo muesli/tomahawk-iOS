@@ -16,13 +16,13 @@
 
 - (IBAction)buttonPress:(UIButton *)sender {
     if (sender == cancel) {
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              [cancel.titleLabel setAlpha:0.3];
                          }
                          completion:nil];
     }else if (sender == signIn){
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              [signIn.titleLabel setAlpha:0.3];
                          }
@@ -173,8 +173,7 @@
     
     UIButton *connect = [UIButton buttonWithType:UIButtonTypeCustom];
     [connect setImage:[UIImage image:[UIImage imageNamed:@"Connect Resolvers"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-    [connect.imageView.layer setMinificationFilter:kCAFilterTrilinear]; //Anti-Aliasing 
-    connect.frame = CGRectMake(10, 10, 20, 28); //In ratio 5:7
+    connect.frame = CGRectMake(10, 12.5, 22, 22);
     [headerView addSubview:connect];
     
     signIn = [[UIButton alloc]initWithFrame:CGRectMake(170, 190, 100, 28)];
