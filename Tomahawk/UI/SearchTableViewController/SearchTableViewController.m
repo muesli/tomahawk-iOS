@@ -80,13 +80,10 @@ static CGFloat searchBlockDelay = 0.25;
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (![searchText isEqualToString:@""]){
-        // to limit network activity, reload half a second after last key press.
         if (searchBlock != nil) {
-            //We cancel the currently scheduled block
             cancel_block(searchBlock);
         }
         searchBlock = dispatch_after_delay(searchBlockDelay, ^{
-            //We "enqueue" this block with a certain delay. It will be canceled if the user types faster than the delay, otherwise it will be executed after the specified delay
             [self search:searchText];
         });
     }else{
@@ -113,13 +110,11 @@ static CGFloat searchBlockDelay = 0.25;
     [activityIndicatorView setHidden:NO];
     [activityIndicatorView startAnimating];
     
-//#error Everything will crash because the values being returned for images are not always in string format
-    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
     
     dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchSongsDeezer:searchText];
+        NSDictionary *myDict = [TEngine searchSongsSpotify:searchText];
         songNames = [myDict objectForKey:@"songNames"];
         songAlbums = [myDict objectForKey:@"albumNames"];
         songArtists = [myDict objectForKey:@"artistNames"];
@@ -127,24 +122,24 @@ static CGFloat searchBlockDelay = 0.25;
     });
     
     dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchAlbumsDeezer:searchText];
+        NSDictionary *myDict = [TEngine searchAlbumsSpotify:searchText];
         albumNames = [myDict objectForKey:@"albumNames"];
         albumArtists = [myDict objectForKey:@"artistNames"];
         albumImages = [myDict objectForKey:@"mediumImages"];
     });
     
     dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchArtistsDeezer:searchText];
+        NSDictionary *myDict = [TEngine searchArtistsSpotify:searchText];
         artistFollowers = [myDict objectForKey:@"artistFollowers"];
         artistImages = [myDict objectForKey:@"mediumImages"];
         artistNames = [myDict objectForKey:@"artistNames"];
     });
     dispatch_group_async(group, queue, ^{
-//        NSDictionary *myDict = [TEngine searchPlaylistsSpotify:searchText];
-//        playlistNames = [myDict objectForKey:@"playlistNames"];
-//        playlistArtists = [myDict objectForKey:@"playlistArtists"];
-//        playlistCount = [myDict objectForKey:@"trackCount"];
-//        playlistImages = [myDict objectForKey:@"mediumImages"];
+        NSDictionary *myDict = [TEngine searchPlaylistsSpotify:searchText];
+        playlistNames = [myDict objectForKey:@"playlistNames"];
+        playlistArtists = [myDict objectForKey:@"playlistArtists"];
+        playlistCount = [myDict objectForKey:@"trackCount"];
+        playlistImages = [myDict objectForKey:@"mediumImages"];
     });
 
     dispatch_group_notify(group, queue, ^{

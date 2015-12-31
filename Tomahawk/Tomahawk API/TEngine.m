@@ -118,21 +118,28 @@
     [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
     
     NSArray *artistFollowers = [[[[jsonDict valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"listeners"];
-    [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
+    NSNumberFormatter *formatter = [NSNumberFormatter new];
+    formatter.numberStyle = NSNumberFormatterNoStyle;
     
-    NSArray *artistImages = [[[[[jsonDict valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"image"]valueForKey:@"#text"];
-    NSLog(@"artist images are %@", artistImages);
-    [myDict setObject:artistImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    NSArray *artistImages = [[[[jsonDict valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"image"];
     
-    
+    NSMutableArray *images = [NSMutableArray new];
+    NSMutableArray *followers = [NSMutableArray new];
+    for (int i = 0; i<artistImages.count; i++) {
+        NSString *imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
+        [images addObject:imageURLAsString];
+        NSNumber *myNumber = [formatter numberFromString:[artistFollowers objectAtIndex:i]];
+        [followers addObject:myNumber];
+        
+    }
+    [myDict setObject:followers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     
     return myDict;
 }
 
 
 +(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist{
-    
-    //TODO: WHEN PLAYLIST DOESNT HAVE AN IMAGE, CREATE ONE FROM THE TRACKS INSIDE IT. NOTE: WHEN TRACK NUMBER IS LOWER THAN 4, ONLY USE THE FIRST IMAGE AS THE PLAYLIST IMAGE.
     
     
     if (!playlist) {
@@ -142,7 +149,7 @@
     NSString *searchPlaylists = SOUNDCLOUD_BASE;
     searchPlaylists = [searchPlaylists stringByAppendingString:[NSString stringWithFormat:@"playlists/?q=%@&client_id=%@&limit=4", playlist, SOUNDCLOUD_CLIENT_ID]];
     searchPlaylists = [searchPlaylists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    
+
     NSDictionary *jsonDict = [self parseURL:searchPlaylists];
     
     if (!jsonDict) {
@@ -151,14 +158,26 @@
     
     NSMutableDictionary *myDict = [NSMutableDictionary new];
     
+    
     NSArray *playlistNames = [jsonDict valueForKey:@"title"];
     [myDict setObject:playlistNames forKey:@"playlistNames"]; //Returns array of playlist names which is accessed by: NSString *name = [[myDict objectForKey:@"playlistNames"]objectAtIndex:index];
     
+    NSArray *playlistArtists = [[jsonDict valueForKey:@"user"]valueForKey:@"username"];
+    [myDict setObject:playlistArtists forKey:@"playlistArtists"]; //Returns array of artist names which is accessed by: NSString *name = [[[myDict objectForKey:@"artistNames"]objectAtIndex:index]objectAtIndex:0];
+    
     NSArray *songNumber = [jsonDict valueForKey:@"track_count"];
-    [myDict setObject:songNumber forKey:@"songNumber"]; //Returns array of song numbers wrapped in an nsnumber which is accessed by: NSNumber *songNumber = [[myDict objectForKey:@"songNumber"]objectAtIndex:index];
+    [myDict setObject:songNumber forKey:@"trackCount"]; //Returns array of song numbers wrapped in an nsnumber which is accessed by: NSNumber *songNumber = [[myDict objectForKey:@"songNumber"]objectAtIndex:index];
     
     NSArray *playlistImages = [jsonDict valueForKey:@"artwork_url"];
-    [myDict setObject:playlistImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    NSMutableArray *images = [NSMutableArray new];
+    for (int i =0; i<playlistImages.count; i++) {
+        if ([[playlistImages objectAtIndex:i]isKindOfClass:[NSNull class]]) {
+            [images addObject:@""];
+        }else{
+            [images addObject:[playlistImages objectAtIndex:i]];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     
     return myDict;
 }
@@ -181,14 +200,24 @@
     NSMutableDictionary *myDict = [NSMutableDictionary new];
     
     NSArray *artistFollowers = [jsonDict valueForKey:@"followers_count"];
+    
     [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
     
     NSArray *artistNames = [jsonDict valueForKey:@"username"];
     [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
     
     NSArray *artistImages = [jsonDict valueForKey:@"avatar_url"];
-    [myDict setObject:artistImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
-    
+    NSLog(@"start");
+    NSMutableArray *images = [NSMutableArray new];
+    for (int i =0; i<artistImages.count; i++) {
+        if ([[artistImages objectAtIndex:i]isKindOfClass:[NSNull class]]) {
+            [images addObject:@""];
+        }else{
+            [images addObject:[artistImages objectAtIndex:i]];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    NSLog(@"finish");
     return myDict;
 
 }
@@ -217,7 +246,16 @@
     [myDict setObject:artistNames forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[myDict objectForKey:@"artistNames"]objectAtIndex:index];
     
     NSArray *songImages = [jsonDict valueForKey:@"artwork_url"];
-    [myDict setObject:songImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    for (int i =0; i<songImages.count; i++) {
+        if ([[songImages objectAtIndex:i]isKindOfClass:[NSNull class]]) {
+            [images addObject:@""];
+        }else{
+            [images addObject:[songImages objectAtIndex:i]];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     
     return myDict;
 
@@ -265,7 +303,12 @@
     [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
     
     NSArray *songImages = [[[[jsonDict valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"images"];
-    [myDict setObject:songImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    NSMutableArray *images = [NSMutableArray new];
+    for (int i = 0; i<songImages.count; i++) {
+        NSString *imageURLAsString = [[[songImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
+        [images addObject:imageURLAsString];
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     return myDict;
 }
 
@@ -307,7 +350,14 @@
     [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
     
     NSArray *albumImages = [[[jsonDict valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"images"];
-    [myDict setObject:albumImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<albumImages.count; i++) {
+        NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
+        [images addObject:imageURLAsString];
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
 
     return myDict;
 }
@@ -335,7 +385,22 @@
     NSArray *artistFollowers = [[[[jsonDict valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"followers"]valueForKey:@"total"];
     [myDict setObject:artistFollowers forKey:@"artistFollowers"]; //Returns an array of artist follwers wrapped in an NSNumber, acessed by: int follwers = [[[myDict objectForKey:@"artistFollowers"]objectAtIndex:index]intValue];
     NSArray *artistImages = [[[jsonDict valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"images"];
-    [myDict setObject:artistImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<artistImages.count; i++) {
+        NSString *imageURLAsString;
+        @try {
+            imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"url"];
+        }
+        @catch (NSException *exception) {
+            imageURLAsString = @"";
+        }
+        @finally {
+            [images addObject:imageURLAsString];
+        }
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     
     return myDict;
 
@@ -369,7 +434,14 @@
     [myDict setObject:trackCount forKey:@"trackCount"]; //Returns array of track counts wrapped in an NSNumber, accessed by: NSNumber *trackCount = [[[myDict objectForKey:@"trackCount"]objectAtIndex:index]intValue];
     
     NSArray *playlistImages = [[[jsonDict valueForKey:@"playlists"]valueForKey:@"items"]valueForKey:@"images"];
-    [myDict setObject:playlistImages forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+    
+    NSMutableArray *images = [NSMutableArray new];
+    
+    for (int i = 0; i<playlistImages.count; i++) {
+        NSString *imageURLAsString = [[[playlistImages objectAtIndex:i]objectAtIndex:0]valueForKey:@"url"];
+        [images addObject:imageURLAsString];
+    }
+    [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
     return myDict;
 }
 
