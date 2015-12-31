@@ -1,5 +1,9 @@
 [Tomahawk for iOS](https://github.com/tomahawk-player/tomahawk-ios)
 ----
+<p align="center" >
+  <img src="http://i.imgur.com/YfOwbyE.png" alt="Tomahawk" title="Tomahawk">
+</p>
+
 
 Exclusive just became a little less. Tomahawk is now (sort of) on iOS. This is a very much pre-alpha version. Stay tuned for more updates to come!
 
