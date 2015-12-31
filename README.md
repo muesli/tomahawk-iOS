@@ -4,24 +4,17 @@
 
 Exclusive just became a little less. Tomahawk is now (sort of) on iOS. This is a very much pre-alpha version. Stay tuned for more updates to come!
 
-[![Build Status](https://travis-ci.org/AFNetworking/AFNetworking.svg)](https://travis-ci.org/AFNetworking/AFNetworking)
-[![codecov.io](https://codecov.io/github/AFNetworking/AFNetworking/coverage.svg?branch=master)](https://codecov.io/github/AFNetworking/AFNetworking?branch=master)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/AFNetworking.svg)](https://img.shields.io/cocoapods/v/AFNetworking.svg)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/AFNetworking.svg?style=flat)](http://cocoadocs.org/docsets/AFNetworking)
-[![Twitter](https://img.shields.io/badge/twitter-@AFNetworking-blue.svg?style=flat)](http://twitter.com/AFNetworking)
+[![Twitter](https://img.shields.io/badge/twitter-@Tomahawk-3299EC.svg?style=flat)](http://twitter.com/Tomahawk)
+[![Forum](https://img.shields.io/badge/discussion-forum-red.svg?style=flat)](http://forum.tomahawk-player.org/)
+[![Facebook](https://img.shields.io/badge/facebook-Tomahawk-354F88.svg?style=flat)](http://www.facebook.com/TomahawkPlayer)
+[![Freenode](https://img.shields.io/badge/IRC-freenode-yellow.svg?style=flat)](http://webchat.freenode.net/?channels=tomahawk)
+[![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/mourke/tomahawk-iOS/blob/master/LICENSE.md)
 
-## Community
-
-Keep track of Tomahawk development and community activity.
-
-* Follow Tomahawk on [Twitter](https://twitter.com/tomahawk), [Facebook](https://www.facebook.com/TomahawkPlayer/) and [Google+](https://plus.google.com/+Gettomahawks/videos).
-* Join in discussions on the [Tomahawk Forum](http://forum.tomahawk-player.org/)
-* Connect with us on IRC at `#tomahawk` on freenode ([web access](http://webchat.freenode.net/?channels=tomahawk))
 
 ## Build Instructions ##
 
-This project uses  [CocoaPods](http://cocoapods.org/) Build instructions:
+This project uses  [CocoaPods](http://cocoapods.org/). Build instructions:
 
 ``` bash
 $ git clone https://github.com/mourke/tomahawk-iOS.git tomahawk-ios
