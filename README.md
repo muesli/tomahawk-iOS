@@ -1,7 +1,5 @@
-[Tomahawk for iOS](https://github.com/tomahawk-player/tomahawk-ios)
-----
 <p align="center" >
-  <img src="http://i.imgur.com/YfOwbyE.png" alt="Tomahawk" title="Tomahawk">
+  <img src="http://i.imgur.com/p7WNZ7t.png" alt="Tomahawk" title="Tomahawk">
 </p>
 
 
