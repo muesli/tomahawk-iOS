@@ -10,6 +10,7 @@ Exclusive just became a little less. Tomahawk is now (sort of) on iOS. This is a
 [![Facebook](https://img.shields.io/badge/facebook-Tomahawk-354F88.svg?style=flat)](http://www.facebook.com/TomahawkPlayer)
 [![Freenode](https://img.shields.io/badge/IRC-freenode-yellow.svg?style=flat)](http://webchat.freenode.net/?channels=tomahawk)
 [![License](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/mourke/tomahawk-iOS/blob/master/LICENSE.md)
+[![Build Status](https://travis-ci.org/mourke/tomahawk-iOS.svg)](https://travis-ci.org/mourke/tomahawk-iOS)
 
 
 ## Build Instructions ##
