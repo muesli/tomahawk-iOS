@@ -21,7 +21,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *genres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    genres.image.image = [UIImage imageNamed:@"blurExample5"];
+    genres.image.image = [UIImage imageNamed:@"PlaceholderGenres"];
     return genres;
 }
 

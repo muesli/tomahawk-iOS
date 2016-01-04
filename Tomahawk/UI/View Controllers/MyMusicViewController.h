@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyMusicDetailViewController.h"
+#import "SongsTableViewController.h"
+#import "PlaylistsTableViewController.h"
+#import "CAPSPageMenu.h"
 
-@class InsidePlaylistsViewController;
-
-@interface MyMusicViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-
-@property(nonatomic, strong) IBOutlet UITableView *tableView;
+@interface MyMusicViewController : UIViewController <CAPSPageMenuDelegate>
 
 @end

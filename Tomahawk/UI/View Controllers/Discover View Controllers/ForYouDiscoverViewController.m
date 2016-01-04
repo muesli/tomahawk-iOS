@@ -34,17 +34,11 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:self.recommendedSongs]) {
         CollectionViewCell *recommendedSongs = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        recommendedSongs.image.image = [UIImage imageNamed:@"blurExample8"];
+        recommendedSongs.image.image = [UIImage imageNamed:@"PlaceholderSongs"];
         return recommendedSongs;
     }else{
         CollectionViewCell *recommendedPlaylists = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        if (indexPath.row == 1) {
-            recommendedPlaylists.image.image = [UIImage imageNamed:@"blurExample1"];
-        }else if (indexPath.row == 2){
-            recommendedPlaylists.image.image = [UIImage imageNamed:@"blurExample"];
-        }else{
-            recommendedPlaylists.image.image = [UIImage imageNamed:@"blurExample4"];
-        }
+        recommendedPlaylists.image.image = [UIImage imageNamed:@"PlaceholderPlaylists"];
         return recommendedPlaylists;
     }
 }

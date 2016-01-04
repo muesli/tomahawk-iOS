@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.backgroundImageView.image = [UIImage imageNamed:@"blurExample2"];
+    self.backgroundImageView.image = [UIImage imageNamed:@"PlaceholderSongs"];
     
     
     NSArray *myArray = @[self.currentSongImageView, self.previousSongImageView, self.nextSongImageView];

@@ -31,17 +31,11 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:_recommendedStations]) {
         CollectionViewCell *recommendedStations = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        recommendedStations.image.image = [UIImage imageNamed:@"blurExample5"];
+        recommendedStations.image.image = [UIImage imageNamed:@"PlaceholderRadios"];
         return recommendedStations;
     }else{
         CollectionViewCell *recommendedGenres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        if (indexPath.row == 1) {
-            recommendedGenres.image.image = [UIImage imageNamed:@"blurExample3"];
-        }else if (indexPath.row == 2){
-            recommendedGenres.image.image = [UIImage imageNamed:@"blurExample2"];
-        }else{
-            recommendedGenres.image.image = [UIImage imageNamed:@"blurExample6"];
-        }
+        recommendedGenres.image.image = [UIImage imageNamed:@"PlaceholderGenres"];
         return recommendedGenres;
     }
 }

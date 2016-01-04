@@ -29,11 +29,11 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:self.followedArtists]) {
         CollectionViewCell *followedArtists = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        followedArtists.image.image = [UIImage imageNamed:@"blurExample1"];
+        followedArtists.image.image = [UIImage imageNamed:@"PlaceholderArtists"];
         return followedArtists;
     }else{
         CollectionViewCell *internetRadio = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        internetRadio.image.image = [UIImage imageNamed:@"blurExample2"];
+        internetRadio.image.image = [UIImage imageNamed:@"PlaceholderRadios"];
         return internetRadio;
     }
 }
