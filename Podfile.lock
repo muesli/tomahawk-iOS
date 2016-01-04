@@ -1,4 +1,5 @@
 PODS:
+  - 1PasswordExtension (1.7)
   - AFNetworking (3.0.4):
     - AFNetworking/NSURLSession (= 3.0.4)
     - AFNetworking/Reachability (= 3.0.4)
@@ -17,17 +18,22 @@ PODS:
   - DGActivityIndicatorView (2.0)
   - KMPlaceholderTextView (1.1.1)
   - MBProgressHUD (0.9.2)
+  - StreamingKit (0.1.28)
 
 DEPENDENCIES:
+  - 1PasswordExtension
   - AFNetworking
   - DGActivityIndicatorView
   - KMPlaceholderTextView
   - MBProgressHUD
+  - StreamingKit
 
 SPEC CHECKSUMS:
+  1PasswordExtension: a22573ad528dd63bd79c1f3b3813b17c2f86b91b
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
   KMPlaceholderTextView: 686edec818f5727728eaf8c2e9e70177692d3d53
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  StreamingKit: 3b9c78009275ef1caf198bae44cfb982fee65d4d
 
 COCOAPODS: 0.39.0

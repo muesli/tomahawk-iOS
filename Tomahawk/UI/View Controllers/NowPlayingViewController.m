@@ -16,15 +16,11 @@
 
 @implementation NowPlayingViewController
 
+
 -(IBAction)buttonTouched:(UIButton *)sender{
     if (sender == _playPause) {
-        //set Play button to pause icon if it is play and visa versa
-        [_playPause setImage:[UIImage imageNamed:@"Pause"] forState:UIControlStateNormal];
-        NSError *error;
-        self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:nil] error:&error];
-        [self.player play];
-        
-        
+        STKAudioPlayer *player = [STKAudioPlayer new];
+        [player playURL:[NSURL URLWithString:@"http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3"]];
     }else if (sender == self.expandArrow){
         [self dismissViewControllerAnimated:YES completion:nil];
     }

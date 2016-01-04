@@ -25,7 +25,6 @@
 
 #warning SPOTIFY ARTIST IMAGES ARE MESSED UP SO objectAtIndex:2 ISNT ALWAYS GETTING 200*200 IMAGES, SOMETIMES ITS GETTING HIHGHER RES AND SOMETIMES ITS GETTING LOWER RES. FIX
 
-#warning LAST.FM ARTIST FOLLOWERS DONT WORK FOR SOME REASON. FIX
 
 @implementation TEngine
 
@@ -542,6 +541,7 @@
   
 }
 
+
 #pragma mark - Authentication
 
 +(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion{
@@ -549,7 +549,6 @@
     NSString *api_sig = [NSString stringWithFormat:@"api_key%@methodauth.getMobileSessionpassword%@username%@%@", LASTFM_API_KEY, password, username, LASTFM_SECRET_KEY];
     
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://ws.audioscrobbler.com/2.0/"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
     [session POST:[NSString stringWithFormat:@"?method=auth.getMobileSession&api_key=%@&format=json&username=%@&password=%@&api_sig=%@", LASTFM_API_KEY ,username, password, [api_sig md5]] parameters:nil constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
         NSString *sessionKey = [[responseObject valueForKey:@"session"]valueForKey:@"key"];
         NSLog(@"session key is %@", sessionKey);

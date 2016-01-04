@@ -40,7 +40,7 @@ static CGFloat searchBlockDelay = 0.25;
     [self.tableView setDelaysContentTouches:NO];
     [self.searchBar sizeToFit];
     [self.searchBar becomeFirstResponder];
-    loadingDimmer = [[UIView alloc]initWithFrame:self.view.frame]; //View to dim whats behind it when new content is loading
+    loadingDimmer = [[UIView alloc]initWithFrame:self.view.frame];
     loadingDimmer.backgroundColor = [UIColor blackColor];
     loadingDimmer.alpha = 0.3;
     self.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
@@ -87,7 +87,7 @@ static CGFloat searchBlockDelay = 0.25;
             [self search:searchText];
         });
     }else{
-        //If there is nothing in the search field, force remove everything from table View;
+        //If there is nothing in the search field, force remove everything from table View
         songArtists = nil;
         songNames = nil;
         albumArtists = nil;
@@ -168,20 +168,16 @@ static CGFloat searchBlockDelay = 0.25;
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<songNames.count; i++) {
                 searchCell.textLabel.text =  [songNames objectAtIndex:i];
                 NSString *albums = [songAlbums objectAtIndex:i];
-                NSString *text = [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums];
-                //If there are no albums, remove the album thing ^
-                if (!albums) {
-                    text = [songArtists objectAtIndex:i];
-                }
+                NSString *text = albums ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums] : [songArtists objectAtIndex:i];
                 searchCell.detailTextLabel.text = text;
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderLarge"]];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
             }
             break;
         case 1:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<albumNames.count; i++) {
                 searchCell.textLabel.text = [albumNames objectAtIndex:i];
                 searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderLarge"]];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderAlbums"]];
             }
             break;
         case 2:
@@ -191,7 +187,7 @@ static CGFloat searchBlockDelay = 0.25;
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
                 searchCell.detailTextLabel.text = followers;
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtistLarge"]];
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
             }
             break;
         case 3:
@@ -201,7 +197,7 @@ static CGFloat searchBlockDelay = 0.25;
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
                 searchCell.detailTextLabel.text = count;
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[playlistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderLarge"]];;
+                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[playlistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderPlaylists"]];;
             }
             break;
         default:
@@ -218,7 +214,7 @@ static CGFloat searchBlockDelay = 0.25;
     CGFloat widthScale = 60 / searchCell.imageView.image.size.width;
     CGFloat heightScale = 60 / searchCell.imageView.image.size.height;
     searchCell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    
+    [searchCell.imageView.layer setMinificationFilter:kCAFilterTrilinear];
     return searchCell;
 }
 

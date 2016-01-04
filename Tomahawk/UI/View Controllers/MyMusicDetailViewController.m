@@ -27,7 +27,6 @@
     self.tableView.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1.0];
     
     self.navigationItem.backBarButtonItem.tintColor = [UIColor whiteColor];
-    
     myCellText = @"Placeholder";
     
     UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 161)];

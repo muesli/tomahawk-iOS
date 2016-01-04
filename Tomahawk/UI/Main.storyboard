@@ -1261,6 +1261,9 @@
                                     <constraint firstAttribute="height" constant="22" id="Wmn-hC-9hw"/>
                                 </constraints>
                                 <state key="normal" image="Pause"/>
+                                <connections>
+                                    <action selector="buttonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="Zuu-61-LUg"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blurExample1.png" translatesAutoresizingMaskIntoConstraints="NO" id="k79-qC-xAi">
                                 <rect key="frame" x="-272" y="89" width="292" height="292"/>

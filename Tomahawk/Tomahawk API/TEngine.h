@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
 #import "MyAdditions.h"
 #import "AFNetworking.h"
+#import "AFOAuth2Manager.h"
 
 @interface TEngine : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, AFURLRequestSerialization, AFURLResponseSerialization>
 

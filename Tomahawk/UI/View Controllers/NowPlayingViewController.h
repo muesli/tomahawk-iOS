@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CCColorCube.h"
-#import <AVFoundation/AVFoundation.h>
-#import <AudioToolbox/AudioToolbox.h>
 #import "MyAdditions.h"
+#import "STKAudioPlayer.h"
 
 
-@interface NowPlayingViewController : UIViewController
+@interface NowPlayingViewController : UIViewController <STKAudioPlayerDelegate, STKDataSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *expandArrow;
 @property (weak, nonatomic) IBOutlet UIButton *googleCast;
@@ -34,7 +33,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *playlistArtist;
 @property (weak, nonatomic) IBOutlet UILabel *songTitle;
 @property (weak, nonatomic) IBOutlet UILabel *songArtist;
-@property (strong, nonatomic) AVAudioPlayer *player;
 @property (weak, nonatomic) IBOutlet UIProgressView *progress;
 
 
