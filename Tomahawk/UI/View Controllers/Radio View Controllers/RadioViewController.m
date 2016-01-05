@@ -34,9 +34,9 @@
     forYouController.title = @"FOR YOU";
     GenresCollectionViewController *genresController = [[GenresCollectionViewController alloc]initWithNibName:@"GenresCollectionViewController" bundle:nil];
     genresController.title = @"GENRES";
-    MoodsViewController *moodsController = [MoodsViewController new];
+    MoodsCollectionViewController *moodsController = [[MoodsCollectionViewController alloc]initWithNibName:@"MoodsCollectionViewController" bundle:nil];
     moodsController.title = @"MOODS";
-    StationsViewController *stationsController = [StationsViewController new];
+    StationsViewController *stationsController = [[StationsViewController alloc]initWithNibName:@"StationsViewController" bundle:nil];
     stationsController.title = @"STATIONS";
     
     NSArray *controllerArray = @[forYouController, genresController, moodsController, stationsController];

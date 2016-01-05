@@ -1,5 +1,5 @@
 //
-//  MoodsViewController.h
+//  MoodsCollectionViewController.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 25/12/2015.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionViewCell.h"
 
-@interface MoodsViewController : UIViewController
+@interface MoodsCollectionViewController : UICollectionViewController
 
 @end

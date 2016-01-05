@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ForYouViewController.h"
 #import "GenresCollectionViewController.h"
-#import "MoodsViewController.h"
+#import "MoodsCollectionViewController.h"
 #import "StationsViewController.h"
 #import "CAPSPageMenu.h"
 

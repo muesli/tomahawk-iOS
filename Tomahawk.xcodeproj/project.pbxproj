@@ -20,6 +20,7 @@
 		4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA41C33231F00244532 /* SearchTableViewController.m */; };
 		4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */; };
 		4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FAB1C34365E00244532 /* CAPSPageMenu.m */; };
+		4D0D2BC31C3C2CD800AA300C /* MoodsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0D2BC21C3C2CD800AA300C /* MoodsCollectionViewController.xib */; };
 		4D4DBE2E1C3B23D800AB625B /* SongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2C1C3B23D800AB625B /* SongsTableViewController.m */; };
 		4D4DBE2F1C3B23D800AB625B /* SongsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */; };
 		4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE311C3B23FE00AB625B /* PlaylistsTableViewController.m */; };
@@ -33,7 +34,7 @@
 		4DA5D1FE1C2F81A00031FBE5 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F41C2F81A00031FBE5 /* RadioViewController.m */; };
 		4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F61C2F81A00031FBE5 /* GenresCollectionViewController.m */; };
 		4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F71C2F81A00031FBE5 /* ForYouViewController.m */; };
-		4DA5D2061C2F81A00031FBE5 /* MoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1FC1C2F81A00031FBE5 /* MoodsViewController.m */; };
+		4DA5D2061C2F81A00031FBE5 /* MoodsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1FC1C2F81A00031FBE5 /* MoodsCollectionViewController.m */; };
 		4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */; };
 		4DA5D2131C2F81D30031FBE5 /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D20B1C2F81D30031FBE5 /* InfoTableViewController.m */; };
 		4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D20D1C2F81D30031FBE5 /* ConnectCollectionViewController.m */; };
@@ -99,6 +100,7 @@
 		4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewController.xib; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.xib; sourceTree = "<group>"; };
 		4D0A0FAA1C34365E00244532 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPSPageMenu.h; path = "Tomahawk/UI/Custom Page View/CAPSPageMenu.h"; sourceTree = "<group>"; };
 		4D0A0FAB1C34365E00244532 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPSPageMenu.m; path = "Tomahawk/UI/Custom Page View/CAPSPageMenu.m"; sourceTree = "<group>"; };
+		4D0D2BC21C3C2CD800AA300C /* MoodsCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoodsCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsCollectionViewController.xib"; sourceTree = "<group>"; };
 		4D4DBE2B1C3B23D800AB625B /* SongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongsTableViewController.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.h"; sourceTree = "<group>"; };
 		4D4DBE2C1C3B23D800AB625B /* SongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongsTableViewController.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.m"; sourceTree = "<group>"; };
 		4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongsTableViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.xib"; sourceTree = "<group>"; };
@@ -122,8 +124,8 @@
 		4DA5D1F81C2F81A00031FBE5 /* ForYouViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForYouViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ForYouViewController.h"; sourceTree = "<group>"; };
 		4DA5D1F91C2F81A00031FBE5 /* RadioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadioViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/RadioViewController.h"; sourceTree = "<group>"; };
 		4DA5D1FA1C2F81A00031FBE5 /* GenresCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GenresCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/GenresCollectionViewController.h"; sourceTree = "<group>"; };
-		4DA5D1FB1C2F81A00031FBE5 /* MoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoodsViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsViewController.h"; sourceTree = "<group>"; };
-		4DA5D1FC1C2F81A00031FBE5 /* MoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MoodsViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsViewController.m"; sourceTree = "<group>"; };
+		4DA5D1FB1C2F81A00031FBE5 /* MoodsCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoodsCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsCollectionViewController.h"; sourceTree = "<group>"; };
+		4DA5D1FC1C2F81A00031FBE5 /* MoodsCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MoodsCollectionViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsCollectionViewController.m"; sourceTree = "<group>"; };
 		4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Tomahawk/Startup/AppDelegate.m; sourceTree = "<group>"; };
 		4DA5D2081C2F81B80031FBE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Tomahawk/Startup/AppDelegate.h; sourceTree = "<group>"; };
 		4DA5D20B1C2F81D30031FBE5 /* InfoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InfoTableViewController.m; path = "Tomahawk/UI/View Controllers/Settings View Controllers/InfoTableViewController.m"; sourceTree = "<group>"; };
@@ -388,8 +390,9 @@
 				4DA5D1FA1C2F81A00031FBE5 /* GenresCollectionViewController.h */,
 				4DA5D1F61C2F81A00031FBE5 /* GenresCollectionViewController.m */,
 				4DA5D30C1C2F889C0031FBE5 /* GenresCollectionViewController.xib */,
-				4DA5D1FB1C2F81A00031FBE5 /* MoodsViewController.h */,
-				4DA5D1FC1C2F81A00031FBE5 /* MoodsViewController.m */,
+				4DA5D1FB1C2F81A00031FBE5 /* MoodsCollectionViewController.h */,
+				4DA5D1FC1C2F81A00031FBE5 /* MoodsCollectionViewController.m */,
+				4D0D2BC21C3C2CD800AA300C /* MoodsCollectionViewController.xib */,
 				4DA5D1F51C2F81A00031FBE5 /* StationsViewController.h */,
 				4DA5D1F31C2F81A00031FBE5 /* StationsViewController.m */,
 				4DA5D30A1C2F889C0031FBE5 /* StationsViewController.xib */,
@@ -580,6 +583,7 @@
 				4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */,
 				4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */,
 				4D022F631C305D2C00F9D896 /* ForYouDiscoverViewController.xib in Resources */,
+				4D0D2BC31C3C2CD800AA300C /* MoodsCollectionViewController.xib in Resources */,
 				4D4DBE341C3B23FE00AB625B /* PlaylistsTableViewController.xib in Resources */,
 				4D022F681C3060B100F9D896 /* ChartsViewController.xib in Resources */,
 				4D022F721C30627700F9D896 /* NewTracksViewController.xib in Resources */,
@@ -687,7 +691,7 @@
 				4DA5D1FE1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
-				4DA5D2061C2F81A00031FBE5 /* MoodsViewController.m in Sources */,
+				4DA5D2061C2F81A00031FBE5 /* MoodsCollectionViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,
 				4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */,
 				4D022F711C30627700F9D896 /* NewTracksViewController.m in Sources */,
