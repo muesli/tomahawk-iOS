@@ -153,9 +153,6 @@ static CGFloat searchBlockDelay = 0.25;
     });
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
-}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *searchCell = [self.tableView dequeueReusableCellWithIdentifier:@"searchCell"];
@@ -210,7 +207,6 @@ static CGFloat searchBlockDelay = 0.25;
     searchCell.detailTextLabel.textColor = [UIColor whiteColor];
     searchCell.detailTextLabel.alpha = 0.5;
     searchCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    //Make cell image not the whole size
     CGFloat widthScale = 60 / searchCell.imageView.image.size.width;
     CGFloat heightScale = 60 / searchCell.imageView.image.size.height;
     searchCell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
@@ -339,9 +335,6 @@ static CGFloat searchBlockDelay = 0.25;
     
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 40;
-}
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }

@@ -7,20 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D022F621C305D2C00F9D896 /* ForYouDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F601C305D2C00F9D896 /* ForYouDiscoverViewController.m */; };
-		4D022F631C305D2C00F9D896 /* ForYouDiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F611C305D2C00F9D896 /* ForYouDiscoverViewController.xib */; };
-		4D022F671C3060B100F9D896 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F651C3060B100F9D896 /* ChartsViewController.m */; };
-		4D022F681C3060B100F9D896 /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F661C3060B100F9D896 /* ChartsViewController.xib */; };
-		4D022F6B1C3060F300F9D896 /* LikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F6A1C3060F300F9D896 /* LikesViewController.m */; };
-		4D022F6D1C30612400F9D896 /* LikesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F6C1C30612400F9D896 /* LikesViewController.xib */; };
-		4D022F711C30627700F9D896 /* NewTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D022F6F1C30627700F9D896 /* NewTracksViewController.m */; };
-		4D022F721C30627700F9D896 /* NewTracksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D022F701C30627700F9D896 /* NewTracksViewController.xib */; };
-		4D0A0F8B1C31D70200244532 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0F891C31D70200244532 /* CustomTableViewCell.m */; };
+		4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */; };
 		4D0A0F8D1C32BE6E00244532 /* CustomAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0F8C1C32BE6E00244532 /* CustomAlertController.xib */; };
 		4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA41C33231F00244532 /* SearchTableViewController.m */; };
 		4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */; };
 		4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FAB1C34365E00244532 /* CAPSPageMenu.m */; };
-		4D0D2BC31C3C2CD800AA300C /* MoodsCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0D2BC21C3C2CD800AA300C /* MoodsCollectionViewController.xib */; };
 		4D4DBE2E1C3B23D800AB625B /* SongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2C1C3B23D800AB625B /* SongsTableViewController.m */; };
 		4D4DBE2F1C3B23D800AB625B /* SongsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */; };
 		4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE311C3B23FE00AB625B /* PlaylistsTableViewController.m */; };
@@ -30,11 +21,10 @@
 		4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E21C2F817B0031FBE5 /* MyMusicDetailViewController.m */; };
 		4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */; };
 		4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E71C2F817B0031FBE5 /* MyMusicViewController.m */; };
-		4DA5D1FD1C2F81A00031FBE5 /* StationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F31C2F81A00031FBE5 /* StationsViewController.m */; };
-		4DA5D1FE1C2F81A00031FBE5 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F41C2F81A00031FBE5 /* RadioViewController.m */; };
+		4DA5D1FD1C2F81A00031FBE5 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F31C2F81A00031FBE5 /* RadioViewController.m */; };
+		4DA5D1FE1C2F81A00031FBE5 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F41C2F81A00031FBE5 /* DiscoverViewController.m */; };
 		4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F61C2F81A00031FBE5 /* GenresCollectionViewController.m */; };
 		4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1F71C2F81A00031FBE5 /* ForYouViewController.m */; };
-		4DA5D2061C2F81A00031FBE5 /* MoodsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1FC1C2F81A00031FBE5 /* MoodsCollectionViewController.m */; };
 		4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */; };
 		4DA5D2131C2F81D30031FBE5 /* InfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D20B1C2F81D30031FBE5 /* InfoTableViewController.m */; };
 		4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D20D1C2F81D30031FBE5 /* ConnectCollectionViewController.m */; };
@@ -51,14 +41,17 @@
 		4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CF1C2F82D80031FBE5 /* ConnectAlertController.m */; };
 		4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */; };
 		4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F31C2F83300031FBE5 /* Main.storyboard */; };
-		4DA5D3091C2F88810031FBE5 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D3071C2F88810031FBE5 /* DiscoverViewController.m */; };
 		4DA5D3191C2F8A8E0031FBE5 /* ForYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30B1C2F889C0031FBE5 /* ForYouViewController.xib */; };
 		4DA5D31A1C2F8A8E0031FBE5 /* GenresCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30C1C2F889C0031FBE5 /* GenresCollectionViewController.xib */; };
-		4DA5D31B1C2F8A8E0031FBE5 /* StationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30A1C2F889C0031FBE5 /* StationsViewController.xib */; };
+		4DA5D31B1C2F8A8E0031FBE5 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30A1C2F889C0031FBE5 /* RadioViewController.xib */; };
 		4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */; };
 		4DDEDA3E1C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA391C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m */; };
 		4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */; };
 		4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */; };
+		4DEE81661C3D90530077F7FD /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DEE81631C3D90530077F7FD /* ChartsViewController.xib */; };
+		4DEE81671C3D90530077F7FD /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE81651C3D90530077F7FD /* ChartsViewController.m */; };
+		4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE81691C3DA2D90077F7FD /* CustomTableViewCell.m */; };
+		4DEE816C1C3DA2D90077F7FD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DEE816A1C3DA2D90077F7FD /* CustomTableViewCell.xib */; };
 		B55D227EE3122710D8BBFF89 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC7B7ED2E423BA79CA251DDB /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,27 +73,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D022F5F1C305D2C00F9D896 /* ForYouDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForYouDiscoverViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ForYouDiscoverViewController.h"; sourceTree = "<group>"; };
-		4D022F601C305D2C00F9D896 /* ForYouDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForYouDiscoverViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ForYouDiscoverViewController.m"; sourceTree = "<group>"; };
-		4D022F611C305D2C00F9D896 /* ForYouDiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForYouDiscoverViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ForYouDiscoverViewController.xib"; sourceTree = "<group>"; };
-		4D022F641C3060B100F9D896 /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartsViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ChartsViewController.h"; sourceTree = "<group>"; };
-		4D022F651C3060B100F9D896 /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartsViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ChartsViewController.m"; sourceTree = "<group>"; };
-		4D022F661C3060B100F9D896 /* ChartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChartsViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/ChartsViewController.xib"; sourceTree = "<group>"; };
-		4D022F691C3060F300F9D896 /* LikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LikesViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/LikesViewController.h"; sourceTree = "<group>"; };
-		4D022F6A1C3060F300F9D896 /* LikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LikesViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/LikesViewController.m"; sourceTree = "<group>"; };
-		4D022F6C1C30612400F9D896 /* LikesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LikesViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/LikesViewController.xib"; sourceTree = "<group>"; };
-		4D022F6E1C30627700F9D896 /* NewTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewTracksViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/NewTracksViewController.h"; sourceTree = "<group>"; };
-		4D022F6F1C30627700F9D896 /* NewTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewTracksViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/NewTracksViewController.m"; sourceTree = "<group>"; };
-		4D022F701C30627700F9D896 /* NewTracksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewTracksViewController.xib; path = "Tomahawk/UI/View Controllers/Discover View Controllers/NewTracksViewController.xib"; sourceTree = "<group>"; };
-		4D0A0F891C31D70200244532 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = "Tomahawk/UI/Custom Table View Cells/CustomTableViewCell.m"; sourceTree = "<group>"; };
-		4D0A0F8A1C31D70200244532 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = "Tomahawk/UI/Custom Table View Cells/CustomTableViewCell.h"; sourceTree = "<group>"; };
+		4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewCell.m; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.m"; sourceTree = "<group>"; };
+		4D0A0F8A1C31D70200244532 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewCell.h; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.h"; sourceTree = "<group>"; };
 		4D0A0F8C1C32BE6E00244532 /* CustomAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomAlertController.xib; path = "Tomahawk/UI/Custom Alert Controller/CustomAlertController.xib"; sourceTree = "<group>"; };
 		4D0A0FA31C33231F00244532 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.h; sourceTree = "<group>"; };
 		4D0A0FA41C33231F00244532 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.m; sourceTree = "<group>"; };
 		4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewController.xib; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.xib; sourceTree = "<group>"; };
 		4D0A0FAA1C34365E00244532 /* CAPSPageMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPSPageMenu.h; path = "Tomahawk/UI/Custom Page View/CAPSPageMenu.h"; sourceTree = "<group>"; };
 		4D0A0FAB1C34365E00244532 /* CAPSPageMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPSPageMenu.m; path = "Tomahawk/UI/Custom Page View/CAPSPageMenu.m"; sourceTree = "<group>"; };
-		4D0D2BC21C3C2CD800AA300C /* MoodsCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoodsCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsCollectionViewController.xib"; sourceTree = "<group>"; };
 		4D4DBE2B1C3B23D800AB625B /* SongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongsTableViewController.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.h"; sourceTree = "<group>"; };
 		4D4DBE2C1C3B23D800AB625B /* SongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongsTableViewController.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.m"; sourceTree = "<group>"; };
 		4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongsTableViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.xib"; sourceTree = "<group>"; };
@@ -116,16 +96,14 @@
 		4DA5D1E61C2F817B0031FBE5 /* MyMusicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyMusicViewController.h; path = "Tomahawk/UI/View Controllers/MyMusicViewController.h"; sourceTree = "<group>"; };
 		4DA5D1E71C2F817B0031FBE5 /* MyMusicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyMusicViewController.m; path = "Tomahawk/UI/View Controllers/MyMusicViewController.m"; sourceTree = "<group>"; };
 		4DA5D1E81C2F817B0031FBE5 /* MyMusicDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyMusicDetailViewController.h; path = "Tomahawk/UI/View Controllers/MyMusicDetailViewController.h"; sourceTree = "<group>"; };
-		4DA5D1F31C2F81A00031FBE5 /* StationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = StationsViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/StationsViewController.m"; sourceTree = "<group>"; };
-		4DA5D1F41C2F81A00031FBE5 /* RadioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RadioViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/RadioViewController.m"; sourceTree = "<group>"; };
-		4DA5D1F51C2F81A00031FBE5 /* StationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StationsViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/StationsViewController.h"; sourceTree = "<group>"; };
+		4DA5D1F31C2F81A00031FBE5 /* RadioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RadioViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/RadioViewController.m"; sourceTree = "<group>"; };
+		4DA5D1F41C2F81A00031FBE5 /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DiscoverViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/DiscoverViewController.m"; sourceTree = "<group>"; };
+		4DA5D1F51C2F81A00031FBE5 /* RadioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadioViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/RadioViewController.h"; sourceTree = "<group>"; };
 		4DA5D1F61C2F81A00031FBE5 /* GenresCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GenresCollectionViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/GenresCollectionViewController.m"; sourceTree = "<group>"; };
 		4DA5D1F71C2F81A00031FBE5 /* ForYouViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ForYouViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ForYouViewController.m"; sourceTree = "<group>"; };
 		4DA5D1F81C2F81A00031FBE5 /* ForYouViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ForYouViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ForYouViewController.h"; sourceTree = "<group>"; };
-		4DA5D1F91C2F81A00031FBE5 /* RadioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadioViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/RadioViewController.h"; sourceTree = "<group>"; };
+		4DA5D1F91C2F81A00031FBE5 /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DiscoverViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/DiscoverViewController.h"; sourceTree = "<group>"; };
 		4DA5D1FA1C2F81A00031FBE5 /* GenresCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GenresCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/GenresCollectionViewController.h"; sourceTree = "<group>"; };
-		4DA5D1FB1C2F81A00031FBE5 /* MoodsCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MoodsCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsCollectionViewController.h"; sourceTree = "<group>"; };
-		4DA5D1FC1C2F81A00031FBE5 /* MoodsCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MoodsCollectionViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/MoodsCollectionViewController.m"; sourceTree = "<group>"; };
 		4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Tomahawk/Startup/AppDelegate.m; sourceTree = "<group>"; };
 		4DA5D2081C2F81B80031FBE5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Tomahawk/Startup/AppDelegate.h; sourceTree = "<group>"; };
 		4DA5D20B1C2F81D30031FBE5 /* InfoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InfoTableViewController.m; path = "Tomahawk/UI/View Controllers/Settings View Controllers/InfoTableViewController.m"; sourceTree = "<group>"; };
@@ -158,9 +136,7 @@
 		4DA5D2F31C2F83300031FBE5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Tomahawk/UI/Main.storyboard; sourceTree = "<group>"; };
 		4DA5D2F51C2F84950031FBE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tomahawk/Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		4DA5D2FC1C2F85A40031FBE5 /* Tomahawk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tomahawk-Bridging-Header.h"; path = "Tomahawk/Resources/Tomahawk-Bridging-Header.h"; sourceTree = "<group>"; };
-		4DA5D3071C2F88810031FBE5 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiscoverViewController.m; path = "Tomahawk/UI/View Controllers/Discover View Controllers/DiscoverViewController.m"; sourceTree = "<group>"; };
-		4DA5D3081C2F88810031FBE5 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiscoverViewController.h; path = "Tomahawk/UI/View Controllers/Discover View Controllers/DiscoverViewController.h"; sourceTree = "<group>"; };
-		4DA5D30A1C2F889C0031FBE5 /* StationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StationsViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/StationsViewController.xib"; sourceTree = "<group>"; };
+		4DA5D30A1C2F889C0031FBE5 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/RadioViewController.xib"; sourceTree = "<group>"; };
 		4DA5D30B1C2F889C0031FBE5 /* ForYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForYouViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ForYouViewController.xib"; sourceTree = "<group>"; };
 		4DA5D30C1C2F889C0031FBE5 /* GenresCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GenresCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/GenresCollectionViewController.xib"; sourceTree = "<group>"; };
 		4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionView.xib; path = "Tomahawk/UI/Custom Collection View Cells/CollectionView.xib"; sourceTree = "<group>"; };
@@ -173,6 +149,12 @@
 		4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Manager.m; path = Tomahawk/Resources/Temp/AFOAuth2Manager.m; sourceTree = "<group>"; };
 		4DDEDA3C1C373FCB005BE54B /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuthCredential.h; path = Tomahawk/Resources/Temp/AFOAuthCredential.h; sourceTree = "<group>"; };
 		4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuthCredential.m; path = Tomahawk/Resources/Temp/AFOAuthCredential.m; sourceTree = "<group>"; };
+		4DEE81631C3D90530077F7FD /* ChartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChartsViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.xib"; sourceTree = "<group>"; };
+		4DEE81641C3D90530077F7FD /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartsViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.h"; sourceTree = "<group>"; };
+		4DEE81651C3D90530077F7FD /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartsViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.m"; sourceTree = "<group>"; };
+		4DEE81681C3DA2D90077F7FD /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTableViewCell.h; path = "Tomahawk/UI/Custom Table View Cells/CustomTableViewCell.h"; sourceTree = "<group>"; };
+		4DEE81691C3DA2D90077F7FD /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTableViewCell.m; path = "Tomahawk/UI/Custom Table View Cells/CustomTableViewCell.m"; sourceTree = "<group>"; };
+		4DEE816A1C3DA2D90077F7FD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = "Tomahawk/UI/Custom Table View Cells/CustomTableViewCell.xib"; sourceTree = "<group>"; };
 		944E8DBAA69531B5E45D3D96 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CC7B7ED2E423BA79CA251DDB /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -214,8 +196,11 @@
 		4D0A0F881C31D6EE00244532 /* Custom Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4D0A0F8A1C31D70200244532 /* CustomTableViewCell.h */,
-				4D0A0F891C31D70200244532 /* CustomTableViewCell.m */,
+				4D0A0F8A1C31D70200244532 /* SettingsTableViewCell.h */,
+				4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */,
+				4DEE81681C3DA2D90077F7FD /* CustomTableViewCell.h */,
+				4DEE81691C3DA2D90077F7FD /* CustomTableViewCell.m */,
+				4DEE816A1C3DA2D90077F7FD /* CustomTableViewCell.xib */,
 			);
 			name = "Custom Table View Cells";
 			sourceTree = "<group>";
@@ -334,34 +319,12 @@
 				4D4DBE2A1C3B08C500AB625B /* Music View Controllers */,
 				4DA5D1E81C2F817B0031FBE5 /* MyMusicDetailViewController.h */,
 				4DA5D1E21C2F817B0031FBE5 /* MyMusicDetailViewController.m */,
-				4DA5D3121C2F88DA0031FBE5 /* Radio View Controllers */,
-				4DA5D3101C2F88AA0031FBE5 /* Discover View Controllers */,
+				4DA5D3121C2F88DA0031FBE5 /* Discover View Controllers */,
 				4DA5D3111C2F88C70031FBE5 /* Settings View Controllers */,
 				4DA5D1E31C2F817B0031FBE5 /* NowPlayingViewController.h */,
 				4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		4DA5D3101C2F88AA0031FBE5 /* Discover View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				4DA5D3081C2F88810031FBE5 /* DiscoverViewController.h */,
-				4DA5D3071C2F88810031FBE5 /* DiscoverViewController.m */,
-				4D022F5F1C305D2C00F9D896 /* ForYouDiscoverViewController.h */,
-				4D022F601C305D2C00F9D896 /* ForYouDiscoverViewController.m */,
-				4D022F611C305D2C00F9D896 /* ForYouDiscoverViewController.xib */,
-				4D022F641C3060B100F9D896 /* ChartsViewController.h */,
-				4D022F651C3060B100F9D896 /* ChartsViewController.m */,
-				4D022F661C3060B100F9D896 /* ChartsViewController.xib */,
-				4D022F691C3060F300F9D896 /* LikesViewController.h */,
-				4D022F6A1C3060F300F9D896 /* LikesViewController.m */,
-				4D022F6C1C30612400F9D896 /* LikesViewController.xib */,
-				4D022F6E1C30627700F9D896 /* NewTracksViewController.h */,
-				4D022F6F1C30627700F9D896 /* NewTracksViewController.m */,
-				4D022F701C30627700F9D896 /* NewTracksViewController.xib */,
-			);
-			name = "Discover View Controllers";
 			sourceTree = "<group>";
 		};
 		4DA5D3111C2F88C70031FBE5 /* Settings View Controllers */ = {
@@ -379,25 +342,25 @@
 			name = "Settings View Controllers";
 			sourceTree = "<group>";
 		};
-		4DA5D3121C2F88DA0031FBE5 /* Radio View Controllers */ = {
+		4DA5D3121C2F88DA0031FBE5 /* Discover View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D1F91C2F81A00031FBE5 /* RadioViewController.h */,
-				4DA5D1F41C2F81A00031FBE5 /* RadioViewController.m */,
+				4DA5D1F91C2F81A00031FBE5 /* DiscoverViewController.h */,
+				4DA5D1F41C2F81A00031FBE5 /* DiscoverViewController.m */,
 				4DA5D1F81C2F81A00031FBE5 /* ForYouViewController.h */,
 				4DA5D1F71C2F81A00031FBE5 /* ForYouViewController.m */,
 				4DA5D30B1C2F889C0031FBE5 /* ForYouViewController.xib */,
 				4DA5D1FA1C2F81A00031FBE5 /* GenresCollectionViewController.h */,
 				4DA5D1F61C2F81A00031FBE5 /* GenresCollectionViewController.m */,
 				4DA5D30C1C2F889C0031FBE5 /* GenresCollectionViewController.xib */,
-				4DA5D1FB1C2F81A00031FBE5 /* MoodsCollectionViewController.h */,
-				4DA5D1FC1C2F81A00031FBE5 /* MoodsCollectionViewController.m */,
-				4D0D2BC21C3C2CD800AA300C /* MoodsCollectionViewController.xib */,
-				4DA5D1F51C2F81A00031FBE5 /* StationsViewController.h */,
-				4DA5D1F31C2F81A00031FBE5 /* StationsViewController.m */,
-				4DA5D30A1C2F889C0031FBE5 /* StationsViewController.xib */,
+				4DEE81641C3D90530077F7FD /* ChartsViewController.h */,
+				4DEE81651C3D90530077F7FD /* ChartsViewController.m */,
+				4DEE81631C3D90530077F7FD /* ChartsViewController.xib */,
+				4DA5D1F51C2F81A00031FBE5 /* RadioViewController.h */,
+				4DA5D1F31C2F81A00031FBE5 /* RadioViewController.m */,
+				4DA5D30A1C2F889C0031FBE5 /* RadioViewController.xib */,
 			);
-			name = "Radio View Controllers";
+			name = "Discover View Controllers";
 			sourceTree = "<group>";
 		};
 		4DA5D3161C2F89970031FBE5 /* Custom Alert Controller */ = {
@@ -574,20 +537,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEE816C1C3DA2D90077F7FD /* CustomTableViewCell.xib in Resources */,
 				4DA5D3191C2F8A8E0031FBE5 /* ForYouViewController.xib in Resources */,
+				4DEE81661C3D90530077F7FD /* ChartsViewController.xib in Resources */,
 				4DA5D31A1C2F8A8E0031FBE5 /* GenresCollectionViewController.xib in Resources */,
 				4D4DBE2F1C3B23D800AB625B /* SongsTableViewController.xib in Resources */,
-				4DA5D31B1C2F8A8E0031FBE5 /* StationsViewController.xib in Resources */,
+				4DA5D31B1C2F8A8E0031FBE5 /* RadioViewController.xib in Resources */,
 				4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */,
 				4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */,
 				4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */,
 				4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */,
-				4D022F631C305D2C00F9D896 /* ForYouDiscoverViewController.xib in Resources */,
-				4D0D2BC31C3C2CD800AA300C /* MoodsCollectionViewController.xib in Resources */,
 				4D4DBE341C3B23FE00AB625B /* PlaylistsTableViewController.xib in Resources */,
-				4D022F681C3060B100F9D896 /* ChartsViewController.xib in Resources */,
-				4D022F721C30627700F9D896 /* NewTracksViewController.xib in Resources */,
-				4D022F6D1C30612400F9D896 /* LikesViewController.xib in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
 				4D0A0F8D1C32BE6E00244532 /* CustomAlertController.xib in Resources */,
 			);
@@ -662,39 +622,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D022F6B1C3060F300F9D896 /* LikesViewController.m in Sources */,
 				4D4DBE2E1C3B23D800AB625B /* SongsTableViewController.m in Sources */,
 				4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */,
 				4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */,
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
 				4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */,
 				4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */,
-				4DA5D3091C2F88810031FBE5 /* DiscoverViewController.m in Sources */,
 				4DDEDA3E1C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
-				4D022F671C3060B100F9D896 /* ChartsViewController.m in Sources */,
-				4D0A0F8B1C31D70200244532 /* CustomTableViewCell.m in Sources */,
+				4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */,
 				4DA5D2391C2F82440031FBE5 /* CCColorCube.m in Sources */,
 				4DA5D23C1C2F82440031FBE5 /* CCLocalMaximum.m in Sources */,
 				4DA5D2301C2F82340031FBE5 /* MyAdditions.m in Sources */,
 				4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */,
 				4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */,
 				4DA5D21F1C2F82060031FBE5 /* NavigationController.m in Sources */,
+				4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */,
 				4DA5D21C1C2F81F50031FBE5 /* main.m in Sources */,
 				4DA5D2131C2F81D30031FBE5 /* InfoTableViewController.m in Sources */,
 				4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */,
 				4DA5D2181C2F81D30031FBE5 /* SettingsViewController.m in Sources */,
+				4DEE81671C3D90530077F7FD /* ChartsViewController.m in Sources */,
 				4DA5D21A1C2F81D30031FBE5 /* BugReportViewController.m in Sources */,
-				4D022F621C305D2C00F9D896 /* ForYouDiscoverViewController.m in Sources */,
 				4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */,
-				4DA5D1FD1C2F81A00031FBE5 /* StationsViewController.m in Sources */,
+				4DA5D1FD1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
 				4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */,
-				4DA5D1FE1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
+				4DA5D1FE1C2F81A00031FBE5 /* DiscoverViewController.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
-				4DA5D2061C2F81A00031FBE5 /* MoodsCollectionViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,
 				4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */,
-				4D022F711C30627700F9D896 /* NewTracksViewController.m in Sources */,
 				4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */,
 				4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */,
 				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,

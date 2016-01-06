@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StationsViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RadioViewController">
             <connections>
                 <outlet property="contentView" destination="qfB-kR-kKk" id="RX5-UO-5Zy"/>
                 <outlet property="followedArtists" destination="xz2-E7-khZ" id="HLv-fz-1xb"/>

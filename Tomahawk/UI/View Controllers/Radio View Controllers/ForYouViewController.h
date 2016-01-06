@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
-#import "MyAdditions.h"
 
 @interface ForYouViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 

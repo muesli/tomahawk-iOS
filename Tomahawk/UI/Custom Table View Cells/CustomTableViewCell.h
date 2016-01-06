@@ -2,16 +2,19 @@
 //  CustomTableViewCell.h
 //  Tomahawk
 //
-//  Created by Mark Bourke on 28/12/2015.
-//  Copyright © 2015 Mark Bourke. All rights reserved.
+//  Created by Mark Bourke on 06/01/2016.
+//  Copyright © 2016 Mark Bourke. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
 @interface CustomTableViewCell : UITableViewCell
 
-@property (nonatomic) IBInspectable UIColor *imageColor;
-@property (nonatomic) IBInspectable BOOL customAccessoryView;
+@property (weak, nonatomic) IBOutlet UILabel *myTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *myDetailTextLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *myImageView;
+@property (weak, nonatomic) IBOutlet UIButton *myAccessoryButton;
+
+
 
 @end

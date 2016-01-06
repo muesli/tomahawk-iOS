@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView = [UIView new];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,29 +48,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    }
-    cell.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1];
-    cell.textLabel.text = @"Title";
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.detailTextLabel.text = @"Artist";
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
+    cell.myTextLabel.text = @"Title";
+    cell.myDetailTextLabel.text = @"Artist";
     cell.detailTextLabel.textColor = [UIColor colorWithWhite:1 alpha:0.5];
-    UIButton *more = [UIButton buttonWithType:UIButtonTypeSystem];
-    UIImage *image = [UIImage imageNamed:@"More"];
-    [more setTintColor:[UIColor whiteColor]];
-    [more setImage:image forState:UIControlStateNormal];
-    more.frame = CGRectMake(0, 0, image.size.width, image.size.height);
-    [more addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
-    [more setContentMode:UIViewContentModeScaleToFill];
-    cell.accessoryView = more;
-    cell.backgroundColor = [UIColor colorWithRed:29.0/255.0 green:30.0/255.0 blue:35.0/255.0 alpha:1];
-    cell.imageView.image = [UIImage imageNamed:@"PlaceholderPlaylists"];
-    CGFloat widthScale = 60 / cell.imageView.image.size.width;
-    CGFloat heightScale = 60 / cell.imageView.image.size.height;
-    cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    [cell.imageView.layer setMinificationFilter:kCAFilterTrilinear];
+    [cell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
+    cell.myImageView.image = [UIImage imageNamed:@"PlaceholderPlaylists"];
     return cell;
 }
 

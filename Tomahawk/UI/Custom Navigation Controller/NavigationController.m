@@ -38,8 +38,8 @@
 
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
-    SearchTableViewController *tablview = [[SearchTableViewController alloc]initWithNibName:@"SearchTableViewController" bundle:nil];
-    [self pushViewController:tablview animated:YES];
+    SearchTableViewController *searchView = [[SearchTableViewController alloc]initWithNibName:@"SearchTableViewController" bundle:nil];
+    [self pushViewController:searchView animated:YES];
     return NO;
 }
 

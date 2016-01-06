@@ -2,16 +2,18 @@
 //  RadioViewController.h
 //  Tomahawk
 //
-//  Created by Mark Bourke on 11/10/2015.
+//  Created by Mark Bourke on 25/12/2015.
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "ForYouViewController.h"
-#import "GenresCollectionViewController.h"
-#import "MoodsCollectionViewController.h"
-#import "StationsViewController.h"
-#import "CAPSPageMenu.h"
+#import "CollectionViewCell.h"
 
-@interface RadioViewController : UIViewController <CAPSPageMenuDelegate>
+@interface RadioViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property(nonatomic, strong) IBOutlet UICollectionView *followedArtists;
+@property(nonatomic, strong) IBOutlet UICollectionView *internetRadio;
+@property(strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 @end
