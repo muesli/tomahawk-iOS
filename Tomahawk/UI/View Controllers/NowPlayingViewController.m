@@ -26,7 +26,7 @@
     }
 }
 
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
     
     self.backgroundImageView.image = [UIImage imageNamed:@"PlaceholderSongs"];
@@ -77,7 +77,7 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
+-(void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

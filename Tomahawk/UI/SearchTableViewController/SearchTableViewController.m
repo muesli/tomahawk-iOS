@@ -22,13 +22,13 @@ static CGFloat searchBlockDelay = 0.25;
 
 @implementation SearchTableViewController
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.tabBarController.tabBar.hidden = YES;
     self.navigationController.toolbar.hidden = YES;
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.tabBarController.tabBar.hidden = NO;
     self.navigationController.toolbar.hidden = NO;
@@ -36,6 +36,7 @@ static CGFloat searchBlockDelay = 0.25;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.navigationItem.titleView = self.searchBar;
     [self.tableView setDelaysContentTouches:NO];
     [self.searchBar sizeToFit];
@@ -50,7 +51,7 @@ static CGFloat searchBlockDelay = 0.25;
 #pragma mark - Search Controller
 
 
--(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     if (!activityIndicatorView) {
         activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScalePulseOut tintColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] size:20.0f];
     }
@@ -103,7 +104,7 @@ static CGFloat searchBlockDelay = 0.25;
     }
     
 }
--(void)search:(NSString *)searchText{
+- (void)search:(NSString *)searchText {
     
     [self.tableView setUserInteractionEnabled:NO];
     loadingDimmer.hidden = NO;
@@ -154,67 +155,53 @@ static CGFloat searchBlockDelay = 0.25;
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *searchCell = [self.tableView dequeueReusableCellWithIdentifier:@"searchCell"];
-    if (!searchCell) {
-        searchCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"searchCell"];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CustomTableViewCell *searchCell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     switch (indexPath.section) {
         case 0:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<songNames.count; i++) {
-                searchCell.textLabel.text =  [songNames objectAtIndex:i];
+                searchCell.myTextLabel.text =  [songNames objectAtIndex:i];
                 NSString *albums = [songAlbums objectAtIndex:i];
                 NSString *text = albums ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums] : [songArtists objectAtIndex:i];
-                searchCell.detailTextLabel.text = text;
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
+                searchCell.myDetailTextLabel.text = text;
+                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
             }
             break;
         case 1:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<albumNames.count; i++) {
-                searchCell.textLabel.text = [albumNames objectAtIndex:i];
-                searchCell.detailTextLabel.text = [albumArtists objectAtIndex:i];
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderAlbums"]];
+                searchCell.myTextLabel.text = [albumNames objectAtIndex:i];
+                searchCell.myDetailTextLabel.text = [albumArtists objectAtIndex:i];
+                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderAlbums"]];
             }
             break;
         case 2:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<artistNames.count; i++) {
-                searchCell.textLabel.text = [artistNames objectAtIndex:i];
+                searchCell.myTextLabel.text = [artistNames objectAtIndex:i];
                 NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
-                searchCell.detailTextLabel.text = followers;
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
+                searchCell.myDetailTextLabel.text = followers;
+                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
             }
             break;
         case 3:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<playlistNames.count; i++) {
-                searchCell.textLabel.text = [playlistNames objectAtIndex:i];
+                searchCell.myTextLabel.text = [playlistNames objectAtIndex:i];
                 NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
-                searchCell.detailTextLabel.text = count;
-                [searchCell.imageView setImageWithURL:[NSURL URLWithString:[playlistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderPlaylists"]];;
+                searchCell.myDetailTextLabel.text = count;
+                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[playlistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderPlaylists"]];;
             }
             break;
         default:
             break;
     }
-    
-    
-    searchCell.backgroundColor = [UIColor clearColor];
-    searchCell.textLabel.textColor = [UIColor whiteColor];
-    searchCell.detailTextLabel.textColor = [UIColor whiteColor];
-    searchCell.detailTextLabel.alpha = 0.5;
-    searchCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    CGFloat widthScale = 60 / searchCell.imageView.image.size.width;
-    CGFloat heightScale = 60 / searchCell.imageView.image.size.height;
-    searchCell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    [searchCell.imageView.layer setMinificationFilter:kCAFilterTrilinear];
     return searchCell;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
         case 0:
             if (songNames.count >= 4) return 4;
@@ -233,12 +220,12 @@ static CGFloat searchBlockDelay = 0.25;
     }
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
 }
 
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     headerView.backgroundColor = [UIColor clearColor];
     
@@ -335,7 +322,11 @@ static CGFloat searchBlockDelay = 0.25;
     
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40; //Have to add this in code and in IB otherwise ios doesn't execute the first header code at all
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
 }
 

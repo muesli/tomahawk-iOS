@@ -16,6 +16,10 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awo-fO-BZ7">
                         <rect key="frame" x="285" y="29" width="22" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="j3H-og-RI0"/>
+                            <constraint firstAttribute="height" constant="22" id="o0I-QO-m5o"/>
+                        </constraints>
                         <state key="normal" image="More"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gze-Nn-WYk">
@@ -42,16 +46,19 @@
                 <constraints>
                     <constraint firstItem="Pvk-jA-eiw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3Jd-0V-TMj"/>
                     <constraint firstItem="ZIL-j6-NGi" firstAttribute="leading" secondItem="Pvk-jA-eiw" secondAttribute="trailing" constant="16" id="Boi-mi-uQn"/>
+                    <constraint firstItem="Awo-fO-BZ7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gze-Nn-WYk" secondAttribute="trailing" constant="3" id="Djd-fi-J6R"/>
                     <constraint firstItem="ZIL-j6-NGi" firstAttribute="top" secondItem="Gze-Nn-WYk" secondAttribute="bottom" id="HB5-lX-X9j"/>
                     <constraint firstItem="Pvk-jA-eiw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="Zzx-ro-g3H"/>
                     <constraint firstItem="Gze-Nn-WYk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="aym-sn-5Nr"/>
                     <constraint firstItem="Awo-fO-BZ7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f89-ky-I5n"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Awo-fO-BZ7" secondAttribute="trailing" constant="5" id="m4w-e0-kPi"/>
+                    <constraint firstItem="Awo-fO-BZ7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZIL-j6-NGi" secondAttribute="trailing" constant="3" id="tUl-27-7b5"/>
                     <constraint firstItem="Gze-Nn-WYk" firstAttribute="leading" secondItem="Pvk-jA-eiw" secondAttribute="trailing" constant="16" id="wBp-dx-VDE"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="myAccessoryButton" destination="Awo-fO-BZ7" id="Uh4-hc-OI7"/>
+                <outlet property="myAccessoryButton" destination="Awo-fO-BZ7" id="WJo-hk-Wsc"/>
                 <outlet property="myDetailTextLabel" destination="ZIL-j6-NGi" id="4sq-nl-1Ro"/>
                 <outlet property="myImageView" destination="Pvk-jA-eiw" id="O1M-06-c9O"/>
                 <outlet property="myTextLabel" destination="Gze-Nn-WYk" id="y32-Ja-hDb"/>
