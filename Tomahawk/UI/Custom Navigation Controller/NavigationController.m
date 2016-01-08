@@ -9,7 +9,9 @@
 #import "NavigationController.h"
 
 
-@interface NavigationController ()
+@interface NavigationController (){
+    RKNotificationHub *barHub;
+}
 
 @end
 
@@ -34,7 +36,14 @@
     [self.searchBar sizeToFit];
     self.searchBar.delegate = self;
     self.viewControllers[0].navigationItem.titleView = self.searchBar;
+    UIBarButtonItem *inboxButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButtonTouched:)];
+    self.navigationItem.rightBarButtonItem = inboxButton;
+    barHub = [[RKNotificationHub alloc] initWithBarButtonItem: inboxButton];
+    [barHub pop];
+    [barHub setCircleColor:self.view.window.tintColor labelColor:[UIColor whiteColor]];
+    [barHub increment];
 }
+
 
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{

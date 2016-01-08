@@ -45,6 +45,7 @@
 		4DA5D31A1C2F8A8E0031FBE5 /* GenresCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30C1C2F889C0031FBE5 /* GenresCollectionViewController.xib */; };
 		4DA5D31B1C2F8A8E0031FBE5 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30A1C2F889C0031FBE5 /* RadioViewController.xib */; };
 		4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */; };
+		4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB547DD1C3FD56700B7F22B /* InboxTableViewController.m */; };
 		4DDEDA3E1C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA391C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m */; };
 		4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */; };
 		4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */; };
@@ -140,6 +141,8 @@
 		4DA5D30B1C2F889C0031FBE5 /* ForYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForYouViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ForYouViewController.xib"; sourceTree = "<group>"; };
 		4DA5D30C1C2F889C0031FBE5 /* GenresCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GenresCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/GenresCollectionViewController.xib"; sourceTree = "<group>"; };
 		4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionView.xib; path = "Tomahawk/UI/Custom Collection View Cells/CollectionView.xib"; sourceTree = "<group>"; };
+		4DB547DC1C3FD56700B7F22B /* InboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InboxTableViewController.h; path = "Tomahawk/UI/View Controllers/Inbox View Controllers/InboxTableViewController.h"; sourceTree = "<group>"; };
+		4DB547DD1C3FD56700B7F22B /* InboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InboxTableViewController.m; path = "Tomahawk/UI/View Controllers/Inbox View Controllers/InboxTableViewController.m"; sourceTree = "<group>"; };
 		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +316,7 @@
 		4DA5D3061C2F88470031FBE5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4DB547DF1C3FD56E00B7F22B /* Inbox View Controllers */,
 				4D0A0FA81C34168200244532 /* Search Table View Controller */,
 				4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */,
 				4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */,
@@ -392,6 +396,15 @@
 				4DA5D21D1C2F82060031FBE5 /* NavigationController.m */,
 			);
 			name = "Custom Navigation Controller";
+			sourceTree = "<group>";
+		};
+		4DB547DF1C3FD56E00B7F22B /* Inbox View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4DB547DC1C3FD56700B7F22B /* InboxTableViewController.h */,
+				4DB547DD1C3FD56700B7F22B /* InboxTableViewController.m */,
+			);
+			name = "Inbox View Controllers";
 			sourceTree = "<group>";
 		};
 		4DBDE00E1BADC2B900CD02CC = {
@@ -637,6 +650,7 @@
 				4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */,
 				4DA5D21F1C2F82060031FBE5 /* NavigationController.m in Sources */,
 				4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */,
+				4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */,
 				4DA5D21C1C2F81F50031FBE5 /* main.m in Sources */,
 				4DA5D2131C2F81D30031FBE5 /* InfoTableViewController.m in Sources */,
 				4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchTableViewController.h"
+#import "RKNotificationHub.h"
 
 @interface NavigationController : UINavigationController <UISearchBarDelegate>
 
