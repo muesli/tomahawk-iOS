@@ -144,9 +144,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YhL-ta-wef">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" style="done" id="yAG-gl-Cra">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="BZC-EU-K6o">
                             <connections>
-                                <segue destination="aCQ-ch-oOC" kind="show" id="ZyJ-6q-6vU"/>
+                                <segue destination="aCQ-ch-oOC" kind="show" identifier="" id="222-SW-S7p"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,9 +177,9 @@
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" title="    " id="iPn-b3-H5s">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" style="done" id="5ye-b3-aQw">
+                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="UDB-LV-nvY">
                             <connections>
-                                <segue destination="aCQ-ch-oOC" kind="show" id="4hd-Yt-k5h"/>
+                                <segue destination="aCQ-ch-oOC" kind="show" id="LE5-Hj-ocI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1498,7 +1498,7 @@
         <image name="cast_off" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bhK-NQ-vJe"/>
+        <segue reference="222-SW-S7p"/>
         <segue reference="9Zz-kc-DY7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

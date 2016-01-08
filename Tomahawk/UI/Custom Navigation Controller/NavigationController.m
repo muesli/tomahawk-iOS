@@ -27,6 +27,9 @@
     }
 }
 
+- (IBAction)inboxButtonTouched:(id)button {
+}
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.searchBar = [[UISearchBar alloc] init];
@@ -36,12 +39,11 @@
     [self.searchBar sizeToFit];
     self.searchBar.delegate = self;
     self.viewControllers[0].navigationItem.titleView = self.searchBar;
-    UIBarButtonItem *inboxButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Inbox"] style:UIBarButtonItemStylePlain target:self action:@selector(inboxButtonTouched:)];
-    self.navigationItem.rightBarButtonItem = inboxButton;
-    barHub = [[RKNotificationHub alloc] initWithBarButtonItem: inboxButton];
-    [barHub pop];
-    [barHub setCircleColor:self.view.window.tintColor labelColor:[UIColor whiteColor]];
-    [barHub increment];
+    barHub = [[RKNotificationHub alloc] initWithBarButtonItem: self.viewControllers[0].navigationItem.rightBarButtonItem];
+    [barHub bump];
+    [barHub setCircleAtFrame:CGRectMake(25, 0, 15, 15)];
+    [barHub setCircleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] labelColor:[UIColor whiteColor]];
+    [barHub hideCount];
 }
 
 

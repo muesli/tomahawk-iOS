@@ -20,7 +20,7 @@
     self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
--(void)viewDidLoad{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.recentSongs registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [self.recentPlaylists registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
