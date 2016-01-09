@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */; };
-		4D0A0F8D1C32BE6E00244532 /* CustomAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0F8C1C32BE6E00244532 /* CustomAlertController.xib */; };
+		4D0A0F8D1C32BE6E00244532 /* ResolverDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */; };
 		4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA41C33231F00244532 /* SearchTableViewController.m */; };
 		4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */; };
 		4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FAB1C34365E00244532 /* CAPSPageMenu.m */; };
@@ -38,7 +38,7 @@
 		4DA5D2391C2F82440031FBE5 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2351C2F82440031FBE5 /* CCColorCube.m */; };
 		4DA5D23C1C2F82440031FBE5 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2381C2F82440031FBE5 /* CCLocalMaximum.m */; };
 		4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */; };
-		4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CF1C2F82D80031FBE5 /* ConnectAlertController.m */; };
+		4DA5D2D11C2F82D80031FBE5 /* ResolverDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CF1C2F82D80031FBE5 /* ResolverDetailController.m */; };
 		4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */; };
 		4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F31C2F83300031FBE5 /* Main.storyboard */; };
 		4DA5D3191C2F8A8E0031FBE5 /* ForYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30B1C2F889C0031FBE5 /* ForYouViewController.xib */; };
@@ -49,6 +49,7 @@
 		4DDEDA3E1C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA391C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m */; };
 		4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */; };
 		4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */; };
+		4DE2E9571C41884C000C3F27 /* CustomUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2E9561C41884C000C3F27 /* CustomUIButton.m */; };
 		4DEE81661C3D90530077F7FD /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DEE81631C3D90530077F7FD /* ChartsViewController.xib */; };
 		4DEE81671C3D90530077F7FD /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE81651C3D90530077F7FD /* ChartsViewController.m */; };
 		4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE81691C3DA2D90077F7FD /* CustomTableViewCell.m */; };
@@ -76,7 +77,7 @@
 /* Begin PBXFileReference section */
 		4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewCell.m; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.m"; sourceTree = "<group>"; };
 		4D0A0F8A1C31D70200244532 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewCell.h; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.h"; sourceTree = "<group>"; };
-		4D0A0F8C1C32BE6E00244532 /* CustomAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomAlertController.xib; path = "Tomahawk/UI/Custom Alert Controller/CustomAlertController.xib"; sourceTree = "<group>"; };
+		4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResolverDetailController.xib; path = "Tomahawk/UI/Custom Alert Controller/ResolverDetailController.xib"; sourceTree = "<group>"; };
 		4D0A0FA31C33231F00244532 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.h; sourceTree = "<group>"; };
 		4D0A0FA41C33231F00244532 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.m; sourceTree = "<group>"; };
 		4D0A0FA51C33231F00244532 /* SearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewController.xib; path = Tomahawk/UI/SearchTableViewController/SearchTableViewController.xib; sourceTree = "<group>"; };
@@ -131,8 +132,8 @@
 		4DA5D2381C2F82440031FBE5 /* CCLocalMaximum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CCLocalMaximum.m; path = "Tomahawk/Resources/Color Extractor/CCLocalMaximum.m"; sourceTree = "<group>"; };
 		4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TEngine.m; path = "Tomahawk/Tomahawk API/TEngine.m"; sourceTree = "<group>"; };
 		4DA5D2CC1C2F82B00031FBE5 /* TEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TEngine.h; path = "Tomahawk/Tomahawk API/TEngine.h"; sourceTree = "<group>"; };
-		4DA5D2CF1C2F82D80031FBE5 /* ConnectAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ConnectAlertController.m; path = "Tomahawk/UI/Custom Alert Controller/ConnectAlertController.m"; sourceTree = "<group>"; };
-		4DA5D2D01C2F82D80031FBE5 /* ConnectAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectAlertController.h; path = "Tomahawk/UI/Custom Alert Controller/ConnectAlertController.h"; sourceTree = "<group>"; };
+		4DA5D2CF1C2F82D80031FBE5 /* ResolverDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResolverDetailController.m; path = "Tomahawk/UI/Custom Alert Controller/ResolverDetailController.m"; sourceTree = "<group>"; };
+		4DA5D2D01C2F82D80031FBE5 /* ResolverDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ResolverDetailController.h; path = "Tomahawk/UI/Custom Alert Controller/ResolverDetailController.h"; sourceTree = "<group>"; };
 		4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Tomahawk/Startup/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DA5D2F31C2F83300031FBE5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Tomahawk/UI/Main.storyboard; sourceTree = "<group>"; };
 		4DA5D2F51C2F84950031FBE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tomahawk/Supporting Files/Info.plist"; sourceTree = "<group>"; };
@@ -152,6 +153,8 @@
 		4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Manager.m; path = Tomahawk/Resources/Temp/AFOAuth2Manager.m; sourceTree = "<group>"; };
 		4DDEDA3C1C373FCB005BE54B /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuthCredential.h; path = Tomahawk/Resources/Temp/AFOAuthCredential.h; sourceTree = "<group>"; };
 		4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuthCredential.m; path = Tomahawk/Resources/Temp/AFOAuthCredential.m; sourceTree = "<group>"; };
+		4DE2E9551C41884C000C3F27 /* CustomUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIButton.h; sourceTree = "<group>"; };
+		4DE2E9561C41884C000C3F27 /* CustomUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIButton.m; sourceTree = "<group>"; };
 		4DEE81631C3D90530077F7FD /* ChartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChartsViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.xib"; sourceTree = "<group>"; };
 		4DEE81641C3D90530077F7FD /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartsViewController.h; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.h"; sourceTree = "<group>"; };
 		4DEE81651C3D90530077F7FD /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartsViewController.m; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.m"; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				4D4DBE2A1C3B08C500AB625B /* Music View Controllers */,
 				4DA5D1E81C2F817B0031FBE5 /* MyMusicDetailViewController.h */,
 				4DA5D1E21C2F817B0031FBE5 /* MyMusicDetailViewController.m */,
+				4DE2E9551C41884C000C3F27 /* CustomUIButton.h */,
+				4DE2E9561C41884C000C3F27 /* CustomUIButton.m */,
 				4DA5D3121C2F88DA0031FBE5 /* Discover View Controllers */,
 				4DA5D3111C2F88C70031FBE5 /* Settings View Controllers */,
 				4DA5D1E31C2F817B0031FBE5 /* NowPlayingViewController.h */,
@@ -370,9 +375,9 @@
 		4DA5D3161C2F89970031FBE5 /* Custom Alert Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D2D01C2F82D80031FBE5 /* ConnectAlertController.h */,
-				4DA5D2CF1C2F82D80031FBE5 /* ConnectAlertController.m */,
-				4D0A0F8C1C32BE6E00244532 /* CustomAlertController.xib */,
+				4DA5D2D01C2F82D80031FBE5 /* ResolverDetailController.h */,
+				4DA5D2CF1C2F82D80031FBE5 /* ResolverDetailController.m */,
+				4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */,
 			);
 			name = "Custom Alert Controller";
 			sourceTree = "<group>";
@@ -562,7 +567,7 @@
 				4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */,
 				4D4DBE341C3B23FE00AB625B /* PlaylistsTableViewController.xib in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
-				4D0A0F8D1C32BE6E00244532 /* CustomAlertController.xib in Resources */,
+				4D0A0F8D1C32BE6E00244532 /* ResolverDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4DBE2E1C3B23D800AB625B /* SongsTableViewController.m in Sources */,
-				4DA5D2D11C2F82D80031FBE5 /* ConnectAlertController.m in Sources */,
+				4DA5D2D11C2F82D80031FBE5 /* ResolverDetailController.m in Sources */,
 				4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */,
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
 				4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */,
@@ -661,6 +666,7 @@
 				4DA5D1FD1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
 				4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */,
 				4DA5D1FE1C2F81A00031FBE5 /* DiscoverViewController.m in Sources */,
+				4DE2E9571C41884C000C3F27 /* CustomUIButton.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,

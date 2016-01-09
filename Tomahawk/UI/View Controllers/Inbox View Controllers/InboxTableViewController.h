@@ -12,4 +12,6 @@
 
 @interface InboxTableViewController : UITableViewController <SWTableViewCellDelegate>
 
+- (void)getMessages:(void (^)(NSUInteger))completion;
+
 @end

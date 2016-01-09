@@ -8,7 +8,9 @@
 
 #import "InboxTableViewController.h"
 
-@interface InboxTableViewController ()
+@interface InboxTableViewController (){
+    NSMutableArray *messages;
+}
 
 @end
 
@@ -29,6 +31,12 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]; //Force title to be white because it changes to orange sometimes
     self.tableView.tableFooterView = [UIView new];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(newMessage:)];
+    [self getMessages:^(NSUInteger messageCount) {
+        NSLog(@"message count is %ld", (long)messageCount);
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +47,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return messages.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,7 +66,18 @@
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    [messages removeObjectAtIndex:index];
     [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)getMessages:(void (^)(NSUInteger))completion {
+    dispatch_queue_t get_messages = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(get_messages, ^{
+        NSString *test = @"Test string";
+        [NSThread sleepForTimeInterval:5];
+        messages = [[NSMutableArray alloc]initWithObjects:test, nil];
+        completion(messages.count);
+    });
 }
 
 

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ConnectCell.h"
-#import "ConnectAlertController.h"
+#import "ResolverDetailController.h"
 
-@interface ConnectCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ConnectCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate>
+
+@property(nonatomic,retain) UIPopoverPresentationController *resolver;
 
 @end

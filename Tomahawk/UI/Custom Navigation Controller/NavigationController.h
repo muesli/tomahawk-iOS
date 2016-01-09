@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SearchTableViewController.h"
 #import "RKNotificationHub.h"
+#import "InboxTableViewController.h"
 
 @interface NavigationController : UINavigationController <UISearchBarDelegate>
 

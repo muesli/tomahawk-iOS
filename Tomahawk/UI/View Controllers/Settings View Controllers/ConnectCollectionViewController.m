@@ -81,11 +81,24 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    ConnectAlertController *connect = [ConnectAlertController alertControllerWithTitle:@"Connect" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    ResolverDetailController *connect = [[ResolverDetailController alloc]initWithNibName:@"ResolverDetailController" bundle:nil];
     connect.color = [[resolvers objectAtIndex:indexPath.row]valueForKey:@"color"];
     connect.resolverTitle = [names objectAtIndex:indexPath.row];
     connect.resolverImage = [[[resolvers objectAtIndex:indexPath.row]valueForKey:@"image"]valueForKey:@"image"];
-    [self presentViewController:connect animated:YES completion:nil];
+    UINavigationController *destNav = [[UINavigationController alloc] initWithRootViewController:connect];
+    connect.preferredContentSize = CGSizeMake(280,200);
+    destNav.modalPresentationStyle = UIModalPresentationPopover;
+    self.resolver = destNav.popoverPresentationController;
+    self.resolver.delegate = self;
+    self.resolver.sourceView = self.view;
+    CGRect rect = self.view.frame;
+    rect.origin.y = 10;
+    self.resolver.sourceRect = rect;
+    [self.resolver setPermittedArrowDirections:0];
+    [self presentViewController:destNav animated:YES completion:nil];
 }
 
+- (UIModalPresentationStyle) adaptivePresentationStyleForPresentationController: (UIPresentationController * ) controller {
+    return UIModalPresentationNone;
+}
 @end

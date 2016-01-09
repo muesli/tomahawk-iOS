@@ -43,7 +43,12 @@
     [barHub bump];
     [barHub setCircleAtFrame:CGRectMake(25, 0, 15, 15)];
     [barHub setCircleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] labelColor:[UIColor whiteColor]];
-    [barHub hideCount];
+    InboxTableViewController *messages = [InboxTableViewController new];
+    [messages getMessages:^(NSUInteger messageCount) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [barHub incrementBy:messageCount];
+        });
+    }];
 }
 
 
