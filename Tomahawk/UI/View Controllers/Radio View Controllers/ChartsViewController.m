@@ -14,6 +14,45 @@
 
 @implementation ChartsViewController
 
+-(IBAction)moreButtonTouched:(UIButton *)button forEvent:(UIEvent *)event{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.top];
+    NSIndexPath *indexPath = [self.top indexPathForRowAtPoint:currentTouchPosition];
+    CustomTableViewCell *selectedCell = [self.top cellForRowAtIndexPath:indexPath];
+    NSString *textLabel = selectedCell.myTextLabel.text;
+    NSString *detailTextLabel = selectedCell.myDetailTextLabel.text;
+    
+    UIAlertController *more = [UIAlertController alertControllerWithTitle:textLabel message:detailTextLabel preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [more addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Save song
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Play next
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Add to queue
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Share
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Start Radio" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Start Radio
+    }]];
+    
+    [more addAction:[UIAlertAction actionWithTitle:@"Go to Artist" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Goto Artist
+    }]];
+    
+    indexPath.section == 0 ?[more addAction:[UIAlertAction actionWithTitle:@"Go to Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Goto Album
+    }]] : nil;
+    [more addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self.view.window.rootViewController presentViewController:more animated:YES completion:nil];
+}
+
 -(void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     [self.scrollView layoutIfNeeded];
@@ -58,6 +97,7 @@
         cell.myTextLabel.text = @"Albums";
         cell.myDetailTextLabel.text = @"Artist";
     }
+    [cell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:) forControlEvents:UIControlEventTouchUpInside];
     cell.myImageView.image = [UIImage imageNamed:@"PlaceholderCharts"];
     return cell;
 }

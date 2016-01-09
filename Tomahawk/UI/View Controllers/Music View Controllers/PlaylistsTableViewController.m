@@ -18,9 +18,29 @@
     NSSet *touches = [event allTouches];
     UITouch *touch = [touches anyObject];
     CGPoint currentTouchPosition = [touch locationInView:self.tableView];
-    // Lookup the index path of the cell whose checkbox was modified.
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
-    NSLog(@"selected with index path row of %ld", (long)indexPath.row);
+    CustomTableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *playlist = selectedCell.myTextLabel.text;
+    NSString *artist = selectedCell.myDetailTextLabel.text;
+    UIAlertController *more = [UIAlertController alertControllerWithTitle:playlist message:artist preferredStyle:UIAlertControllerStyleActionSheet];
+    [more addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Play next
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Add to queue
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Share
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Go to Artist" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Goto Artist
+    }]];
+
+    [more addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self.view.window.rootViewController presentViewController:more animated:YES completion:nil];
+
+        
 }
 
 - (void)viewWillAppear:(BOOL)animated {

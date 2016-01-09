@@ -14,13 +14,70 @@
     DGActivityIndicatorView *activityIndicatorView;
     UIView *loadingDimmer;
 }
-@property(nonatomic, strong) NSIndexPath *editingIndexPath;
 
 @end
 
 static CGFloat searchBlockDelay = 0.25;
 
 @implementation SearchTableViewController
+
+-(IBAction)moreButtonTouched:(UIButton *)button forEvent:(UIEvent *)event{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSString *textLabel;
+    NSString *detailTextLabel;
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+    switch (indexPath.section) {
+        case 0:
+            textLabel = [songNames objectAtIndex:indexPath.row];
+            detailTextLabel = [songArtists objectAtIndex:indexPath.row];
+            break;
+        case 1:
+            textLabel = [albumNames objectAtIndex:indexPath.row];
+            detailTextLabel = [albumArtists objectAtIndex:indexPath.row];
+            break;
+        case 2:
+            textLabel = [artistNames objectAtIndex:indexPath.row];
+            detailTextLabel = [artistFollowers objectAtIndex:indexPath.row];
+            break;
+        case 3:
+            textLabel = [playlistNames objectAtIndex:indexPath.row];
+            detailTextLabel = [playlistArtists objectAtIndex:indexPath.row];
+            break;
+        default:
+            break;
+    }
+    
+    UIAlertController *more = [UIAlertController alertControllerWithTitle:textLabel message:detailTextLabel preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [more addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Save song
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Play next
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Add to queue
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Share
+    }]];
+    [more addAction:[UIAlertAction actionWithTitle:@"Start Radio" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Start Radio
+    }]];
+    
+    indexPath.section == 2 ?: [more addAction:[UIAlertAction actionWithTitle:@"Go to Artist" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Goto Artist
+    }]];
+    
+    indexPath.section == 0 ?[more addAction:[UIAlertAction actionWithTitle:@"Go to Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Goto Artist
+    }]] : nil;
+    [more addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:more animated:YES completion:nil];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -157,6 +214,7 @@ static CGFloat searchBlockDelay = 0.25;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *searchCell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    [searchCell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
     
     switch (indexPath.section) {
         case 0:
