@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TEngine.h"
+#import "MBProgressHUD.h"
+#import <SafariServices/SafariServices.h>
 
-@interface BugReportViewController : UITableViewController
+@interface BugReportViewController : UITableViewController <MBProgressHUDDelegate>
 
-@property (nonatomic, weak) IBOutlet UITextField *usernameField;
-@property (nonatomic, weak) IBOutlet UITextField *passwordField;
-@property (nonatomic, weak) IBOutlet UITextField *titleField;
-@property (nonatomic, weak) IBOutlet UITextView *descriptionField;
+@property (nonatomic, strong) IBOutlet UITextField *usernameField;
+@property (nonatomic, strong) IBOutlet UITextField *passwordField;
+@property (nonatomic, strong) IBOutlet UITextField *titleField;
+@property (nonatomic, strong) IBOutlet UITextView *descriptionField;
+@property (strong, nonatomic) NSString *authCode;
+
+-(void)reportBugWithCode:(NSString *)code;
 
 
 @end

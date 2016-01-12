@@ -46,9 +46,6 @@
 		4DA5D31B1C2F8A8E0031FBE5 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D30A1C2F889C0031FBE5 /* RadioViewController.xib */; };
 		4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */; };
 		4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB547DD1C3FD56700B7F22B /* InboxTableViewController.m */; };
-		4DDEDA3E1C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA391C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m */; };
-		4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */; };
-		4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */; };
 		4DE2E9571C41884C000C3F27 /* CustomUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2E9561C41884C000C3F27 /* CustomUIButton.m */; };
 		4DEE81661C3D90530077F7FD /* ChartsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DEE81631C3D90530077F7FD /* ChartsViewController.xib */; };
 		4DEE81671C3D90530077F7FD /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE81651C3D90530077F7FD /* ChartsViewController.m */; };
@@ -147,12 +144,6 @@
 		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE0331BADC2BA00CD02CC /* TomahawkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBDE03E1BADC2BA00CD02CC /* TomahawkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TomahawkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DDEDA381C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "AFHTTPRequestSerializer+OAuth2.h"; path = "Tomahawk/Resources/Temp/AFHTTPRequestSerializer+OAuth2.h"; sourceTree = "<group>"; };
-		4DDEDA391C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "AFHTTPRequestSerializer+OAuth2.m"; path = "Tomahawk/Resources/Temp/AFHTTPRequestSerializer+OAuth2.m"; sourceTree = "<group>"; };
-		4DDEDA3A1C373FCB005BE54B /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuth2Manager.h; path = Tomahawk/Resources/Temp/AFOAuth2Manager.h; sourceTree = "<group>"; };
-		4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuth2Manager.m; path = Tomahawk/Resources/Temp/AFOAuth2Manager.m; sourceTree = "<group>"; };
-		4DDEDA3C1C373FCB005BE54B /* AFOAuthCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFOAuthCredential.h; path = Tomahawk/Resources/Temp/AFOAuthCredential.h; sourceTree = "<group>"; };
-		4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFOAuthCredential.m; path = Tomahawk/Resources/Temp/AFOAuthCredential.m; sourceTree = "<group>"; };
 		4DE2E9551C41884C000C3F27 /* CustomUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIButton.h; sourceTree = "<group>"; };
 		4DE2E9561C41884C000C3F27 /* CustomUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIButton.m; sourceTree = "<group>"; };
 		4DEE81631C3D90530077F7FD /* ChartsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChartsViewController.xib; path = "Tomahawk/UI/View Controllers/Radio View Controllers/ChartsViewController.xib"; sourceTree = "<group>"; };
@@ -248,12 +239,6 @@
 		4DA5D2FD1C2F86BA0031FBE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4DDEDA381C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.h */,
-				4DDEDA391C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m */,
-				4DDEDA3A1C373FCB005BE54B /* AFOAuth2Manager.h */,
-				4DDEDA3B1C373FCB005BE54B /* AFOAuth2Manager.m */,
-				4DDEDA3C1C373FCB005BE54B /* AFOAuthCredential.h */,
-				4DDEDA3D1C373FCB005BE54B /* AFOAuthCredential.m */,
 				4DA5D3051C2F87970031FBE5 /* Color Extractor */,
 				4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */,
 				4DA5D2291C2F82340031FBE5 /* MyAdditions.h */,
@@ -266,8 +251,8 @@
 		4DA5D2FE1C2F86CC0031FBE5 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */,
 				4DA5D2081C2F81B80031FBE5 /* AppDelegate.h */,
+				4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */,
 				4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */,
 			);
 			name = Startup;
@@ -646,7 +631,6 @@
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
 				4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */,
 				4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */,
-				4DDEDA3E1C373FCB005BE54B /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */,
 				4DA5D2391C2F82440031FBE5 /* CCColorCube.m in Sources */,
 				4DA5D23C1C2F82440031FBE5 /* CCLocalMaximum.m in Sources */,
@@ -664,13 +648,11 @@
 				4DA5D21A1C2F81D30031FBE5 /* BugReportViewController.m in Sources */,
 				4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */,
 				4DA5D1FD1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
-				4DDEDA401C373FCB005BE54B /* AFOAuthCredential.m in Sources */,
 				4DA5D1FE1C2F81A00031FBE5 /* DiscoverViewController.m in Sources */,
 				4DE2E9571C41884C000C3F27 /* CustomUIButton.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,
-				4DDEDA3F1C373FCB005BE54B /* AFOAuth2Manager.m in Sources */,
 				4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */,
 				4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */,
 				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,

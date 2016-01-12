@@ -864,9 +864,9 @@
                         <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.20392156862745098" green="0.20784313725490194" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="GitLab Account" id="dnK-qz-AQl">
+                            <tableViewSection headerTitle="GitHub Account" id="dnK-qz-AQl">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gPz-hk-JEA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="gPz-hk-JEA">
                                         <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gPz-hk-JEA" id="KJa-p1-oDM">
@@ -877,7 +877,7 @@
                                                     <rect key="frame" x="13" y="8" width="579" height="28"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert"/>
                                                 </textField>
                                             </subviews>
                                             <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -890,35 +890,35 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WFn-XC-8V3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="FBP-BS-TXD">
                                         <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WFn-XC-8V3" id="mDk-vS-K5k">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FBP-BS-TXD" id="6NU-fa-zUH">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="14m-Om-8Tp">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2a2-hz-4xP">
                                                     <rect key="frame" x="13" y="8" width="579" height="28"/>
-                                                    <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
+                                            <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="14m-Om-8Tp" secondAttribute="trailing" id="1n3-Je-nZl"/>
-                                                <constraint firstItem="14m-Om-8Tp" firstAttribute="leading" secondItem="mDk-vS-K5k" secondAttribute="leadingMargin" constant="5" id="91Q-Ll-mXd"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="14m-Om-8Tp" secondAttribute="bottom" constant="-1" id="B99-CD-n2x"/>
-                                                <constraint firstAttribute="topMargin" secondItem="14m-Om-8Tp" secondAttribute="top" id="zm7-9d-QnZ"/>
+                                                <constraint firstItem="2a2-hz-4xP" firstAttribute="leading" secondItem="6NU-fa-zUH" secondAttribute="leadingMargin" constant="5" id="bkN-aD-IsL"/>
+                                                <constraint firstAttribute="topMargin" secondItem="2a2-hz-4xP" secondAttribute="top" id="dhF-BM-VWk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2a2-hz-4xP" secondAttribute="trailing" id="sAj-Ld-7vo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2a2-hz-4xP" secondAttribute="bottom" constant="-1" id="vGn-cY-3FE"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Bug Report" footerTitle="Please write in English" id="hBQ-d3-n0E">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GCe-9h-WAF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="GCe-9h-WAF">
                                         <rect key="frame" x="0.0" y="189" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GCe-9h-WAF" id="ya1-i5-ZMy">
@@ -942,7 +942,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.14509803921568626" green="0.14901960784313725" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="169" id="pLB-Ri-oLF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="169" id="pLB-Ri-oLF">
                                         <rect key="frame" x="0.0" y="233" width="600" height="169"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pLB-Ri-oLF" id="89H-IS-n89">
@@ -950,7 +950,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l7I-CP-vAP" customClass="KMPlaceholderTextView" customModule="KMPlaceholderTextView">
-                                                    <rect key="frame" x="13" y="8" width="579" height="152"/>
+                                                    <rect key="frame" x="10" y="8" width="579" height="152"/>
                                                     <color key="tintColor" red="0.8862745098" green="0.21960784310000001" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -964,9 +964,9 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="l7I-CP-vAP" secondAttribute="trailing" id="Gax-Vm-sIk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="l7I-CP-vAP" secondAttribute="trailing" constant="3" id="Gax-Vm-sIk"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="l7I-CP-vAP" secondAttribute="bottom" id="qCs-Td-Egm"/>
-                                                <constraint firstItem="l7I-CP-vAP" firstAttribute="leading" secondItem="89H-IS-n89" secondAttribute="leadingMargin" constant="5" id="sNS-hh-ImI"/>
+                                                <constraint firstItem="l7I-CP-vAP" firstAttribute="leading" secondItem="89H-IS-n89" secondAttribute="leadingMargin" constant="2" id="sNS-hh-ImI"/>
                                                 <constraint firstAttribute="topMargin" secondItem="l7I-CP-vAP" secondAttribute="top" id="wdE-eD-CMa"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -982,7 +982,7 @@
                     </tableView>
                     <connections>
                         <outlet property="descriptionField" destination="l7I-CP-vAP" id="3zL-Kr-weU"/>
-                        <outlet property="passwordField" destination="14m-Om-8Tp" id="u5W-rV-G6T"/>
+                        <outlet property="passwordField" destination="2a2-hz-4xP" id="Cgm-lH-tOm"/>
                         <outlet property="titleField" destination="NTp-5n-kHG" id="rpc-JF-xRo"/>
                         <outlet property="usernameField" destination="Y0i-Kh-BtM" id="OLw-fU-3vd"/>
                     </connections>

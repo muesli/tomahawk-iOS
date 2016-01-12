@@ -40,8 +40,8 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.signIn.tintColor = self.color;
     
-    [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(250, 100) withColor:[UIColor whiteColor]];
-    [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(250,150) withColor:[UIColor whiteColor]];
+    [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:[UIColor whiteColor]];
+    [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260,150) withColor:[UIColor whiteColor]];
     
     myArray = @[self.usernameField, self.passwordField];
     for (UITextField *textField in myArray) {
@@ -69,9 +69,9 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     if (textField == self.usernameField) {
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(250, 100) withColor:self.color];
+        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:self.color];
     }else{
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(250, 150) withColor:self.color];
+        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260, 150) withColor:self.color];
     }
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField{
@@ -80,8 +80,8 @@
             [layer removeFromSuperlayer];
         }
     }
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(250, 100) withColor:[UIColor whiteColor]];
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(250, 150) withColor:[UIColor whiteColor]];
+        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:[UIColor whiteColor]];
+        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260, 150) withColor:[UIColor whiteColor]];
 }
 
 

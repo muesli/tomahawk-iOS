@@ -8,15 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum : NSUInteger {
-    AXWireButtonHighlightStyleSimple = 0,
-    AXWireButtonHighlightStyleFilled,
-} AXWireButtonHighlightStyle;
-
 IB_DESIGNABLE
 @interface CustomUIButton : UIButton
 
-@property (nonatomic) AXWireButtonHighlightStyle highlightStyle;
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
 @property (nonatomic, getter = isEmphasized) BOOL emphasized;

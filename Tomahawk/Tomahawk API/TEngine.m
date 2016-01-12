@@ -19,6 +19,8 @@
 
 #define DEEZER_BASE @"http://api.deezer.com/search/"
 
+#define GITHUB_BASE @"https://api.github.com"
+
 
 
 #import "TEngine.h"
@@ -555,10 +557,70 @@
         completion(sessionKey);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([[[error userInfo]objectForKey:NSLocalizedDescriptionKey] isEqualToString:@"Request failed: forbidden (403)"] ) {
-            error = [NSError errorWithDomain:@"com.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : @"Invalid Username and/or Password"}];
+            error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : @"Invalid Username and/or Password"}];
         }
         completion (error);
     }];
+}
+
+
+
++ (void)reportBugWithTitle:(NSString *)title description:(NSString *)body username:(NSString *)assignee password:(NSString *)password completion:(void (^)(id))completion {
+
+
+    NSDictionary *params = @{@"assignee" : assignee, @"title" : title, @"body" : body};
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/repos/mourke/tomahawk-iOS/issues"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSData *basicAuthCredentials = [[NSString stringWithFormat:@"%@:%@", assignee, password] dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64AuthCredentials = [basicAuthCredentials base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
+    configuration.HTTPAdditionalHeaders = @{@"Authorization": [NSString stringWithFormat:@"Basic %@", base64AuthCredentials]};
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[[self stringify:params] dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            @try {
+                NSDictionary *githubError = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : [githubError valueForKey:@"message"]}];
+                completion (error);
+            }
+            @catch (NSException *exception) {
+                completion (@"Sucess");
+            }
+            @finally {}
+        }else{
+          completion (error);
+        }
+        
+    }];
+    [task resume];
+
+//    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"http://requestb.in"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+////    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+////    [requestSerializer setAuthorizationHeaderFieldWithUsername:assignee password:password];
+//    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
+//    [serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    session.requestSerializer = serializer;
+//    [session POST:@"/1e01s1a1" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
+//        NSLog(@"everything is %@", responseObject);
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        NSLog(@"erorr is %@", error);
+////         NSDictionary *usefullError = [NSJSONSerialization JSONObjectWithData:[[error userInfo]valueForKey:@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:&error];
+////        error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : [usefullError valueForKey:@"message"]}];
+//        completion (error);
+//    }];
+}
+
++(NSString *) stringify:(NSDictionary *)dictionary {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 

@@ -22,6 +22,15 @@
     // Override point for customization after application launch.
     return YES;
 }
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+////    NSLog(@"Calling Application Bundle ID: %@", sourceApplication);
+////    NSLog(@"URL scheme:%@", [url scheme]);
+////    NSLog(@"URL query: %@", [url query]);
+//    NSString *query = [[url query] stringByReplacingOccurrencesOfString:@"code=" withString:@""];
+//    BugReportViewController *bugReport = [BugReportViewController new];
+//    [bugReport reportBugWithCode:query];
+//    return YES;
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
