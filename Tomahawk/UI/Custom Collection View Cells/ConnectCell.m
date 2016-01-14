@@ -19,7 +19,7 @@
     NSNumber *blueComponent = [_color valueForKey:@"blueComponent"];
     self.image.image = [UIImage image:self.image.image withColor:self.color];
     if (self.highlighted) {
-        self.image.image = [UIImage image:self.image.image withColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.6]];
+        self.image.image = [UIImage image:self.image.image withColor:[UIColor whiteColor]];
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetRGBFillColor(context, [redComponent floatValue], [greenComponent floatValue], [blueComponent floatValue], 1);
         CGContextFillEllipseInRect(context, self.bounds);

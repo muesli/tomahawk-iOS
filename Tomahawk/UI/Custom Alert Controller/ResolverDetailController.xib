@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResolverDetailController">
             <connections>
                 <outlet property="passwordField" destination="jZX-7k-i6l" id="qAE-5L-cFY"/>
+                <outlet property="premium" destination="cbI-8s-gnm" id="Hlb-vI-5ZM"/>
                 <outlet property="signIn" destination="6XR-Iq-SWQ" id="bvR-b6-g0e"/>
                 <outlet property="usernameField" destination="Ewd-O8-JKm" id="qxw-AE-ljY"/>
                 <outlet property="view" destination="xIc-lL-HDX" id="wE9-yM-mB0"/>
@@ -24,7 +25,6 @@
                         <constraint firstAttribute="height" constant="54" id="j8T-KG-zfK"/>
                         <constraint firstAttribute="width" constant="250" id="qUz-9Q-4m8"/>
                     </constraints>
-                    <state key="normal" title="Sign In"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                             <real key="value" value="1"/>
@@ -43,7 +43,7 @@
                         <constraint firstAttribute="height" constant="30" id="TQC-Hg-o50"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="eGE-zg-yXu"/>
@@ -55,22 +55,34 @@
                         <constraint firstAttribute="height" constant="30" id="0Qf-xt-ztt"/>
                     </constraints>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="go" secureTextEntry="YES"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="uur-Z5-rtJ"/>
                     </connections>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Premium Account Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-8s-gnm">
+                    <rect key="frame" x="17" y="48" width="225" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="WQq-tX-mkc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Ewd-O8-JKm" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="7Yd-KT-Ckh"/>
                 <constraint firstAttribute="trailing" secondItem="jZX-7k-i6l" secondAttribute="trailing" constant="13" id="BQ3-hY-bxl"/>
+                <constraint firstItem="cbI-8s-gnm" firstAttribute="top" secondItem="xIc-lL-HDX" secondAttribute="top" constant="48" id="BeH-pT-sOA"/>
                 <constraint firstItem="jZX-7k-i6l" firstAttribute="top" secondItem="Ewd-O8-JKm" secondAttribute="bottom" constant="21" id="IVM-rc-s81"/>
                 <constraint firstAttribute="bottom" secondItem="6XR-Iq-SWQ" secondAttribute="bottom" multiplier="1.05" id="JOk-3B-X2G"/>
                 <constraint firstItem="jZX-7k-i6l" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="O46-zM-lM5"/>
+                <constraint firstAttribute="trailing" secondItem="cbI-8s-gnm" secondAttribute="trailing" constant="38" id="cgI-fR-rrY"/>
                 <constraint firstAttribute="trailing" secondItem="Ewd-O8-JKm" secondAttribute="trailing" constant="13" id="dd0-6u-fHS"/>
                 <constraint firstItem="6XR-Iq-SWQ" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="fg4-pm-lJs"/>
+                <constraint firstItem="cbI-8s-gnm" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="l2N-5z-7sy"/>
                 <constraint firstItem="6XR-Iq-SWQ" firstAttribute="top" secondItem="jZX-7k-i6l" secondAttribute="bottom" multiplier="1.2" id="trV-oj-imA"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

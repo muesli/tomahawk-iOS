@@ -8,21 +8,31 @@
 
 #import "ResolverDetailController.h"
 
+#warning setting Destructive state not fully working
+
 @implementation ResolverDetailController {
     NSArray *myArray;
 }
-
-- (IBAction)buttonSelected:(UIButton *)sender {
+- (IBAction)buttonSelected:(CustomUIButton *)sender {
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.delegate = self;
     [HUD show:YES];
+    if (sender.tag == RSpotify) {
+        if (sender.destructive == NO) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://accounts.spotify.com/authorize/?client_id=986b50983f474593a93132fa57837db7&response_type=code&redirect_uri=Tomahawk%3A%2F%2FSpotify&scope=user-library-read"]];
+            self.signIn.destructive = YES;
+            [HUD hide:YES];
+        }else {
+            self.signIn.destructive = NO;
+            [TEngine signOutSpotify];
+        }
+    }else if (sender.tag == RLastFM){
     [TEngine signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
         if ([response isKindOfClass:[NSString class]]) {
             [HUD hide:YES];
             //DO stuff with session key
-            [self dismissViewControllerAnimated:YES completion:nil];
         }else if ([response isKindOfClass:[NSError class]]){
             UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
             [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -31,6 +41,39 @@
             error.view.tintColor = self.color;
         }
     }];
+    }
+}
+
+-(void)redirectURIWithURL:(NSURL *)url {
+    NSString *urlHost = [url host];
+    if ([urlHost isEqualToString:@"Spotify"]) {
+        NSDictionary *query = [[url query] URLStringValues];
+        NSString *response;
+        @try {
+            response = [query valueForKey:@"code"];
+            [TEngine authorizeSpotifyWithCode:response completion:^(id response) {
+                if ([response isKindOfClass:[NSError class]]) {
+                    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
+                    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                    [self presentViewController:error animated:YES completion:nil];
+                    error.view.tintColor = self.color;
+                }
+            }];
+        }
+        @catch (NSException *exception) {
+            //Error
+            response = [query valueForKey:@"error"];
+            NSLog(@"Request error:%@",response);
+            UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:@"User Cancelled Request" preferredStyle:UIAlertControllerStyleAlert];
+            [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:error animated:YES completion:nil];
+            
+        }
+        @finally {
+            //Send Response Back
+        }
+    }
+    
 }
 
 -(void)viewDidLoad {
@@ -39,7 +82,12 @@
     self.navigationItem.title = self.resolverTitle;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.signIn.tintColor = self.color;
-    
+    if ([self.resolverTitle isEqualToString:@"Spotify"]||[self.resolverTitle isEqualToString:@"Google Play Music"]) {
+        self.premium.hidden = NO;
+    }else {
+        self.premium.hidden = YES;
+    }
+    self.signIn.tag = self.tag;
     [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:[UIColor whiteColor]];
     [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260,150) withColor:[UIColor whiteColor]];
     

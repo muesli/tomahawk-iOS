@@ -12,6 +12,7 @@
 
 @interface ConnectCell : UICollectionViewCell
 
+
 @property (strong, nonatomic) UIImageView *image;
 @property (strong, nonatomic) UILabel *title;
 @property (strong, nonatomic) UIColor *color;

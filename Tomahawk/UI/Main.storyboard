@@ -1498,8 +1498,8 @@
         <image name="cast_off" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="222-SW-S7p"/>
         <segue reference="9Zz-kc-DY7"/>
+        <segue reference="LE5-Hj-ocI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

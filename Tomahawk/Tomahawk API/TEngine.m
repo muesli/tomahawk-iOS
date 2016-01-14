@@ -26,6 +26,7 @@
 #import "TEngine.h"
 
 #warning SPOTIFY ARTIST IMAGES ARE MESSED UP SO objectAtIndex:2 ISNT ALWAYS GETTING 200*200 IMAGES, SOMETIMES ITS GETTING HIHGHER RES AND SOMETIMES ITS GETTING LOWER RES. FIX
+#warning when signing out make sure to remove credentials or else trouble will happen
 
 
 @implementation TEngine
@@ -565,7 +566,7 @@
 
 
 
-+ (void)reportBugWithTitle:(NSString *)title description:(NSString *)body username:(NSString *)assignee password:(NSString *)password completion:(void (^)(id))completion {
++ (void)reportBugWithTitle:(NSString *)title description:(NSString *)body username:(NSString *)assignee password:(NSString *)password completion:(void (^)(id response))completion {
 
 
     NSDictionary *params = @{@"assignee" : assignee, @"title" : title, @"body" : body};
@@ -578,10 +579,10 @@
     NSData *basicAuthCredentials = [[NSString stringWithFormat:@"%@:%@", assignee, password] dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64AuthCredentials = [basicAuthCredentials base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
     configuration.HTTPAdditionalHeaders = @{@"Authorization": [NSString stringWithFormat:@"Basic %@", base64AuthCredentials]};
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
 
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[[self stringify:params] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[params stringify] dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             @try {
@@ -599,32 +600,53 @@
         
     }];
     [task resume];
-
-//    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"http://requestb.in"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-////    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-////    [requestSerializer setAuthorizationHeaderFieldWithUsername:assignee password:password];
-//    AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
-//    [serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    session.requestSerializer = serializer;
-//    [session POST:@"/1e01s1a1" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
-//        NSLog(@"everything is %@", responseObject);
-//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//        NSLog(@"erorr is %@", error);
-////         NSDictionary *usefullError = [NSJSONSerialization JSONObjectWithData:[[error userInfo]valueForKey:@"com.alamofire.serialization.response.error.data"] options:NSJSONReadingMutableContainers error:&error];
-////        error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : [usefullError valueForKey:@"message"]}];
-//        completion (error);
-//    }];
-}
-
-+(NSString *) stringify:(NSDictionary *)dictionary {
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
-    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
 }
 
 
-+(NSDictionary *)parseURL:(NSString *)URLAsString{
++(void)authorizeSpotifyWithCode:(NSString *)code completion:(void (^)(id response))completion {
+    NSDictionary *params = @{@"grant_type" : @"authorization_code", @"code" : code, @"redirect_uri" : @"Tomahawk://Spotify"};
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"spotify"];
+    if (credential.expired == FALSE) {
+        NSLog(@"Credential Not Expired: %@", [credential valueForKey:@"expiration"]);
+        completion (@"Sucess");
+        return;
+    }else if (credential != nil && credential.refreshToken != nil){
+            NSLog(@"Refreshing Token");
+            params = @{@"grant_type" : @"refresh_token", @"refresh_token" : credential.refreshToken};
+        }
+    AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:[NSURL URLWithString:@"https://accounts.spotify.com"] clientID:@"986b50983f474593a93132fa57837db7" secret:@"2afdabb83ea54f36a91a193f0a248b13"];
+    [OAuth2Manager authenticateUsingOAuthWithURLString:@"/api/token" parameters:params success:^(AFOAuthCredential *credential) {
+        NSLog(@"Credential is:%@", credential);
+        [AFOAuthCredential storeCredential:credential withIdentifier:@"spotify"];
+        completion (@"Sucess");
+        return;
+    } failure:^(NSError *error) {
+        NSLog(@"error is %@", error);
+        completion (error);
+    }];
+}
+
++(void)getSavedTracksSpotifyWithCompletionBlock:(void (^)(id response))completion {
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.spotify.com"]];
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"spotify"];
+    [manager.requestSerializer setAuthorizationHeaderFieldWithCredential:credential];
+    
+    [manager GET:@"/v1/me/tracks" parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+        completion (responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Failure: %@", error);
+        completion (error);
+    }];
+}
+
++(void)signOutSpotify {
+    [AFOAuthCredential deleteCredentialWithIdentifier:@"spotify"];
+}
+
+
++(NSDictionary *)parseURL:(NSString *)URLAsString {
     
     NSError *error;
     

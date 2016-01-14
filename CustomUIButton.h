@@ -13,6 +13,8 @@ IB_DESIGNABLE
 
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
-@property (nonatomic, getter = isEmphasized) BOOL emphasized;
+//@property (nonatomic, getter = isEmphasized) BOOL emphasized;
+@property (nonatomic, getter = isDestructive) BOOL destructive;
+
 
 @end

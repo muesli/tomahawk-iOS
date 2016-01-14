@@ -12,6 +12,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    NSString *titleText = (self.isDestructive ? @"Sign Out" : @"Sign In");
+    [self setTitle:titleText forState:UIControlStateNormal];
     self.layer.borderWidth = self.borderWidth;
     self.layer.borderColor = [[self titleColorForState:UIControlStateNormal] CGColor];
     self.layer.cornerRadius = self.cornerRadius;
@@ -31,20 +33,14 @@
     [self updateDisplayWithTint:NO];
 }
 
-- (void)setEmphasized:(BOOL)emphasized {
-    _emphasized = emphasized;
-    [self updateDisplayWithTint:NO];
-}
-
 - (void)updateDisplayWithTint:(BOOL)isTint {
     UIColor *textColor = [self titleColorForState:self.state];
-    if (self.isEmphasized) {
-        self.titleLabel.textColor = [UIColor whiteColor];
-        self.backgroundColor = textColor;
-        return;
-    }
     self.titleLabel.textColor = (isTint ? [UIColor whiteColor] : textColor);
     self.backgroundColor = (isTint ? textColor : [UIColor clearColor]);
+    if (self.destructive) {
+        [self setTitleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] forState:UIControlStateNormal];
+        self.layer.borderColor = [self titleColorForState:UIControlStateNormal].CGColor;
+    }
 }
 
 @end

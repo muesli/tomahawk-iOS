@@ -16,6 +16,7 @@
 @interface NSString (MyAdditions)
 
 - (NSString *)md5;
+- (NSDictionary *) URLStringValues;
 
 @end
 
@@ -24,4 +25,11 @@
 - (NSString*)md5;
 
 @end
+
+@interface NSDictionary (MyAdditions)
+
+-(NSString *)stringify;
+
+@end
+
 

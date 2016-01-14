@@ -47,7 +47,9 @@
 
 #pragma mark - Authentication
 
-+(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion;
++(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id response))completion;
++(void)authorizeSpotifyWithCode:(NSString *)code completion:(void (^)(id response))completion;
++(void)signOutSpotify;
 
 #pragma mark - Chart
 
@@ -66,6 +68,8 @@
 #pragma mark - Tag
 
 #pragma mark - Track
+
++(void)getSavedTracksSpotifyWithCompletionBlock:(void (^)(id response))completion;
 
 #pragma mark - User
 

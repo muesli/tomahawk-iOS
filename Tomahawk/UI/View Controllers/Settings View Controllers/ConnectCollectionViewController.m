@@ -84,6 +84,7 @@
     ResolverDetailController *connect = [[ResolverDetailController alloc]initWithNibName:@"ResolverDetailController" bundle:nil];
     connect.color = [[resolvers objectAtIndex:indexPath.row]valueForKey:@"color"];
     connect.resolverTitle = [names objectAtIndex:indexPath.row];
+    connect.tag = indexPath.row;
     connect.resolverImage = [[[resolvers objectAtIndex:indexPath.row]valueForKey:@"image"]valueForKey:@"image"];
     UINavigationController *destNav = [[UINavigationController alloc] initWithRootViewController:connect];
     connect.preferredContentSize = CGSizeMake(280,200);

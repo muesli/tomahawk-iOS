@@ -43,6 +43,19 @@
             ];
 }
 
+- (NSDictionary *) URLStringValues {
+    NSMutableDictionary *queryStringDictionary = [NSMutableDictionary dictionary];
+    NSArray *urlComponents = [self componentsSeparatedByString:@"&"];
+    for (NSString *keyValuePair in urlComponents) {
+        NSArray *pairComponents = [keyValuePair componentsSeparatedByString:@"="];
+        NSString *key = [[pairComponents firstObject] stringByRemovingPercentEncoding];
+        NSString *value = [[pairComponents lastObject] stringByRemovingPercentEncoding];
+        
+        [queryStringDictionary setObject:value forKey:key];
+    }
+    return queryStringDictionary;
+}
+
 @end
 
 @implementation NSData (MyAdditions)
@@ -57,6 +70,16 @@
             result[8], result[9], result[10], result[11],
             result[12], result[13], result[14], result[15]
             ];  
+}
+
+@end
+
+@implementation NSDictionary (MyAdditions)
+
+-(NSString *) stringify {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 @end

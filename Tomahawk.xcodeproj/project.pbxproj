@@ -652,10 +652,10 @@
 				4DE2E9571C41884C000C3F27 /* CustomUIButton.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
+				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,
 				4DA5D1EC1C2F817B0031FBE5 /* MyMusicDetailViewController.m in Sources */,
 				4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */,
-				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
