@@ -19,6 +19,8 @@ DerivedData
 *.xcuserstate
 *.DS_Store
 
+/Tomahawk/Supporting\ Files/Private.h
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
