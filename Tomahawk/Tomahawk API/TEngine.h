@@ -7,12 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <UIKit/UIKit.h>
 #import "MyAdditions.h"
 #import "AFNetworking.h"
 #import "AFOAuth2Manager.h"
 
 @interface TEngine : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, AFURLRequestSerialization, AFURLResponseSerialization>
+
+typedef enum resolvers {
+    RLastFM = 0,
+    RSpotify = 1,
+    RGPlayMusic = 2,
+    RRdio = 3,
+    RSoundcloud = 4,
+    RDeezer = 5
+} resolvers;
 
 #pragma mark - Search
 

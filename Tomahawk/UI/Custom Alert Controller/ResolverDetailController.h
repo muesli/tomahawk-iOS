@@ -17,7 +17,8 @@ enum resolvers {
     RSpotify = 1,
     RGPlayMusic = 2,
     RRdio = 3,
-    RSoundcloud = 4
+    RSoundcloud = 4,
+    RDeezer = 5
 };
 @interface ResolverDetailController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate>
 

@@ -20,14 +20,8 @@
     HUD.delegate = self;
     [HUD show:YES];
     if (sender.tag == RSpotify) {
-        if (sender.destructive == NO) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://accounts.spotify.com/authorize/?client_id=986b50983f474593a93132fa57837db7&response_type=code&redirect_uri=Tomahawk%3A%2F%2FSpotify&scope=user-library-read"]];
-            self.signIn.destructive = YES;
-            [HUD hide:YES];
-        }else {
-            self.signIn.destructive = NO;
-            [TEngine signOutSpotify];
-        }
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://accounts.spotify.com/authorize/?client_id=986b50983f474593a93132fa57837db7&response_type=code&redirect_uri=Tomahawk%3A%2F%2FSpotify&scope=user-library-read"]];
+        [HUD hide:YES];
     }else if (sender.tag == RLastFM){
     [TEngine signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
         if ([response isKindOfClass:[NSString class]]) {
@@ -41,6 +35,8 @@
             error.view.tintColor = self.color;
         }
     }];
+    }else if (sender.tag == RDeezer) {
+        
     }
 }
 
