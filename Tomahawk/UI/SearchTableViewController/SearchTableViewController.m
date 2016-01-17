@@ -39,7 +39,7 @@ static CGFloat searchBlockDelay = 0.25;
             break;
         case 2:
             textLabel = [artistNames objectAtIndex:indexPath.row];
-            detailTextLabel = [artistFollowers objectAtIndex:indexPath.row];
+            detailTextLabel = [[artistFollowers objectAtIndex:indexPath.row] stringValue];
             break;
         case 3:
             textLabel = [playlistNames objectAtIndex:indexPath.row];
@@ -114,21 +114,10 @@ static CGFloat searchBlockDelay = 0.25;
     }
     [activityIndicatorView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.tableView addSubview:activityIndicatorView];
-    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView
-                                                               attribute:NSLayoutAttributeCenterX
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:self.tableView
-                                                               attribute:NSLayoutAttributeCenterX
-                                                              multiplier:1
-                                                                constant:0]];
+    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
     
-    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                               relatedBy:NSLayoutRelationEqual
-                                                                  toItem:self.tableView
-                                                               attribute:NSLayoutAttributeCenterY
-                                                              multiplier:1
-                                                                constant:-40]];
+    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeCenterY multiplier:1 constant:-40]];
+    
     activityIndicatorView.hidden = YES;
     [self.tableView addSubview:loadingDimmer];
     loadingDimmer.hidden = YES;
@@ -167,10 +156,26 @@ static CGFloat searchBlockDelay = 0.25;
     loadingDimmer.hidden = NO;
     [activityIndicatorView setHidden:NO];
     [activityIndicatorView startAnimating];
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
-    
-    dispatch_group_async(group, queue, ^{
+    dispatch_group_enter(group);
+        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer completion:^(id response) {
+            if ([response isKindOfClass:[NSError class]]) {
+                UIAlertController *error = [self error:response];
+                [self presentViewController:error animated:YES completion:nil];
+                [self.tableView setUserInteractionEnabled:YES];
+                loadingDimmer.hidden = YES;
+                [activityIndicatorView stopAnimating];
+                [activityIndicatorView setHidden:YES];
+                return;
+            }else {
+                albumNames = [response objectForKey:@"albumNames"];
+                albumArtists = [response objectForKey:@"artistNames"];
+                albumImages = [response objectForKey:@"mediumImages"];
+            }
+            dispatch_group_leave(group);
+        }];
+
+    dispatch_group_enter(group);
         [TEngine searchSongsBySongName:searchText resolver:RDeezer completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
@@ -185,40 +190,39 @@ static CGFloat searchBlockDelay = 0.25;
                 songAlbums = [response objectForKey:@"albumNames"];
                 songArtists = [response objectForKey:@"artistNames"];
                 songImages = [response objectForKey:@"mediumImages"];
-
             }
+            dispatch_group_leave(group);
         }];
-    });
     
-    dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchAlbumsSpotify:searchText];
-        albumNames = [myDict objectForKey:@"albumNames"];
-        albumArtists = [myDict objectForKey:@"artistNames"];
-        albumImages = [myDict objectForKey:@"mediumImages"];
-    });
+    dispatch_group_enter(group);
+        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer completion:^(id response) {
+            if ([response isKindOfClass:[NSError class]]) {
+                UIAlertController *error = [self error:response];
+                [self presentViewController:error animated:YES completion:nil];
+                [self.tableView setUserInteractionEnabled:YES];
+                loadingDimmer.hidden = YES;
+                [activityIndicatorView stopAnimating];
+                [activityIndicatorView setHidden:YES];
+                return;
+            }else {
+                artistFollowers = [response objectForKey:@"artistFollowers"];
+                artistImages = [response objectForKey:@"mediumImages"];
+                artistNames = [response objectForKey:@"artistNames"];
+            }
+            dispatch_group_leave(group);
+        }];
     
-    dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchArtistsSpotify:searchText];
-        artistFollowers = [myDict objectForKey:@"artistFollowers"];
-        artistImages = [myDict objectForKey:@"mediumImages"];
-        artistNames = [myDict objectForKey:@"artistNames"];
-    });
-    dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchPlaylistsSpotify:searchText];
-        playlistNames = [myDict objectForKey:@"playlistNames"];
-        playlistArtists = [myDict objectForKey:@"playlistArtists"];
-        playlistCount = [myDict objectForKey:@"trackCount"];
-        playlistImages = [myDict objectForKey:@"mediumImages"];
-    });
+//        playlistNames = [myDict objectForKey:@"playlistNames"];
+//        playlistArtists = [myDict objectForKey:@"playlistArtists"];
+//        playlistCount = [myDict objectForKey:@"trackCount"];
+//        playlistImages = [myDict objectForKey:@"mediumImages"];
 
-    dispatch_group_notify(group, queue, ^{
-        dispatch_sync(dispatch_get_main_queue(), ^(void){
-            [self.tableView setUserInteractionEnabled:YES];
-            loadingDimmer.hidden = YES;
-            [activityIndicatorView stopAnimating];
-            [activityIndicatorView setHidden:YES];
-            [self.tableView reloadData];
-        });
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self.tableView setUserInteractionEnabled:YES];
+        loadingDimmer.hidden = YES;
+        [activityIndicatorView stopAnimating];
+        [activityIndicatorView setHidden:YES];
+        [self.tableView reloadData];
     });
 }
 
@@ -346,59 +350,23 @@ static CGFloat searchBlockDelay = 0.25;
     [seeAll setTranslatesAutoresizingMaskIntoConstraints:NO];
     [headerView addSubview:seeAll];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                           attribute:NSLayoutAttributeTrailingMargin
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeTrailingMargin
-                                                          multiplier:1
-                                                            constant:-5]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeTrailingMargin multiplier:1 constant:-5]];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1
-                                                            constant:0]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                       attribute:NSLayoutAttributeHeight
-                                                       relatedBy:NSLayoutRelationEqual
-                                                          toItem:nil
-                                                       attribute:NSLayoutAttributeNotAnAttribute
-                                                      multiplier:0
-                                                        constant:15]];
+    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:15]];
     
-    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                       attribute:NSLayoutAttributeWidth
-                                                       relatedBy:NSLayoutRelationEqual
-                                                          toItem:nil
-                                                       attribute:NSLayoutAttributeNotAnAttribute
-                                                      multiplier:0
-                                                        constant:70]];
+    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:70]];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle
-                                                           attribute:NSLayoutAttributeLeadingMargin
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeLeadingMargin
-                                                          multiplier:1
-                                                            constant:20]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle attribute:NSLayoutAttributeLeadingMargin relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeLeadingMargin multiplier:1 constant:20]];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1
-                                                            constant:0]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     return headerView;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40; //Have to add this in code and in IB otherwise ios doesn't execute the first header code at all
+    return 40;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

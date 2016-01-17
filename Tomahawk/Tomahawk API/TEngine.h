@@ -20,7 +20,8 @@ typedef enum resolvers {
     RGPlayMusic = 2,
     RRdio = 3,
     RSoundcloud = 4,
-    RDeezer = 5
+    RDeezer = 5,
+    RAppleMusic = 6
 } resolvers;
 
 #pragma mark - Search
@@ -29,31 +30,7 @@ typedef enum resolvers {
 
 + (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
 
-+(NSDictionary *)searchArtists:(NSString *)artist;
-+(NSDictionary *)searchPlaylists:(NSString *)playlist;
-
-+(NSDictionary *)searchAlbumsiTunes:(NSString *)album;
-+(NSDictionary *)searchSongsiTunes:(NSString *)song;
-
-+(NSDictionary *)searchPlaylistsSoundcloud:(NSString *)playlist;
-+(NSDictionary *)searchArtistsSoundcloud:(NSString *)artist;
-+(NSDictionary *)searchSongsSoundcloud:(NSString *)song;
-
-+(NSDictionary *)searchPlaylistsSpotify:(NSString *)playlist;
-+(NSDictionary *)searchArtistsSpotify:(NSString *)artist;
-+(NSDictionary *)searchSongsSpotify:(NSString *)song;
-+(NSDictionary *)searchAlbumsSpotify:(NSString *)album;
-
-+(NSDictionary *)searchArtistsYoutube:(NSString *)artist;
-+(NSDictionary *)searchSongsYoutube:(NSString *)song;
-
-+(NSDictionary *)searchArtistsDeezer:(NSString *)artist;
-+(NSDictionary *)searchSongsDeezer:(NSString *)song;
-+(NSDictionary *)searchAlbumsDeezer:(NSString *)album;
-
-+(NSDictionary *)searchArtistsRdio:(NSString *)artist;
-+(NSDictionary *)searchSongsRdio:(NSString *)song;
-+(NSDictionary *)searchAlbumsRdio:(NSString *)album;
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
 
 
 #pragma mark - Artist

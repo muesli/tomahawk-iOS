@@ -1,5 +1,5 @@
 //
-//  UIImage+ImageWithColor.m
+//  MyAdditions.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 20/12/2015.
@@ -72,13 +72,17 @@
             ];  
 }
 
+- (NSDictionary *)serialize {
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingAllowFragments error:nil];
+    return jsonDict;
+}
+
 @end
 
 @implementation NSDictionary (MyAdditions)
 
 -(NSString *) stringify {
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:&error];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:nil];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 

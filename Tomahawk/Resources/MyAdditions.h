@@ -1,5 +1,5 @@
 //
-//  UIImage+ImageWithColor.h
+//  MyAdditions.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 20/12/2015.
@@ -23,6 +23,7 @@
 @interface NSData (MyAdditions)
 
 - (NSString*)md5;
+- (NSDictionary *)serialize;
 
 @end
 
