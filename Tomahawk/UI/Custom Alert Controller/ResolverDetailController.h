@@ -12,14 +12,14 @@
 #import "MBProgressHUD.h"
 #import "CustomUIButton.h"
 
-enum resolvers {
-    RLastFM = 0,
-    RSpotify = 1,
-    RGPlayMusic = 2,
-    RRdio = 3,
-    RSoundcloud = 4,
-    RDeezer = 5
-};
+//enum resolvers {
+//    RLastFM = 0,
+//    RSpotify = 1,
+//    RGPlayMusic = 2,
+//    RRdio = 3,
+//    RSoundcloud = 4,
+//    RDeezer = 5
+//};
 @interface ResolverDetailController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate>
 
 @property (nonatomic) NSInteger tag;

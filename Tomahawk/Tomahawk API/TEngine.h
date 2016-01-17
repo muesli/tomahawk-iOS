@@ -10,6 +10,7 @@
 #import "MyAdditions.h"
 #import "AFNetworking.h"
 #import "AFOAuth2Manager.h"
+#import "Private.h"
 
 @interface TEngine : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, AFURLRequestSerialization, AFURLResponseSerialization>
 
@@ -23,6 +24,10 @@ typedef enum resolvers {
 } resolvers;
 
 #pragma mark - Search
+
++(void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
+
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
 
 +(NSDictionary *)searchArtists:(NSString *)artist;
 +(NSDictionary *)searchPlaylists:(NSString *)playlist;

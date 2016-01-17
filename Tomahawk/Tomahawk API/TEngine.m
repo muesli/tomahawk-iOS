@@ -6,26 +6,6 @@
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#define ITUNES_BASE @"https://itunes.apple.com/search?"
-
-#define SOUNDCLOUD_BASE @"https://api.soundcloud.com"
-#define SOUNDCLOUD_CLIENT_ID @"3e69fb6130301f668be328e2f8fad38b"
-
-#define SPOTIFY_BASE @"https://api.spotify.com/v1"
-#define SPOTIFY_CLIENT_ID @"986b50983f474593a93132fa57837db7"
-#define SPOTIFY_CLIENT_SECRET @"2afdabb83ea54f36a91a193f0a248b13"
-
-#define LASTFM_BASE @"http://ws.audioscrobbler.com/2.0/?method="
-#define LASTFM_API_KEY @"94f82a0fccbf54bee207afdd5d44de97"
-#define LASTFM_SECRET_KEY @"da737cc6a8f1a6325979e3dba3972c1a"
-
-#define DEEZER_BASE @"http://api.deezer.com"
-#define DEEZER_SECRET @"2831317734138f8bbbae20835491d301"
-
-#define GITHUB_BASE @"https://api.github.com"
-
-
-
 #import "TEngine.h"
 
 #warning SPOTIFY ARTIST IMAGES ARE MESSED UP SO objectAtIndex:2 ISNT ALWAYS GETTING 200*200 IMAGES, SOMETIMES ITS GETTING HIHGHER RES AND SOMETIMES ITS GETTING LOWER RES. FIX
@@ -35,15 +15,25 @@
 
 #pragma mark - Search
 
-+(void) searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver {
++ (void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
     switch (resolver) {
         case RSpotify:
             baseURL = SPOTIFY_BASE;
-            query = @"/search";
-            params = @{@"q" : song, @"type" : @"track", @"limit": @4};
+            query = @"/v1/search";
+            params = @{@"q" : song, @"type" : @"track", @"limit" : @4};
+            break;
+        case RSoundcloud:
+            baseURL = SOUNDCLOUD_BASE;
+            query = @"/tracks/";
+            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : @4};
+            break;
+        case RDeezer:
+            baseURL = DEEZER_BASE;
+            query = @"/search/track";
+            params = @{@"q" : song, @"limit" : @4};
             break;
         default:
             break;
@@ -51,13 +41,12 @@
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"Success: %@", responseObject);
         switch (resolver) {
             case RSpotify:{
                 NSMutableDictionary *myDict = [NSMutableDictionary new];
                 
                 NSArray *songNames = [[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"name"];
-                [myDict setObject:songNames forKey:@"songNames"]; //Returns array of song names which is accessed by: NSString *name = [[myDict objectForKey:@"songNames"]objectAtIndex:index];
+                [myDict setObject:songNames forKey:@"songNames"];
                 
                 NSArray *artistNames = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"artists"]valueForKey:@"name"];
                 
@@ -70,14 +59,12 @@
                         artist1 = [NSString stringWithFormat:@"%@ (feat. %@)", artist1, artist2];
                     }
                     @catch (NSException *exception) {}
-                    @finally {
-                        [artists addObject:artist1];
-                    }
+                    @finally {[artists addObject:artist1];}
                 }
-                [myDict setObject:artists forKey:@"artistNames"]; //Returns array of artist names which is accessed by: NSString *name = [[[myDict objectForKey:@"artistNames"]objectAtIndex:index]objectAtIndex:0];
+                [myDict setObject:artists forKey:@"artistNames"];
                 
                 NSArray *albumNames = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"name"];
-                [myDict setObject:albumNames forKey:@"albumNames"]; //Returns array of album names which is accessed by: NSString *name = [[myDict objectForKey:@"albumNames"]objectAtIndex:index];
+                [myDict setObject:albumNames forKey:@"albumNames"];
                 
                 NSArray *songImages = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"images"];
                 NSMutableArray *images = [NSMutableArray new];
@@ -85,16 +72,59 @@
                     NSString *imageURLAsString = [[[songImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
                     [images addObject:imageURLAsString];
                 }
-                [myDict setObject:images forKey:@"mediumImages"]; //Returns an array of all medium images. Accessed by: UIImage *image = [[myDict objectForKey:mediumImages]objectAtIndex:index];
+                [myDict setObject:images forKey:@"mediumImages"];
+                completion (myDict);
             }break;
+            case RSoundcloud:{
+                NSMutableDictionary *myDict = [NSMutableDictionary new];
                 
+                NSArray *songNames = [responseObject valueForKey:@"title"];
+                [myDict setObject:songNames forKey:@"songNames"];
+                
+                NSArray *artistNames = [[responseObject valueForKey:@"user"]valueForKey:@"username"];
+                [myDict setObject:artistNames forKey:@"artistNames"];
+                
+                NSArray *songImages = [responseObject valueForKey:@"artwork_url"];
+                
+                NSMutableArray *images = [NSMutableArray new];
+                for (int i =0; i<songImages.count; i++) {
+                    if ([[songImages objectAtIndex:i]isKindOfClass:[NSNull class]]) {
+                        [images addObject:@""];
+                    }else{
+                        [images addObject:[songImages objectAtIndex:i]];
+                    }
+                }
+                [myDict setObject:images forKey:@"mediumImages"];
+                
+                completion (myDict);
+            }break;
+            case RDeezer: {
+                NSMutableDictionary *myDict = [NSMutableDictionary new];
+                
+                NSArray *songNames = [[responseObject valueForKey:@"data"]valueForKey:@"title"];
+                [myDict setObject:songNames forKey:@"songNames"];
+                
+                NSArray *artistNames = [[[responseObject valueForKey:@"data"]valueForKey:@"artist"]valueForKey:@"name"];
+                [myDict setObject:artistNames forKey:@"artistNames"];
+                
+                NSArray *albumNames = [[[responseObject valueForKey:@"data"]valueForKey:@"album"]valueForKey:@"title"];
+                [myDict setObject:albumNames forKey:@"albumNames"];
+                
+                NSArray *songImages = [[[responseObject valueForKey:@"data"]valueForKey:@"album"]valueForKey:@"cover"];
+                [myDict setObject:songImages forKey:@"mediumImages"];
+                
+                completion (myDict);
+            }break;
             default:
                 break;
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
-//        completion (error);
+        completion (error);
     }];
+}
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver completion:(void (^)(id response))completion {
+    
 }
 
 +(NSDictionary *)searchSongsiTunes:(NSString *)song {
@@ -335,7 +365,7 @@
     }
     
     NSString *searchSongs = SPOTIFY_BASE;
-    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"/search?q=%@&type=track&limit=4", song]];
+    searchSongs = [searchSongs stringByAppendingString:[NSString stringWithFormat:@"/v1/search?q=%@&type=track&limit=4", song]];
     searchSongs = [searchSongs stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
     NSDictionary *jsonDict = [self parseURL:searchSongs];
@@ -385,7 +415,7 @@
     }
     
     NSString *searchAlbums = SPOTIFY_BASE;
-    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"/search?q=%@&type=album&limit=4", album]];
+    searchAlbums = [searchAlbums stringByAppendingString:[NSString stringWithFormat:@"/v1/search?q=%@&type=album&limit=4", album]];
     searchAlbums = [searchAlbums stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
 
     
@@ -435,7 +465,7 @@
     }
     
     NSString *searchArtists = SPOTIFY_BASE;
-    searchArtists = [searchArtists stringByAppendingString:[NSString stringWithFormat:@"/search?q=%@&type=artist&limit=4", artist]];
+    searchArtists = [searchArtists stringByAppendingString:[NSString stringWithFormat:@"/v1/search?q=%@&type=artist&limit=4", artist]];
     searchArtists = [searchArtists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSDictionary *jsonDict = [self parseURL:searchArtists];
     
@@ -479,7 +509,7 @@
     }
     
     NSString *searchPlaylists = SPOTIFY_BASE;
-    searchPlaylists = [searchPlaylists stringByAppendingString:[NSString stringWithFormat:@"/search?q=%@&type=playlist&limit=4", playlist]];
+    searchPlaylists = [searchPlaylists stringByAppendingString:[NSString stringWithFormat:@"/v1/search?q=%@&type=playlist&limit=4", playlist]];
     searchPlaylists = [searchPlaylists stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     
     
@@ -636,9 +666,7 @@
 
     NSDictionary *params = @{@"assignee" : assignee, @"title" : title, @"body" : body};
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/repos/mourke/tomahawk-iOS/issues"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/repos/mourke/tomahawk-iOS/issues"]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSData *basicAuthCredentials = [[NSString stringWithFormat:@"%@:%@", assignee, password] dataUsingEncoding:NSUTF8StringEncoding];

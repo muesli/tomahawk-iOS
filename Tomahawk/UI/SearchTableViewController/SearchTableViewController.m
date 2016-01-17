@@ -167,16 +167,27 @@ static CGFloat searchBlockDelay = 0.25;
     loadingDimmer.hidden = NO;
     [activityIndicatorView setHidden:NO];
     [activityIndicatorView startAnimating];
-    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_group_t group = dispatch_group_create();
     
     dispatch_group_async(group, queue, ^{
-        NSDictionary *myDict = [TEngine searchSongsSpotify:searchText];
-        songNames = [myDict objectForKey:@"songNames"];
-        songAlbums = [myDict objectForKey:@"albumNames"];
-        songArtists = [myDict objectForKey:@"artistNames"];
-        songImages = [myDict objectForKey:@"mediumImages"];
+        [TEngine searchSongsBySongName:searchText resolver:RDeezer completion:^(id response) {
+            if ([response isKindOfClass:[NSError class]]) {
+                UIAlertController *error = [self error:response];
+                [self presentViewController:error animated:YES completion:nil];
+                [self.tableView setUserInteractionEnabled:YES];
+                loadingDimmer.hidden = YES;
+                [activityIndicatorView stopAnimating];
+                [activityIndicatorView setHidden:YES];
+                return;
+            }else {
+                songNames = [response objectForKey:@"songNames"];
+                songAlbums = [response objectForKey:@"albumNames"];
+                songArtists = [response objectForKey:@"artistNames"];
+                songImages = [response objectForKey:@"mediumImages"];
+
+            }
+        }];
     });
     
     dispatch_group_async(group, queue, ^{
@@ -209,6 +220,12 @@ static CGFloat searchBlockDelay = 0.25;
             [self.tableView reloadData];
         });
     });
+}
+
+- (UIAlertController *) error:(NSError *)message {
+    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[message userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
+    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    return error;
 }
 
 

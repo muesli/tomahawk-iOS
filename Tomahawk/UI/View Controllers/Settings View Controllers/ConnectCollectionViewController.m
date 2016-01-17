@@ -10,7 +10,7 @@
 
 @interface ConnectCollectionViewController (){
     NSArray *names;
-    NSMutableArray *resolvers;
+    NSMutableArray *myArray;
 }
 
 @end
@@ -21,7 +21,7 @@
     [super viewDidLoad];
     [self.collectionView registerClass:[ConnectCell class] forCellWithReuseIdentifier:@"connectCell"];
     names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Rdio", @"SoundCloud"];
-    resolvers = [NSMutableArray new];
+    myArray = [NSMutableArray new];
     
     NSArray *colors = @[[UIColor colorWithRed:204.0/255.0 green:61.0/255.0 blue:67.0/255.0 alpha:1], [UIColor colorWithRed:30.0/255.0 green:215.0/255.0 blue:96.0/255.0 alpha:1], [UIColor colorWithRed:236.0/255.0 green:138.0/255.0 blue:61.0/255.0 alpha:1], [UIColor colorWithRed:60.0/255.0 green:128.0/255.0 blue:197.0/255.0 alpha:1], [UIColor colorWithRed:236.0/255.0 green:100.0/255.0 blue:51.0/255.0 alpha:1]];
     
@@ -35,7 +35,7 @@
         connectioncell.image = [[UIImageView alloc]init];
         connectioncell.image.image = [UIImage imageNamed:name];
         connectioncell.color = colors[i];
-        [resolvers addObject:connectioncell];
+        [myArray addObject:connectioncell];
         [self.view addSubview:connectioncell.title];
     }
 }
@@ -71,8 +71,8 @@
     label.textColor = [UIColor whiteColor];
     label.font = [UIFont systemFontOfSize:12];
     for (NSUInteger i = indexPath.row; i<=indexPath.row; i++) {
-        connectCell.image = [[UIImageView alloc]initWithImage:[[[resolvers objectAtIndex:i]valueForKey:@"image"]valueForKey:@"image"]];
-        connectCell.color = [[resolvers objectAtIndex:i]valueForKey:@"color"];
+        connectCell.image = [[UIImageView alloc]initWithImage:[[[myArray objectAtIndex:i]valueForKey:@"image"]valueForKey:@"image"]];
+        connectCell.color = [[myArray objectAtIndex:i]valueForKey:@"color"];
         label.text = [names objectAtIndex:i];
     }
     connectCell.backgroundColor = [UIColor clearColor];
@@ -82,10 +82,10 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     ResolverDetailController *connect = [[ResolverDetailController alloc]initWithNibName:@"ResolverDetailController" bundle:nil];
-    connect.color = [[resolvers objectAtIndex:indexPath.row]valueForKey:@"color"];
+    connect.color = [[myArray objectAtIndex:indexPath.row]valueForKey:@"color"];
     connect.resolverTitle = [names objectAtIndex:indexPath.row];
     connect.tag = indexPath.row;
-    connect.resolverImage = [[[resolvers objectAtIndex:indexPath.row]valueForKey:@"image"]valueForKey:@"image"];
+    connect.resolverImage = [[[myArray objectAtIndex:indexPath.row]valueForKey:@"image"]valueForKey:@"image"];
     UINavigationController *destNav = [[UINavigationController alloc] initWithRootViewController:connect];
     connect.preferredContentSize = CGSizeMake(280,200);
     destNav.modalPresentationStyle = UIModalPresentationPopover;
