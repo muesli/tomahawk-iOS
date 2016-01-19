@@ -18,9 +18,8 @@ typedef enum resolvers {
     RLastFM = 0,
     RSpotify = 1,
     RGPlayMusic = 2,
-    RRdio = 3,
+    RDeezer = 3,
     RSoundcloud = 4,
-    RDeezer = 5,
     RAppleMusic = 6
 } resolvers;
 
@@ -37,9 +36,10 @@ typedef enum resolvers {
 
 #pragma mark - Authentication
 
-+(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id response))completion;
++(void)authorizeLastFMWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id response))completion;
 +(void)authorizeSpotifyWithCode:(NSString *)code completion:(void (^)(id response))completion;
-+(void)signOutSpotify;
++(void)authorizeDeezerWithCode:(NSString *)code completion:(void (^)(id response))completion;
++(void)authorizeSoundcloudWithCode:(NSString *)code completion:(void (^)(id response))completion;
 
 #pragma mark - Chart
 

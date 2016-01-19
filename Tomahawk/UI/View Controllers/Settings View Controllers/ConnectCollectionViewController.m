@@ -11,6 +11,7 @@
 @interface ConnectCollectionViewController (){
     NSArray *names;
     NSMutableArray *myArray;
+    UILabel *label;
 }
 
 @end
@@ -19,11 +20,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     [self.collectionView registerClass:[ConnectCell class] forCellWithReuseIdentifier:@"connectCell"];
-    names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Rdio", @"SoundCloud"];
+    names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Apple Music", @"SoundCloud", @"Tidal", @"Deezer", @"Grooveshark", @"Official.fm"];
     myArray = [NSMutableArray new];
     
-    NSArray *colors = @[[UIColor colorWithRed:204.0/255.0 green:61.0/255.0 blue:67.0/255.0 alpha:1], [UIColor colorWithRed:30.0/255.0 green:215.0/255.0 blue:96.0/255.0 alpha:1], [UIColor colorWithRed:236.0/255.0 green:138.0/255.0 blue:61.0/255.0 alpha:1], [UIColor colorWithRed:60.0/255.0 green:128.0/255.0 blue:197.0/255.0 alpha:1], [UIColor colorWithRed:236.0/255.0 green:100.0/255.0 blue:51.0/255.0 alpha:1]];
+    NSArray *colors = @[[UIColor colorWithRed:204.0/255.0 green:61.0/255.0 blue:67.0/255.0 alpha:1],
+                        [UIColor colorWithRed:30.0/255.0 green:215.0/255.0 blue:96.0/255.0 alpha:1],
+                        [UIColor colorWithRed:236.0/255.0 green:138.0/255.0 blue:61.0/255.0 alpha:1],
+                        [UIColor colorWithRed:108.0/255.0 green:97.0/255.0 blue:299.0/255.0 alpha:1],
+                        [UIColor colorWithRed:236.0/255.0 green:100.0/255.0 blue:51.0/255.0 alpha:1],
+                        [UIColor colorWithRed:95.0/255.0 green:248.0/255.0 blue:251.0/255.0 alpha:1],
+                        [UIColor colorWithRed:177.0/255.0 green:209.0/255.0 blue:36.0/255.0 alpha:1],
+                        [UIColor colorWithRed:226.0/255.0 green:115.0/255.0 blue:36.0/255.0 alpha:1],
+                        [UIColor colorWithRed:209.0/255.0 green:55.0/255.0 blue:36.0/255.0 alpha:1]];
+
     
     for (int i = 0; i<names.count; i++) {
         NSString *name = [names objectAtIndex:i];
@@ -50,26 +62,18 @@
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ConnectCell *connectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"connectCell" forIndexPath:indexPath];
-    UILabel *label = [UILabel new];
-    [label setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [connectCell addSubview:label];
-    [connectCell addConstraint:[NSLayoutConstraint constraintWithItem:label
-                                                    attribute:NSLayoutAttributeCenterX
-                                                    relatedBy:NSLayoutRelationEqual
-                                                    toItem:connectCell
-                                                    attribute:NSLayoutAttributeCenterX
-                                                    multiplier:1
-                                                    constant:0]];
-    [connectCell addConstraint:[NSLayoutConstraint constraintWithItem:label
-                                                    attribute:NSLayoutAttributeTop
-                                                    relatedBy:NSLayoutRelationEqual
-                                                    toItem:connectCell
-                                                    attribute:NSLayoutAttributeBottom
-                                                    multiplier:1
-                                                    constant:20]];
+    label = label ?: ({
+        UILabel *mylabel = [UILabel new];
+        [mylabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [connectCell addSubview:mylabel];
+        [connectCell addConstraint:[NSLayoutConstraint constraintWithItem:mylabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:connectCell attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+        [connectCell addConstraint:[NSLayoutConstraint constraintWithItem:mylabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:connectCell attribute:NSLayoutAttributeBottom multiplier:1 constant:20]];
+        mylabel.textColor = [UIColor whiteColor];
+        mylabel.font = [UIFont systemFontOfSize:12];
+        mylabel;
+    });
+#warning doesnt work and scrolling will put multiple images on one cell
     
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:12];
     for (NSUInteger i = indexPath.row; i<=indexPath.row; i++) {
         connectCell.image = [[UIImageView alloc]initWithImage:[[[myArray objectAtIndex:i]valueForKey:@"image"]valueForKey:@"image"]];
         connectCell.color = [[myArray objectAtIndex:i]valueForKey:@"color"];

@@ -377,19 +377,21 @@
 
 #pragma mark - Authentication
 
-+(void)signIn:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion{
++(void)authorizeLastFMWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id))completion {
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"lastFM"];
+    if (credential !=nil) {
+        completion (@"Sucess");
+        return;
+    }
+     NSString *api_sig = [NSString stringWithFormat:@"api_key%@methodauth.getMobileSessionpassword%@username%@%@", LASTFM_API_KEY, password, username, LASTFM_SECRET_KEY];
+    NSDictionary *params = @{@"method" : @"auth.getMobileSession", @"api_key" : LASTFM_API_KEY, @"format" : @"json", @"username" : username, @"password" : password, @"api_sig" : api_sig.md5};
     
-    NSString *api_sig = [NSString stringWithFormat:@"api_key%@methodauth.getMobileSessionpassword%@username%@%@", LASTFM_API_KEY, password, username, LASTFM_SECRET_KEY];
-    
-    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://ws.audioscrobbler.com/2.0/"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [session POST:[NSString stringWithFormat:@"?method=auth.getMobileSession&api_key=%@&format=json&username=%@&password=%@&api_sig=%@", LASTFM_API_KEY ,username, password, [api_sig md5]] parameters:nil constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
-        NSString *sessionKey = [[responseObject valueForKey:@"session"]valueForKey:@"key"];
-        NSLog(@"session key is %@", sessionKey);
-        completion(sessionKey);
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:LASTFM_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [session POST:@"/2.0" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
+        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[[responseObject valueForKey:@"session"]valueForKey:@"key"] tokenType:@"Bearer"];
+        [AFOAuthCredential storeCredential:credential withIdentifier:@"lastFM"];
+        completion(@"Success");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if ([[[error userInfo]objectForKey:NSLocalizedDescriptionKey] isEqualToString:@"Request failed: forbidden (403)"] ) {
-            error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : @"Invalid Username and/or Password"}];
-        }
         completion (error);
     }];
 }
@@ -433,7 +435,7 @@
 +(void)authorizeSpotifyWithCode:(NSString *)code completion:(void (^)(id response))completion {
     NSDictionary *params = @{@"grant_type" : @"authorization_code", @"code" : code, @"redirect_uri" : @"Tomahawk://Spotify"};
     AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"spotify"];
-    if (credential.expired == FALSE) {
+    if (credential != nil && credential.expired == FALSE) {
         NSLog(@"Credential Not Expired: %@", [credential valueForKey:@"expiration"]);
         completion (@"Sucess");
         return;
@@ -446,7 +448,6 @@
         NSLog(@"Credential is:%@", credential);
         [AFOAuthCredential storeCredential:credential withIdentifier:@"spotify"];
         completion (@"Sucess");
-        return;
     } failure:^(NSError *error) {
         NSLog(@"error is %@", error);
         completion (error);
@@ -454,11 +455,55 @@
 }
 
 +(void)authorizeDeezerWithCode:(NSString *)code completion:(void (^)(id response))completion {
+    NSDictionary *params = @{@"app_id" : @170391, @"code" : code, @"secret" : DEEZER_SECRET};
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"deezer"];
+    if (credential != nil && credential.expired == FALSE) {
+        NSLog(@"Credential Not Expired: %@", [credential valueForKey:@"expiration"]);
+        completion (@"Sucess");
+        return;
+    }
     
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://connect.deezer.com"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    session.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [session POST:@"/oauth/access_token.php" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *myString = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSDictionary *json = [myString URLStringValues];
+        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[json valueForKey:@"access_token"] tokenType:@"Bearer"];
+        NSDate *date = [NSDate dateWithTimeInterval:[[json valueForKey:@"expires"] doubleValue] sinceDate:[NSDate date]];
+        [credential setExpiration:date];
+        [AFOAuthCredential storeCredential:credential withIdentifier:@"deezer"];
+        completion(@"Success");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error is %@", error);
+        completion (error);
+    }];
 }
 
-+(void)signOutSpotify {
-    [AFOAuthCredential deleteCredentialWithIdentifier:@"spotify"];
++(void)authorizeSoundcloudWithCode:(NSString *)code completion:(void (^)(id))completion {
+    NSDictionary *params = @{@"grant_type" : @"authorization_code", @"code" : code, @"redirect_uri" : @"Tomahawk://Soundcloud", @"client_id" : SOUNDCLOUD_CLIENT_ID, @"client_secret" : SOUNDCLOUD_CLIENT_SECRET};
+    AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"soundcloud"];
+    if (credential != nil && credential.expired == FALSE) {
+        NSLog(@"Credential Not Expired: %@", [credential valueForKey:@"expiration"]);
+        completion (@"Sucess");
+        return;
+    }else if (credential != nil && credential.refreshToken != nil){
+        NSLog(@"Refreshing Token");
+        params = @{@"grant_type" : @"refresh_token", @"refresh_token" : credential.refreshToken, @"redirect_uri" : @"Tomahawk://Soundcloud", @"client_id" : SOUNDCLOUD_CLIENT_ID, @"client_secret" : SOUNDCLOUD_CLIENT_SECRET};
+    }
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://api.soundcloud.com"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    [session POST:@"/oauth2/token" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
+        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[responseObject valueForKey:@"access_token"] tokenType:@"Bearer"];
+        NSDate *date = [NSDate dateWithTimeInterval:[[responseObject valueForKey:@"expires_in"] doubleValue] sinceDate:[NSDate date]];
+        [credential setExpiration:date];
+        credential.refreshToken = [responseObject valueForKey:@"refresh_token"];
+        [AFOAuthCredential storeCredential:credential withIdentifier:@"soundcloud"];
+        completion (@"Success");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error is %@", error);
+        completion (error);
+    }];
+
 }
 
 +(void)getSavedTracksSpotifyWithCompletionBlock:(void (^)(id response))completion {

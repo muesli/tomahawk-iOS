@@ -27,7 +27,7 @@
     self.layer.borderColor = _color.CGColor;
     self.layer.borderWidth = 2.0f;
     self.layer.cornerRadius = 60.0f;
-    self.image.frame = CGRectMake(CGRectGetMidX(self.bounds)-(38/2), CGRectGetMidY(self.bounds)-(53/2), 40, 55);
+    self.image.frame = CGRectMake(CGRectGetMidX(self.bounds)-(40/2), CGRectGetMidY(self.bounds)-(55/2), 40, 55);
     [self.image.layer setMinificationFilter:kCAFilterTrilinear];
     [self addSubview:self.image];
 }

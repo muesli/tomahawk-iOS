@@ -22,11 +22,16 @@
     if (sender.tag == RSpotify) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://accounts.spotify.com/authorize/?client_id=986b50983f474593a93132fa57837db7&response_type=code&redirect_uri=Tomahawk%3A%2F%2FSpotify&scope=user-library-read"]];
         [HUD hide:YES];
+    }else if (sender.tag == RDeezer) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://connect.deezer.com/oauth/auth.php?app_id=170391&redirect_uri=Tomahawk://Deezer&perms=listening_history,manage_community,basic_acess,email"]];
+        [HUD hide:YES];
+    }else if (sender.tag == RSoundcloud) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://soundcloud.com/connect?client_id=3e69fb6130301f668be328e2f8fad38b&redirect_uri=Tomahawk://Soundcloud&response_type=code"]];
+        [HUD hide:YES];
     }else if (sender.tag == RLastFM){
-    [TEngine signIn:self.usernameField.text password:self.passwordField.text completion:^(id response){
+    [TEngine authorizeLastFMWithUsername:self.usernameField.text password:self.passwordField.text completion:^(id response){
         if ([response isKindOfClass:[NSString class]]) {
             [HUD hide:YES];
-            //DO stuff with session key
         }else if ([response isKindOfClass:[NSError class]]){
             UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
             [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -35,8 +40,6 @@
             error.view.tintColor = self.color;
         }
     }];
-    }else if (sender.tag == RDeezer) {
-        
     }
 }
 
@@ -68,7 +71,62 @@
         @finally {
             //Send Response Back
         }
+    }else if ([urlHost isEqualToString:@"Deezer"]) {
+        NSDictionary *query = [[url query] URLStringValues];
+        NSString *response;
+        @try {
+            response = [query valueForKey:@"code"];
+            [TEngine authorizeDeezerWithCode:response completion:^(id response) {
+                if ([response isKindOfClass:[NSError class]]) {
+                    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
+                    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                    [self presentViewController:error animated:YES completion:nil];
+                    error.view.tintColor = self.color;
+                }
+            }];
+        }
+        @catch (NSException *exception) {
+            //Error
+            response = [query valueForKey:@"error"];
+            NSLog(@"Request error:%@",response);
+            UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:@"User Cancelled Request" preferredStyle:UIAlertControllerStyleAlert];
+            [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self.navigationController presentViewController:error animated:YES completion:nil];
+            
+        }
+        @finally {
+            //Send Response Back
+        }
+ 
+    }else if ([urlHost isEqualToString:@"Soundcloud"]) {
+        NSDictionary *query = [[url query] URLStringValues];
+        NSString *response;
+        @try {
+            response = [query valueForKey:@"code"];
+            [TEngine authorizeSoundcloudWithCode:response completion:^(id response) {
+                if ([response isKindOfClass:[NSError class]]) {
+                    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
+                    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+                    [self.view.window.rootViewController presentViewController:error animated:YES completion:nil];
+                    error.view.tintColor = self.color;
+                }
+            }];
+        }
+        @catch (NSException *exception) {
+            //Error
+            response = [query valueForKey:@"error"];
+            NSLog(@"Request error:%@",response);
+            UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:@"User Cancelled Request" preferredStyle:UIAlertControllerStyleAlert];
+            [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+            [self.navigationController presentViewController:error animated:YES completion:nil];
+            
+        }
+        @finally {
+            //Send Response Back
+        }
+        
     }
+
     
 }
 
