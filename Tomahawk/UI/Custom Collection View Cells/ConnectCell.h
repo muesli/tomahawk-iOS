@@ -13,8 +13,10 @@
 @interface ConnectCell : UICollectionViewCell
 
 
-@property (strong, nonatomic) UIImageView *image;
-@property (strong, nonatomic) UILabel *title;
-@property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIImage *image;
+@property (weak, nonatomic) UIColor *color;
+@property (weak, nonatomic) NSString *title;
+
+
 
 @end

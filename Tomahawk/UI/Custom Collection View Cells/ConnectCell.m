@@ -9,27 +9,46 @@
 
 #import "ConnectCell.h"
 
-@implementation ConnectCell
+@implementation ConnectCell {
+    UIImageView *imageView;
+    UILabel *resolver;
+}
 
 
 -(void)drawRect:(CGRect)rect{
     [super drawRect:rect];
-    NSNumber *redComponent = [_color valueForKey:@"redComponent"];
-    NSNumber *greenComponent = [_color valueForKey:@"greenComponent"];
-    NSNumber *blueComponent = [_color valueForKey:@"blueComponent"];
-    self.image.image = [UIImage image:self.image.image withColor:self.color];
+    imageView = imageView ?: ({
+       UIImageView *myView = [[UIImageView alloc]initWithImage:self.image];
+        [self addSubview:myView];
+        [myView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:myView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:myView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+        [myView addConstraint:[NSLayoutConstraint constraintWithItem:myView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:55]];
+        [myView addConstraint:[NSLayoutConstraint constraintWithItem:myView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:40]];
+        myView;
+    });
+    resolver = resolver ?: ({
+        UILabel *mylabel = [UILabel new];
+        [mylabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [self addSubview:mylabel];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:mylabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:mylabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:20]];
+        mylabel.textColor = [UIColor whiteColor];
+        mylabel.font = [UIFont systemFontOfSize:12];
+        mylabel;
+    });
+    resolver.text = self.title;
+    imageView.image = [UIImage image:self.image withColor:self.color];
     if (self.highlighted) {
-        self.image.image = [UIImage image:self.image.image withColor:[UIColor whiteColor]];
+        imageView.image = [UIImage image:self.image withColor:[UIColor whiteColor]];
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetRGBFillColor(context, [redComponent floatValue], [greenComponent floatValue], [blueComponent floatValue], 1);
+        CGContextSetRGBFillColor(context, [[_color valueForKey:@"redComponent"] floatValue], [[_color valueForKey:@"greenComponent"] floatValue], [[_color valueForKey:@"blueComponent"] floatValue], 1);
         CGContextFillEllipseInRect(context, self.bounds);
     }
-    self.layer.borderColor = _color.CGColor;
-    self.layer.borderWidth = 2.0f;
-    self.layer.cornerRadius = 60.0f;
-    self.image.frame = CGRectMake(CGRectGetMidX(self.bounds)-(40/2), CGRectGetMidY(self.bounds)-(55/2), 40, 55);
-    [self.image.layer setMinificationFilter:kCAFilterTrilinear];
-    [self addSubview:self.image];
+    self.layer.borderColor = self.color.CGColor;
+    self.layer.borderWidth = 2;
+    self.layer.cornerRadius = 60;
+    [imageView.layer setMinificationFilter:kCAFilterTrilinear];
 }
 
 -(void)setHighlighted:(BOOL)highlighted{
