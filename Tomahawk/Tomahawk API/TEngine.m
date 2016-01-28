@@ -12,7 +12,7 @@
 
 #pragma mark - Search
 
-+ (void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver completion:(void (^)(id response))completion {
++ (void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -20,22 +20,27 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : song, @"type" : @"track", @"limit" : @4};
+            params = @{@"q" : song, @"type" : @"track", @"limit" : limit};
             break;
         case RSoundcloud:
             baseURL = SOUNDCLOUD_BASE;
             query = @"/tracks/";
-            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : @4};
+            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : limit};
             break;
-        case RDeezer:
+        case RDeezer:{
             baseURL = DEEZER_BASE;
             query = @"/search/track";
-            params = @{@"q" : song, @"limit" : @4};
-            break;
+            params = @{@"q" : song, @"limit" : limit, @"index" : @([limit intValue] * [page intValue])};
+        }break;
         case RAppleMusic:
             baseURL = ITUNES_BASE;
             query = @"/search";
-            params = @{@"term" : song, @"entity" : @"musicTrack", @"limit" : @4};
+            params = @{@"term" : song, @"entity" : @"musicTrack", @"limit" : limit};
+            break;
+        case RYouTube:
+            baseURL = YOUTUBE_BASE;
+            query = @"/youtube/v3/search";
+            params = @{@"part" : @"snippet", @"q" : song, @"type" : @"video", @"videoCategoryId" : @10, @"key" : YOUTUBE_API_KEY, @"maxResults" : limit};
             break;
         default:
             break;
@@ -134,6 +139,20 @@
                 
                 completion (myDict);
             }break;
+            case RYouTube:{
+                NSMutableDictionary *myDict = [NSMutableDictionary new];
+                
+                NSArray *songNames = [[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"title"];
+                [myDict setObject:songNames forKey:@"songNames"];
+                
+                NSArray *artistNames = [[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"channelTitle"];
+                [myDict setObject:artistNames forKey:@"artistNames"];
+                
+                NSArray *albumImages = [[[[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"thumbnails"]valueForKey:@"default"]valueForKey:@"url"];
+                [myDict setObject:albumImages forKey:@"mediumImages"];
+                
+                completion (myDict);
+            }break;
             default:
                 break;
         }
@@ -143,7 +162,7 @@
     }];
 }
 
-+ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver completion:(void (^)(id response))completion {
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -151,22 +170,27 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : artist, @"type" : @"artist", @"limit" : @4};
+            params = @{@"q" : artist, @"type" : @"artist", @"limit" : limit};
             break;
         case RSoundcloud:
             baseURL = SOUNDCLOUD_BASE;
             query = @"/users";
-            params = @{@"q" : artist, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : @4};
+            params = @{@"q" : artist, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : limit};
             break;
         case RDeezer:
             baseURL = DEEZER_BASE;
             query = @"/search/artist";
-            params = @{@"q" : artist, @"limit" : @4};
+            params = @{@"q" : artist, @"limit" : limit};
             break;
         case RLastFM:
             baseURL = LASTFM_BASE;
             query = @"/2.0";
-            params = @{@"artist" : artist, @"method" : @"artist.search", @"format" : @"json", @"api_key" : LASTFM_API_KEY, @"limit" : @4};
+            params = @{@"artist" : artist, @"method" : @"artist.search", @"format" : @"json", @"api_key" : LASTFM_API_KEY, @"limit" : limit};
+            break;
+        case RYouTube:
+            baseURL = YOUTUBE_BASE;
+            query = @"/youtube/v3/search";
+            params = @{@"part" : @"snippet", @"q" : artist, @"type" : @"channel", @"key" : YOUTUBE_API_KEY, @"maxResults" : limit};
             break;
         default:
             break;
@@ -265,6 +289,20 @@
                 [myDict setObject:images forKey:@"mediumImages"];
                 completion (myDict);
             }break;
+            case RYouTube:{
+                NSMutableDictionary *myDict = [NSMutableDictionary new];
+                
+                NSArray *artistNames = [[responseObject valueForKey:@"items"]valueForKey:@"snippet"];
+                [myDict setObject:artistNames forKey:@"artistNames"];
+                
+                NSArray *artistFollowers = [[responseObject valueForKey:@"data"]valueForKey:@"nb_fan"];
+                [myDict setObject:artistFollowers forKey:@"artistFollowers"];
+                
+                NSArray *artistImages = [[responseObject valueForKey:@"data"]valueForKey:@"picture_medium"];
+                [myDict setObject:artistImages forKey:@"mediumImages"];
+                
+                completion (myDict);
+            }break;
             default:
                 break;
         }
@@ -275,7 +313,7 @@
 
 }
 
-+ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver completion:(void (^)(id response))completion {
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -283,17 +321,17 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : album, @"type" : @"album", @"limit" : @4};
+            params = @{@"q" : album, @"type" : @"album", @"limit" : limit};
             break;
         case RDeezer:
             baseURL = DEEZER_BASE;
             query = @"/search/album";
-            params = @{@"q" : album, @"limit" : @4};
+            params = @{@"q" : album, @"limit" : limit};
             break;
         case RAppleMusic:
             baseURL = ITUNES_BASE;
             query = @"/search";
-            params = @{@"term" : album, @"entity" : @"album", @"limit" : @4};
+            params = @{@"term" : album, @"entity" : @"album", @"limit" : limit};
             break;
         default:
             break;
@@ -397,9 +435,12 @@
 }
 
 + (void)reportBugWithTitle:(NSString *)title description:(NSString *)body username:(NSString *)assignee password:(NSString *)password completion:(void (^)(id response))completion {
-
-
-    NSDictionary *params = @{@"assignee" : assignee, @"title" : title, @"body" : body};
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    if (assignee) [params setObject:assignee forKey:@"assignee"];
+    if (body) [params setObject:body forKey:@"body"];
+    
+    [params setObject:title forKey:@"title"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api.github.com/repos/mourke/tomahawk-iOS/issues"]cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
@@ -479,7 +520,7 @@
     }];
 }
 
-+(void)authorizeSoundcloudWithCode:(NSString *)code completion:(void (^)(id))completion {
++(void)authorizeSoundcloudWithCode:(NSString *)code completion:(void (^)(id response))completion {
     NSDictionary *params = @{@"grant_type" : @"authorization_code", @"code" : code, @"redirect_uri" : @"Tomahawk://Soundcloud", @"client_id" : SOUNDCLOUD_CLIENT_ID, @"client_secret" : SOUNDCLOUD_CLIENT_SECRET};
     AFOAuthCredential *credential = [AFOAuthCredential retrieveCredentialWithIdentifier:@"soundcloud"];
     if (credential != nil && credential.expired == FALSE) {
@@ -516,6 +557,57 @@
         completion (responseObject);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
+        completion (error);
+    }];
+}
+
++(void)getTopTracksWithCompletionBlock:(void (^)(id response))completion {
+    NSDictionary *params = @{@"method" : @"chart.getTopTracks", @"api_key" : LASTFM_API_KEY, @"format" : @"json", @"limit" : @4};
+    
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:LASTFM_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    [session GET:@"/2.0" parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
+        NSArray *songNames = [[[responseObject valueForKey:@"tracks"]valueForKey:@"track"]valueForKey:@"name"];
+        [myDict setObject:songNames forKey:@"songNames"];
+        
+        NSArray *artistNames = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"track"]valueForKey:@"artist"]valueForKey:@"name"];
+        [myDict setObject:artistNames forKey:@"artistNames"];
+        
+        NSArray *songImages = [[[responseObject valueForKey:@"tracks"]valueForKey:@"track"]valueForKey:@"image"];
+        NSMutableArray *images = [NSMutableArray new];
+        for (int i = 0; i<songImages.count; i++) {
+            NSString *imageURLAsString = [[[songImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
+            [images addObject:imageURLAsString];
+        }
+        [myDict setObject:images forKey:@"mediumImages"];
+        completion(myDict);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion (error);
+    }];
+ 
+}
+
++(void)getTopArtistsWithCompletionBlock:(void (^)(id response))completion {
+    NSDictionary *params = @{@"method" : @"chart.getTopArtists", @"api_key" : LASTFM_API_KEY, @"format" : @"json", @"limit" : @4};
+    
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:LASTFM_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    [session GET:@"/2.0" parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
+        NSArray *artistNames = [[[responseObject valueForKey:@"artists"]valueForKey:@"artist"]valueForKey:@"name"];
+        [myDict setObject:artistNames forKey:@"artistNames"];
+        NSArray *artistListeners = [[[responseObject valueForKey:@"artists"]valueForKey:@"artist"]valueForKey:@"listeners"];
+        [myDict setObject:artistListeners forKey:@"artistListeners"];
+        NSArray *artistImages = [[[responseObject valueForKey:@"artists"]valueForKey:@"artist"]valueForKey:@"image"];
+        NSMutableArray *images = [NSMutableArray new];
+        for (int i = 0; i<artistImages.count; i++) {
+            NSString *imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
+            [images addObject:imageURLAsString];
+        }
+        [myDict setObject:images forKey:@"mediumImages"];
+        completion(myDict);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion (error);
     }];
 }

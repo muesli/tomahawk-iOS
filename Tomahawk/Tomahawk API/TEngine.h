@@ -12,24 +12,27 @@
 #import "AFOAuth2Manager.h"
 #import "Private.h"
 
-@interface TEngine : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, AFURLRequestSerialization, AFURLResponseSerialization>
+@interface TEngine : NSObject
 
 typedef enum resolvers {
     RLastFM = 0,
     RSpotify = 1,
     RGPlayMusic = 2,
-    RDeezer = 3,
+    RAppleMusic = 3,
     RSoundcloud = 4,
-    RAppleMusic = 6
+    ROfficialFM = 5,
+    RDeezer = 6,
+    RTidal = 7,
+    RYouTube = 8
 } resolvers;
 
 #pragma mark - Search
 
-+(void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
++(void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion;
 
-+ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion;
 
-+ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver completion:(void (^)(id response))completion;
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion;
 
 
 #pragma mark - Artist
@@ -42,6 +45,9 @@ typedef enum resolvers {
 +(void)authorizeSoundcloudWithCode:(NSString *)code completion:(void (^)(id response))completion;
 
 #pragma mark - Chart
+
++(void)getTopTracksWithCompletionBlock:(void (^)(id response))completion;
++(void)getTopArtistsWithCompletionBlock:(void (^)(id response))completion;
 
 #pragma mark - Event
 

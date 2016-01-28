@@ -25,15 +25,17 @@
     
     UIAlertController *more = [UIAlertController alertControllerWithTitle:textLabel message:detailTextLabel preferredStyle:UIAlertControllerStyleActionSheet];
     
-    [more addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    indexPath.section == 0 ? [more addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //Save song
+    }]] : [more addAction:[UIAlertAction actionWithTitle:@"Follow" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //Follow Artist
     }]];
-    [more addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    indexPath.section == 0 ? [more addAction:[UIAlertAction actionWithTitle:@"Play Next" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //Play next
-    }]];
-    [more addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    }]] : nil;
+    indexPath.section == 0 ? [more addAction:[UIAlertAction actionWithTitle:@"Add to Queue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //Add to queue
-    }]];
+    }]]: nil;
     [more addAction:[UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //Share
     }]];
@@ -41,11 +43,11 @@
         //Start Radio
     }]];
     
-    [more addAction:[UIAlertAction actionWithTitle:@"Go to Artist" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    indexPath.section == 0 ? [more addAction:[UIAlertAction actionWithTitle:@"Go to Artist" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //Goto Artist
-    }]];
+    }]] : nil;
     
-    indexPath.section == 0 ?[more addAction:[UIAlertAction actionWithTitle:@"Go to Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    indexPath.section == 0 ? [more addAction:[UIAlertAction actionWithTitle:@"Go to Album" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //Goto Album
     }]] : nil;
     [more addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
@@ -91,14 +93,30 @@
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     if (indexPath.section == 0) {
-        cell.myTextLabel.text = @"Songs";
-        cell.myDetailTextLabel.text = @"Artist";
+        [TEngine getTopTracksWithCompletionBlock:^(id response) {
+            if ([response isKindOfClass:[NSError class]]) {
+                NSLog(@"Error is %@", response);
+            }else {
+                cell.myTextLabel.text = [[response objectForKey:@"songNames"]objectAtIndex:indexPath.row];
+                cell.myDetailTextLabel.text = [[response objectForKey:@"artistNames"]objectAtIndex:indexPath.row];
+                [cell.myImageView setImageWithURL:[NSURL URLWithString:[[response objectForKey:@"mediumImages"]objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderCharts"]];
+            }
+        }];
     }else{
-        cell.myTextLabel.text = @"Albums";
-        cell.myDetailTextLabel.text = @"Artist";
+        [TEngine getTopArtistsWithCompletionBlock:^(id response) {
+            if ([response isKindOfClass:[NSError class]]) {
+                NSLog(@"Error is %@", response);
+            }else {
+                cell.myTextLabel.text = [[response objectForKey:@"artistNames"]objectAtIndex:indexPath.row];
+                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+                [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSString *followers = [NSString stringWithFormat:@"Listeners: %@", [numberFormatter numberFromString:[[response objectForKey:@"artistListeners"]objectAtIndex:indexPath.row]]];
+                cell.myDetailTextLabel.text = followers;
+                [cell.myImageView setImageWithURL:[NSURL URLWithString:[[response objectForKey:@"mediumImages"]objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderCharts"]];
+            }
+        }];
     }
     [cell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:) forControlEvents:UIControlEventTouchUpInside];
-    cell.myImageView.image = [UIImage imageNamed:@"PlaceholderCharts"];
     return cell;
 }
 
@@ -108,16 +126,7 @@
     
     UILabel *headerTitle = [UILabel new];
     
-    switch (section) {
-        case 0:
-            headerTitle.text = @"TOP SONGS";
-            break;
-        case 1:
-            headerTitle.text = @"TOP ALBUMS";
-            break;
-        default:
-            break;
-    }
+    headerTitle.text = section == 0 ? @"TOP SONGS" : @"TOP ARTISTS";
     
     headerTitle.font = [UIFont systemFontOfSize:12 weight:0.2];
     headerTitle.alpha = 0.5;
@@ -139,53 +148,17 @@
     [seeAll setTranslatesAutoresizingMaskIntoConstraints:NO];
     [headerView addSubview:seeAll];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                           attribute:NSLayoutAttributeTrailingMargin
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeTrailingMargin
-                                                          multiplier:1
-                                                            constant:-5]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeTrailingMargin multiplier:1 constant:-5]];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1
-                                                            constant:0]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     
-    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                       attribute:NSLayoutAttributeHeight
-                                                       relatedBy:NSLayoutRelationEqual
-                                                          toItem:nil
-                                                       attribute:NSLayoutAttributeNotAnAttribute
-                                                      multiplier:0
-                                                        constant:15]];
+    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:15]];
     
-    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll
-                                                       attribute:NSLayoutAttributeWidth
-                                                       relatedBy:NSLayoutRelationEqual
-                                                          toItem:nil
-                                                       attribute:NSLayoutAttributeNotAnAttribute
-                                                      multiplier:0
-                                                        constant:70]];
+    [seeAll addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:70]];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle
-                                                           attribute:NSLayoutAttributeLeadingMargin
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeLeadingMargin
-                                                          multiplier:1
-                                                            constant:20]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle attribute:NSLayoutAttributeLeadingMargin relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeLeadingMargin multiplier:1 constant:20]];
     
-    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle
-                                                           attribute:NSLayoutAttributeCenterY
-                                                           relatedBy:NSLayoutRelationEqual
-                                                              toItem:headerView
-                                                           attribute:NSLayoutAttributeCenterY
-                                                          multiplier:1
-                                                            constant:0]];
+    [headerView addConstraint:[NSLayoutConstraint constraintWithItem:headerTitle attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
     return headerView;
     
 }

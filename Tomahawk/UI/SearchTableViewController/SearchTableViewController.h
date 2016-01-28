@@ -12,6 +12,7 @@
 #import "DGActivityIndicatorView.h"
 #import "UIImageView+AFNetworking.h"
 #import "CustomTableViewCell.h"
+#import "DetailTableViewController.h"
 
 @interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
 

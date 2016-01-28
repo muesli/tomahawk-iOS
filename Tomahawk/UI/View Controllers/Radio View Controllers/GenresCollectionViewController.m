@@ -25,4 +25,8 @@
     return genres;
 }
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.view.frame.size.width *0.43, self.view.frame.size.width *0.55);
+}
+
 @end

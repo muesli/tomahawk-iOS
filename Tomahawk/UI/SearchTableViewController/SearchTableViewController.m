@@ -21,6 +21,18 @@ static CGFloat searchBlockDelay = 0.25;
 
 @implementation SearchTableViewController
 
+-(IBAction)seeAll:(UIButton *)button {
+    if (button.tag == 0) {
+        NSLog(@"First one");
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        DetailTableViewController *seeAll = (DetailTableViewController *) [storyboard instantiateViewControllerWithIdentifier:@"DetailTableViewController"];
+        seeAll.query = self.searchBar.text;
+        seeAll.title = @"Songs";
+        [self.navigationController pushViewController:seeAll animated:YES];
+    }
+    
+}
+
 -(IBAction)moreButtonTouched:(UIButton *)button forEvent:(UIEvent *)event{
     NSSet *touches = [event allTouches];
     UITouch *touch = [touches anyObject];
@@ -158,7 +170,7 @@ static CGFloat searchBlockDelay = 0.25;
     [activityIndicatorView startAnimating];
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer completion:^(id response) {
+        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer limit:@4 page:@0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -176,7 +188,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
 
     dispatch_group_enter(group);
-        [TEngine searchSongsBySongName:searchText resolver:RDeezer completion:^(id response) {
+        [TEngine searchSongsBySongName:searchText resolver:RDeezer limit:@4 page:@0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -195,7 +207,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
     
     dispatch_group_enter(group);
-        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer completion:^(id response) {
+        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer limit:@4 page:@0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -348,6 +360,8 @@ static CGFloat searchBlockDelay = 0.25;
     [seeAll setTintColor:[UIColor whiteColor]];
     [[seeAll titleLabel] setFont:[UIFont systemFontOfSize:12]];
     [seeAll setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [seeAll addTarget:self action:@selector(seeAll:) forControlEvents:UIControlEventTouchUpInside];
+    seeAll.tag = section;
     [headerView addSubview:seeAll];
     
     [headerView addConstraint:[NSLayoutConstraint constraintWithItem:seeAll attribute:NSLayoutAttributeTrailingMargin relatedBy:NSLayoutRelationEqual toItem:headerView attribute:NSLayoutAttributeTrailingMargin multiplier:1 constant:-5]];

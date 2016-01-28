@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -16,32 +17,28 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="xIc-lL-HDX">
-            <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="460" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XR-Iq-SWQ" customClass="CustomUIButton">
-                    <rect key="frame" x="15" y="136" width="250" height="54"/>
+                    <rect key="frame" x="35" y="279" width="391" height="98"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="54" id="j8T-KG-zfK"/>
-                        <constraint firstAttribute="width" constant="250" id="qUz-9Q-4m8"/>
+                        <constraint firstAttribute="width" secondItem="6XR-Iq-SWQ" secondAttribute="height" multiplier="16:4" id="Vil-6K-GSy"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                             <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="26"/>
+                            <real key="value" value="51"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="buttonSelected:" destination="-1" eventType="touchUpInside" id="Q3j-wA-P0Z"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ewd-O8-JKm">
-                    <rect key="frame" x="17" y="32" width="250" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="TQC-Hg-o50"/>
-                    </constraints>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ewd-O8-JKm" customClass="JVFloatLabeledTextField">
+                    <rect key="frame" x="35" y="60" width="391" height="33"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next"/>
@@ -49,43 +46,43 @@
                         <outlet property="delegate" destination="-1" id="eGE-zg-yXu"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jZX-7k-i6l">
-                    <rect key="frame" x="17" y="83" width="250" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="0Qf-xt-ztt"/>
-                    </constraints>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="go" secureTextEntry="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="uur-Z5-rtJ"/>
-                    </connections>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Premium Account Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-8s-gnm">
-                    <rect key="frame" x="17" y="48" width="225" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="WQq-tX-mkc"/>
-                    </constraints>
+                    <rect key="frame" x="17" y="48" width="124" height="11"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jZX-7k-i6l" customClass="JVFloatLabeledTextField">
+                    <rect key="frame" x="35" y="112" width="391" height="33"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="go" secureTextEntry="YES"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="uur-Z5-rtJ"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Ewd-O8-JKm" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="7Yd-KT-Ckh"/>
-                <constraint firstAttribute="trailing" secondItem="jZX-7k-i6l" secondAttribute="trailing" constant="13" id="BQ3-hY-bxl"/>
-                <constraint firstItem="cbI-8s-gnm" firstAttribute="top" secondItem="xIc-lL-HDX" secondAttribute="top" constant="48" id="BeH-pT-sOA"/>
-                <constraint firstItem="jZX-7k-i6l" firstAttribute="top" secondItem="Ewd-O8-JKm" secondAttribute="bottom" constant="21" id="IVM-rc-s81"/>
-                <constraint firstAttribute="bottom" secondItem="6XR-Iq-SWQ" secondAttribute="bottom" multiplier="1.05" id="JOk-3B-X2G"/>
-                <constraint firstItem="jZX-7k-i6l" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="O46-zM-lM5"/>
-                <constraint firstAttribute="trailing" secondItem="cbI-8s-gnm" secondAttribute="trailing" constant="38" id="cgI-fR-rrY"/>
-                <constraint firstAttribute="trailing" secondItem="Ewd-O8-JKm" secondAttribute="trailing" constant="13" id="dd0-6u-fHS"/>
-                <constraint firstItem="6XR-Iq-SWQ" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="fg4-pm-lJs"/>
-                <constraint firstItem="cbI-8s-gnm" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="l2N-5z-7sy"/>
-                <constraint firstItem="6XR-Iq-SWQ" firstAttribute="top" secondItem="jZX-7k-i6l" secondAttribute="bottom" multiplier="1.2" id="trV-oj-imA"/>
+                <constraint firstAttribute="trailing" secondItem="6XR-Iq-SWQ" secondAttribute="trailing" multiplier="1.08" id="2Kn-hU-dGV"/>
+                <constraint firstItem="Ewd-O8-JKm" firstAttribute="top" secondItem="xIc-lL-HDX" secondAttribute="top" constant="60" id="45X-lI-nSY"/>
+                <constraint firstAttribute="trailing" secondItem="Ewd-O8-JKm" secondAttribute="trailing" multiplier="1.08" id="4tI-jO-Kxc"/>
+                <constraint firstItem="jZX-7k-i6l" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="Loq-s7-qIw"/>
+                <constraint firstItem="cbI-8s-gnm" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="PeQ-Nv-IhC"/>
+                <constraint firstAttribute="trailing" secondItem="jZX-7k-i6l" secondAttribute="trailing" multiplier="1.08" id="Xt1-7m-CaB"/>
+                <constraint firstItem="cbI-8s-gnm" firstAttribute="top" secondItem="xIc-lL-HDX" secondAttribute="top" constant="48" id="d2O-1U-nmz"/>
+                <constraint firstAttribute="bottom" secondItem="6XR-Iq-SWQ" secondAttribute="bottom" multiplier="1.06" id="kDV-nM-hYb"/>
+                <constraint firstItem="Ewd-O8-JKm" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="lRa-OA-Hob"/>
+                <constraint firstItem="6XR-Iq-SWQ" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="vC9-uW-uE9"/>
+                <constraint firstItem="jZX-7k-i6l" firstAttribute="top" secondItem="Ewd-O8-JKm" secondAttribute="bottom" multiplier="1.2" id="vOh-Vq-zpv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="325" y="279"/>
         </view>
     </objects>
 </document>

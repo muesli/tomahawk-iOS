@@ -12,8 +12,6 @@
 
 @interface ConnectCell : UICollectionViewCell
 
-
-@property (strong, nonatomic) UIImage *image;
 @property (weak, nonatomic) UIColor *color;
 @property (weak, nonatomic) NSString *title;
 

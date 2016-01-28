@@ -8,8 +8,6 @@
 
 #import "ResolverDetailController.h"
 
-#warning setting Destructive state not fully working
-
 @implementation ResolverDetailController {
     NSArray *myArray;
 }
@@ -43,7 +41,7 @@
     }
 }
 
--(void)redirectURIWithURL:(NSURL *)url {
+- (void)redirectURIWithURL:(NSURL *)url {
     NSString *urlHost = [url host];
     if ([urlHost isEqualToString:@"Spotify"]) {
         NSDictionary *query = [[url query] URLStringValues];
@@ -142,48 +140,41 @@
         self.premium.hidden = YES;
     }
     self.signIn.tag = self.tag;
-    [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:[UIColor whiteColor]];
-    [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260,150) withColor:[UIColor whiteColor]];
+    [self makeBorderWithTextField:self.usernameField color:[UIColor whiteColor]];
+    [self makeBorderWithTextField:self.passwordField color:[UIColor whiteColor]];
     
     myArray = @[self.usernameField, self.passwordField];
     for (UITextField *textField in myArray) {
         textField.tintColor = self.color;
-        [textField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3]
-                          forKeyPath:@"_placeholderLabel.textColor"];
+        [textField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     }
+    self.signIn.cornerRadius = self.signIn.frame.size.height * 0.25;
 }
 
-- (void)makeLineLayer:(CALayer *)layer lineFromPointA:(CGPoint)pointA toPointB:(CGPoint)pointB withColor:(UIColor *)color {
-    CAShapeLayer *line = [CAShapeLayer layer];
-    UIBezierPath *linePath=[UIBezierPath bezierPath];
-    [linePath moveToPoint: pointA];
-    [linePath addLineToPoint:pointB];
-    line.path=linePath.CGPath;
-    line.fillColor = nil;
-    if (color == [UIColor whiteColor]) {
-        line.opacity = 0.3;
-    }else{
-        line.opacity = 1;
-    }
-    line.strokeColor = color.CGColor;
-    [layer addSublayer:line];
+- (void)makeBorderWithTextField:(UITextField *)textField color:(UIColor *)color {
+    CALayer *bottomBorder = [CALayer layer];
+    bottomBorder.name = @"Bottom Border";
+    bottomBorder.frame = CGRectMake(0.0f, textField.frame.size.height - 1, textField.frame.size.width, 2.0f);
+    bottomBorder.backgroundColor = color.CGColor;
+    bottomBorder.opacity = color == [UIColor whiteColor] ? 0.3: 1.0;
+    [textField.layer addSublayer:bottomBorder];
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    if (textField == self.usernameField) {
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:self.color];
-    }else{
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260, 150) withColor:self.color];
-    }
-}
--(void)textFieldDidEndEditing:(UITextField *)textField{
-    for (CALayer *layer in [self.view.layer.sublayers copy]) {
-        if ([layer isKindOfClass:[CAShapeLayer class]]) {
+    for (CALayer *layer in [textField.layer.sublayers copy]) {
+        if ([layer.name isEqualToString:@"Bottom Border"]) {
             [layer removeFromSuperlayer];
         }
     }
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.usernameField.frame.origin.x, 100) toPointB:CGPointMake(260, 100) withColor:[UIColor whiteColor]];
-        [self makeLineLayer:self.view.layer lineFromPointA:CGPointMake(self.passwordField.frame.origin.x, 150) toPointB:CGPointMake(260, 150) withColor:[UIColor whiteColor]];
+    [self makeBorderWithTextField:textField color:self.color];
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    for (CALayer *layer in [textField.layer.sublayers copy]) {
+        if ([layer.name isEqualToString:@"Bottom Border"]) {
+            [layer removeFromSuperlayer];
+        }
+    }
+   [self makeBorderWithTextField:textField color:[UIColor whiteColor]];
 }
 
 

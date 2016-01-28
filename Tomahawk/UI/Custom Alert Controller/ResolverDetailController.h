@@ -11,6 +11,7 @@
 #import "TEngine.h"
 #import "MBProgressHUD.h"
 #import "CustomUIButton.h"
+#import "JVFloatLabeledTextField.h"
 
 //enum resolvers {
 //    RLastFM = 0,
@@ -23,8 +24,8 @@
 @interface ResolverDetailController : UIViewController <UITextFieldDelegate, MBProgressHUDDelegate>
 
 @property (nonatomic) NSInteger tag;
-@property (strong, nonatomic) IBOutlet UITextField *passwordField;
-@property (strong, nonatomic) IBOutlet UITextField *usernameField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *passwordField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *usernameField;
 @property (weak, nonatomic) UIColor *color;
 @property (weak, nonatomic) UIImage *resolverImage;
 @property (weak, nonatomic) NSString *resolverTitle;

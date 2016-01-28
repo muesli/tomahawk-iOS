@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
 
-@interface GenresCollectionViewController : UICollectionViewController
+@interface GenresCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
 @end
