@@ -18,6 +18,12 @@ PODS:
   - AFOAuth2Manager (3.0.0):
     - AFNetworking/NSURLSession (~> 3.0)
   - DGActivityIndicatorView (2.0)
+  - google-cast-sdk (2.10.1):
+    - google-cast-sdk/Assets (= 2.10.1)
+    - google-cast-sdk/Core (= 2.10.1)
+  - google-cast-sdk/Assets (2.10.1):
+    - google-cast-sdk/Core
+  - google-cast-sdk/Core (2.10.1)
   - JVFloatLabeledTextField (1.1.0)
   - KMPlaceholderTextView (1.1.1)
   - MBProgressHUD (0.9.2)
@@ -31,6 +37,7 @@ DEPENDENCIES:
   - AFOAuth2Manager (from `https://github.com/AFNetworking/AFOAuth2Manager.git`, branch
     `3_0_0_branch`)
   - DGActivityIndicatorView
+  - google-cast-sdk
   - JVFloatLabeledTextField
   - KMPlaceholderTextView
   - MBProgressHUD
@@ -53,6 +60,7 @@ SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   AFOAuth2Manager: 0566da1be64883e339813d411229fdc9a84dab7c
   DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
+  google-cast-sdk: 98bafadd4c490c776f2ee913a6561cda5b8634a6
   JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   KMPlaceholderTextView: 686edec818f5727728eaf8c2e9e70177692d3d53
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

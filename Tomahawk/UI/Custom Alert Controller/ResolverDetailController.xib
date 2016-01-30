@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ewd-O8-JKm" customClass="JVFloatLabeledTextField">
-                    <rect key="frame" x="35" y="60" width="391" height="33"/>
+                    <rect key="frame" x="35" y="133" width="391" height="33"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next"/>
@@ -53,7 +53,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jZX-7k-i6l" customClass="JVFloatLabeledTextField">
-                    <rect key="frame" x="35" y="112" width="391" height="33"/>
+                    <rect key="frame" x="35" y="200" width="391" height="33"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="go" secureTextEntry="YES"/>
@@ -70,11 +70,11 @@
             <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6XR-Iq-SWQ" secondAttribute="trailing" multiplier="1.08" id="2Kn-hU-dGV"/>
-                <constraint firstItem="Ewd-O8-JKm" firstAttribute="top" secondItem="xIc-lL-HDX" secondAttribute="top" constant="60" id="45X-lI-nSY"/>
                 <constraint firstAttribute="trailing" secondItem="Ewd-O8-JKm" secondAttribute="trailing" multiplier="1.08" id="4tI-jO-Kxc"/>
                 <constraint firstItem="jZX-7k-i6l" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="Loq-s7-qIw"/>
                 <constraint firstItem="cbI-8s-gnm" firstAttribute="leading" secondItem="xIc-lL-HDX" secondAttribute="leading" constant="17" id="PeQ-Nv-IhC"/>
                 <constraint firstAttribute="trailing" secondItem="jZX-7k-i6l" secondAttribute="trailing" multiplier="1.08" id="Xt1-7m-CaB"/>
+                <constraint firstItem="6XR-Iq-SWQ" firstAttribute="top" secondItem="jZX-7k-i6l" secondAttribute="bottom" multiplier="1.2" id="bcg-dr-bMg"/>
                 <constraint firstItem="cbI-8s-gnm" firstAttribute="top" secondItem="xIc-lL-HDX" secondAttribute="top" constant="48" id="d2O-1U-nmz"/>
                 <constraint firstAttribute="bottom" secondItem="6XR-Iq-SWQ" secondAttribute="bottom" multiplier="1.06" id="kDV-nM-hYb"/>
                 <constraint firstItem="Ewd-O8-JKm" firstAttribute="centerX" secondItem="xIc-lL-HDX" secondAttribute="centerX" id="lRa-OA-Hob"/>

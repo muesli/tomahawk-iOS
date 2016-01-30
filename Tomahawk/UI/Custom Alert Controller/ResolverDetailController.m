@@ -148,7 +148,7 @@
         textField.tintColor = self.color;
         [textField setValue:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.3] forKeyPath:@"_placeholderLabel.textColor"];
     }
-    self.signIn.cornerRadius = self.signIn.frame.size.height * 0.25;
+    self.signIn.cornerRadius = self.signIn.frame.size.height * 0.3;
 }
 
 - (void)makeBorderWithTextField:(UITextField *)textField color:(UIColor *)color {

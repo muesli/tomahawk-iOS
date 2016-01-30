@@ -926,13 +926,12 @@
                                     <action selector="buttonTouched:" destination="Iy0-Dv-cOW" eventType="touchUpInside" id="uDz-KS-4Qh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ui-OYt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ui-OYt" customClass="CastIconButton">
                                 <rect key="frame" x="550" y="36" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="bon-Ye-q6x"/>
                                     <constraint firstAttribute="width" constant="24" id="gC8-o3-EOY"/>
                                 </constraints>
-                                <state key="normal" image="cast_off"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLe-iE-FRl">
                                 <rect key="frame" x="282" y="36" width="36" height="17"/>
@@ -1149,7 +1148,6 @@
                         <outlet property="backgroundImageView" destination="MuK-OK-Jpj" id="YSI-xZ-Pn8"/>
                         <outlet property="currentSongImageView" destination="45b-wI-1j6" id="kbh-pW-dNJ"/>
                         <outlet property="expandArrow" destination="lKb-aO-ALE" id="4nm-Vd-ywZ"/>
-                        <outlet property="googleCast" destination="geV-Ui-OYt" id="ybj-GK-YTJ"/>
                         <outlet property="like" destination="0ZL-gG-XXj" id="VIc-u5-cwN"/>
                         <outlet property="lyrics" destination="KCG-aw-2a6" id="Oxt-pM-VnK"/>
                         <outlet property="next" destination="lnL-mG-6om" id="wl6-cU-cql"/>
@@ -1420,7 +1418,6 @@
         <image name="Shuffle" width="22" height="22"/>
         <image name="Sign Out" width="22" height="22"/>
         <image name="Tell Your Friends" width="22" height="22"/>
-        <image name="cast_off" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9Zz-kc-DY7"/>

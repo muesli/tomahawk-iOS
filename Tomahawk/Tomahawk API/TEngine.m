@@ -568,19 +568,21 @@
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [session GET:@"/2.0" parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
-        NSArray *songNames = [[[responseObject valueForKey:@"tracks"]valueForKey:@"track"]valueForKey:@"name"];
-        [myDict setObject:songNames forKey:@"songNames"];
-        
-        NSArray *artistNames = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"track"]valueForKey:@"artist"]valueForKey:@"name"];
-        [myDict setObject:artistNames forKey:@"artistNames"];
-        
-        NSArray *songImages = [[[responseObject valueForKey:@"tracks"]valueForKey:@"track"]valueForKey:@"image"];
-        NSMutableArray *images = [NSMutableArray new];
-        for (int i = 0; i<songImages.count; i++) {
-            NSString *imageURLAsString = [[[songImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
-            [images addObject:imageURLAsString];
+        NSArray *base = [[responseObject objectForKey:@"tracks"]objectForKey:@"track"];
+        NSMutableArray *songArtists = [NSMutableArray new];
+        NSMutableArray *songNames = [NSMutableArray new];
+        NSMutableArray *songImages = [NSMutableArray new];
+        for (int i = 0; i<base.count; i++) {
+            NSString *images = [[[[base objectAtIndex:i]objectForKey:@"image"]objectAtIndex:2]objectForKey:@"#text"];
+            NSString *names = [[base objectAtIndex:i] objectForKey:@"name"];
+            NSString *artists = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+            [songImages addObject:images];
+            [songNames addObject:names];
+            [songArtists addObject:artists];
         }
-        [myDict setObject:images forKey:@"mediumImages"];
+        [myDict setObject:songArtists forKey:@"songArtists"];
+        [myDict setObject:songNames forKey:@"songNames"];
+        [myDict setObject:songImages forKey:@"songImages"];
         completion(myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion (error);
@@ -595,17 +597,21 @@
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [session GET:@"/2.0" parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
-        NSArray *artistNames = [[[responseObject valueForKey:@"artists"]valueForKey:@"artist"]valueForKey:@"name"];
-        [myDict setObject:artistNames forKey:@"artistNames"];
-        NSArray *artistListeners = [[[responseObject valueForKey:@"artists"]valueForKey:@"artist"]valueForKey:@"listeners"];
-        [myDict setObject:artistListeners forKey:@"artistListeners"];
-        NSArray *artistImages = [[[responseObject valueForKey:@"artists"]valueForKey:@"artist"]valueForKey:@"image"];
-        NSMutableArray *images = [NSMutableArray new];
-        for (int i = 0; i<artistImages.count; i++) {
-            NSString *imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
-            [images addObject:imageURLAsString];
+        NSArray *base = [[responseObject objectForKey:@"artists"]objectForKey:@"artist"];
+        NSMutableArray *artistListeners = [NSMutableArray new];
+        NSMutableArray *artistImages = [NSMutableArray new];
+        NSMutableArray *artistNames = [NSMutableArray new];
+        for (int i = 0; i<base.count; i++) {
+            NSString *images = [[[[base objectAtIndex:i]objectForKey:@"image"]objectAtIndex:2]objectForKey:@"#text"];
+            NSString *names = [[base objectAtIndex:i]objectForKey:@"name"];
+            NSNumber *listeners = [[base objectAtIndex:i]objectForKey:@"listeners"];
+            [artistImages addObject:images];
+            [artistNames addObject:names];
+            [artistListeners addObject:listeners];
         }
-        [myDict setObject:images forKey:@"mediumImages"];
+        [myDict setObject:artistListeners forKey:@"artistListeners"];
+        [myDict setObject:artistNames forKey:@"artistNames"];
+        [myDict setObject:artistImages forKey:@"artistImages"];
         completion(myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion (error);

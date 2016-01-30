@@ -8,7 +8,11 @@
 
 #import "ChartsViewController.h"
 
-@interface ChartsViewController ()
+@interface ChartsViewController () {
+    NSArray *topArtistsNames, *topArtistsListeners, *topArtistsImages, *topTracksNames, *topTracksArtists, *topTracksImages;
+    UILabel *messageLabel;
+    UIImageView *error;
+}
 
 @end
 
@@ -65,7 +69,26 @@
     [super viewDidLoad];
     [self.chartsByCountry registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [self.top registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
+    [TEngine getTopTracksWithCompletionBlock:^(id response) {
+        if ([response isKindOfClass:[NSError class]]) {
+            NSLog(@"Error is %@", response);
+        }else {
+            topTracksNames = [response objectForKey:@"songNames"];
+            topTracksArtists = [response objectForKey:@"songArtists"];
+            topTracksImages = [response objectForKey:@"songImages"];
+            [self.top reloadData];
+        }
+    }];
+    [TEngine getTopArtistsWithCompletionBlock:^(id response) {
+        if ([response isKindOfClass:[NSError class]]) {
+            NSLog(@"Error is %@", response);
+        }else {
+            topArtistsNames = [response objectForKey:@"artistNames"];
+            topArtistsListeners = [response objectForKey:@"artistListeners"];
+            topArtistsImages =  [response objectForKey:@"artistImages"];
+            [self.top reloadData];
+        }
+    }];
 }
 
 #pragma mark - Collection view
@@ -83,38 +106,51 @@
 #pragma mark - Table view
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    switch (section) {
+        case 0:
+            if (topTracksNames.count >= 4) return 4;
+            else return topTracksNames.count;
+        case 1:
+            if (topArtistsNames.count >= 4)return 4;
+            else return topArtistsNames.count;
+        default:
+            return 0;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (topTracksNames !=nil && topArtistsNames != nil) {
+        [messageLabel removeFromSuperview];
+        self.top.backgroundView = nil;
+        self.top.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        [error removeFromSuperview];
+    } else {
+        messageLabel = messageLabel ? :[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        error = error ? : [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Error"]];
+        error.frame = CGRectMake(0, 0, 50, 50);
+        [self.top addSubview:error];
+        messageLabel.text = @"Error Communicating With Server";
+        messageLabel.textColor = [UIColor darkGrayColor];
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont systemFontOfSize:20 weight:0.3];
+        [messageLabel sizeToFit];
+        self.top.backgroundView = messageLabel;
+        error.center = CGPointMake(messageLabel.center.x, messageLabel.center.y - 60);
+        self.top.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
     return 2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     if (indexPath.section == 0) {
-        [TEngine getTopTracksWithCompletionBlock:^(id response) {
-            if ([response isKindOfClass:[NSError class]]) {
-                NSLog(@"Error is %@", response);
-            }else {
-                cell.myTextLabel.text = [[response objectForKey:@"songNames"]objectAtIndex:indexPath.row];
-                cell.myDetailTextLabel.text = [[response objectForKey:@"artistNames"]objectAtIndex:indexPath.row];
-                [cell.myImageView setImageWithURL:[NSURL URLWithString:[[response objectForKey:@"mediumImages"]objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderCharts"]];
-            }
-        }];
+        cell.myTextLabel.text = [topTracksNames objectAtIndex:indexPath.row];
+        cell.myDetailTextLabel.text = [topTracksArtists objectAtIndex:indexPath.row];
+        [cell.myImageView setImageWithURL:[NSURL URLWithString:[topTracksImages objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderCharts"]];
     }else{
-        [TEngine getTopArtistsWithCompletionBlock:^(id response) {
-            if ([response isKindOfClass:[NSError class]]) {
-                NSLog(@"Error is %@", response);
-            }else {
-                cell.myTextLabel.text = [[response objectForKey:@"artistNames"]objectAtIndex:indexPath.row];
-                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-                [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                NSString *followers = [NSString stringWithFormat:@"Listeners: %@", [numberFormatter numberFromString:[[response objectForKey:@"artistListeners"]objectAtIndex:indexPath.row]]];
-                cell.myDetailTextLabel.text = followers;
-                [cell.myImageView setImageWithURL:[NSURL URLWithString:[[response objectForKey:@"mediumImages"]objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderCharts"]];
-            }
-        }];
+        cell.myTextLabel.text = [topArtistsNames objectAtIndex:indexPath.row];
+        cell.myDetailTextLabel.text = [NSString stringWithFormat:@"Listeners: %@",[topArtistsListeners objectAtIndex:indexPath.row]];
+        [cell.myImageView setImageWithURL:[NSURL URLWithString:[topArtistsImages objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderCharts"]];
     }
     [cell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:) forControlEvents:UIControlEventTouchUpInside];
     return cell;

@@ -14,6 +14,8 @@
 		4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FAB1C34365E00244532 /* CAPSPageMenu.m */; };
 		4D17EA7B1C5A9EA5000227F9 /* CustomUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D17EA7A1C5A9EA5000227F9 /* CustomUIButton.m */; };
 		4D17EA7E1C5A9F6B000227F9 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D17EA7D1C5A9F6B000227F9 /* DetailTableViewController.m */; };
+		4D2456D71C5BDDC500B5B4E5 /* CastIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */; };
+		4D2456D91C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */; };
 		4D4DBE2E1C3B23D800AB625B /* SongsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2C1C3B23D800AB625B /* SongsTableViewController.m */; };
 		4D4DBE2F1C3B23D800AB625B /* SongsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */; };
 		4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE311C3B23FE00AB625B /* PlaylistsTableViewController.m */; };
@@ -85,6 +87,9 @@
 		4D17EA7A1C5A9EA5000227F9 /* CustomUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomUIButton.m; path = "Tomahawk/UI/Custom Button/CustomUIButton.m"; sourceTree = "<group>"; };
 		4D17EA7C1C5A9F6B000227F9 /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailTableViewController.h; path = "Tomahawk/UI/View Controllers/DetailTableViewController.h"; sourceTree = "<group>"; };
 		4D17EA7D1C5A9F6B000227F9 /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailTableViewController.m; path = "Tomahawk/UI/View Controllers/DetailTableViewController.m"; sourceTree = "<group>"; };
+		4D2456D51C5BDDC400B5B4E5 /* CastIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CastIconButton.h; path = Tomahawk/Resources/CastIconButton.h; sourceTree = "<group>"; };
+		4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CastIconButton.m; path = Tomahawk/Resources/CastIconButton.m; sourceTree = "<group>"; };
+		4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = CastFrameworkAssets.xcassets; path = "Pods/google-cast-sdk/GoogleCastSDK-2.10.1-Release/CastFrameworkAssets.xcassets"; sourceTree = "<group>"; };
 		4D4DBE2B1C3B23D800AB625B /* SongsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongsTableViewController.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.h"; sourceTree = "<group>"; };
 		4D4DBE2C1C3B23D800AB625B /* SongsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongsTableViewController.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.m"; sourceTree = "<group>"; };
 		4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongsTableViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/SongsTableViewController.xib"; sourceTree = "<group>"; };
@@ -249,6 +254,9 @@
 		4DA5D2FD1C2F86BA0031FBE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */,
+				4D2456D51C5BDDC400B5B4E5 /* CastIconButton.h */,
+				4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */,
 				4DA5D3051C2F87970031FBE5 /* Color Extractor */,
 				4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */,
 				4DA5D2291C2F82340031FBE5 /* MyAdditions.h */,
@@ -550,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2456D91C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets in Resources */,
 				4DEE816C1C3DA2D90077F7FD /* CustomTableViewCell.xib in Resources */,
 				4DA5D3191C2F8A8E0031FBE5 /* ForYouViewController.xib in Resources */,
 				4DEE81661C3D90530077F7FD /* ChartsViewController.xib in Resources */,
@@ -662,6 +671,7 @@
 				4DA5D1FD1C2F81A00031FBE5 /* RadioViewController.m in Sources */,
 				4DA5D1FE1C2F81A00031FBE5 /* DiscoverViewController.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
+				4D2456D71C5BDDC500B5B4E5 /* CastIconButton.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
 				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,

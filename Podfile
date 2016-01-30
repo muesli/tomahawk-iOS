@@ -9,6 +9,7 @@ pod 'SWTableViewCell'
 pod 'RKNotificationHub'
 pod 'AFOAuth2Manager', git: 'https://github.com/AFNetworking/AFOAuth2Manager.git', branch: '3_0_0_branch'
 pod 'JVFloatLabeledTextField'
+pod 'google-cast-sdk'
 
 use_frameworks!
 

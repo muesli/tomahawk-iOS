@@ -13,6 +13,9 @@
     __block dispatch_cancelable_block_t searchBlock;
     DGActivityIndicatorView *activityIndicatorView;
     UIView *loadingDimmer;
+    UILabel *messageLabel;
+    UIImageView *search;
+
 }
 
 @end
@@ -312,7 +315,28 @@ static CGFloat searchBlockDelay = 0.25;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    if (songNames.count == 0 && artistNames.count == 0 && albumNames.count == 0 && ![self.searchBar.text isEqualToString:@""]) {
+        
+        messageLabel = messageLabel ? :[[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        search = search ? : [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"Search"]];
+        search.frame = CGRectMake(0, 0, 50, 50);
+        [self.tableView addSubview:search];
+        messageLabel.text = [NSString stringWithFormat:@"No results found for %@", self.searchBar.text];
+        messageLabel.textColor = [UIColor darkGrayColor];
+        messageLabel.numberOfLines = 2;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont systemFontOfSize:20 weight:0.3];
+        [messageLabel sizeToFit];
+        self.tableView.backgroundView = messageLabel;
+        search.center = CGPointMake(messageLabel.center.x, messageLabel.center.y - 60);
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return 0;
+    }else {
+        [messageLabel removeFromSuperview];
+        self.tableView.backgroundView = nil;
+        [search removeFromSuperview];
+        return 4;
+    }
 }
 
 

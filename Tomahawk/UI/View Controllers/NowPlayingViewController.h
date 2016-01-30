@@ -10,12 +10,13 @@
 #import "CCColorCube.h"
 #import "MyAdditions.h"
 #import "STKAudioPlayer.h"
+#import "GoogleCast/GoogleCast.h"
+#import "CastIconButton.h"
 
 
-@interface NowPlayingViewController : UIViewController <STKAudioPlayerDelegate, STKDataSourceDelegate>
+@interface NowPlayingViewController : UIViewController <STKAudioPlayerDelegate, STKDataSourceDelegate, GCKDeviceScannerListener, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *expandArrow;
-@property (weak, nonatomic) IBOutlet UIButton *googleCast;
 @property (weak, nonatomic) IBOutlet UIButton *playPause;
 @property (weak, nonatomic) IBOutlet UIButton *next;
 @property (weak, nonatomic) IBOutlet UIButton *previous;
@@ -34,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *songTitle;
 @property (weak, nonatomic) IBOutlet UILabel *songArtist;
 @property (weak, nonatomic) IBOutlet UIProgressView *progress;
+
+@property(nonatomic,retain) UIPopoverPresentationController *resolver;
 
 
 @end
