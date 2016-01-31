@@ -4,7 +4,7 @@
 
 Exclusive just became a little less. Tomahawk is now (sort of) on iOS. This is a very much pre-alpha version. Stay tuned for more updates to come!
 
-[![Platform](https://img.shields.io/cocoapods/p/AFNetworking.svg?style=flat)](http://cocoadocs.org/docsets/AFNetworking)
+[![Platform](https://img.shields.io/cocoapods/p/AFNetworking.svg?style=flat)](http://tomahawk-player.org)
 [![Twitter](https://img.shields.io/badge/twitter-@Tomahawk-3299EC.svg?style=flat)](http://twitter.com/Tomahawk)
 [![Forum](https://img.shields.io/badge/discussion-forum-red.svg?style=flat)](http://forum.tomahawk-player.org/)
 [![Facebook](https://img.shields.io/badge/facebook-Tomahawk-354F88.svg?style=flat)](http://www.facebook.com/TomahawkPlayer)
