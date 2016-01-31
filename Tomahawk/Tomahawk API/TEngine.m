@@ -99,13 +99,13 @@
                 NSLog(@"Response object is %@", responseObject);
                 base = [responseObject objectForKey:@"results"];
                 for (int i = 0; i<base.count; i++) {
-                    NSArray *name = [[base objectAtIndex:i]objectForKey:@"trackName"];
-                    NSArray *artist = [[base objectAtIndex:i]objectForKey:@"artistName"];
-                    NSArray *album = [[base objectAtIndex:i]objectForKey:@"collectionName"];
-                    NSArray *image = [[base objectAtIndex:i]objectForKey:@"artworkUrl100"];
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"trackName"];
+                    NSString *artist = [[base objectAtIndex:i]objectForKey:@"artistName"];
+                    NSString *album = [[base objectAtIndex:i]objectForKey:@"collectionName"];
+                    NSString *image = [[base objectAtIndex:i]objectForKey:@"artworkUrl100"];
                     [songNames addObject:name];
                     [artistNames addObject:artist];
-                    [albumNames addObject:album];
+                    album == nil ? [albumNames addObject:@"Single"]:[albumNames addObject:album];
                     [songImages addObject:image];
                 }
                 break;
