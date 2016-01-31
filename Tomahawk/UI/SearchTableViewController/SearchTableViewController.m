@@ -26,7 +26,6 @@ static CGFloat searchBlockDelay = 0.25;
 
 -(IBAction)seeAll:(UIButton *)button {
     if (button.tag == 0) {
-        NSLog(@"First one");
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         DetailTableViewController *seeAll = (DetailTableViewController *) [storyboard instantiateViewControllerWithIdentifier:@"DetailTableViewController"];
         seeAll.query = self.searchBar.text;
@@ -113,9 +112,6 @@ static CGFloat searchBlockDelay = 0.25;
     [self.tableView setDelaysContentTouches:NO];
     [self.searchBar sizeToFit];
     [self.searchBar becomeFirstResponder];
-    loadingDimmer = [[UIView alloc]initWithFrame:self.view.frame];
-    loadingDimmer.backgroundColor = [UIColor blackColor];
-    loadingDimmer.alpha = 0.3;
     self.searchBar.keyboardAppearance = UIKeyboardAppearanceDark;
     
 }
@@ -124,17 +120,19 @@ static CGFloat searchBlockDelay = 0.25;
 
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    if (!activityIndicatorView) {
-        activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScalePulseOut tintColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] size:20.0f];
-    }
-    [activityIndicatorView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.tableView addSubview:activityIndicatorView];
-    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-    
-    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeCenterY multiplier:1 constant:-40]];
-    
+    activityIndicatorView =  activityIndicatorView ? : ({
+        DGActivityIndicatorView *myView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScalePulseOut tintColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] size:20.0f];
+        [self.view addSubview:myView];
+        myView;
+    });
+    loadingDimmer = loadingDimmer ? :({
+        UIView *myView = [[UIView alloc]init];
+        myView.backgroundColor = [UIColor blackColor];
+        myView.alpha = 0.3;
+        [self.view addSubview:myView];
+        myView;
+    });
     activityIndicatorView.hidden = YES;
-    [self.tableView addSubview:loadingDimmer];
     loadingDimmer.hidden = YES;
     return YES;
 }
@@ -166,6 +164,8 @@ static CGFloat searchBlockDelay = 0.25;
     
 }
 - (void)search:(NSString *)searchText {
+    loadingDimmer.frame = self.view.bounds;
+    activityIndicatorView.center = self.tableView.center;
     [search removeFromSuperview];
     [self.tableView setUserInteractionEnabled:NO];
     loadingDimmer.hidden = NO;
@@ -173,7 +173,7 @@ static CGFloat searchBlockDelay = 0.25;
     [activityIndicatorView startAnimating];
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer limit:@4 page:@0 completion:^(id response) {
+        [TEngine searchAlbumsByAlbumName:searchText resolver:RSpotify limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -185,13 +185,13 @@ static CGFloat searchBlockDelay = 0.25;
             }else {
                 albumNames = [response objectForKey:@"albumNames"];
                 albumArtists = [response objectForKey:@"artistNames"];
-                albumImages = [response objectForKey:@"mediumImages"];
+                albumImages = [response objectForKey:@"albumImages"];
             }
             dispatch_group_leave(group);
         }];
 
     dispatch_group_enter(group);
-        [TEngine searchSongsBySongName:searchText resolver:RAppleMusic limit:@4 page:@0 completion:^(id response) {
+        [TEngine searchSongsBySongName:searchText resolver:RYouTube limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -210,7 +210,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
     
     dispatch_group_enter(group);
-        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer limit:@4 page:@0 completion:^(id response) {
+        [TEngine searchArtistsByArtistName:searchText resolver:RYouTube limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -221,7 +221,7 @@ static CGFloat searchBlockDelay = 0.25;
                 return;
             }else {
                 artistFollowers = [response objectForKey:@"artistFollowers"];
-                artistImages = [response objectForKey:@"mediumImages"];
+                artistImages = [response objectForKey:@"artistImages"];
                 artistNames = [response objectForKey:@"artistNames"];
             }
             dispatch_group_leave(group);
@@ -256,8 +256,7 @@ static CGFloat searchBlockDelay = 0.25;
         case 0:
             for (NSUInteger i = indexPath.row; i<=indexPath.row && i<songNames.count; i++) {
                 searchCell.myTextLabel.text =  [songNames objectAtIndex:i];
-                NSString *albums = [songAlbums objectAtIndex:i];
-                NSString *text = albums ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums] : [songArtists objectAtIndex:i];
+                NSString *text = [songAlbums objectAtIndex:i] ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]] : [songArtists objectAtIndex:i];
                 searchCell.myDetailTextLabel.text = text;
                 [[songImages objectAtIndex:i] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderSongs"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
             }
@@ -276,7 +275,7 @@ static CGFloat searchBlockDelay = 0.25;
                 [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
                 NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
                 searchCell.myDetailTextLabel.text = followers;
-                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
+                [[artistImages objectAtIndex:i] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderArtists"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
             }
             break;
         case 3:

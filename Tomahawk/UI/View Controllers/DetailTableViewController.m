@@ -67,7 +67,7 @@
 - (void)loadNextPage:(int)pageNumber {
     if (self.isLoading) return;
     self.isLoading = YES;
-    [TEngine searchSongsBySongName:self.query resolver:RAppleMusic limit:@30 page:[NSNumber numberWithInt:pageNumber] completion:^(id response) {
+    [TEngine searchSongsBySongName:self.query resolver:RAppleMusic limit:30 page:pageNumber completion:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
             UIAlertController *error = [self error:response];
             [self presentViewController:error animated:YES completion:nil];

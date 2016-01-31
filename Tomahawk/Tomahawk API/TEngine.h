@@ -28,11 +28,11 @@ typedef enum resolvers {
 
 #pragma mark - Search
 
-+(void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion;
++(void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
 
-+ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion;
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
 
-+ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion;
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
 
 
 #pragma mark - Artist

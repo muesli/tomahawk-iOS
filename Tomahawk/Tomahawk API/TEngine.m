@@ -12,7 +12,7 @@
 
 #pragma mark - Search
 
-+ (void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion {
++ (void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -20,27 +20,27 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : song, @"type" : @"track", @"limit" : limit, @"offset" : @([limit intValue] * [page intValue])};
+            params = @{@"q" : song, @"type" : @"track", @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         case RSoundcloud:
             baseURL = SOUNDCLOUD_BASE;
             query = @"/tracks/";
-            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : limit, @"offset" : @([limit intValue] * [page intValue])};
+            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         case RDeezer:{
             baseURL = DEEZER_BASE;
             query = @"/search/track";
-            params = @{@"q" : song, @"limit" : limit, @"index" : @([limit intValue] * [page intValue])};
+            params = @{@"q" : song, @"limit" : @(limit), @"index" : @(limit * page)};
         }break;
         case RAppleMusic:
             baseURL = ITUNES_BASE;
             query = @"/search";
-            params = @{@"term" : song, @"entity" : @"musicTrack", @"limit" : limit, @"offset" : @([limit intValue] * [page intValue])};
+            params = @{@"term" : song, @"entity" : @"musicTrack", @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         case RYouTube:
             baseURL = YOUTUBE_BASE;
             query = @"/youtube/v3/search";
-            params = @{@"part" : @"snippet", @"q" : song, @"type" : @"video", @"videoCategoryId" : @10, @"key" : YOUTUBE_API_KEY, @"maxResults" : limit};
+            params = @{@"part" : @"snippet", @"q" : song, @"type" : @"video", @"videoCategoryId" : @10, @"key" : YOUTUBE_API_KEY, @"maxResults" : @(limit)};
             break;
         default:
             break;
@@ -71,13 +71,12 @@
             case RSoundcloud:
                 base = responseObject;
                 for (int i = 0; i < base.count; i++) {
-                    NSString *song = [[base objectAtIndex:i]objectForKey:@"title"];
-                    NSString *artist = [[[responseObject objectAtIndex:i]objectForKey:@"user"]objectForKey:@"username"];
-                    NSString *images = [[responseObject objectAtIndex:i]objectForKey:@"artwork_url"];
-                    [songNames addObject:song];
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"title"];
+                    NSString *artist = [[[base objectAtIndex:i]objectForKey:@"user"]objectForKey:@"username"];
+                    NSString *images = [[base objectAtIndex:i]objectForKey:@"artwork_url"];
+                    [songNames addObject:name];
                     [artistNames addObject:artist];
                     [songImages addObject:images];
-
                 }
                 
             break;
@@ -96,7 +95,6 @@
                 }
             break;
             case RAppleMusic:
-                NSLog(@"Response object is %@", responseObject);
                 base = [responseObject objectForKey:@"results"];
                 for (int i = 0; i<base.count; i++) {
                     NSString *name = [[base objectAtIndex:i]objectForKey:@"trackName"];
@@ -109,26 +107,24 @@
                     [songImages addObject:image];
                 }
                 break;
-            case RYouTube:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *songNames = [[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"title"];
-                [myDict setObject:songNames forKey:@"songNames"];
-                
-                NSArray *artistNames = [[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"channelTitle"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *albumImages = [[[[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"thumbnails"]valueForKey:@"default"]valueForKey:@"url"];
-                [myDict setObject:albumImages forKey:@"songImages"];
-            }break;
+            case RYouTube:
+                base = [responseObject objectForKey:@"items"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[[base objectAtIndex:i]objectForKey:@"snippet"]objectForKey:@"title"];
+                    NSString *artist = [[[base objectAtIndex:i]objectForKey:@"snippet"]objectForKey:@"channelTitle"];
+                    NSString *image = [[[[[base objectAtIndex:i]objectForKey:@"snippet"]objectForKey:@"thumbnails"]objectForKey:@"default"]objectForKey:@"url"];
+                    [songNames addObject:name];
+                    [artistNames addObject:artist];
+                    [songImages addObject:image];
+                }
+            break;
             default:
                 break;
         }
         [myDict setObject:songNames forKey:@"songNames"];
         [myDict setObject:artistNames forKey:@"artistNames"];
-        [myDict setObject:albumNames forKey:@"albumNames"];
+        albumNames.count == 0 ? : [myDict setObject:albumNames forKey:@"albumNames"];
         [myDict setObject:songImages forKey:@"songImages"];
-        NSLog(@"my dict is %@", myDict);
         completion (myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
@@ -136,7 +132,7 @@
     }];
 }
 
-+ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion {
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -144,27 +140,28 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : artist, @"type" : @"artist", @"limit" : limit};
+            params = @{@"q" : artist, @"type" : @"artist", @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         case RSoundcloud:
             baseURL = SOUNDCLOUD_BASE;
             query = @"/users";
-            params = @{@"q" : artist, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : limit};
+            params = @{@"q" : artist, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         case RDeezer:
             baseURL = DEEZER_BASE;
             query = @"/search/artist";
-            params = @{@"q" : artist, @"limit" : limit};
+            params = @{@"q" : artist, @"limit" : @(limit), @"index" : @(limit * page)};
             break;
         case RLastFM:
             baseURL = LASTFM_BASE;
+            page += 1;
             query = @"/2.0";
-            params = @{@"artist" : artist, @"method" : @"artist.search", @"format" : @"json", @"api_key" : LASTFM_API_KEY, @"limit" : limit};
+            params = @{@"artist" : artist, @"method" : @"artist.search", @"format" : @"json", @"api_key" : LASTFM_API_KEY, @"limit" : @(limit), @"page" : @(page)};
             break;
         case RYouTube:
             baseURL = YOUTUBE_BASE;
             query = @"/youtube/v3/search";
-            params = @{@"part" : @"snippet", @"q" : artist, @"type" : @"channel", @"key" : YOUTUBE_API_KEY, @"maxResults" : limit};
+            params = @{@"part" : @"snippet", @"q" : artist, @"type" : @"channel", @"key" : YOUTUBE_API_KEY, @"maxResults" : @(limit)};
             break;
         default:
             break;
@@ -172,114 +169,85 @@
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary new];
+        NSMutableArray *artistNames = [NSMutableArray new];
+        NSMutableArray *artistFollowers = [NSMutableArray new];
+        NSMutableArray *artistImages = [NSMutableArray new];
+        NSArray *base;
         switch (resolver) {
-            case RSpotify:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *artistNames = [[[responseObject valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"name"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *artistFollowers = [[[[responseObject valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"followers"]valueForKey:@"total"];
-                [myDict setObject:artistFollowers forKey:@"artistFollowers"];
-                NSArray *artistImages = [[[responseObject valueForKey:@"artists"]valueForKey:@"items"]valueForKey:@"images"];
-                
-                NSMutableArray *images = [NSMutableArray new];
-                
-                for (int i = 0; i<artistImages.count; i++) {
-                    NSString *imageURLAsString;
-                    @try {
-                        imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"url"];
-                    }
-                    @catch (NSException *exception) {
-                        imageURLAsString = @"";
-                    }
-                    @finally {
-                        [images addObject:imageURLAsString];
-                    }
+            case RSpotify:
+                base = [[responseObject objectForKey:@"artists"]objectForKey:@"items"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSNumber *followers = [[[base objectAtIndex:i]objectForKey:@"followers"]objectForKey:@"total"];
+                    id image;
+                    @try {image = [[[[base objectAtIndex:i]objectForKey:@"images"]objectAtIndex:1]objectForKey:@"url"];}
+                    @catch (NSException *exception) {image = [NSNull null];}
+                    @finally {[artistImages addObject:image];}
+                    [artistNames addObject:name];
+                    [artistFollowers addObject:followers];
                 }
-                [myDict setObject:images forKey:@"mediumImages"];
-                completion (myDict);
-            }break;
-            case RSoundcloud:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *artistFollowers = [responseObject valueForKey:@"followers_count"];
-                
-                [myDict setObject:artistFollowers forKey:@"artistFollowers"];
-                
-                NSArray *artistNames = [responseObject valueForKey:@"username"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *artistImages = [responseObject valueForKey:@"avatar_url"];
-                NSMutableArray *images = [NSMutableArray new];
-                for (int i =0; i<artistImages.count; i++) {
-                    if ([[artistImages objectAtIndex:i]isKindOfClass:[NSNull class]]) {
-                        [images addObject:@""];
-                    }else{
-                        [images addObject:[artistImages objectAtIndex:i]];
-                    }
+            break;
+            case RSoundcloud:
+                base = responseObject;
+                for (int i = 0; i < base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"username"];
+                    NSNumber *followers = [[responseObject objectAtIndex:i]objectForKey:@"followers_count"];
+                    NSString *images = [[responseObject objectAtIndex:i]objectForKey:@"avatar_url"];
+                    [artistNames addObject:name];
+                    [artistFollowers addObject:followers];
+                    [artistImages addObject:images];
                 }
-                [myDict setObject:images forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
-            case RDeezer: {
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *artistNames = [[responseObject valueForKey:@"data"]valueForKey:@"name"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *artistFollowers = [[responseObject valueForKey:@"data"]valueForKey:@"nb_fan"];
-                [myDict setObject:artistFollowers forKey:@"artistFollowers"];
-                
-                NSArray *artistImages = [[responseObject valueForKey:@"data"]valueForKey:@"picture_medium"];
-                [myDict setObject:artistImages forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
-            case RLastFM: {
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *artistNames = [[[[responseObject valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"name"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *artistFollowers = [[[[responseObject valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"listeners"];
-                NSNumberFormatter *formatter = [NSNumberFormatter new];
-                formatter.numberStyle = NSNumberFormatterNoStyle;
-                
-                NSArray *artistImages = [[[[responseObject valueForKey:@"results"]valueForKey:@"artistmatches"]valueForKey:@"artist"]valueForKey:@"image"];
-                
-                NSMutableArray *images = [NSMutableArray new];
-                NSMutableArray *followers = [NSMutableArray new];
-                for (int i = 0; i<artistImages.count; i++) {
-                    NSString *imageURLAsString = [[[artistImages objectAtIndex:i]objectAtIndex:2]valueForKey:@"#text"];
-                    [images addObject:imageURLAsString];
-                    NSNumber *myNumber = [formatter numberFromString:[artistFollowers objectAtIndex:i]];
-                    [followers addObject:myNumber];
+            break;
+            case RDeezer:
+                base = [responseObject objectForKey:@"data"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSNumber *followers = [[base objectAtIndex:i]objectForKey:@"nb_fan"];
+                    NSString *image = [[base objectAtIndex:i]objectForKey:@"picture_medium"];
+                    [artistNames addObject:name];
+                    [artistFollowers addObject:followers];
+                    [artistImages addObject:image];
                     
                 }
-                [myDict setObject:followers forKey:@"artistFollowers"];
-                
-                [myDict setObject:images forKey:@"mediumImages"];
-                completion (myDict);
-            }break;
-            case RYouTube:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *artistNames = [[responseObject valueForKey:@"items"]valueForKey:@"snippet"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *artistFollowers = [[responseObject valueForKey:@"data"]valueForKey:@"nb_fan"];
-                [myDict setObject:artistFollowers forKey:@"artistFollowers"];
-                
-                NSArray *artistImages = [[responseObject valueForKey:@"data"]valueForKey:@"picture_medium"];
-                [myDict setObject:artistImages forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
+            break;
+            case RLastFM:
+                base = [[[responseObject objectForKey:@"results"]objectForKey:@"artistmatches"]objectForKey:@"artist"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSNumberFormatter *formatter = [NSNumberFormatter new];
+                    [formatter setNumberStyle:NSNumberFormatterNoStyle];
+                    NSNumber *followers = [formatter numberFromString:[[base objectAtIndex:i]objectForKey:@"listeners"]];
+                    NSString *image = [[[[base objectAtIndex:i]objectForKey:@"image"]objectAtIndex:2]objectForKey:@"#text"];
+                    [artistNames addObject:name];
+                    [artistFollowers addObject:followers];
+                    [artistImages addObject:image];
+                }
+            break;
+            case RYouTube:
+                base = [responseObject objectForKey:@"items"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[[base objectAtIndex:i]objectForKey:@"snippet"]objectForKey:@"title"];
+                    NSString *channelID = [[[base objectAtIndex:i]objectForKey:@"id"]objectForKey:@"channelId"];
+                    NSString *myURL = [NSString stringWithFormat:@"https://www.googleapis.com/youtube/v3/channels?part=statistics&id=%@&key=%@", channelID, YOUTUBE_API_KEY];
+                    NSData *myData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:myURL] options:NSDataReadingMappedIfSafe error:nil];
+                    NSDictionary *followerDict = [myData serialize];
+                    NSNumberFormatter *formatter = [NSNumberFormatter new];
+                    [formatter setNumberStyle:NSNumberFormatterNoStyle];
+                    NSNumber *followers = [formatter numberFromString:[[[[followerDict objectForKey:@"items"]objectAtIndex:0]objectForKey:@"statistics"]objectForKey:@"subscriberCount"]];
+                    NSString *image = [[[[[base objectAtIndex:i]objectForKey:@"snippet"]objectForKey:@"thumbnails"]objectForKey:@"default"]objectForKey:@"url"];
+                    [artistNames addObject:name];
+                    [artistFollowers addObject:followers];
+                    [artistImages addObject:image];
+                }
+            break;
             default:
                 break;
         }
+        [myDict setObject:artistNames forKey:@"artistNames"];
+        [myDict setObject:artistFollowers forKey:@"artistFollowers"];
+        [myDict setObject:artistImages forKey:@"artistImages"];
+        completion (myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
         completion (error);
@@ -287,7 +255,7 @@
 
 }
 
-+ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(NSNumber *)limit page:(NSNumber *)page completion:(void (^)(id response))completion {
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -295,17 +263,17 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : album, @"type" : @"album", @"limit" : limit};
+            params = @{@"q" : album, @"type" : @"album", @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         case RDeezer:
             baseURL = DEEZER_BASE;
             query = @"/search/album";
-            params = @{@"q" : album, @"limit" : limit};
+            params = @{@"q" : album, @"limit" : @(limit), @"index" : @(limit * page)};
             break;
         case RAppleMusic:
             baseURL = ITUNES_BASE;
             query = @"/search";
-            params = @{@"term" : album, @"entity" : @"album", @"limit" : limit};
+            params = @{@"term" : album, @"entity" : @"album", @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
         default:
             break;
@@ -313,72 +281,55 @@
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary new];
+        NSMutableArray *albumNames = [NSMutableArray new];
+        NSMutableArray *artistNames = [NSMutableArray new];
+        NSMutableArray *albumImages = [NSMutableArray new];
+        NSArray *base;
         switch (resolver) {
-            case RSpotify:{
-                NSArray *identifier = [[[responseObject valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"id"];
-                
-                NSMutableArray *artistNames = [NSMutableArray new];
-                
-                for (int i = 0; i<identifier.count; i++) {
-                    NSString *albumArtistURL = @"https://api.spotify.com/v1/albums/";
-                    albumArtistURL = [albumArtistURL stringByAppendingString:[identifier objectAtIndex:i]];
+            case RSpotify:
+                base = [[responseObject objectForKey:@"albums"]objectForKey:@"items"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSString *albumArtistURL = [NSString stringWithFormat:@"https://api.spotify.com/v1/albums/%@", [[base objectAtIndex:i]objectForKey:@"id"]];
                     NSData *myData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:albumArtistURL] options:NSDataReadingMappedIfSafe error:nil];
                     NSDictionary *albumArtist = [myData serialize];
-                    
-                    NSString *artists = [[[albumArtist valueForKey:@"artists"]valueForKey:@"name"]objectAtIndex:0];
-                    [artistNames addObject:artists];
+                    NSString *artist = [[[albumArtist objectForKey:@"artists"]objectAtIndex:0]objectForKey:@"name"];
+                    NSString *image = [[[[base objectAtIndex:i]objectForKey:@"images"]objectAtIndex:1]objectForKey:@"url"];
+                    [albumNames addObject:name];
+                    [artistNames addObject:artist];
+                    [albumImages addObject:image];
                 }
-                
-                
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *albumNames = [[[responseObject valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"name"];
-                [myDict setObject:albumNames forKey:@"albumNames"];
-                
-                NSArray *albumImages = [[[responseObject valueForKey:@"albums"]valueForKey:@"items"]valueForKey:@"images"];
-                
-                NSMutableArray *images = [NSMutableArray new];
-                
-                for (int i = 0; i<albumImages.count; i++) {
-                    NSString *imageURLAsString = [[[albumImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
-                    [images addObject:imageURLAsString];
+            break;
+            case RDeezer:
+                base = [responseObject objectForKey:@"data"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"title"];
+                    NSString *artist = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+                    NSString *image = [[base objectAtIndex:i]objectForKey:@"cover"];
+                    [albumNames addObject:name];
+                    [artistNames addObject:artist];
+                    [albumImages addObject:image];
                 }
-                [myDict setObject:images forKey:@"mediumImages"];
-                completion (myDict);
-            }break;
-            case RDeezer: {
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *albumNames = [[responseObject valueForKey:@"data"]valueForKey:@"title"];
-                [myDict setObject:albumNames forKey:@"albumNames"];
-                
-                NSArray *artistNames = [[[responseObject valueForKey:@"data"]valueForKey:@"artist"]valueForKey:@"name"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *albumImages = [[responseObject valueForKey:@"data"]valueForKey:@"cover"];
-                [myDict setObject:albumImages forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
-            case RAppleMusic:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *albumNames = [[responseObject valueForKey:@"results"]valueForKey:@"collectionName"];
-                [myDict setObject:albumNames forKey:@"albumNames"];
-                
-                NSArray *artistNames = [[responseObject valueForKey:@"results"]valueForKey:@"artistName"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *albumImages = [[responseObject valueForKey:@"results"]valueForKey:@"artworkUrl100"];
-                [myDict setObject:albumImages forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
+            break;
+            case RAppleMusic:
+                base = [responseObject objectForKey:@"results"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"collectionName"];
+                    NSString *artist = [[base objectAtIndex:i]objectForKey:@"artistName"];
+                    NSString *image = [[base objectAtIndex:i]objectForKey:@"artworkUrl100"];
+                    [albumNames addObject:name];
+                    [artistNames addObject:artist];
+                    [albumImages addObject:image];
+                }
+            break;
             default:
                 break;
         }
+        [myDict setObject:albumNames forKey:@"albumNames"];
+        [myDict setObject:artistNames forKey:@"artistNames"];
+        [myDict setObject:albumImages forKey:@"albumImages"];
+        completion (myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
         completion (error);
