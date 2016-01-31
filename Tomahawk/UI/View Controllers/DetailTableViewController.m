@@ -60,14 +60,14 @@
     NSString *text = albums ? [NSString stringWithFormat:@"%@ • %@", [detailTextLabels objectAtIndex:indexPath.row], albums] : [detailTextLabels objectAtIndex:indexPath.row];
     cell.myDetailTextLabel.text = text;
     cell.myTextLabel.text = [textLabels objectAtIndex:indexPath.row];
-    [cell.myImageView setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];;
+    [[images objectAtIndex:indexPath.row] isKindOfClass:[NSNull class]] ? [cell.myImageView setImage:[UIImage imageNamed:@"PlaceholderSongs"]] :[cell.myImageView setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
     return cell;
 }
 
 - (void)loadNextPage:(int)pageNumber {
     if (self.isLoading) return;
     self.isLoading = YES;
-    [TEngine searchSongsBySongName:self.query resolver:RDeezer limit:@30 page:[NSNumber numberWithInt:pageNumber] completion:^(id response) {
+    [TEngine searchSongsBySongName:self.query resolver:RAppleMusic limit:@30 page:[NSNumber numberWithInt:pageNumber] completion:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
             UIAlertController *error = [self error:response];
             [self presentViewController:error animated:YES completion:nil];
@@ -75,7 +75,7 @@
         }else {
             textLabels = textLabels ? [textLabels arrayByAddingObjectsFromArray:[response objectForKey:@"songNames"]] : [response objectForKey:@"songNames"];
             detailTextLabels = detailTextLabels ? [detailTextLabels arrayByAddingObjectsFromArray:[response objectForKey:@"artistNames"]] : [response objectForKey:@"artistNames"];
-            images = images ? [images arrayByAddingObjectsFromArray:[response objectForKey:@"mediumImages"]] : [response objectForKey:@"mediumImages"];
+            images = images ? [images arrayByAddingObjectsFromArray:[response objectForKey:@"songImages"]] : [response objectForKey:@"songImages"];
             secondDetailTextLabels = secondDetailTextLabels ? [secondDetailTextLabels arrayByAddingObjectsFromArray:[response objectForKey:@"albumNames"]] : [response objectForKey:@"albumNames"];
         }
         [self.tableView reloadData];

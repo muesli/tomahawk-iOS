@@ -166,7 +166,7 @@ static CGFloat searchBlockDelay = 0.25;
     
 }
 - (void)search:(NSString *)searchText {
-    
+    [search removeFromSuperview];
     [self.tableView setUserInteractionEnabled:NO];
     loadingDimmer.hidden = NO;
     [activityIndicatorView setHidden:NO];
@@ -191,7 +191,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
 
     dispatch_group_enter(group);
-        [TEngine searchSongsBySongName:searchText resolver:RDeezer limit:@4 page:@0 completion:^(id response) {
+        [TEngine searchSongsBySongName:searchText resolver:RAppleMusic limit:@4 page:@0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [self error:response];
                 [self presentViewController:error animated:YES completion:nil];
@@ -204,7 +204,7 @@ static CGFloat searchBlockDelay = 0.25;
                 songNames = [response objectForKey:@"songNames"];
                 songAlbums = [response objectForKey:@"albumNames"];
                 songArtists = [response objectForKey:@"artistNames"];
-                songImages = [response objectForKey:@"mediumImages"];
+                songImages = [response objectForKey:@"songImages"];
             }
             dispatch_group_leave(group);
         }];
@@ -259,7 +259,7 @@ static CGFloat searchBlockDelay = 0.25;
                 NSString *albums = [songAlbums objectAtIndex:i];
                 NSString *text = albums ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], albums] : [songArtists objectAtIndex:i];
                 searchCell.myDetailTextLabel.text = text;
-                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
+                [[songImages objectAtIndex:i] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderSongs"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
             }
             break;
         case 1:
@@ -334,7 +334,7 @@ static CGFloat searchBlockDelay = 0.25;
     }else {
         [messageLabel removeFromSuperview];
         self.tableView.backgroundView = nil;
-        [search removeFromSuperview];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 4;
     }
 }

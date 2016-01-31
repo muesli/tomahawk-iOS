@@ -20,12 +20,12 @@
         case RSpotify:
             baseURL = SPOTIFY_BASE;
             query = @"/v1/search";
-            params = @{@"q" : song, @"type" : @"track", @"limit" : limit};
+            params = @{@"q" : song, @"type" : @"track", @"limit" : limit, @"offset" : @([limit intValue] * [page intValue])};
             break;
         case RSoundcloud:
             baseURL = SOUNDCLOUD_BASE;
             query = @"/tracks/";
-            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : limit};
+            params = @{@"q" : song, @"client_id" : SOUNDCLOUD_CLIENT_ID, @"limit" : limit, @"offset" : @([limit intValue] * [page intValue])};
             break;
         case RDeezer:{
             baseURL = DEEZER_BASE;
@@ -35,7 +35,7 @@
         case RAppleMusic:
             baseURL = ITUNES_BASE;
             query = @"/search";
-            params = @{@"term" : song, @"entity" : @"musicTrack", @"limit" : limit};
+            params = @{@"term" : song, @"entity" : @"musicTrack", @"limit" : limit, @"offset" : @([limit intValue] * [page intValue])};
             break;
         case RYouTube:
             baseURL = YOUTUBE_BASE;
@@ -48,97 +48,67 @@
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary new];
+        NSMutableArray *songNames = [NSMutableArray new];
+        NSMutableArray *artistNames = [NSMutableArray new];
+        NSMutableArray *albumNames = [NSMutableArray new];
+        NSMutableArray *songImages = [NSMutableArray new];
+        NSArray *base;
         switch (resolver) {
-            case RSpotify:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *songNames = [[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"name"];
-                [myDict setObject:songNames forKey:@"songNames"];
-                
-                NSArray *artistNames = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"artists"]valueForKey:@"name"];
-                
-                NSMutableArray *artists = [NSMutableArray new];
-                
-                for (int i = 0; i<artistNames.count; i++) {
-                    NSString *artist1 = [[artistNames objectAtIndex:i]objectAtIndex:0];
-                    @try {
-                        NSString *artist2 = [[artistNames objectAtIndex:i]objectAtIndex:1];
-                        artist1 = [NSString stringWithFormat:@"%@ (feat. %@)", artist1, artist2];
-                    }
-                    @catch (NSException *exception) {}
-                    @finally {[artists addObject:artist1];}
+            case RSpotify:
+                base = [[responseObject objectForKey:@"tracks"]objectForKey:@"items"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSString *artist = [[[[base objectAtIndex:i]objectForKey:@"artists"]objectAtIndex:0]objectForKey:@"name"];
+                    NSString *album = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"name"];
+                    NSString *image = [[[[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"images"]objectAtIndex:1]objectForKey:@"url"];
+                    [artistNames addObject:artist];
+                    [songNames addObject:name];
+                    [albumNames addObject:album];
+                    [songImages addObject:image];
                 }
-                [myDict setObject:artists forKey:@"artistNames"];
-                
-                NSArray *albumNames = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"name"];
-                [myDict setObject:albumNames forKey:@"albumNames"];
-                
-                NSArray *songImages = [[[[responseObject valueForKey:@"tracks"]valueForKey:@"items"]valueForKey:@"album"]valueForKey:@"images"];
-                NSMutableArray *images = [NSMutableArray new];
-                for (int i = 0; i<songImages.count; i++) {
-                    NSString *imageURLAsString = [[[songImages objectAtIndex:i]objectAtIndex:1]valueForKey:@"url"];
-                    [images addObject:imageURLAsString];
+            break;
+            case RSoundcloud:
+                base = responseObject;
+                for (int i = 0; i < base.count; i++) {
+                    NSString *song = [[base objectAtIndex:i]objectForKey:@"title"];
+                    NSString *artist = [[[responseObject objectAtIndex:i]objectForKey:@"user"]objectForKey:@"username"];
+                    NSString *images = [[responseObject objectAtIndex:i]objectForKey:@"artwork_url"];
+                    [songNames addObject:song];
+                    [artistNames addObject:artist];
+                    [songImages addObject:images];
+
                 }
-                [myDict setObject:images forKey:@"mediumImages"];
-                completion (myDict);
-            }break;
-            case RSoundcloud:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
                 
-                NSArray *songNames = [responseObject valueForKey:@"title"];
-                [myDict setObject:songNames forKey:@"songNames"];
-                
-                NSArray *artistNames = [[responseObject valueForKey:@"user"]valueForKey:@"username"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *songImages = [responseObject valueForKey:@"artwork_url"];
-                
-                NSMutableArray *images = [NSMutableArray new];
-                for (int i =0; i<songImages.count; i++) {
-                    if ([[songImages objectAtIndex:i]isKindOfClass:[NSNull class]]) {
-                        [images addObject:@""];
-                    }else{
-                        [images addObject:[songImages objectAtIndex:i]];
-                    }
+            break;
+            case RDeezer:
+                base = [responseObject objectForKey:@"data"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"title"];
+                    NSString *artist = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+                    NSString *album = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"title"];
+                    NSString *image = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"cover"];
+                    [songNames addObject:name];
+                    [artistNames addObject:artist];
+                    [albumNames addObject:album];
+                    [songImages addObject:image];
+                    
                 }
-                [myDict setObject:images forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
-            case RDeezer: {
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *songNames = [[responseObject valueForKey:@"data"]valueForKey:@"title"];
-                [myDict setObject:songNames forKey:@"songNames"];
-                
-                NSArray *artistNames = [[[responseObject valueForKey:@"data"]valueForKey:@"artist"]valueForKey:@"name"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *albumNames = [[[responseObject valueForKey:@"data"]valueForKey:@"album"]valueForKey:@"title"];
-                [myDict setObject:albumNames forKey:@"albumNames"];
-                
-                NSArray *songImages = [[[responseObject valueForKey:@"data"]valueForKey:@"album"]valueForKey:@"cover"];
-                [myDict setObject:songImages forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
-            case RAppleMusic:{
-                NSMutableDictionary *myDict = [NSMutableDictionary new];
-                
-                NSArray *songNames = [[responseObject valueForKey:@"results"]valueForKey:@"trackName"];
-                [myDict setObject:songNames forKey:@"songNames"];
-                
-                NSArray *artistNames = [[responseObject valueForKey:@"results"]valueForKey:@"artistName"];
-                [myDict setObject:artistNames forKey:@"artistNames"];
-                
-                NSArray *albumNames = [[responseObject valueForKey:@"results"]valueForKey:@"collectionName"];
-                [myDict setObject:albumNames forKey:@"albumNames"];
-                
-                NSArray *albumImages = [[responseObject valueForKey:@"results"]valueForKey:@"artworkUrl100"];
-                [myDict setObject:albumImages forKey:@"mediumImages"];
-                
-                completion (myDict);
-            }break;
+            break;
+            case RAppleMusic:
+                NSLog(@"Response object is %@", responseObject);
+                base = [responseObject objectForKey:@"results"];
+                for (int i = 0; i<base.count; i++) {
+                    NSArray *name = [[base objectAtIndex:i]objectForKey:@"trackName"];
+                    NSArray *artist = [[base objectAtIndex:i]objectForKey:@"artistName"];
+                    NSArray *album = [[base objectAtIndex:i]objectForKey:@"collectionName"];
+                    NSArray *image = [[base objectAtIndex:i]objectForKey:@"artworkUrl100"];
+                    [songNames addObject:name];
+                    [artistNames addObject:artist];
+                    [albumNames addObject:album];
+                    [songImages addObject:image];
+                }
+                break;
             case RYouTube:{
                 NSMutableDictionary *myDict = [NSMutableDictionary new];
                 
@@ -149,13 +119,17 @@
                 [myDict setObject:artistNames forKey:@"artistNames"];
                 
                 NSArray *albumImages = [[[[[responseObject valueForKey:@"items"]valueForKey:@"snippet"]valueForKey:@"thumbnails"]valueForKey:@"default"]valueForKey:@"url"];
-                [myDict setObject:albumImages forKey:@"mediumImages"];
-                
-                completion (myDict);
+                [myDict setObject:albumImages forKey:@"songImages"];
             }break;
             default:
                 break;
         }
+        [myDict setObject:songNames forKey:@"songNames"];
+        [myDict setObject:artistNames forKey:@"artistNames"];
+        [myDict setObject:albumNames forKey:@"albumNames"];
+        [myDict setObject:songImages forKey:@"songImages"];
+        NSLog(@"my dict is %@", myDict);
+        completion (myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
         completion (error);
@@ -426,7 +400,7 @@
     
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:LASTFM_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [session POST:@"/2.0" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
-        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[[responseObject valueForKey:@"session"]valueForKey:@"key"] tokenType:@"Bearer"];
+        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[[responseObject objectForKey:@"session"]objectForKey:@"key"] tokenType:@"Bearer"];
         [AFOAuthCredential storeCredential:credential withIdentifier:@"lastFM"];
         completion(@"Success");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -456,7 +430,7 @@
         if (!error) {
             @try {
                 NSDictionary *githubError = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : [githubError valueForKey:@"message"]}];
+                error = [NSError errorWithDomain:@"com.mourke.Tomahawk.ErrorDomain" code:-4 userInfo: @{NSLocalizedDescriptionKey : [githubError objectForKey:@"message"]}];
                 completion (error);
             }
             @catch (NSException *exception) {
@@ -509,8 +483,8 @@
     [session POST:@"/oauth/access_token.php" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *myString = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSDictionary *json = [myString URLStringValues];
-        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[json valueForKey:@"access_token"] tokenType:@"Bearer"];
-        NSDate *date = [NSDate dateWithTimeInterval:[[json valueForKey:@"expires"] doubleValue] sinceDate:[NSDate date]];
+        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[json objectForKey:@"access_token"] tokenType:@"Bearer"];
+        NSDate *date = [NSDate dateWithTimeInterval:[[json objectForKey:@"expires"] doubleValue] sinceDate:[NSDate date]];
         [credential setExpiration:date];
         [AFOAuthCredential storeCredential:credential withIdentifier:@"deezer"];
         completion(@"Success");
@@ -534,10 +508,10 @@
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://api.soundcloud.com"] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [session POST:@"/oauth2/token" parameters:params constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
-        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[responseObject valueForKey:@"access_token"] tokenType:@"Bearer"];
-        NSDate *date = [NSDate dateWithTimeInterval:[[responseObject valueForKey:@"expires_in"] doubleValue] sinceDate:[NSDate date]];
+        AFOAuthCredential *credential = [AFOAuthCredential credentialWithOAuthToken:[responseObject objectForKey:@"access_token"] tokenType:@"Bearer"];
+        NSDate *date = [NSDate dateWithTimeInterval:[[responseObject objectForKey:@"expires_in"] doubleValue] sinceDate:[NSDate date]];
         [credential setExpiration:date];
-        credential.refreshToken = [responseObject valueForKey:@"refresh_token"];
+        credential.refreshToken = [responseObject objectForKey:@"refresh_token"];
         [AFOAuthCredential storeCredential:credential withIdentifier:@"soundcloud"];
         completion (@"Success");
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
