@@ -8,6 +8,8 @@
 
 
 #import "ConnectCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import "MyAdditions.h"
 
 @implementation ConnectCell {
     UIImageView *imageView;

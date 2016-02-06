@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0082B71C663546002CBE54 /* StickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0082B41C663546002CBE54 /* StickyHeaderFlowLayout.m */; };
+		4D0082B81C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0082B61C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m */; };
 		4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */; };
 		4D0A0F8D1C32BE6E00244532 /* ResolverDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */; };
 		4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA41C33231F00244532 /* SearchTableViewController.m */; };
@@ -20,6 +22,9 @@
 		4D4DBE2F1C3B23D800AB625B /* SongsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4DBE2D1C3B23D800AB625B /* SongsTableViewController.xib */; };
 		4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4DBE311C3B23FE00AB625B /* PlaylistsTableViewController.m */; };
 		4D4DBE341C3B23FE00AB625B /* PlaylistsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4DBE321C3B23FE00AB625B /* PlaylistsTableViewController.xib */; };
+		4D9178AD1C652FAD00F1AD09 /* ArtistsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9178AB1C652FAD00F1AD09 /* ArtistsHeader.m */; };
+		4D9178AE1C652FAD00F1AD09 /* ArtistsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9178AC1C652FAD00F1AD09 /* ArtistsHeader.xib */; };
+		4D9178B11C65358500F1AD09 /* ArtistDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9178B01C65358500F1AD09 /* ArtistDetailCollectionViewController.m */; };
 		4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */; };
 		4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */; };
 		4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */; };
@@ -74,6 +79,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D0082B31C663546002CBE54 /* StickyHeaderFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StickyHeaderFlowLayout.h; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayout.h; sourceTree = "<group>"; };
+		4D0082B41C663546002CBE54 /* StickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StickyHeaderFlowLayout.m; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayout.m; sourceTree = "<group>"; };
+		4D0082B51C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StickyHeaderFlowLayoutAttributes.h; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayoutAttributes.h; sourceTree = "<group>"; };
+		4D0082B61C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StickyHeaderFlowLayoutAttributes.m; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayoutAttributes.m; sourceTree = "<group>"; };
 		4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewCell.m; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.m"; sourceTree = "<group>"; };
 		4D0A0F8A1C31D70200244532 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewCell.h; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.h"; sourceTree = "<group>"; };
 		4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResolverDetailController.xib; path = "Tomahawk/UI/Custom Alert Controller/ResolverDetailController.xib"; sourceTree = "<group>"; };
@@ -96,6 +105,11 @@
 		4D4DBE301C3B23FE00AB625B /* PlaylistsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistsTableViewController.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/PlaylistsTableViewController.h"; sourceTree = "<group>"; };
 		4D4DBE311C3B23FE00AB625B /* PlaylistsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistsTableViewController.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/PlaylistsTableViewController.m"; sourceTree = "<group>"; };
 		4D4DBE321C3B23FE00AB625B /* PlaylistsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaylistsTableViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/PlaylistsTableViewController.xib"; sourceTree = "<group>"; };
+		4D9178AA1C652FAD00F1AD09 /* ArtistsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArtistsHeader.h; path = "Tomahawk/UI/View Controllers/Artists Detail View Controllers/ArtistsHeader.h"; sourceTree = "<group>"; };
+		4D9178AB1C652FAD00F1AD09 /* ArtistsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArtistsHeader.m; path = "Tomahawk/UI/View Controllers/Artists Detail View Controllers/ArtistsHeader.m"; sourceTree = "<group>"; };
+		4D9178AC1C652FAD00F1AD09 /* ArtistsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArtistsHeader.xib; path = "Tomahawk/UI/View Controllers/Artists Detail View Controllers/ArtistsHeader.xib"; sourceTree = "<group>"; };
+		4D9178AF1C65358500F1AD09 /* ArtistDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArtistDetailCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Artists Detail View Controllers/ArtistDetailCollectionViewController.h"; sourceTree = "<group>"; };
+		4D9178B01C65358500F1AD09 /* ArtistDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArtistDetailCollectionViewController.m; path = "Tomahawk/UI/View Controllers/Artists Detail View Controllers/ArtistDetailCollectionViewController.m"; sourceTree = "<group>"; };
 		4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomahawk/Images.xcassets; sourceTree = "<group>"; };
 		4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ActivityFeedViewController.h; path = "Tomahawk/UI/View Controllers/ActivityFeedViewController.h"; sourceTree = "<group>"; };
 		4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ActivityFeedViewController.m; path = "Tomahawk/UI/View Controllers/ActivityFeedViewController.m"; sourceTree = "<group>"; };
@@ -196,6 +210,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4D0082B91C664326002CBE54 /* Artists Detail View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D9178AA1C652FAD00F1AD09 /* ArtistsHeader.h */,
+				4D9178AB1C652FAD00F1AD09 /* ArtistsHeader.m */,
+				4D9178AC1C652FAD00F1AD09 /* ArtistsHeader.xib */,
+				4D9178AF1C65358500F1AD09 /* ArtistDetailCollectionViewController.h */,
+				4D9178B01C65358500F1AD09 /* ArtistDetailCollectionViewController.m */,
+			);
+			name = "Artists Detail View Controllers";
+			sourceTree = "<group>";
+		};
 		4D0A0F881C31D6EE00244532 /* Custom Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +280,10 @@
 		4DA5D2FD1C2F86BA0031FBE5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4D0082B31C663546002CBE54 /* StickyHeaderFlowLayout.h */,
+				4D0082B41C663546002CBE54 /* StickyHeaderFlowLayout.m */,
+				4D0082B51C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.h */,
+				4D0082B61C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m */,
 				4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */,
 				4D2456D51C5BDDC400B5B4E5 /* CastIconButton.h */,
 				4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */,
@@ -324,6 +354,7 @@
 		4DA5D3061C2F88470031FBE5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D0082B91C664326002CBE54 /* Artists Detail View Controllers */,
 				4DB547DF1C3FD56E00B7F22B /* Inbox View Controllers */,
 				4D0A0FA81C34168200244532 /* Search Table View Controller */,
 				4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */,
@@ -570,6 +601,7 @@
 				4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */,
 				4D0A0FA71C33231F00244532 /* SearchTableViewController.xib in Resources */,
 				4D4DBE341C3B23FE00AB625B /* PlaylistsTableViewController.xib in Resources */,
+				4D9178AE1C652FAD00F1AD09 /* ArtistsHeader.xib in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
 				4D0A0F8D1C32BE6E00244532 /* ResolverDetailController.xib in Resources */,
 			);
@@ -659,11 +691,13 @@
 				4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */,
 				4DA5D21F1C2F82060031FBE5 /* NavigationController.m in Sources */,
 				4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */,
+				4D0082B71C663546002CBE54 /* StickyHeaderFlowLayout.m in Sources */,
 				4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */,
 				4DA5D21C1C2F81F50031FBE5 /* main.m in Sources */,
 				4DA5D2131C2F81D30031FBE5 /* InfoTableViewController.m in Sources */,
 				4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */,
 				4DA5D2181C2F81D30031FBE5 /* SettingsViewController.m in Sources */,
+				4D9178B11C65358500F1AD09 /* ArtistDetailCollectionViewController.m in Sources */,
 				4DEE81671C3D90530077F7FD /* ChartsViewController.m in Sources */,
 				4DA5D21A1C2F81D30031FBE5 /* BugReportViewController.m in Sources */,
 				4D17EA7B1C5A9EA5000227F9 /* CustomUIButton.m in Sources */,
@@ -672,6 +706,8 @@
 				4DA5D1FE1C2F81A00031FBE5 /* DiscoverViewController.m in Sources */,
 				4DA5D2001C2F81A00031FBE5 /* GenresCollectionViewController.m in Sources */,
 				4D2456D71C5BDDC500B5B4E5 /* CastIconButton.m in Sources */,
+				4D0082B81C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m in Sources */,
+				4D9178AD1C652FAD00F1AD09 /* ArtistsHeader.m in Sources */,
 				4DA5D2011C2F81A00031FBE5 /* ForYouViewController.m in Sources */,
 				4DA5D1F11C2F817B0031FBE5 /* MyMusicViewController.m in Sources */,
 				4DA5D1EA1C2F817B0031FBE5 /* ActivityFeedViewController.m in Sources */,

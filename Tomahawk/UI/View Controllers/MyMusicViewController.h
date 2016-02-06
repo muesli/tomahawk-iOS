@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SongsTableViewController.h"
-#import "PlaylistsTableViewController.h"
 #import "CAPSPageMenu.h"
 
 @interface MyMusicViewController : UIViewController <CAPSPageMenuDelegate>

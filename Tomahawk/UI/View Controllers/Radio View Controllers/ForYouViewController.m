@@ -7,6 +7,7 @@
 //
 
 #import "ForYouViewController.h"
+#import "CollectionViewCell.h"
 
 @implementation ForYouViewController
 

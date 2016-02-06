@@ -29,7 +29,13 @@
 
 @interface NSDictionary (MyAdditions)
 
--(NSString *)stringify;
+- (NSString *)stringify;
+
+@end
+
+@interface NSError (MyAdditions)
+
+- (UIAlertController *)createAlertFromError;
 
 @end
 

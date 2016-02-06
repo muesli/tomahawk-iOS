@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CollectionViewCell.h"
-#import "CustomTableViewCell.h"
-#import "TEngine.h"
-#import "UIImageView+AFNetworking.h"
 
 @interface ChartsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 

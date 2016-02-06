@@ -7,6 +7,10 @@
 //
 
 #import "ChartsViewController.h"
+#import "CollectionViewCell.h"
+#import "CustomTableViewCell.h"
+#import "TEngine.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ChartsViewController () {
     NSArray *topArtistsNames, *topArtistsListeners, *topArtistsImages, *topTracksNames, *topTracksArtists, *topTracksImages;

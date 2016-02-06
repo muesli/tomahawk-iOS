@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ForYouViewController.h"
-#import "GenresCollectionViewController.h"
-#import "ChartsViewController.h"
-#import "RadioViewController.h"
 #import "CAPSPageMenu.h"
 
 @interface DiscoverViewController : UIViewController <CAPSPageMenuDelegate>

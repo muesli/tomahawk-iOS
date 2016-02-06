@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CCColorCube.h"
-#import "MyAdditions.h"
 #import "STKAudioPlayer.h"
 #import "GoogleCast/GoogleCast.h"
-#import "CastIconButton.h"
 
 
 @interface NowPlayingViewController : UIViewController <STKAudioPlayerDelegate, STKDataSourceDelegate, GCKDeviceScannerListener, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate>

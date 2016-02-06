@@ -7,6 +7,7 @@
 //
 
 #import "RadioViewController.h"
+#import "CollectionViewCell.h"
 
 @implementation RadioViewController
 

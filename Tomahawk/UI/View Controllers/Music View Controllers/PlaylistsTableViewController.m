@@ -7,6 +7,7 @@
 //
 
 #import "PlaylistsTableViewController.h"
+#import "CustomTableViewCell.h"
 
 @interface PlaylistsTableViewController ()
 

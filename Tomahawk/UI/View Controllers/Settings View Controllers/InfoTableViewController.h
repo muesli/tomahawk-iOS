@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SafariServices/SafariServices.h>
 
-@interface InfoTableViewController : UITableViewController
+@interface InfoTableViewController : UITableViewController <SFSafariViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *version;
 

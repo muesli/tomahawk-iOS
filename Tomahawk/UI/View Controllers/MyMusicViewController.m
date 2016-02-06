@@ -7,6 +7,8 @@
 //
 
 #import "MyMusicViewController.h"
+#import "SongsTableViewController.h"
+#import "PlaylistsTableViewController.h"
 
 @interface MyMusicViewController ()
 

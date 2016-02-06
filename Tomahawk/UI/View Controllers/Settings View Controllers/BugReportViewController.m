@@ -7,6 +7,7 @@
 //
 
 #import "BugReportViewController.h"
+#import "TEngine.h"
 
 @implementation BugReportViewController
 

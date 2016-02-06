@@ -7,6 +7,14 @@
 //
 
 #import "SearchTableViewController.h"
+#import "TEngine.h"
+#import "dispatch_cancelable_block.h"
+#import "DGActivityIndicatorView.h"
+#import "UIImageView+AFNetworking.h"
+#import "CustomTableViewCell.h"
+#import "MyAdditions.h"
+#import "DetailTableViewController.h"
+#import "ArtistDetailCollectionViewController.h"
 
 @interface SearchTableViewController (){
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers, *playlistCount, *playlistNames, *playlistImages, *playlistArtists;
@@ -173,9 +181,9 @@ static CGFloat searchBlockDelay = 0.25;
     [activityIndicatorView startAnimating];
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-        [TEngine searchAlbumsByAlbumName:searchText resolver:RSpotify limit:4 page:0 completion:^(id response) {
+        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
-                UIAlertController *error = [self error:response];
+                UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
                 [self.tableView setUserInteractionEnabled:YES];
                 loadingDimmer.hidden = YES;
@@ -191,9 +199,9 @@ static CGFloat searchBlockDelay = 0.25;
         }];
 
     dispatch_group_enter(group);
-        [TEngine searchSongsBySongName:searchText resolver:RYouTube limit:4 page:0 completion:^(id response) {
+        [TEngine searchSongsBySongName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
-                UIAlertController *error = [self error:response];
+                UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
                 [self.tableView setUserInteractionEnabled:YES];
                 loadingDimmer.hidden = YES;
@@ -210,9 +218,9 @@ static CGFloat searchBlockDelay = 0.25;
         }];
     
     dispatch_group_enter(group);
-        [TEngine searchArtistsByArtistName:searchText resolver:RYouTube limit:4 page:0 completion:^(id response) {
+        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
-                UIAlertController *error = [self error:response];
+                UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
                 [self.tableView setUserInteractionEnabled:YES];
                 loadingDimmer.hidden = YES;
@@ -241,11 +249,6 @@ static CGFloat searchBlockDelay = 0.25;
     });
 }
 
-- (UIAlertController *) error:(NSError *)message {
-    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[message userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
-    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    return error;
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -293,6 +296,13 @@ static CGFloat searchBlockDelay = 0.25;
     }
     return searchCell;
 }
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section == 2) {
+//        ArtistDetailCollectionViewController *artistDetail = [ArtistDetailCollectionViewController alloc]initWithCollectionViewLayout:<#(nonnull UICollectionViewLayout *)#>;
+//        [self.navigationController pushViewController:artistDetail animated:YES];
+//    }
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {

@@ -7,6 +7,8 @@
 //
 
 #import "ResolverDetailController.h"
+#import "MyAdditions.h"
+#import "TEngine.h"
 
 @implementation ResolverDetailController {
     NSArray *myArray;
@@ -47,7 +49,7 @@
         NSDictionary *query = [[url query] URLStringValues];
         NSString *response;
         @try {
-            response = [query valueForKey:@"code"];
+            response = [query objectForKey:@"code"];
             [TEngine authorizeSpotifyWithCode:response completion:^(id response) {
                 if ([response isKindOfClass:[NSError class]]) {
                     UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
@@ -59,7 +61,7 @@
         }
         @catch (NSException *exception) {
             //Error
-            response = [query valueForKey:@"error"];
+            response = [query objectForKey:@"error"];
             NSLog(@"Request error:%@",response);
             UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:@"User Cancelled Request" preferredStyle:UIAlertControllerStyleAlert];
             [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -73,7 +75,7 @@
         NSDictionary *query = [[url query] URLStringValues];
         NSString *response;
         @try {
-            response = [query valueForKey:@"code"];
+            response = [query objectForKey:@"code"];
             [TEngine authorizeDeezerWithCode:response completion:^(id response) {
                 if ([response isKindOfClass:[NSError class]]) {
                     UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
@@ -85,7 +87,7 @@
         }
         @catch (NSException *exception) {
             //Error
-            response = [query valueForKey:@"error"];
+            response = [query objectForKey:@"error"];
             NSLog(@"Request error:%@",response);
             UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:@"User Cancelled Request" preferredStyle:UIAlertControllerStyleAlert];
             [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -100,7 +102,7 @@
         NSDictionary *query = [[url query] URLStringValues];
         NSString *response;
         @try {
-            response = [query valueForKey:@"code"];
+            response = [query objectForKey:@"code"];
             [TEngine authorizeSoundcloudWithCode:response completion:^(id response) {
                 if ([response isKindOfClass:[NSError class]]) {
                     UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[response userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
@@ -112,7 +114,7 @@
         }
         @catch (NSException *exception) {
             //Error
-            response = [query valueForKey:@"error"];
+            response = [query objectForKey:@"error"];
             NSLog(@"Request error:%@",response);
             UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:@"User Cancelled Request" preferredStyle:UIAlertControllerStyleAlert];
             [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];

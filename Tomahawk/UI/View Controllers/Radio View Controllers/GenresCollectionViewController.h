@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CollectionViewCell.h"
 
 @interface GenresCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 

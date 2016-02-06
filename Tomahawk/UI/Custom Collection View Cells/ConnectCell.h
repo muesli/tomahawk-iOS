@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
-#import "MyAdditions.h"
 
 @interface ConnectCell : UICollectionViewCell
 

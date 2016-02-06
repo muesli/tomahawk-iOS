@@ -7,6 +7,10 @@
 //
 
 #import "TEngine.h"
+#import "MyAdditions.h"
+#import "AFNetworking.h"
+#import "AFOAuth2Manager.h"
+#import "Private.h"
 
 @implementation TEngine
 
@@ -537,6 +541,63 @@
         [myDict setObject:artistListeners forKey:@"artistListeners"];
         [myDict setObject:artistNames forKey:@"artistNames"];
         [myDict setObject:artistImages forKey:@"artistImages"];
+        completion(myDict);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion (error);
+    }];
+}
+
++(void)getRadioGenresWithCompletionBlock:(void (^)(id response))completion {
+    
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:DEEZER_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    [session GET:@"/genre/0/radios" parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
+        NSArray *base = [responseObject objectForKey:@"data"];
+        NSMutableArray *genreTitle = [NSMutableArray new];
+        NSMutableArray *genreImage = [NSMutableArray new];
+        NSMutableArray *genreID = [NSMutableArray new];
+        for (int i = 0; i<base.count; i++) {
+            NSString *images = [[base objectAtIndex:i]objectForKey:@"picture_medium"];
+            NSString *title = [[base objectAtIndex:i]objectForKey:@"title"];
+            NSNumber *ID = [[base objectAtIndex:i]objectForKey:@"id"];
+            [genreImage addObject:images];
+            [genreTitle addObject:title];
+            [genreID addObject:ID];
+        }
+        [myDict setObject:genreTitle forKey:@"genreTitle"];
+        [myDict setObject:genreID forKey:@"genreID"];
+        [myDict setObject:genreImage forKey:@"genreImage"];
+        completion(myDict);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion (error);
+    }];
+}
+
++(void)getRadioGenreTracksWithID:(NSNumber *)ID completion:(void (^)(id response))completion {
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:DEEZER_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    [session GET:[NSString stringWithFormat:@"/radio/%@/tracks", ID] parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
+        NSArray *base = [responseObject objectForKey:@"data"];
+        NSMutableArray *trackTitle = [NSMutableArray new];
+        NSMutableArray *trackImage = [NSMutableArray new];
+        NSMutableArray *trackArtist = [NSMutableArray new];
+        NSMutableArray *trackAlbum = [NSMutableArray new];
+        for (int i = 0; i<base.count; i++) {
+            NSString *images = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"cover"];
+            NSString *titles = [[base objectAtIndex:i]objectForKey:@"title"];
+            NSString *albums = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"title"];
+            NSString *artists = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+            [trackTitle addObject:titles];
+            [trackImage addObject:images];
+            [trackArtist addObject:artists];
+            [trackAlbum addObject:albums];
+        }
+        [myDict setObject:trackTitle forKey:@"songNames"];
+        [myDict setObject:trackArtist forKey:@"artistNames"];
+        [myDict setObject:trackImage forKey:@"songImages"];
+        [myDict setObject:trackAlbum forKey:@"albumNames"];
         completion(myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion (error);

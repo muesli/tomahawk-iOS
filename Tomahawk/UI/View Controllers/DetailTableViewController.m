@@ -7,6 +7,10 @@
 //
 
 #import "DetailTableViewController.h"
+#import "CustomTableViewCell.h"
+#import "TEngine.h"
+#import "UIImageView+AFNetworking.h"
+#import "MyAdditions.h"
 
 @interface DetailTableViewController () {
     NSArray *textLabels, *detailTextLabels, *images, *secondDetailTextLabels;
@@ -25,6 +29,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.currentPage = 0;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, -35, 0);
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, -35, 0);
     [self loadNextPage:self.currentPage];
 }
 
@@ -69,7 +74,7 @@
     self.isLoading = YES;
     [TEngine searchSongsBySongName:self.query resolver:RAppleMusic limit:30 page:pageNumber completion:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
-            UIAlertController *error = [self error:response];
+            UIAlertController *error = [response createAlertFromError];
             [self presentViewController:error animated:YES completion:nil];
             return;
         }else {
@@ -83,11 +88,6 @@
     }];
 }
 
-- (UIAlertController *) error:(NSError *)message {
-    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[message userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
-    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-    return error;
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

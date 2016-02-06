@@ -7,6 +7,8 @@
 //
 
 #import "ConnectCollectionViewController.h"
+#import "ConnectCell.h"
+#import "ResolverDetailController.h"
 
 @interface ConnectCollectionViewController (){
     NSArray *names, *colors;
@@ -20,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.collectionView registerClass:[ConnectCell class] forCellWithReuseIdentifier:@"cell"];
-    names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Apple Music", @"SoundCloud", @"Official.fm", @"Deezer", @"Tidal", @"YouTube"];
+    names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Apple Music", @"SoundCloud", @"Official.fm", @"Deezer", @"Tidal", @"YouTube", @"Amazon Prime Music", @"Rhapsody"];
     
     colors = @[[UIColor colorWithRed:204.0/255.0 green:61.0/255.0 blue:67.0/255.0 alpha:1],
                         [UIColor colorWithRed:30.0/255.0 green:215.0/255.0 blue:96.0/255.0 alpha:1],
@@ -30,7 +32,9 @@
                         [UIColor colorWithRed:209.0/255.0 green:55.0/255.0 blue:36.0/255.0 alpha:1],
                         [UIColor colorWithRed:177.0/255.0 green:209.0/255.0 blue:36.0/255.0 alpha:1],
                         [UIColor colorWithRed:95.0/255.0 green:248.0/255.0 blue:251.0/255.0 alpha:1],
-                        [UIColor colorWithRed:192.0/255.0 green:50.0/255.0 blue:42.0/255.0 alpha:1]];
+                        [UIColor colorWithRed:192.0/255.0 green:50.0/255.0 blue:42.0/255.0 alpha:1],
+                        [UIColor colorWithRed:234.0/255.0 green:98.0/255.0 blue:37.0/255.0 alpha:1],
+                        [UIColor colorWithRed:9.0/255.0 green:130.0/255.0 blue:169.0/255.0 alpha:1]];
  
 }
 

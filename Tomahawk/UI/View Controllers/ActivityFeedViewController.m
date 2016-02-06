@@ -7,6 +7,7 @@
 //
 
 #import "ActivityFeedViewController.h"
+#import "CollectionViewCell.h"
 
 @interface ActivityFeedViewController ()
 

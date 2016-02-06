@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomTableViewCell.h"
 
 @interface PlaylistsTableViewController : UITableViewController
 

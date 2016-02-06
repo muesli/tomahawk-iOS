@@ -87,3 +87,13 @@
 }
 
 @end
+
+@implementation NSError (MyAdditions)
+
+- (UIAlertController *)createAlertFromError {
+    UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[self userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];
+    [error addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    return error;
+}
+
+@end

@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ConnectCell.h"
-#import "ResolverDetailController.h"
 
 @interface ConnectCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate>
 

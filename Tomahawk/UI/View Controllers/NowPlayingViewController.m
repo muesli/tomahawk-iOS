@@ -7,6 +7,9 @@
 //
 
 #import "NowPlayingViewController.h"
+#import "CCColorCube.h"
+#import "MyAdditions.h"
+#import "CastIconButton.h"
 
 @interface NowPlayingViewController (){
     UIColor *primaryColor, *secondaryColor;

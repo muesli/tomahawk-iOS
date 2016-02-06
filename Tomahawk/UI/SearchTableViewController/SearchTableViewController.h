@@ -7,12 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TEngine.h"
-#import "dispatch_cancelable_block.h"
-#import "DGActivityIndicatorView.h"
-#import "UIImageView+AFNetworking.h"
-#import "CustomTableViewCell.h"
-#import "DetailTableViewController.h"
 
 @interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
 

@@ -10,10 +10,10 @@
 
 @interface CollectionViewCell : UICollectionViewCell <UICollectionViewDelegateFlowLayout>
 
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *title;
-@property (strong, nonatomic) IBOutlet UILabel *artist;
-@property (strong, nonatomic) IBOutlet UIImageView *detailImage;
-@property (strong, nonatomic) IBOutlet UILabel *listeners;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *artist;
+@property (weak, nonatomic) IBOutlet UIImageView *detailImage;
+@property (weak, nonatomic) IBOutlet UILabel *listeners;
 
 @end

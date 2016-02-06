@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CustomTableViewCell.h"
-#import "TEngine.h"
-#import "UIImageView+AFNetworking.h"
 
 @interface DetailTableViewController : UITableViewController
 

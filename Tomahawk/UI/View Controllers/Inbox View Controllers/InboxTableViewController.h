@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
-#import "MyAdditions.h"
 
 @interface InboxTableViewController : UITableViewController <SWTableViewCellDelegate>
 

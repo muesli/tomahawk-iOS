@@ -7,6 +7,7 @@
 //
 
 #import "InboxTableViewController.h"
+#import "MyAdditions.h"
 
 @interface InboxTableViewController (){
     NSMutableArray *messages;

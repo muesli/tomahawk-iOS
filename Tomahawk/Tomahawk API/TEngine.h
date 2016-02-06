@@ -7,10 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MyAdditions.h"
-#import "AFNetworking.h"
-#import "AFOAuth2Manager.h"
-#import "Private.h"
 
 @interface TEngine : NSObject
 
@@ -60,6 +56,9 @@ typedef enum resolvers {
 #pragma mark - Playlist
 
 #pragma mark - Radio
+
++(void)getRadioGenresWithCompletionBlock:(void (^)(id response))completion;
++(void)getRadioGenreTracksWithID:(NSNumber *)ID completion:(void (^)(id response))completion;
 
 #pragma mark - Tag
 

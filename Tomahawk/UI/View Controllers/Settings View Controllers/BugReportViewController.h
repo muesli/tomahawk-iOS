@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TEngine.h"
 #import "MBProgressHUD.h"
 #import <SafariServices/SafariServices.h>
 
-@interface BugReportViewController : UITableViewController <MBProgressHUDDelegate>
+@interface BugReportViewController : UITableViewController <MBProgressHUDDelegate, SFSafariViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextField *usernameField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordField;

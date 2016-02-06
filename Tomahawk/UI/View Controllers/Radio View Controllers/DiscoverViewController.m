@@ -7,6 +7,10 @@
 //
 
 #import "DiscoverViewController.h"
+#import "ForYouViewController.h"
+#import "GenresCollectionViewController.h"
+#import "ChartsViewController.h"
+#import "RadioViewController.h"
 
 
 @interface DiscoverViewController ()
