@@ -13,7 +13,7 @@ IB_DESIGNABLE
 
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
-@property (nonatomic, getter = isDestructive) BOOL destructive;
+@property (nonatomic) IBInspectable BOOL reversed;
 
 
 @end

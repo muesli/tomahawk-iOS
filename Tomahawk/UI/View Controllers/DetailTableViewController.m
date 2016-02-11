@@ -11,9 +11,12 @@
 #import "TEngine.h"
 #import "UIImageView+AFNetworking.h"
 #import "MyAdditions.h"
+#import "DGActivityIndicatorView.h"
 
 @interface DetailTableViewController () {
     NSArray *textLabels, *detailTextLabels, *images, *secondDetailTextLabels;
+    DGActivityIndicatorView *activityIndicatorView;
+    UIView *tableViewBG;
 }
 
 @property (assign, nonatomic) BOOL isLoading;
@@ -44,7 +47,7 @@
 }
 
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.tableView) {
         CGPoint offset = scrollView.contentOffset;
         CGRect bounds = scrollView.bounds;
@@ -54,6 +57,20 @@
         float h = size.height;
         float reload_distance = 10;
         if(y > h + reload_distance && self.isLoading == FALSE) {
+            tableViewBG =  tableViewBG ? : ({
+                UIView *myView = [[UIView alloc]init];
+                myView;
+            });
+            activityIndicatorView =  activityIndicatorView ? : ({
+                DGActivityIndicatorView *myView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScalePulseOut tintColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] size:20.0f];
+                [myView setTranslatesAutoresizingMaskIntoConstraints:NO];
+                [tableViewBG addSubview:myView];
+                myView;
+            });
+            [tableViewBG addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:tableViewBG attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+            [tableViewBG addConstraint:[NSLayoutConstraint constraintWithItem:activityIndicatorView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:tableViewBG attribute:NSLayoutAttributeBottom multiplier:1 constant:-25]];
+            [activityIndicatorView startAnimating];
+            [self.tableView setBackgroundView:tableViewBG];
             [self loadNextPage:++self.currentPage];
         }
     }
@@ -72,7 +89,11 @@
 - (void)loadNextPage:(int)pageNumber {
     if (self.isLoading) return;
     self.isLoading = YES;
-    [TEngine searchSongsBySongName:self.query resolver:RAppleMusic limit:30 page:pageNumber completion:^(id response) {
+    [TEngine searchSongsBySongName:self.query resolver:RRhapsody limit:30 page:pageNumber completion:^(id response) {
+        [activityIndicatorView removeFromSuperview];
+        activityIndicatorView = nil;
+        [self.tableView setBackgroundView:nil];
+        tableViewBG = nil;
         if ([response isKindOfClass:[NSError class]]) {
             UIAlertController *error = [response createAlertFromError];
             [self presentViewController:error animated:YES completion:nil];

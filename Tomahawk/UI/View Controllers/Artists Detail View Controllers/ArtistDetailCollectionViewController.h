@@ -10,4 +10,8 @@
 
 @interface ArtistDetailCollectionViewController : UICollectionViewController
 
+-(IBAction)back:(UIButton *)sender;
+@property (weak, nonatomic) NSString *artistName;
+@property (weak, nonatomic) UIImage *artistImage;
+
 @end

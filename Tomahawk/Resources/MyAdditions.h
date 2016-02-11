@@ -11,6 +11,8 @@
 @interface UIImage (MyAdditions)
 +(UIImage *)image:(UIImage *)image withColor:(UIColor *)color;
 
+- (UIImage *)crop:(CGRect)rect;
+
 @end
 
 @interface NSString (MyAdditions)
@@ -23,7 +25,7 @@
 @interface NSData (MyAdditions)
 
 - (NSString*)md5;
-- (NSDictionary *)serialize;
+- (id)serialize;
 
 @end
 

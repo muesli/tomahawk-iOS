@@ -9,88 +9,66 @@
 #import "ArtistDetailCollectionViewController.h"
 #import "StickyHeaderFlowLayout.h"
 #import "ArtistsHeader.h"
+#import "MyAdditions.h"
 
 @implementation ArtistDetailCollectionViewController
 
+-(IBAction)back:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.tabBarController.tabBar.hidden = YES;
+    self.navigationController.toolbar.hidden = YES;
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.hidden = NO;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self reloadLayout];
-    
-    // Also insets the scroll indicator so it appears below the search bar
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    StickyHeaderFlowLayout *layout = (id)self.collectionViewLayout;
+    UIImageView *statusBarBG = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    statusBarBG.image = [self.artistImage crop:CGRectMake(0, 0, self.view.frame.size.width, 20)];
+    UIVisualEffectView *view = [[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    view.frame = statusBarBG.frame;
+    view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.45];
+    [self.view addSubview:statusBarBG];
+    [statusBarBG addSubview:view];
+    if ([layout isKindOfClass:[StickyHeaderFlowLayout class]]) {
+        layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 300);
+        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, 44);
+        layout.itemSize = CGSizeMake(self.view.frame.size.width, layout.itemSize.height);
+        layout.parallaxHeaderAlwaysOnTop = YES;
+        layout.disableStickyHeaders = YES;
+    }
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ArtistsHeader" bundle:nil] forSupplementaryViewOfKind:StickyHeaderParallaxHeader withReuseIdentifier:@"header"];
     
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self reloadLayout];
-}
-
-- (void)reloadLayout {
-    
-    StickyHeaderFlowLayout *layout = (id)self.collectionViewLayout;
-    
-    if ([layout isKindOfClass:[StickyHeaderFlowLayout class]]) {
-        layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 426);
-        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, 110);
-        layout.itemSize = CGSizeMake(self.view.frame.size.width, layout.itemSize.height);
-        layout.parallaxHeaderAlwaysOnTop = YES;
-        
-        // If we want to disable the sticky header effect
-        layout.disableStickyHeaders = YES;
-    }
-    
-}
-
-#pragma mark UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 25;
+    return 20;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
-    
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        
-        ArtistsHeader *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-        
-        return cell;
-        
-    } else if ([kind isEqualToString:StickyHeaderParallaxHeader]) {
-        UICollectionReusableView *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-        
-        return cell;
-    }
-    return nil;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    ArtistsHeader *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+    cell.navigationBarArtistImage.image = self.artistImage;
+    cell.artistImage.image = self.artistImage;
+    cell.titleLabel.text = self.artistName;
+    cell.backgroundImageView.image = self.artistImage;
+    return cell;
 }
 
 

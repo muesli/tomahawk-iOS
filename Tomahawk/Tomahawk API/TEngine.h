@@ -19,7 +19,9 @@ typedef enum resolvers {
     ROfficialFM = 5,
     RDeezer = 6,
     RTidal = 7,
-    RYouTube = 8
+    RYouTube = 8,
+    RAmazonPM = 9,
+    RRhapsody = 10
 } resolvers;
 
 #pragma mark - Search

@@ -15,6 +15,7 @@
 #import "MyAdditions.h"
 #import "DetailTableViewController.h"
 #import "ArtistDetailCollectionViewController.h"
+#import "StickyHeaderFlowLayout.h"
 
 @interface SearchTableViewController (){
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers, *playlistCount, *playlistNames, *playlistImages, *playlistArtists;
@@ -181,7 +182,7 @@ static CGFloat searchBlockDelay = 0.25;
     [activityIndicatorView startAnimating];
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
+        [TEngine searchAlbumsByAlbumName:searchText resolver:RRhapsody limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
@@ -199,7 +200,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
 
     dispatch_group_enter(group);
-        [TEngine searchSongsBySongName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
+        [TEngine searchSongsBySongName:searchText resolver:RRhapsody limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
@@ -218,7 +219,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
     
     dispatch_group_enter(group);
-        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
+        [TEngine searchArtistsByArtistName:searchText resolver:RRhapsody limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
@@ -234,11 +235,6 @@ static CGFloat searchBlockDelay = 0.25;
             }
             dispatch_group_leave(group);
         }];
-    
-//        playlistNames = [myDict objectForKey:@"playlistNames"];
-//        playlistArtists = [myDict objectForKey:@"playlistArtists"];
-//        playlistCount = [myDict objectForKey:@"trackCount"];
-//        playlistImages = [myDict objectForKey:@"mediumImages"];
 
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         [self.tableView setUserInteractionEnabled:YES];
@@ -256,53 +252,41 @@ static CGFloat searchBlockDelay = 0.25;
     [searchCell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
     
     switch (indexPath.section) {
-        case 0:
-            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<songNames.count; i++) {
-                searchCell.myTextLabel.text =  [songNames objectAtIndex:i];
-                NSString *text = [songAlbums objectAtIndex:i] ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:i], [songAlbums objectAtIndex:i]] : [songArtists objectAtIndex:i];
-                searchCell.myDetailTextLabel.text = text;
-                [[songImages objectAtIndex:i] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderSongs"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
-            }
-            break;
-        case 1:
-            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<albumNames.count; i++) {
-                searchCell.myTextLabel.text = [albumNames objectAtIndex:i];
-                searchCell.myDetailTextLabel.text = [albumArtists objectAtIndex:i];
-                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderAlbums"]];
-            }
-            break;
-        case 2:
-            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<artistNames.count; i++) {
-                searchCell.myTextLabel.text = [artistNames objectAtIndex:i];
-                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-                [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:i]]];
-                searchCell.myDetailTextLabel.text = followers;
-                [[artistImages objectAtIndex:i] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderArtists"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
-            }
-            break;
-        case 3:
-            for (NSUInteger i = indexPath.row; i<=indexPath.row && i<playlistNames.count; i++) {
-                searchCell.myTextLabel.text = [playlistNames objectAtIndex:i];
-                NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
-                [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-                NSString *count = [NSString stringWithFormat:@"%@ • Songs: %@", [[playlistArtists objectAtIndex:i] capitalizedString], [numberFormatter stringFromNumber:[playlistCount objectAtIndex:i]]];
-                searchCell.myDetailTextLabel.text = count;
-                [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[playlistImages objectAtIndex:i]] placeholderImage:[UIImage imageNamed:@"PlaceholderPlaylists"]];;
-            }
-            break;
+        case 0: {
+            searchCell.myTextLabel.text =  [songNames objectAtIndex:indexPath.row];
+            NSString *text = [songAlbums objectAtIndex:indexPath.row] ? [NSString stringWithFormat:@"%@ • %@", [songArtists objectAtIndex:indexPath.row], [songAlbums objectAtIndex:indexPath.row]] : [songArtists objectAtIndex:indexPath.row];
+            searchCell.myDetailTextLabel.text = text;
+            [[songImages objectAtIndex:indexPath.row] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderSongs"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[songImages objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderSongs"]];
+        } break;
+        case 1: {
+            searchCell.myTextLabel.text = [albumNames objectAtIndex:indexPath.row];
+            searchCell.myDetailTextLabel.text = [albumArtists objectAtIndex:indexPath.row];
+            [[albumImages objectAtIndex:indexPath.row] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderAlbums"]] :[searchCell.myImageView setImageWithURL:[NSURL URLWithString:[albumImages objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderAlbums"]];
+        } break;
+        case 2: {
+            searchCell.myTextLabel.text = [artistNames objectAtIndex:indexPath.row];
+            NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSString *followers = [NSString stringWithFormat:@"Followers: %@", [numberFormatter stringFromNumber:[artistFollowers objectAtIndex:indexPath.row]]];
+            searchCell.myDetailTextLabel.text = followers;
+            [[artistImages objectAtIndex:indexPath.row] isKindOfClass:[NSNull class]] ? [searchCell.myImageView setImage:[UIImage imageNamed:@"PlaceholderArtists"]] : [searchCell.myImageView setImageWithURL:[NSURL URLWithString:[artistImages objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderArtists"]];
+        } break;
         default:
             break;
     }
     return searchCell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 2) {
-//        ArtistDetailCollectionViewController *artistDetail = [ArtistDetailCollectionViewController alloc]initWithCollectionViewLayout:<#(nonnull UICollectionViewLayout *)#>;
-//        [self.navigationController pushViewController:artistDetail animated:YES];
-//    }
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 2) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ArtistDetailCollectionViewController *artistDetail = (ArtistDetailCollectionViewController *) [storyboard instantiateViewControllerWithIdentifier:@"ArtistDetailCollectionViewController"];
+        artistDetail.artistName = artistNames[indexPath.row];
+        CustomTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        artistDetail.artistImage = cell.myImageView.image;
+        [self.navigationController pushViewController:artistDetail animated:YES];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {

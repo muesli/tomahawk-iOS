@@ -11,8 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="305" height="305"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Opn-3Q-VIW">
-                    <rect key="frame" x="-1" y="0.0" width="306" height="305"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderArtists" translatesAutoresizingMaskIntoConstraints="NO" id="Opn-3Q-VIW">
+                    <rect key="frame" x="0.0" y="0.0" width="305" height="305"/>
                 </imageView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqk-dz-4Qp">
                     <rect key="frame" x="0.0" y="0.0" width="305" height="305"/>
@@ -20,22 +20,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="305" height="305"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
-                    <color key="backgroundColor" white="0.0" alpha="0.45371767241379313" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45371767241379313" colorSpace="calibratedRGB"/>
                     <blurEffect style="light"/>
                 </visualEffectView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-Yz-bN8">
-                    <rect key="frame" x="87" y="88" width="130" height="130"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderArtists" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-Yz-bN8">
+                    <rect key="frame" x="81" y="76" width="142" height="142"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="130" id="KA1-xo-7TX"/>
-                        <constraint firstAttribute="height" constant="130" id="s8D-7p-1aL"/>
+                        <constraint firstAttribute="width" constant="142" id="KA1-xo-7TX"/>
+                        <constraint firstAttribute="height" constant="142" id="s8D-7p-1aL"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFx-Ew-KKR" customClass="CustomUIButton">
-                    <rect key="frame" x="105" y="263" width="94" height="30"/>
+                    <rect key="frame" x="113" y="262" width="80" height="26"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="94" id="YDB-JR-Ixg"/>
+                        <constraint firstAttribute="width" constant="80" id="YDB-JR-Ixg"/>
                     </constraints>
-                    <state key="normal" title="FOLLOW"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                    <state key="normal" title="FOLLOW">
+                        <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                             <real key="value" value="1"/>
@@ -43,36 +46,62 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="13"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="reversed" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Az-cxn">
-                    <rect key="frame" x="131" y="15" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpJ-Az-cxn">
+                    <rect key="frame" x="128" y="10" width="48" height="22"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usj-Zz-dKk">
+                    <rect key="frame" x="9" y="12" width="13" height="21"/>
+                    <state key="normal" image="Back"/>
+                    <connections>
+                        <action selector="back:" destination="-2" eventType="touchUpInside" id="xgn-iO-LFe"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaceholderArtists" translatesAutoresizingMaskIntoConstraints="NO" id="WH6-wK-4JU">
+                    <rect key="frame" x="263" y="5" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="fge-j8-3WD"/>
+                        <constraint firstAttribute="width" constant="32" id="rSh-vm-rEf"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <constraints>
+                <constraint firstItem="fpJ-Az-cxn" firstAttribute="centerX" secondItem="hJV-5X-kIz" secondAttribute="centerX" id="3gU-Oo-Dzi"/>
+                <constraint firstItem="Usj-Zz-dKk" firstAttribute="top" secondItem="hJV-5X-kIz" secondAttribute="top" constant="12" id="4ta-uV-4WG"/>
                 <constraint firstItem="Opn-3Q-VIW" firstAttribute="centerX" secondItem="hJV-5X-kIz" secondAttribute="centerX" id="6HE-LA-yja"/>
+                <constraint firstItem="gFx-Ew-KKR" firstAttribute="top" secondItem="DhU-Yz-bN8" secondAttribute="bottom" multiplier="1.2" id="7cU-ow-uTI"/>
+                <constraint firstItem="Usj-Zz-dKk" firstAttribute="leading" secondItem="hJV-5X-kIz" secondAttribute="leading" constant="9" id="8JJ-OX-vES"/>
                 <constraint firstItem="wqk-dz-4Qp" firstAttribute="centerY" secondItem="hJV-5X-kIz" secondAttribute="centerY" id="9t5-8S-jm1"/>
                 <constraint firstItem="gFx-Ew-KKR" firstAttribute="centerX" secondItem="hJV-5X-kIz" secondAttribute="centerX" id="Dvz-TV-xmr"/>
+                <constraint firstAttribute="bottom" secondItem="DhU-Yz-bN8" secondAttribute="bottom" constant="87" id="JQa-hA-mkV"/>
                 <constraint firstItem="DhU-Yz-bN8" firstAttribute="centerX" secondItem="hJV-5X-kIz" secondAttribute="centerX" id="Kqo-fu-sRD"/>
-                <constraint firstAttribute="bottom" secondItem="gFx-Ew-KKR" secondAttribute="bottom" multiplier="1.04" id="OWf-f2-J8B"/>
                 <constraint firstItem="wqk-dz-4Qp" firstAttribute="centerX" secondItem="hJV-5X-kIz" secondAttribute="centerX" id="WA4-Ge-CGZ"/>
                 <constraint firstItem="Opn-3Q-VIW" firstAttribute="centerY" secondItem="hJV-5X-kIz" secondAttribute="centerY" id="WhN-LV-KfJ"/>
                 <constraint firstItem="wqk-dz-4Qp" firstAttribute="height" secondItem="hJV-5X-kIz" secondAttribute="height" id="aSF-1X-j0L"/>
-                <constraint firstItem="fpJ-Az-cxn" firstAttribute="leading" secondItem="hJV-5X-kIz" secondAttribute="leading" constant="131" id="bx3-oC-7FY"/>
                 <constraint firstItem="wqk-dz-4Qp" firstAttribute="width" secondItem="hJV-5X-kIz" secondAttribute="width" id="dvS-P9-Ldg"/>
-                <constraint firstItem="DhU-Yz-bN8" firstAttribute="centerY" secondItem="hJV-5X-kIz" secondAttribute="centerY" id="gq1-xS-XlB"/>
                 <constraint firstItem="Opn-3Q-VIW" firstAttribute="width" secondItem="hJV-5X-kIz" secondAttribute="width" id="i6g-13-p0b"/>
                 <constraint firstItem="Opn-3Q-VIW" firstAttribute="height" secondItem="hJV-5X-kIz" secondAttribute="height" id="ig3-w7-HtH"/>
-                <constraint firstItem="fpJ-Az-cxn" firstAttribute="top" secondItem="hJV-5X-kIz" secondAttribute="top" constant="15" id="jqe-SG-3TP"/>
+                <constraint firstItem="fpJ-Az-cxn" firstAttribute="top" secondItem="hJV-5X-kIz" secondAttribute="top" constant="10" id="jqe-SG-3TP"/>
+                <constraint firstItem="WH6-wK-4JU" firstAttribute="top" secondItem="hJV-5X-kIz" secondAttribute="top" constant="5" id="tS1-OJ-u51"/>
+                <constraint firstAttribute="trailing" secondItem="WH6-wK-4JU" secondAttribute="trailing" constant="10" id="vBC-dT-R8N"/>
             </constraints>
             <connections>
                 <outlet property="artistImage" destination="DhU-Yz-bN8" id="qu6-6J-AXd"/>
+                <outlet property="backgroundImageEffectView" destination="wqk-dz-4Qp" id="z7g-HF-hjR"/>
+                <outlet property="backgroundImageView" destination="Opn-3Q-VIW" id="cFk-HP-aBP"/>
+                <outlet property="navigationBarArtistImage" destination="WH6-wK-4JU" id="hv0-0P-e4i"/>
                 <outlet property="titleLabel" destination="fpJ-Az-cxn" id="yoP-zh-QHV"/>
             </connections>
             <point key="canvasLocation" x="323.5" y="609.5"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="Back" width="13" height="21"/>
+        <image name="PlaceholderArtists" width="650" height="650"/>
+    </resources>
 </document>

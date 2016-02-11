@@ -13,5 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *artistImage;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *backgroundImageEffectView;
+@property (weak, nonatomic) IBOutlet UIImageView *navigationBarArtistImage;
+
 
 @end

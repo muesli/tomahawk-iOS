@@ -46,10 +46,17 @@
             query = @"/youtube/v3/search";
             params = @{@"part" : @"snippet", @"q" : song, @"type" : @"video", @"videoCategoryId" : @10, @"key" : YOUTUBE_API_KEY, @"maxResults" : @(limit)};
             break;
+        case RRhapsody:
+            baseURL = RHAPSODY_BASE;
+            query = @"/v1/search/typeahead";
+            params = @{@"apikey" : RHAPSODY_API_KEY, @"q" : song, @"type" : @"track", @"limit" : @(limit), @"offset" : @(limit * page)};
+            break;
         default:
             break;
     }
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    dispatch_queue_t searchSongs = dispatch_queue_create("searchSongs", 0);
+    manager.completionQueue = searchSongs;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableDictionary *myDict = [NSMutableDictionary new];
@@ -121,7 +128,24 @@
                     [artistNames addObject:artist];
                     [songImages addObject:image];
                 }
-            break;
+                break;
+            case RRhapsody:
+                base = responseObject;
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSString *artist = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+                    NSString *albumID = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"id"];
+                    NSString *myURL = [NSString stringWithFormat:@"https://api.rhapsody.com/v1/albums/%@/images?apikey=%@", albumID, RHAPSODY_API_KEY];
+                    NSData *myData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:myURL] options:NSDataReadingMappedIfSafe error:nil];
+                    NSArray *images = [myData serialize];
+                    id image = images.count >0 ? [[images objectAtIndex:0]objectForKey:@"url"] : [NSNull null];
+                    NSString *album = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"name"];
+                    [albumNames addObject:album];
+                    [songNames addObject:name];
+                    [artistNames addObject:artist];
+                    [songImages addObject:image];
+                }
+                break;
             default:
                 break;
         }
@@ -129,10 +153,14 @@
         [myDict setObject:artistNames forKey:@"artistNames"];
         albumNames.count == 0 ? : [myDict setObject:albumNames forKey:@"albumNames"];
         [myDict setObject:songImages forKey:@"songImages"];
-        completion (myDict);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion (myDict);
+        });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
-        completion (error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion (error);
+        });
     }];
 }
 
@@ -167,11 +195,18 @@
             query = @"/youtube/v3/search";
             params = @{@"part" : @"snippet", @"q" : artist, @"type" : @"channel", @"key" : YOUTUBE_API_KEY, @"maxResults" : @(limit)};
             break;
+        case RRhapsody:
+            baseURL = RHAPSODY_BASE;
+            query = @"/v1/search/typeahead";
+            params = @{@"apikey" : RHAPSODY_API_KEY, @"q" : artist, @"type" : @"artist", @"limit" : @(limit), @"offset" : @(limit * page)};
+            break;
         default:
             break;
     }
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    dispatch_queue_t searchSongs = dispatch_queue_create("searchArtists", 0);
+    manager.completionQueue = searchSongs;
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableDictionary *myDict = [NSMutableDictionary new];
         NSMutableArray *artistNames = [NSMutableArray new];
@@ -245,16 +280,34 @@
                     [artistImages addObject:image];
                 }
             break;
+            case RRhapsody:
+                base = responseObject;
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSString *artistID = [[base objectAtIndex:i]objectForKey:@"id"];
+                    NSString *myURL = [NSString stringWithFormat:@"https://api.rhapsody.com/v1/artists/%@/images?apikey=%@", artistID, RHAPSODY_API_KEY];
+                    NSData *myData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:myURL] options:NSDataReadingMappedIfSafe error:nil];
+                    NSArray *images = [myData serialize];
+                    id image = images.count >0 ? [[images objectAtIndex:0]objectForKey:@"url"] : [NSNull null];
+                    [artistNames addObject:name];
+                    [artistImages addObject:image];
+                    [artistFollowers addObject:@0];
+                }
+                break;
             default:
                 break;
         }
         [myDict setObject:artistNames forKey:@"artistNames"];
         [myDict setObject:artistFollowers forKey:@"artistFollowers"];
         [myDict setObject:artistImages forKey:@"artistImages"];
-        completion (myDict);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion (myDict);
+        });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
-        completion (error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion (error);
+        });
     }];
 
 }
@@ -279,10 +332,17 @@
             query = @"/search";
             params = @{@"term" : album, @"entity" : @"album", @"limit" : @(limit), @"offset" : @(limit * page)};
             break;
+        case RRhapsody:
+            baseURL = RHAPSODY_BASE;
+            query = @"/v1/search/typeahead";
+            params = @{@"apikey" : RHAPSODY_API_KEY, @"q" : album, @"type" : @"album", @"limit" : @(limit), @"offset" : @(limit * page)};
+            break;
         default:
             break;
     }
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:baseURL]];
+    dispatch_queue_t searchSongs = dispatch_queue_create("searchAlbums", 0);
+    manager.completionQueue = searchSongs;
     manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     [manager GET:query parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableDictionary *myDict = [NSMutableDictionary new];
@@ -327,16 +387,31 @@
                     [albumImages addObject:image];
                 }
             break;
+            case RRhapsody:
+                base = responseObject;
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[base objectAtIndex:i]objectForKey:@"name"];
+                    NSString *artist = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+                    NSString *image = [[[[base objectAtIndex:i]objectForKey:@"images"]objectAtIndex:0]objectForKey:@"url"];
+                    [albumNames addObject:name];
+                    [artistNames addObject:artist];
+                    [albumImages addObject:image];
+                }
+                break;
             default:
                 break;
         }
         [myDict setObject:albumNames forKey:@"albumNames"];
         [myDict setObject:artistNames forKey:@"artistNames"];
         [myDict setObject:albumImages forKey:@"albumImages"];
-        completion (myDict);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion (myDict);
+        });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Failure: %@", error);
-        completion (error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion (error);
+        });
     }];
 }
 

@@ -12,20 +12,18 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    NSString *titleText = (self.isDestructive ? @"Sign Out" : @"Sign In");
-    [self setTitle:titleText forState:UIControlStateNormal];
     self.layer.borderWidth = self.borderWidth;
     self.layer.borderColor = [[self titleColorForState:UIControlStateNormal] CGColor];
     self.layer.cornerRadius = self.cornerRadius;
-    [self updateDisplayWithTint:NO];
+    self.reversed == TRUE ? [self updateDisplayWithTint:YES] : [self updateDisplayWithTint:NO];
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-    [self updateDisplayWithTint:highlighted];
+    self.reversed == TRUE ? [self updateDisplayWithTint:YES]: [self updateDisplayWithTint:highlighted];
 }
 
 - (void)setSelected:(BOOL)selected {
-    [self updateDisplayWithTint:selected];
+    self.reversed == TRUE ? [self updateDisplayWithTint:YES]:[self updateDisplayWithTint:selected];
 }
 
 - (void)setEnabled:(BOOL)enabled {
@@ -37,10 +35,6 @@
     UIColor *textColor = [self titleColorForState:self.state];
     self.titleLabel.textColor = (isTint ? [UIColor whiteColor] : textColor);
     self.backgroundColor = (isTint ? textColor : [UIColor clearColor]);
-    if (self.destructive) {
-        [self setTitleColor:[UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)] forState:UIControlStateNormal];
-        self.layer.borderColor = [self titleColorForState:UIControlStateNormal].CGColor;
-    }
 }
 
 @end
