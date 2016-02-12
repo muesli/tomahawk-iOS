@@ -1,8 +1,8 @@
 <p align="center" >
-  <img src="http://i.imgur.com/p7WNZ7t.png" alt="Tomahawk" title="Tomahawk">
+  <img src="http://imgur.com/DMypGVl" alt="Tomahawk" title="Tomahawk">
 </p>
 
-Exclusive just became a little less. Tomahawk is now (sort of) on iOS. This is a very much pre-alpha version. Stay tuned for more updates to come!
+Tomahawk, the critically acclaimed multi-source music player, is almost available on  iOS. Given the name of an artist, album or song Tomahawk will find the best available source and play it - whether that be from Spotify, Deezer, GMusic, Soundcloud, Tidal, Official.fm, Jamendo, Beets, Ampache, Subsonic or your phone’s local storage. Tomahawk for iOS also syncs your history, your loved tracks, artists, albums and your playlists to/from the desktop version of Tomahawk via our new music community, Hatchet. On Hatchet you can hear your friends' favorite tracks and see what they're currently listening to. This is a very much pre-alpha version. Stay tuned for more updates to come!
 
 [![Platform](https://img.shields.io/cocoapods/p/AFNetworking.svg?style=flat)](http://tomahawk-player.org)
 [![Twitter](https://img.shields.io/badge/twitter-@Tomahawk-3299EC.svg?style=flat)](http://twitter.com/Tomahawk)
