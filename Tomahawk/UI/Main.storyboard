@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="HiN-h1-lVo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TkB-Lf-MYB">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEz-gb-1pw">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxE-Ge-wb0" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -144,11 +144,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YhL-ta-wef">
-                        <barButtonItem key="rightBarButtonItem" image="Inbox" id="BZC-EU-K6o">
-                            <connections>
-                                <segue destination="aCQ-ch-oOC" kind="show" identifier="" id="222-SW-S7p"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="BZC-EU-K6o"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
@@ -924,7 +920,7 @@
         <!--Now Playing-->
         <scene sceneID="VWy-BQ-GhU">
             <objects>
-                <viewController storyboardIdentifier="NowPlayingViewController" title="Now Playing" id="Iy0-Dv-cOW" customClass="NowPlayingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NowPlayingViewController" title="Now Playing" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Iy0-Dv-cOW" customClass="NowPlayingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fbk-PB-R1U"/>
                         <viewControllerLayoutGuide type="bottom" id="8v0-IJ-Q0E"/>
@@ -1322,13 +1318,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pOm-Af-pqI" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Music" image="My Music" selectedImage="My Music Selected" id="H4J-1D-YEc"/>
-                    <toolbarItems>
-                        <barButtonItem title="Item" width="359" id="ECT-rC-AuG">
-                            <connections>
-                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="9Zz-kc-DY7"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qet-DX-ZH4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1353,13 +1343,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="tpZ-8E-iOE" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="Discover" selectedImage="Discover Selected" id="VNo-rw-cuE"/>
-                    <toolbarItems>
-                        <barButtonItem title="Item" width="361" id="6NW-Gw-IPe">
-                            <connections>
-                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="ngu-Rj-iMU"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nNW-27-Zpa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1384,17 +1368,10 @@
             <objects>
                 <navigationController title="Activity Feed Scene" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="cdh-A4-0Ly" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="Feed" selectedImage="Feed Selected" id="acW-dT-cKf"/>
-                    <toolbarItems>
-                        <barButtonItem title="Item" width="359" id="txn-0y-kfC">
-                            <connections>
-                                <segue destination="Iy0-Dv-cOW" kind="presentation" identifier="showNowPlaying" id="r04-Oq-FMF"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1b4-N1-kE8">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="1b4-N1-kE8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.19215686274509802" green="0.19215686274509802" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="n3i-td-z1c">
@@ -1445,8 +1422,7 @@
         <image name="Tell Your Friends" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Zz-kc-DY7"/>
-        <segue reference="222-SW-S7p"/>
+        <segue reference="bhK-NQ-vJe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

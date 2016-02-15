@@ -43,7 +43,7 @@
     [statusBarBG addSubview:view];
     if ([layout isKindOfClass:[StickyHeaderFlowLayout class]]) {
         layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 300);
-        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, 44);
+        layout.parallaxHeaderMinimumReferenceSize = CGSizeMake(self.view.frame.size.width, 95);
         layout.itemSize = CGSizeMake(self.view.frame.size.width, layout.itemSize.height);
         layout.parallaxHeaderAlwaysOnTop = YES;
         layout.disableStickyHeaders = YES;

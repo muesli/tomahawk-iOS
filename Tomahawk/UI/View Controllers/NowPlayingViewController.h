@@ -13,27 +13,29 @@
 
 @interface NowPlayingViewController : UIViewController <STKAudioPlayerDelegate, STKDataSourceDelegate, GCKDeviceScannerListener, UIPopoverPresentationControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *expandArrow;
-@property (weak, nonatomic) IBOutlet UIButton *playPause;
-@property (weak, nonatomic) IBOutlet UIButton *next;
-@property (weak, nonatomic) IBOutlet UIButton *previous;
-@property (weak, nonatomic) IBOutlet UIButton *shuffle;
-@property (weak, nonatomic) IBOutlet UIButton *repeat;
-@property (weak, nonatomic) IBOutlet UIButton *like;
-@property (weak, nonatomic) IBOutlet UIButton *queue;
-@property (weak, nonatomic) IBOutlet UIButton *share;
-@property (weak, nonatomic) IBOutlet UIButton *lyrics;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *previousSongImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *currentSongImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *nextSongImageView;
-@property (weak, nonatomic) IBOutlet UILabel *playlistTitle;
-@property (weak, nonatomic) IBOutlet UILabel *playlistArtist;
-@property (weak, nonatomic) IBOutlet UILabel *songTitle;
-@property (weak, nonatomic) IBOutlet UILabel *songArtist;
-@property (weak, nonatomic) IBOutlet UIProgressView *progress;
+@property (strong, nonatomic) IBOutlet UIButton *expandArrow;
+@property (strong, nonatomic) IBOutlet UIButton *playPause;
+@property (strong, nonatomic) IBOutlet UIButton *next;
+@property (strong, nonatomic) IBOutlet UIButton *previous;
+@property (strong, nonatomic) IBOutlet UIButton *shuffle;
+@property (strong, nonatomic) IBOutlet UIButton *repeat;
+@property (strong, nonatomic) IBOutlet UIButton *like;
+@property (strong, nonatomic) IBOutlet UIButton *queue;
+@property (strong, nonatomic) IBOutlet UIButton *share;
+@property (strong, nonatomic) IBOutlet UIButton *lyrics;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *previousSongImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *currentSongImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *nextSongImageView;
+@property (strong, nonatomic) IBOutlet UILabel *playlistTitle;
+@property (strong, nonatomic) IBOutlet UILabel *playlistArtist;
+@property (strong, nonatomic) IBOutlet UILabel *songTitle;
+@property (strong, nonatomic) IBOutlet UILabel *songArtist;
+@property (strong, nonatomic) IBOutlet UIProgressView *progress;
 
 @property(nonatomic,retain) UIPopoverPresentationController *resolver;
+
+- (void) extractColors;
 
 
 @end

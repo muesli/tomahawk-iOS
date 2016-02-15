@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		4D0082B71C663546002CBE54 /* StickyHeaderFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0082B41C663546002CBE54 /* StickyHeaderFlowLayout.m */; };
 		4D0082B81C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0082B61C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m */; };
+		4D04DFA01C6FEBC500DA8EBD /* FeedCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D04DF9E1C6FEBC500DA8EBD /* FeedCollectionViewCell.m */; };
+		4D04DFA11C6FEBC500DA8EBD /* FeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D04DF9F1C6FEBC500DA8EBD /* FeedCollectionViewCell.xib */; };
+		4D04DFAA1C70F9AF00DA8EBD /* rsvp-latest.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 4D04DFA91C70F9AF00DA8EBD /* rsvp-latest.min.js */; };
+		4D04DFAC1C70F9F000DA8EBD /* Tomahawk.js in Resources */ = {isa = PBXBuildFile; fileRef = 4D04DFAB1C70F9F000DA8EBD /* Tomahawk.js */; };
+		4D04DFAE1C71446300DA8EBD /* Soundcloud.js in Resources */ = {isa = PBXBuildFile; fileRef = 4D04DFAD1C71446300DA8EBD /* Soundcloud.js */; };
 		4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */; };
 		4D0A0F8D1C32BE6E00244532 /* ResolverDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */; };
 		4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A0FA41C33231F00244532 /* SearchTableViewController.m */; };
@@ -43,8 +48,6 @@
 		4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */; };
 		4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2241C2F82190031FBE5 /* ConnectCell.m */; };
 		4DA5D2301C2F82340031FBE5 /* MyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D22A1C2F82340031FBE5 /* MyAdditions.m */; };
-		4DA5D2391C2F82440031FBE5 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2351C2F82440031FBE5 /* CCColorCube.m */; };
-		4DA5D23C1C2F82440031FBE5 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2381C2F82440031FBE5 /* CCLocalMaximum.m */; };
 		4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */; };
 		4DA5D2D11C2F82D80031FBE5 /* ResolverDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CF1C2F82D80031FBE5 /* ResolverDetailController.m */; };
 		4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */; };
@@ -83,6 +86,12 @@
 		4D0082B41C663546002CBE54 /* StickyHeaderFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StickyHeaderFlowLayout.m; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayout.m; sourceTree = "<group>"; };
 		4D0082B51C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StickyHeaderFlowLayoutAttributes.h; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayoutAttributes.h; sourceTree = "<group>"; };
 		4D0082B61C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StickyHeaderFlowLayoutAttributes.m; path = Tomahawk/Resources/CSStickyStuff/StickyHeaderFlowLayoutAttributes.m; sourceTree = "<group>"; };
+		4D04DF9D1C6FEBC500DA8EBD /* FeedCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedCollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/FeedCollectionViewCell.h"; sourceTree = "<group>"; };
+		4D04DF9E1C6FEBC500DA8EBD /* FeedCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedCollectionViewCell.m; path = "Tomahawk/UI/Custom Collection View Cells/FeedCollectionViewCell.m"; sourceTree = "<group>"; };
+		4D04DF9F1C6FEBC500DA8EBD /* FeedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedCollectionViewCell.xib; path = "Tomahawk/UI/Custom Collection View Cells/FeedCollectionViewCell.xib"; sourceTree = "<group>"; };
+		4D04DFA91C70F9AF00DA8EBD /* rsvp-latest.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "rsvp-latest.min.js"; path = "Tomahawk/Tomahawk API/rsvp-latest.min.js"; sourceTree = "<group>"; };
+		4D04DFAB1C70F9F000DA8EBD /* Tomahawk.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Tomahawk.js; path = "Tomahawk/Tomahawk API/Tomahawk.js"; sourceTree = "<group>"; };
+		4D04DFAD1C71446300DA8EBD /* Soundcloud.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Soundcloud.js; path = "Tomahawk/Tomahawk API/Soundcloud.js"; sourceTree = "<group>"; };
 		4D0A0F891C31D70200244532 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewCell.m; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.m"; sourceTree = "<group>"; };
 		4D0A0F8A1C31D70200244532 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewCell.h; path = "Tomahawk/UI/Custom Table View Cells/SettingsTableViewCell.h"; sourceTree = "<group>"; };
 		4D0A0F8C1C32BE6E00244532 /* ResolverDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResolverDetailController.xib; path = "Tomahawk/UI/Custom Alert Controller/ResolverDetailController.xib"; sourceTree = "<group>"; };
@@ -145,10 +154,6 @@
 		4DA5D2291C2F82340031FBE5 /* MyAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyAdditions.h; path = Tomahawk/Resources/MyAdditions.h; sourceTree = "<group>"; };
 		4DA5D22A1C2F82340031FBE5 /* MyAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyAdditions.m; path = Tomahawk/Resources/MyAdditions.m; sourceTree = "<group>"; };
 		4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dispatch_cancelable_block.h; path = Tomahawk/Resources/dispatch_cancelable_block.h; sourceTree = "<group>"; };
-		4DA5D2351C2F82440031FBE5 /* CCColorCube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CCColorCube.m; path = "Tomahawk/Resources/Color Extractor/CCColorCube.m"; sourceTree = "<group>"; };
-		4DA5D2361C2F82440031FBE5 /* CCColorCube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCColorCube.h; path = "Tomahawk/Resources/Color Extractor/CCColorCube.h"; sourceTree = "<group>"; };
-		4DA5D2371C2F82440031FBE5 /* CCLocalMaximum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCLocalMaximum.h; path = "Tomahawk/Resources/Color Extractor/CCLocalMaximum.h"; sourceTree = "<group>"; };
-		4DA5D2381C2F82440031FBE5 /* CCLocalMaximum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CCLocalMaximum.m; path = "Tomahawk/Resources/Color Extractor/CCLocalMaximum.m"; sourceTree = "<group>"; };
 		4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TEngine.m; path = "Tomahawk/Tomahawk API/TEngine.m"; sourceTree = "<group>"; };
 		4DA5D2CC1C2F82B00031FBE5 /* TEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TEngine.h; path = "Tomahawk/Tomahawk API/TEngine.h"; sourceTree = "<group>"; };
 		4DA5D2CF1C2F82D80031FBE5 /* ResolverDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResolverDetailController.m; path = "Tomahawk/UI/Custom Alert Controller/ResolverDetailController.m"; sourceTree = "<group>"; };
@@ -287,7 +292,6 @@
 				4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */,
 				4D2456D51C5BDDC400B5B4E5 /* CastIconButton.h */,
 				4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */,
-				4DA5D3051C2F87970031FBE5 /* Color Extractor */,
 				4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */,
 				4DA5D2291C2F82340031FBE5 /* MyAdditions.h */,
 				4DA5D22A1C2F82340031FBE5 /* MyAdditions.m */,
@@ -319,6 +323,9 @@
 		4DA5D3001C2F86E10031FBE5 /* Tomahawk API */ = {
 			isa = PBXGroup;
 			children = (
+				4D04DFAD1C71446300DA8EBD /* Soundcloud.js */,
+				4D04DFA91C70F9AF00DA8EBD /* rsvp-latest.min.js */,
+				4D04DFAB1C70F9F000DA8EBD /* Tomahawk.js */,
 				4DA5D2CC1C2F82B00031FBE5 /* TEngine.h */,
 				4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */,
 			);
@@ -340,25 +347,14 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		4DA5D3051C2F87970031FBE5 /* Color Extractor */ = {
-			isa = PBXGroup;
-			children = (
-				4DA5D2351C2F82440031FBE5 /* CCColorCube.m */,
-				4DA5D2361C2F82440031FBE5 /* CCColorCube.h */,
-				4DA5D2371C2F82440031FBE5 /* CCLocalMaximum.h */,
-				4DA5D2381C2F82440031FBE5 /* CCLocalMaximum.m */,
-			);
-			name = "Color Extractor";
-			sourceTree = "<group>";
-		};
 		4DA5D3061C2F88470031FBE5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */,
+				4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */,
 				4D0082B91C664326002CBE54 /* Artists Detail View Controllers */,
 				4DB547DF1C3FD56E00B7F22B /* Inbox View Controllers */,
 				4D0A0FA81C34168200244532 /* Search Table View Controller */,
-				4DA5D1DF1C2F817B0031FBE5 /* ActivityFeedViewController.h */,
-				4DA5D1E01C2F817B0031FBE5 /* ActivityFeedViewController.m */,
 				4D4DBE2A1C3B08C500AB625B /* Music View Controllers */,
 				4DA5D3121C2F88DA0031FBE5 /* Discover View Controllers */,
 				4DA5D3111C2F88C70031FBE5 /* Settings View Controllers */,
@@ -424,6 +420,9 @@
 				4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */,
 				4DA5D2231C2F82190031FBE5 /* ConnectCell.h */,
 				4DA5D2241C2F82190031FBE5 /* ConnectCell.m */,
+				4D04DF9D1C6FEBC500DA8EBD /* FeedCollectionViewCell.h */,
+				4D04DF9E1C6FEBC500DA8EBD /* FeedCollectionViewCell.m */,
+				4D04DF9F1C6FEBC500DA8EBD /* FeedCollectionViewCell.xib */,
 			);
 			name = "Custom Collection View Cells";
 			sourceTree = "<group>";
@@ -589,12 +588,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D04DFAA1C70F9AF00DA8EBD /* rsvp-latest.min.js in Resources */,
 				4D2456D91C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets in Resources */,
 				4DEE816C1C3DA2D90077F7FD /* CustomTableViewCell.xib in Resources */,
+				4D04DFAE1C71446300DA8EBD /* Soundcloud.js in Resources */,
 				4DA5D3191C2F8A8E0031FBE5 /* ForYouViewController.xib in Resources */,
+				4D04DFAC1C70F9F000DA8EBD /* Tomahawk.js in Resources */,
 				4DEE81661C3D90530077F7FD /* ChartsViewController.xib in Resources */,
 				4DA5D31A1C2F8A8E0031FBE5 /* GenresCollectionViewController.xib in Resources */,
 				4D4DBE2F1C3B23D800AB625B /* SongsTableViewController.xib in Resources */,
+				4D04DFA11C6FEBC500DA8EBD /* FeedCollectionViewCell.xib in Resources */,
 				4DA5D31B1C2F8A8E0031FBE5 /* RadioViewController.xib in Resources */,
 				4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */,
 				4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */,
@@ -677,14 +680,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4DBE2E1C3B23D800AB625B /* SongsTableViewController.m in Sources */,
+				4D04DFA01C6FEBC500DA8EBD /* FeedCollectionViewCell.m in Sources */,
 				4DA5D2D11C2F82D80031FBE5 /* ResolverDetailController.m in Sources */,
 				4D0A0FAC1C34365E00244532 /* CAPSPageMenu.m in Sources */,
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
 				4D4DBE331C3B23FE00AB625B /* PlaylistsTableViewController.m in Sources */,
 				4D0A0FA61C33231F00244532 /* SearchTableViewController.m in Sources */,
 				4D0A0F8B1C31D70200244532 /* SettingsTableViewCell.m in Sources */,
-				4DA5D2391C2F82440031FBE5 /* CCColorCube.m in Sources */,
-				4DA5D23C1C2F82440031FBE5 /* CCLocalMaximum.m in Sources */,
 				4DA5D2301C2F82340031FBE5 /* MyAdditions.m in Sources */,
 				4D17EA7E1C5A9F6B000227F9 /* DetailTableViewController.m in Sources */,
 				4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */,

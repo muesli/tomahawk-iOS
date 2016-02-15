@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    self.title = @"Settings";
+    self.navigationItem.title = @"Settings";
 }
 
 - (void)didReceiveMemoryWarning {

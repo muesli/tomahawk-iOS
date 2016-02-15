@@ -7,12 +7,11 @@
 //
 
 #import "NowPlayingViewController.h"
-#import "CCColorCube.h"
 #import "MyAdditions.h"
 #import "CastIconButton.h"
+#import "SLColorArt.h"
 
 @interface NowPlayingViewController (){
-    UIColor *primaryColor, *secondaryColor;
     CastIconButton *googleCast;
 }
 
@@ -53,7 +52,6 @@
 }
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.backgroundImageView.image = [UIImage imageNamed:@"PlaceholderSongs"];
     googleCast = googleCast ? : ({
         CastIconButton *myButton = [CastIconButton buttonWithFrame:CGRectMake(CGRectGetMaxX(self.view.frame) - 36, self.expandArrow.frame.origin.y, 22, 22)];
         [myButton setStatus:CIBCastUnavailable];
@@ -68,41 +66,29 @@
         imageView.layer.masksToBounds = YES;
     }
     
-    //Get Dark Colors from Background
-    CCColorCube *colorCube = [[CCColorCube alloc] init];
-    myArray = [colorCube extractColorsFromImage:self.backgroundImageView.image flags:CCAvoidWhite & CCOnlyBrightColors count:2];
+
     
-    //Set Primary and Secondary Colors from Results
-    primaryColor = [UIColor colorWithRed:[[[myArray objectAtIndex:0]valueForKey:@"redComponent"] floatValue] green:[[[myArray objectAtIndex:0]valueForKey:@"greenComponent"] floatValue] blue:[[[myArray objectAtIndex:0]valueForKey:@"blueComponent"] floatValue] alpha:1.0f];
-    
-    secondaryColor = [UIColor colorWithRed:[[[myArray objectAtIndex:1]valueForKey:@"redComponent"] floatValue] green:[[[myArray objectAtIndex:1]valueForKey:@"greenComponent"] floatValue] blue:[[[myArray objectAtIndex:1]valueForKey:@"blueComponent"] floatValue] alpha:1.0f];
-    
-    CGFloat threshhold = 0.02+0.02+0.02; //Create Threshold for Checking if Colors are too Dark
-    
-    //Check if colors are too dark. If they are, get only bright colors from background and update primary and secondary colors
-    if (([[[myArray objectAtIndex:0]valueForKey:@"redComponent"] floatValue]+[[[myArray objectAtIndex:0]valueForKey:@"greenComponent"] floatValue] + [[[myArray objectAtIndex:0]valueForKey:@"blueComponent"] floatValue]) <= threshhold) {
-        myArray = [colorCube extractBrightColorsFromImage:_backgroundImageView.image avoidColor:self.view.backgroundColor count:2];
-        primaryColor = [UIColor colorWithRed:[[[myArray objectAtIndex:0]valueForKey:@"redComponent"] floatValue] green:[[[myArray objectAtIndex:0]valueForKey:@"greenComponent"] floatValue] blue:[[[myArray objectAtIndex:0]valueForKey:@"blueComponent"] floatValue] alpha:1.0f];
-        secondaryColor = [UIColor colorWithRed:[[[myArray objectAtIndex:1]valueForKey:@"redComponent"] floatValue] green:[[[myArray objectAtIndex:1]valueForKey:@"greenComponent"] floatValue] blue:[[[myArray objectAtIndex:1]valueForKey:@"blueComponent"] floatValue] alpha:1.0f];
-    }
+}
+
+- (void) extractColors {
+    NSArray *buttons = @[_expandArrow, googleCast, _lyrics, _like, _queue, _share, _playPause, _next, _previous, _repeat, _shuffle];
     
     
-    NSArray *buttons = @[_expandArrow, googleCast, _lyrics, _like, _queue, _share, _playPause, _next, _previous, _repeat, _shuffle]; //Create array of all buttons
+    SLColorArt *colorArt = [[SLColorArt alloc]initWithImage:self.backgroundImageView.image];
+    self.view.backgroundColor = colorArt.backgroundColor;
+    UIColor *primaryColor = colorArt.primaryColor;
+    UIColor *secondaryColor = colorArt.secondaryColor;
     
-    //Set Button Properties
     for (UIButton *myButton in buttons) {
         myButton.imageView.image = [myButton.imageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [myButton setImage:myButton.imageView.image forState:UIControlStateNormal];
         myButton.tintColor = primaryColor;
     }
     
-    
-    //Set text properties
     _playlistTitle.textColor = primaryColor;
     _playlistArtist.textColor = secondaryColor;
     _songTitle.textColor = primaryColor;
     _songArtist.textColor = secondaryColor;
-    
     
 }
 

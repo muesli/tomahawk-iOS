@@ -16,6 +16,7 @@
 #import "DetailTableViewController.h"
 #import "ArtistDetailCollectionViewController.h"
 #import "StickyHeaderFlowLayout.h"
+#import "NowPlayingViewController.h"
 
 @interface SearchTableViewController (){
     NSArray *songNames, *songArtists, *albumNames, *albumArtists, *albumImages, *songAlbums, *songImages, *artistImages, *artistNames, *artistFollowers, *playlistCount, *playlistNames, *playlistImages, *playlistArtists;
@@ -182,7 +183,7 @@ static CGFloat searchBlockDelay = 0.25;
     [activityIndicatorView startAnimating];
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_enter(group);
-        [TEngine searchAlbumsByAlbumName:searchText resolver:RRhapsody limit:4 page:0 completion:^(id response) {
+        [TEngine searchAlbumsByAlbumName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
@@ -200,7 +201,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
 
     dispatch_group_enter(group);
-        [TEngine searchSongsBySongName:searchText resolver:RRhapsody limit:4 page:0 completion:^(id response) {
+        [TEngine searchSongsBySongName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
@@ -219,7 +220,7 @@ static CGFloat searchBlockDelay = 0.25;
         }];
     
     dispatch_group_enter(group);
-        [TEngine searchArtistsByArtistName:searchText resolver:RRhapsody limit:4 page:0 completion:^(id response) {
+        [TEngine searchArtistsByArtistName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
             if ([response isKindOfClass:[NSError class]]) {
                 UIAlertController *error = [response createAlertFromError];
                 [self presentViewController:error animated:YES completion:nil];
@@ -278,8 +279,19 @@ static CGFloat searchBlockDelay = 0.25;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if (indexPath.section == 0) {
+        NowPlayingViewController *nowPlaying = (NowPlayingViewController *) [storyboard instantiateViewControllerWithIdentifier:@"NowPlayingViewController"];
+        CustomTableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+        [self presentViewController:nowPlaying animated:YES completion:^{
+            nowPlaying.backgroundImageView.image = selectedCell.myImageView.image;
+            nowPlaying.currentSongImageView.image = selectedCell.myImageView.image;
+            nowPlaying.songTitle.text = selectedCell.myTextLabel.text;
+            nowPlaying.songArtist.text = selectedCell.myDetailTextLabel.text;
+            [nowPlaying extractColors];
+        }];
+    }
     if (indexPath.section == 2) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ArtistDetailCollectionViewController *artistDetail = (ArtistDetailCollectionViewController *) [storyboard instantiateViewControllerWithIdentifier:@"ArtistDetailCollectionViewController"];
         artistDetail.artistName = artistNames[indexPath.row];
         CustomTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
