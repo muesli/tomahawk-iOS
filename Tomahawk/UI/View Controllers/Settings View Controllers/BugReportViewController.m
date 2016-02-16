@@ -61,12 +61,6 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    UIBarButtonItem *sendReport = [[UIBarButtonItem alloc]initWithTitle:@"Send" style:UIBarButtonItemStylePlain target:self action:@selector(sendReport:)];
-    sendReport.tintColor = [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)];
-    self.navigationItem.rightBarButtonItem = sendReport;
-    [self.titleField setValue:[UIColor darkGrayColor]forKeyPath:@"_placeholderLabel.textColor"];
-    [self.usernameField setValue:[UIColor darkGrayColor]forKeyPath:@"_placeholderLabel.textColor"];
-    [self.passwordField setValue:[UIColor darkGrayColor]forKeyPath:@"_placeholderLabel.textColor"];
     
 }
 

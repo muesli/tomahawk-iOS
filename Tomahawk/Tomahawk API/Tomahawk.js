@@ -117,22 +117,7 @@ Tomahawk.timestamp = function () {
 };
 
 Tomahawk.htmlDecode = (function () {
-    // this prevents any overhead from creating the object each time
-    var element = document.createElement('textarea');
-
-    function decodeHTMLEntities(str) {
-        if (str && typeof str === 'string') {
-            str = str.replace(/</g, "&lt;");
-            str = str.replace(/>/g, "&gt;");
-            element.innerHTML = str;
-            str = element.textContent;
-            element.textContent = '';
-        }
-
-        return str;
-    }
-
-    return decodeHTMLEntities;
+return;
 })();
 
 Tomahawk.dumpResult = function (result) {
@@ -726,16 +711,6 @@ Tomahawk.localStorage = Tomahawk.localStorage || {
             delete window.localStorage[key];
         }
     };
-
-// some aliases
-Tomahawk.setTimeout = Tomahawk.setTimeout || window.setTimeout;
-Tomahawk.setInterval = Tomahawk.setInterval || window.setInterval;
-Tomahawk.base64Decode = function (a) {
-    return window.atob(a);
-};
-Tomahawk.base64Encode = function (b) {
-    return window.btoa(b);
-};
 
 
 Tomahawk.PluginManager = {

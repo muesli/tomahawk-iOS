@@ -8,17 +8,15 @@
 
 #import "SettingsViewController.h"
 
-@interface SettingsViewController ()
-
-@end
-
-
 @implementation SettingsViewController
+
+- (IBAction)preferredAudioQuality:(UIButton *)sender {
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    self.navigationItem.title = @"Settings";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +24,7 @@
 }
 
 #pragma mark - Table View
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 1 && indexPath.section == 2) {

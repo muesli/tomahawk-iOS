@@ -8,10 +8,6 @@
 
 #import "InfoTableViewController.h"
 
-@interface InfoTableViewController ()
-
-@end
-
 @implementation InfoTableViewController
 
 

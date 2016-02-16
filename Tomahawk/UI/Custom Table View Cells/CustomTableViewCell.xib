@@ -25,13 +25,12 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gze-Nn-WYk">
                         <rect key="frame" x="91" y="24" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIL-j6-NGi">
                         <rect key="frame" x="91" y="24" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pvk-jA-eiw">
@@ -56,7 +55,7 @@
                     <constraint firstItem="Gze-Nn-WYk" firstAttribute="leading" secondItem="Pvk-jA-eiw" secondAttribute="trailing" constant="16" id="wBp-dx-VDE"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="myAccessoryButton" destination="Awo-fO-BZ7" id="WJo-hk-Wsc"/>
                 <outlet property="myDetailTextLabel" destination="ZIL-j6-NGi" id="4sq-nl-1Ro"/>

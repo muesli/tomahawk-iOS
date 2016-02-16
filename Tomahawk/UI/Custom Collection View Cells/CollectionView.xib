@@ -17,12 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-k4-0Jw">
-                        <rect key="frame" x="8" y="146" width="25" height="20"/>
+                        <rect key="frame" x="59" y="146" width="23" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Bc3-L6-QYp"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kck-vh-ga0">
@@ -32,7 +31,6 @@
                             <constraint firstAttribute="width" constant="50" id="LNZ-eM-boJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FG2-hW-xO1">
@@ -42,7 +40,6 @@
                             <constraint firstAttribute="width" constant="31" id="yAO-9b-cRn"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <color key="textColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Headphones" translatesAutoresizingMaskIntoConstraints="NO" id="7Fl-7n-ZyC">
@@ -55,9 +52,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="wQx-k4-0Jw" firstAttribute="leading" secondItem="9Av-BR-33t" secondAttribute="leading" constant="8" id="4oO-Uk-1jr"/>
+                <constraint firstItem="wQx-k4-0Jw" firstAttribute="centerX" secondItem="9Av-BR-33t" secondAttribute="centerX" id="34e-Ea-51I"/>
                 <constraint firstItem="38V-7i-8gs" firstAttribute="top" secondItem="9Av-BR-33t" secondAttribute="top" id="6iK-7o-WWb"/>
                 <constraint firstItem="38V-7i-8gs" firstAttribute="leading" secondItem="9Av-BR-33t" secondAttribute="leading" id="DVa-75-ob8"/>
                 <constraint firstAttribute="bottom" secondItem="kck-vh-ga0" secondAttribute="bottom" constant="3" id="FEy-do-rTl"/>

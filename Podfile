@@ -1,7 +1,6 @@
 platform :ios, '9.0'
 
 pod 'AFNetworking'
-pod 'DGActivityIndicatorView'
 pod 'MBProgressHUD'
 pod 'StreamingKit'
 pod '1PasswordExtension'
@@ -11,7 +10,6 @@ pod 'AFOAuth2Manager', git: 'https://github.com/AFNetworking/AFOAuth2Manager.git
 pod 'JVFloatLabeledTextField'
 pod 'google-cast-sdk'
 pod 'ColorArt'
-#pod 'CSStickyHeaderFlowLayout'
 
 use_frameworks!
 
