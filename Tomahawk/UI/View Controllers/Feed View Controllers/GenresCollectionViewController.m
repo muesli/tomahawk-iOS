@@ -7,7 +7,7 @@
 //
 
 #import "GenresCollectionViewController.h"
-#import "CollectionViewCell.h"
+#import "THKCollectionViewCell.h"
 #import "TEngine.h"
 #import "UIKit+Tomahawk.h"
 #import "UIImageView+AFNetworking.h"
@@ -18,7 +18,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [TEngine getRadioGenresWithCompletionBlock:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
             UIAlertController *error = [response createAlertFromError];
@@ -38,10 +38,10 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CollectionViewCell *genres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    genres.title.text =  [titles objectAtIndex:indexPath.row];
-    genres.artist.hidden = YES;
-    [genres.image setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderGenres"]];
+    THKCollectionViewCell *genres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    genres.textLabel.text =  [titles objectAtIndex:indexPath.row];
+    genres.detailTextLabel.hidden = YES;
+    [genres.imageView setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderGenres"]];
     return genres;
 }
 

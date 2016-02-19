@@ -7,7 +7,7 @@
 //
 
 #import "ForYouViewController.h"
-#import "CollectionViewCell.h"
+#import "THKCollectionViewCell.h"
 
 @implementation ForYouViewController
 
@@ -20,8 +20,8 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self.recommendedGenres registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-    [self.recommendedStations registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [self.recommendedGenres registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [self.recommendedStations registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
 
 }
 
@@ -31,12 +31,12 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView isEqual:_recommendedStations]) {
-        CollectionViewCell *recommendedStations = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        recommendedStations.image.image = [UIImage imageNamed:@"PlaceholderRadios"];
+        THKCollectionViewCell *recommendedStations = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+        recommendedStations.imageView.image = [UIImage imageNamed:@"PlaceholderRadios"];
         return recommendedStations;
     }else{
-        CollectionViewCell *recommendedGenres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        recommendedGenres.image.image = [UIImage imageNamed:@"PlaceholderGenres"];
+        THKCollectionViewCell *recommendedGenres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+        recommendedGenres.imageView.image = [UIImage imageNamed:@"PlaceholderGenres"];
         return recommendedGenres;
     }
 }

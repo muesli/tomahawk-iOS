@@ -7,7 +7,6 @@
 //
 
 #import "FeedViewController.h"
-#import "CollectionViewCell.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "GenresCollectionViewController.h"
 #import "SearchTableViewController.h"

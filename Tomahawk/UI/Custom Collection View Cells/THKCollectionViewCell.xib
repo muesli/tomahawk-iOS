@@ -2,11 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9Av-BR-33t" customClass="CollectionViewCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9Av-BR-33t" customClass="THKCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="140" height="190"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -15,20 +16,17 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="38V-7i-8gs">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-k4-0Jw">
-                        <rect key="frame" x="59" y="146" width="23" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Bc3-L6-QYp"/>
+                            <constraint firstAttribute="width" secondItem="38V-7i-8gs" secondAttribute="height" multiplier="1:1" id="oE9-0k-sdt"/>
                         </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQx-k4-0Jw">
+                        <rect key="frame" x="70" y="146" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kck-vh-ga0">
-                        <rect key="frame" x="56" y="167" width="29" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="4Cu-0j-ptR"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kck-vh-ga0">
+                        <rect key="frame" x="70" y="146" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                         <color key="textColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -40,18 +38,17 @@
             <constraints>
                 <constraint firstItem="wQx-k4-0Jw" firstAttribute="centerX" secondItem="9Av-BR-33t" secondAttribute="centerX" id="34e-Ea-51I"/>
                 <constraint firstItem="38V-7i-8gs" firstAttribute="top" secondItem="9Av-BR-33t" secondAttribute="top" id="6iK-7o-WWb"/>
-                <constraint firstItem="38V-7i-8gs" firstAttribute="leading" secondItem="9Av-BR-33t" secondAttribute="leading" id="DVa-75-ob8"/>
+                <constraint firstItem="38V-7i-8gs" firstAttribute="centerX" secondItem="9Av-BR-33t" secondAttribute="centerX" id="C74-oB-aUa"/>
                 <constraint firstItem="kck-vh-ga0" firstAttribute="centerX" secondItem="9Av-BR-33t" secondAttribute="centerX" id="FCu-Z7-H5y"/>
-                <constraint firstAttribute="bottom" secondItem="kck-vh-ga0" secondAttribute="bottom" constant="3" id="FEy-do-rTl"/>
-                <constraint firstAttribute="bottom" secondItem="38V-7i-8gs" secondAttribute="bottom" constant="50" id="FUp-dD-RA2"/>
-                <constraint firstAttribute="trailing" secondItem="38V-7i-8gs" secondAttribute="trailing" id="Fp0-m0-8I0"/>
-                <constraint firstAttribute="bottom" secondItem="wQx-k4-0Jw" secondAttribute="bottom" constant="24" id="sFj-UK-t8j"/>
+                <constraint firstItem="kck-vh-ga0" firstAttribute="top" secondItem="wQx-k4-0Jw" secondAttribute="bottom" id="ZP0-ev-0Fb"/>
+                <constraint firstItem="wQx-k4-0Jw" firstAttribute="top" secondItem="38V-7i-8gs" secondAttribute="bottom" constant="6" id="afN-Kb-0yY"/>
+                <constraint firstItem="38V-7i-8gs" firstAttribute="width" secondItem="9Av-BR-33t" secondAttribute="width" id="cxM-r5-jP1"/>
             </constraints>
             <size key="customSize" width="108" height="113"/>
             <connections>
-                <outlet property="artist" destination="kck-vh-ga0" id="g9e-Zh-aAE"/>
-                <outlet property="image" destination="38V-7i-8gs" id="oAa-pW-IbY"/>
-                <outlet property="title" destination="wQx-k4-0Jw" id="JZK-1Z-vIh"/>
+                <outlet property="detailTextLabel" destination="kck-vh-ga0" id="3Hk-JO-9ck"/>
+                <outlet property="imageView" destination="38V-7i-8gs" id="6If-qs-Zh6"/>
+                <outlet property="textLabel" destination="wQx-k4-0Jw" id="xlk-q7-vmy"/>
             </connections>
             <point key="canvasLocation" x="40" y="16"/>
         </collectionViewCell>

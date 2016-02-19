@@ -7,7 +7,7 @@
 //
 
 #import "ConnectCollectionViewController.h"
-#import "ConnectCell.h"
+#import "ConnectCollectionViewCell.h"
 #import "ResolverDetailController.h"
 
 @interface ConnectCollectionViewController (){
@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.collectionView registerClass:[ConnectCell class] forCellWithReuseIdentifier:@"cell"];
+    [self.collectionView registerClass:[ConnectCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     names = @[@"Last.fm", @"Spotify", @"Google Play Music", @"Apple Music", @"SoundCloud", @"Official.fm", @"Deezer", @"Tidal", @"YouTube", @"Amazon Prime Music", @"Rhapsody"];
     
     colors = @[[UIColor colorWithRed:204.0/255.0 green:61.0/255.0 blue:67.0/255.0 alpha:1],
@@ -47,7 +47,7 @@
     return names.count;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    ConnectCell *connectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    ConnectCollectionViewCell *connectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     connectCell.title = names[indexPath.row];
     connectCell.color = colors[indexPath.row];
     connectCell.backgroundColor = [UIColor clearColor];

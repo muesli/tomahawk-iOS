@@ -26,9 +26,11 @@ static const NSInteger kHeaderZIndex = 1024;
     [super prepareLayout];
 }
 
-- (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingSupplementaryElementOfKind:(NSString *)elementKind
-                                                                                        atIndexPath:(NSIndexPath *)elementIndexPath {
+
+
+- (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingSupplementaryElementOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)elementIndexPath {
     UICollectionViewLayoutAttributes *attributes = [super initialLayoutAttributesForAppearingSupplementaryElementOfKind:elementKind atIndexPath:elementIndexPath];
+    
 
     if ([elementKind isEqualToString:StickyHeaderParallaxHeader]) {
         // sticky header do not need to offset
@@ -66,10 +68,41 @@ static const NSInteger kHeaderZIndex = 1024;
     return attributes;
 }
 
-- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-{
+- (NSArray*)indexPathsOfSeparatorsInRect:(CGRect)rect {
+    NSInteger firstCellIndexToShow = floorf(rect.origin.y / self.itemSize.height);
+    NSInteger lastCellIndexToShow = floorf((rect.origin.y + CGRectGetHeight(rect)) / self.itemSize.height);
+    NSInteger countOfItems = [self.collectionView.dataSource collectionView:self.collectionView numberOfItemsInSection:0];
+    
+    NSMutableArray* indexPaths = [NSMutableArray new];
+    for (long int i = MAX(firstCellIndexToShow, 0); i <= lastCellIndexToShow; i++) {
+        if (i < countOfItems) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+    }
+    return indexPaths;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewLayoutAttributes *layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
+    CGFloat decorationOffset = (indexPath.row + 1) * self.itemSize.height + indexPath.row * self.minimumLineSpacing;
+    layoutAttributes.frame = CGRectMake(90.0, decorationOffset + self.parallaxHeaderReferenceSize.height, self.collectionViewContentSize.width, self.minimumLineSpacing);
+    layoutAttributes.zIndex = 1000;
+    
+    return layoutAttributes;
+}
+
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     
     if (self.collectionView.dataSource != nil) {
+        
+        NSMutableArray *decorationAttributes = [NSMutableArray array];
+        NSArray *visibleIndexPaths = [self indexPathsOfSeparatorsInRect:rect];
+        
+        for (NSIndexPath *indexPath in visibleIndexPaths) {
+            UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForDecorationViewOfKind:@"Separator" atIndexPath:indexPath];
+            [decorationAttributes addObject:attributes];
+        }
+        
         // The rect should compensate the header size
         CGRect adjustedRect = rect;
         adjustedRect.origin.y -= self.parallaxHeaderReferenceSize.height;
@@ -170,6 +203,8 @@ static const NSInteger kHeaderZIndex = 1024;
         
         // For debugging purpose
         //     [self debugLayoutAttributes:allItems];
+        
+        [allItems addObjectsFromArray:decorationAttributes];
         
         return allItems;
     } else {

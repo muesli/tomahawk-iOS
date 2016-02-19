@@ -36,6 +36,8 @@
 		4D6A2CC11C751F9400B611B0 /* LibraryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */; };
 		4D6A2CC31C75349F00B611B0 /* LibraryCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */; };
 		4D6A2CC61C75350700B611B0 /* LibraryHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC51C75350700B611B0 /* LibraryHeader.m */; };
+		4D9342681C774A6D00011711 /* TableViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9342661C774A6D00011711 /* TableViewCollectionViewCell.m */; };
+		4D9342691C774A6D00011711 /* TableViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9342671C774A6D00011711 /* TableViewCollectionViewCell.xib */; };
 		4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */; };
 		4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */; };
 		4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */; };
@@ -44,13 +46,13 @@
 		4DA5D2181C2F81D30031FBE5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2101C2F81D30031FBE5 /* SettingsViewController.m */; };
 		4DA5D21A1C2F81D30031FBE5 /* BugReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2121C2F81D30031FBE5 /* BugReportViewController.m */; };
 		4DA5D21C1C2F81F50031FBE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D21B1C2F81F50031FBE5 /* main.m */; };
-		4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */; };
-		4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2241C2F82190031FBE5 /* ConnectCell.m */; };
+		4DA5D2251C2F82190031FBE5 /* THKCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2211C2F82190031FBE5 /* THKCollectionViewCell.m */; };
+		4DA5D2281C2F82190031FBE5 /* ConnectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2241C2F82190031FBE5 /* ConnectCollectionViewCell.m */; };
 		4DA5D2301C2F82340031FBE5 /* UIKit+Tomahawk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D22A1C2F82340031FBE5 /* UIKit+Tomahawk.m */; };
 		4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */; };
 		4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */; };
 		4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F31C2F83300031FBE5 /* Main.storyboard */; };
-		4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */; };
+		4DA5D31D1C2F8AA60031FBE5 /* THKCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D31C1C2F8AA60031FBE5 /* THKCollectionViewCell.xib */; };
 		4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB547DD1C3FD56700B7F22B /* InboxTableViewController.m */; };
 		4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DEE81691C3DA2D90077F7FD /* CustomTableViewCell.m */; };
 		4DEE816C1C3DA2D90077F7FD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DEE816A1C3DA2D90077F7FD /* CustomTableViewCell.xib */; };
@@ -121,6 +123,9 @@
 		4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.xib"; sourceTree = "<group>"; };
 		4D6A2CC41C75350700B611B0 /* LibraryHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryHeader.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.h"; sourceTree = "<group>"; };
 		4D6A2CC51C75350700B611B0 /* LibraryHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryHeader.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.m"; sourceTree = "<group>"; };
+		4D9342651C774A6D00011711 /* TableViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/TableViewCollectionViewCell.h"; sourceTree = "<group>"; };
+		4D9342661C774A6D00011711 /* TableViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCollectionViewCell.m; path = "Tomahawk/UI/Custom Collection View Cells/TableViewCollectionViewCell.m"; sourceTree = "<group>"; };
+		4D9342671C774A6D00011711 /* TableViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCollectionViewCell.xib; path = "Tomahawk/UI/Custom Collection View Cells/TableViewCollectionViewCell.xib"; sourceTree = "<group>"; };
 		4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomahawk/Images.xcassets; sourceTree = "<group>"; };
 		4DA5D1E31C2F817B0031FBE5 /* NowPlayingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NowPlayingViewController.h; path = "Tomahawk/UI/View Controllers/NowPlayingViewController.h"; sourceTree = "<group>"; };
 		4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NowPlayingViewController.m; path = "Tomahawk/UI/View Controllers/NowPlayingViewController.m"; sourceTree = "<group>"; };
@@ -135,10 +140,10 @@
 		4DA5D2111C2F81D30031FBE5 /* BugReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BugReportViewController.h; path = "Tomahawk/UI/View Controllers/Settings View Controllers/BugReportViewController.h"; sourceTree = "<group>"; };
 		4DA5D2121C2F81D30031FBE5 /* BugReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BugReportViewController.m; path = "Tomahawk/UI/View Controllers/Settings View Controllers/BugReportViewController.m"; sourceTree = "<group>"; };
 		4DA5D21B1C2F81F50031FBE5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Tomahawk/Supporting Files/main.m"; sourceTree = "<group>"; };
-		4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = "Tomahawk/UI/Custom Collection View Cells/CollectionViewCell.m"; sourceTree = "<group>"; };
-		4DA5D2221C2F82190031FBE5 /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/CollectionViewCell.h"; sourceTree = "<group>"; };
-		4DA5D2231C2F82190031FBE5 /* ConnectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectCell.h; path = "Tomahawk/UI/Custom Collection View Cells/ConnectCell.h"; sourceTree = "<group>"; };
-		4DA5D2241C2F82190031FBE5 /* ConnectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ConnectCell.m; path = "Tomahawk/UI/Custom Collection View Cells/ConnectCell.m"; sourceTree = "<group>"; };
+		4DA5D2211C2F82190031FBE5 /* THKCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = THKCollectionViewCell.m; path = "Tomahawk/UI/Custom Collection View Cells/THKCollectionViewCell.m"; sourceTree = "<group>"; };
+		4DA5D2221C2F82190031FBE5 /* THKCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = THKCollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/THKCollectionViewCell.h"; sourceTree = "<group>"; };
+		4DA5D2231C2F82190031FBE5 /* ConnectCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectCollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/ConnectCollectionViewCell.h"; sourceTree = "<group>"; };
+		4DA5D2241C2F82190031FBE5 /* ConnectCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ConnectCollectionViewCell.m; path = "Tomahawk/UI/Custom Collection View Cells/ConnectCollectionViewCell.m"; sourceTree = "<group>"; };
 		4DA5D2291C2F82340031FBE5 /* UIKit+Tomahawk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIKit+Tomahawk.h"; path = "Tomahawk/Resources/UIKit+Tomahawk.h"; sourceTree = "<group>"; };
 		4DA5D22A1C2F82340031FBE5 /* UIKit+Tomahawk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIKit+Tomahawk.m"; path = "Tomahawk/Resources/UIKit+Tomahawk.m"; sourceTree = "<group>"; };
 		4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dispatch_cancelable_block.h; path = Tomahawk/Resources/dispatch_cancelable_block.h; sourceTree = "<group>"; };
@@ -148,7 +153,7 @@
 		4DA5D2F31C2F83300031FBE5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Tomahawk/UI/Main.storyboard; sourceTree = "<group>"; };
 		4DA5D2F51C2F84950031FBE5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Tomahawk/Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		4DA5D2FC1C2F85A40031FBE5 /* Tomahawk-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Tomahawk-Bridging-Header.h"; path = "Tomahawk/Resources/Tomahawk-Bridging-Header.h"; sourceTree = "<group>"; };
-		4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionView.xib; path = "Tomahawk/UI/Custom Collection View Cells/CollectionView.xib"; sourceTree = "<group>"; };
+		4DA5D31C1C2F8AA60031FBE5 /* THKCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = THKCollectionViewCell.xib; path = "Tomahawk/UI/Custom Collection View Cells/THKCollectionViewCell.xib"; sourceTree = "<group>"; };
 		4DB547DC1C3FD56700B7F22B /* InboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InboxTableViewController.h; path = "Tomahawk/UI/View Controllers/Inbox View Controllers/InboxTableViewController.h"; sourceTree = "<group>"; };
 		4DB547DD1C3FD56700B7F22B /* InboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InboxTableViewController.m; path = "Tomahawk/UI/View Controllers/Inbox View Controllers/InboxTableViewController.m"; sourceTree = "<group>"; };
 		4DBDE0171BADC2BA00CD02CC /* Tomahawk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomahawk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -370,11 +375,14 @@
 		4DA5D3171C2F89A00031FBE5 /* Custom Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5D2221C2F82190031FBE5 /* CollectionViewCell.h */,
-				4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */,
-				4DA5D31C1C2F8AA60031FBE5 /* CollectionView.xib */,
-				4DA5D2231C2F82190031FBE5 /* ConnectCell.h */,
-				4DA5D2241C2F82190031FBE5 /* ConnectCell.m */,
+				4DA5D2221C2F82190031FBE5 /* THKCollectionViewCell.h */,
+				4DA5D2211C2F82190031FBE5 /* THKCollectionViewCell.m */,
+				4DA5D31C1C2F8AA60031FBE5 /* THKCollectionViewCell.xib */,
+				4DA5D2231C2F82190031FBE5 /* ConnectCollectionViewCell.h */,
+				4DA5D2241C2F82190031FBE5 /* ConnectCollectionViewCell.m */,
+				4D9342651C774A6D00011711 /* TableViewCollectionViewCell.h */,
+				4D9342661C774A6D00011711 /* TableViewCollectionViewCell.m */,
+				4D9342671C774A6D00011711 /* TableViewCollectionViewCell.xib */,
 			);
 			name = "Custom Collection View Cells";
 			sourceTree = "<group>";
@@ -541,10 +549,11 @@
 				4D0CC2A31C73E8D100BABE4B /* GenresCollectionViewController.xib in Resources */,
 				4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */,
 				4D0CC2A41C73E8D100BABE4B /* ForYouViewController.xib in Resources */,
+				4D9342691C774A6D00011711 /* TableViewCollectionViewCell.xib in Resources */,
 				4D0CC2A51C73E8D100BABE4B /* ChartsViewController.xib in Resources */,
 				4D0CC2931C73E8B000BABE4B /* SearchTableViewController.xib in Resources */,
 				4D0CC2961C73E8B000BABE4B /* ArtistsHeader.xib in Resources */,
-				4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */,
+				4DA5D31D1C2F8AA60031FBE5 /* THKCollectionViewCell.xib in Resources */,
 				4D6A2CC31C75349F00B611B0 /* LibraryCollectionViewController.xib in Resources */,
 				4D6A2CC11C751F9400B611B0 /* LibraryHeader.xib in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
@@ -623,11 +632,11 @@
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
 				4DA5D2301C2F82340031FBE5 /* UIKit+Tomahawk.m in Sources */,
 				4D0CC2921C73E8B000BABE4B /* SearchTableViewController.m in Sources */,
-				4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */,
+				4DA5D2251C2F82190031FBE5 /* THKCollectionViewCell.m in Sources */,
 				4D6A2CC61C75350700B611B0 /* LibraryHeader.m in Sources */,
 				4D0CC2911C73E8B000BABE4B /* DetailTableViewController.m in Sources */,
 				4D0CC2A21C73E8D100BABE4B /* FeedViewController.m in Sources */,
-				4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */,
+				4DA5D2281C2F82190031FBE5 /* ConnectCollectionViewCell.m in Sources */,
 				4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */,
 				4D0082B71C663546002CBE54 /* StickyHeaderFlowLayout.m in Sources */,
 				4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */,
@@ -646,6 +655,7 @@
 				4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */,
 				4D2456D71C5BDDC500B5B4E5 /* CastIconButton.m in Sources */,
 				4D0082B81C663546002CBE54 /* StickyHeaderFlowLayoutAttributes.m in Sources */,
+				4D9342681C774A6D00011711 /* TableViewCollectionViewCell.m in Sources */,
 				4D0CC2831C73E87C00BABE4B /* ResolverDetailController.m in Sources */,
 				4D0CC2A61C73E8D100BABE4B /* GenresCollectionViewController.m in Sources */,
 				4D0CC2951C73E8B000BABE4B /* ArtistsHeader.m in Sources */,

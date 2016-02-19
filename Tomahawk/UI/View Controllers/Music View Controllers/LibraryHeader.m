@@ -7,14 +7,14 @@
 //
 
 #import "LibraryHeader.h"
-#import "CollectionViewCell.h"
+#import "THKCollectionViewCell.h"
 
 @implementation LibraryHeader
 
 
 -(void)awakeFromNib {
     [super awakeFromNib];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -22,8 +22,10 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    THKCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.textLabel.text = @"Title";
+    cell.detailTextLabel.text = @"Artist";
+    cell.imageView.image = [UIImage imageNamed:@"PlaceholderSongs"];
     return cell;
 }
 

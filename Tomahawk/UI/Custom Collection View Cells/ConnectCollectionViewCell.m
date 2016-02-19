@@ -1,5 +1,5 @@
 //
-//  ConnectCell.m
+//  ConnectCollectionViewCell.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 23/11/2015.
@@ -7,11 +7,11 @@
 //
 
 
-#import "ConnectCell.h"
+#import "ConnectCollectionViewCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIKit+Tomahawk.h"
 
-@implementation ConnectCell {
+@implementation ConnectCollectionViewCell {
     UIImageView *imageView;
     UILabel *resolver;
 }

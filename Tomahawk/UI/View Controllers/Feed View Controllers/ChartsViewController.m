@@ -7,7 +7,7 @@
 //
 
 #import "ChartsViewController.h"
-#import "CollectionViewCell.h"
+#import "THKCollectionViewCell.h"
 #import "CustomTableViewCell.h"
 #import "TEngine.h"
 #import "UIImageView+AFNetworking.h"
@@ -71,7 +71,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    [self.chartsByCountry registerNib:[UINib nibWithNibName:@"CollectionView" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [self.chartsByCountry registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
     [self.top registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [TEngine getTopTracksWithCompletionBlock:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
@@ -102,8 +102,8 @@
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CollectionViewCell *chartsByCountry = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    chartsByCountry.image.image = [UIImage imageNamed:@"PlaceholderCountryCharts"];
+    THKCollectionViewCell *chartsByCountry = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    chartsByCountry.imageView.image = [UIImage imageNamed:@"PlaceholderCountryCharts"];
     return chartsByCountry;
 }
 
