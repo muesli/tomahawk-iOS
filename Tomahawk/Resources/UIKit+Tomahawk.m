@@ -1,15 +1,15 @@
 //
-//  MyAdditions.m
+//  UIKit+Tomahawk.m
 //  Tomahawk
 //
 //  Created by Mark Bourke on 20/12/2015.
 //  Copyright © 2015 Mark Bourke. All rights reserved.
 //
 
-#import "MyAdditions.h"
+#import "UIKit+Tomahawk.h"
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 
-@implementation UIImage (MyAdditions)
+@implementation UIImage (Tomahawk)
 
 +(UIImage *)image:(UIImage *)image withColor:(UIColor *)color{
     UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation NSString (MyAdditions)
+@implementation NSString (Tomahawk)
 
 - (NSString *)md5{
     const char *cStr = [self UTF8String];
@@ -72,7 +72,7 @@
 
 @end
 
-@implementation NSData (MyAdditions)
+@implementation NSData (Tomahawk)
 
 - (NSString*)md5{
     unsigned char result[CC_MD5_DIGEST_LENGTH];
@@ -93,7 +93,7 @@
 
 @end
 
-@implementation NSDictionary (MyAdditions)
+@implementation NSDictionary (Tomahawk)
 
 -(NSString *) stringify {
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:0 error:nil];
@@ -102,7 +102,7 @@
 
 @end
 
-@implementation NSError (MyAdditions)
+@implementation NSError (Tomahawk)
 
 - (UIAlertController *)createAlertFromError {
     UIAlertController *error = [UIAlertController alertControllerWithTitle:@"Error" message:[[self userInfo]objectForKey:NSLocalizedDescriptionKey] preferredStyle:UIAlertControllerStyleAlert];

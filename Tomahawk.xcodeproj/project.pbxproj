@@ -32,6 +32,10 @@
 		4D17EA7B1C5A9EA5000227F9 /* CustomUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D17EA7A1C5A9EA5000227F9 /* CustomUIButton.m */; };
 		4D2456D71C5BDDC500B5B4E5 /* CastIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */; };
 		4D2456D91C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */; };
+		4D6A2CC01C751F9400B611B0 /* LibraryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A2CBE1C751F9400B611B0 /* LibraryCollectionViewController.m */; };
+		4D6A2CC11C751F9400B611B0 /* LibraryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */; };
+		4D6A2CC31C75349F00B611B0 /* LibraryCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */; };
+		4D6A2CC61C75350700B611B0 /* LibraryHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC51C75350700B611B0 /* LibraryHeader.m */; };
 		4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */; };
 		4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */; };
 		4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */; };
@@ -42,7 +46,7 @@
 		4DA5D21C1C2F81F50031FBE5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D21B1C2F81F50031FBE5 /* main.m */; };
 		4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2211C2F82190031FBE5 /* CollectionViewCell.m */; };
 		4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2241C2F82190031FBE5 /* ConnectCell.m */; };
-		4DA5D2301C2F82340031FBE5 /* MyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D22A1C2F82340031FBE5 /* MyAdditions.m */; };
+		4DA5D2301C2F82340031FBE5 /* UIKit+Tomahawk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D22A1C2F82340031FBE5 /* UIKit+Tomahawk.m */; };
 		4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */; };
 		4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F11C2F831D0031FBE5 /* LaunchScreen.storyboard */; };
 		4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D2F31C2F83300031FBE5 /* Main.storyboard */; };
@@ -111,6 +115,12 @@
 		4D2456D51C5BDDC400B5B4E5 /* CastIconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CastIconButton.h; path = Tomahawk/Resources/CastIconButton.h; sourceTree = "<group>"; };
 		4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CastIconButton.m; path = Tomahawk/Resources/CastIconButton.m; sourceTree = "<group>"; };
 		4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = CastFrameworkAssets.xcassets; path = "Pods/google-cast-sdk/GoogleCastSDK-2.10.1-Release/CastFrameworkAssets.xcassets"; sourceTree = "<group>"; };
+		4D6A2CBD1C751F9400B611B0 /* LibraryCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.h"; sourceTree = "<group>"; };
+		4D6A2CBE1C751F9400B611B0 /* LibraryCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryCollectionViewController.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.m"; sourceTree = "<group>"; };
+		4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryHeader.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.xib"; sourceTree = "<group>"; };
+		4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.xib"; sourceTree = "<group>"; };
+		4D6A2CC41C75350700B611B0 /* LibraryHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryHeader.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.h"; sourceTree = "<group>"; };
+		4D6A2CC51C75350700B611B0 /* LibraryHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryHeader.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.m"; sourceTree = "<group>"; };
 		4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomahawk/Images.xcassets; sourceTree = "<group>"; };
 		4DA5D1E31C2F817B0031FBE5 /* NowPlayingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NowPlayingViewController.h; path = "Tomahawk/UI/View Controllers/NowPlayingViewController.h"; sourceTree = "<group>"; };
 		4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NowPlayingViewController.m; path = "Tomahawk/UI/View Controllers/NowPlayingViewController.m"; sourceTree = "<group>"; };
@@ -129,8 +139,8 @@
 		4DA5D2221C2F82190031FBE5 /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/CollectionViewCell.h"; sourceTree = "<group>"; };
 		4DA5D2231C2F82190031FBE5 /* ConnectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectCell.h; path = "Tomahawk/UI/Custom Collection View Cells/ConnectCell.h"; sourceTree = "<group>"; };
 		4DA5D2241C2F82190031FBE5 /* ConnectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ConnectCell.m; path = "Tomahawk/UI/Custom Collection View Cells/ConnectCell.m"; sourceTree = "<group>"; };
-		4DA5D2291C2F82340031FBE5 /* MyAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyAdditions.h; path = Tomahawk/Resources/MyAdditions.h; sourceTree = "<group>"; };
-		4DA5D22A1C2F82340031FBE5 /* MyAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyAdditions.m; path = Tomahawk/Resources/MyAdditions.m; sourceTree = "<group>"; };
+		4DA5D2291C2F82340031FBE5 /* UIKit+Tomahawk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIKit+Tomahawk.h"; path = "Tomahawk/Resources/UIKit+Tomahawk.h"; sourceTree = "<group>"; };
+		4DA5D22A1C2F82340031FBE5 /* UIKit+Tomahawk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIKit+Tomahawk.m"; path = "Tomahawk/Resources/UIKit+Tomahawk.m"; sourceTree = "<group>"; };
 		4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = dispatch_cancelable_block.h; path = Tomahawk/Resources/dispatch_cancelable_block.h; sourceTree = "<group>"; };
 		4DA5D2CB1C2F82B00031FBE5 /* TEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TEngine.m; path = "Tomahawk/Tomahawk API/TEngine.m"; sourceTree = "<group>"; };
 		4DA5D2CC1C2F82B00031FBE5 /* TEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TEngine.h; path = "Tomahawk/Tomahawk API/TEngine.h"; sourceTree = "<group>"; };
@@ -203,11 +213,11 @@
 				4D0CC2891C73E8B000BABE4B /* DetailTableViewController.h */,
 				4D0CC28A1C73E8B000BABE4B /* SearchTableViewController.h */,
 				4D0CC28B1C73E8B000BABE4B /* SearchTableViewController.xib */,
-				4D0CC28C1C73E8B000BABE4B /* ArtistDetailCollectionViewController.m */,
 				4D0CC28D1C73E8B000BABE4B /* ArtistsHeader.h */,
 				4D0CC28E1C73E8B000BABE4B /* ArtistsHeader.m */,
 				4D0CC28F1C73E8B000BABE4B /* ArtistsHeader.xib */,
 				4D0CC2901C73E8B000BABE4B /* ArtistDetailCollectionViewController.h */,
+				4D0CC28C1C73E8B000BABE4B /* ArtistDetailCollectionViewController.m */,
 			);
 			name = "Search View Controllers";
 			sourceTree = "<group>";
@@ -235,6 +245,12 @@
 		4D4DBE2A1C3B08C500AB625B /* Music View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D6A2CBD1C751F9400B611B0 /* LibraryCollectionViewController.h */,
+				4D6A2CBE1C751F9400B611B0 /* LibraryCollectionViewController.m */,
+				4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */,
+				4D6A2CC41C75350700B611B0 /* LibraryHeader.h */,
+				4D6A2CC51C75350700B611B0 /* LibraryHeader.m */,
+				4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */,
 			);
 			name = "Music View Controllers";
 			sourceTree = "<group>";
@@ -250,8 +266,8 @@
 				4D2456D51C5BDDC400B5B4E5 /* CastIconButton.h */,
 				4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */,
 				4DA5D22B1C2F82340031FBE5 /* dispatch_cancelable_block.h */,
-				4DA5D2291C2F82340031FBE5 /* MyAdditions.h */,
-				4DA5D22A1C2F82340031FBE5 /* MyAdditions.m */,
+				4DA5D2291C2F82340031FBE5 /* UIKit+Tomahawk.h */,
+				4DA5D22A1C2F82340031FBE5 /* UIKit+Tomahawk.m */,
 				4DA5D2FC1C2F85A40031FBE5 /* Tomahawk-Bridging-Header.h */,
 			);
 			name = Resources;
@@ -318,9 +334,9 @@
 		4DA5D3111C2F88C70031FBE5 /* Settings View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4D0CC27F1C73E87C00BABE4B /* ResolverDetailController.xib */,
-				4D0CC2801C73E87C00BABE4B /* ResolverDetailController.m */,
 				4D0CC2811C73E87C00BABE4B /* ResolverDetailController.h */,
+				4D0CC2801C73E87C00BABE4B /* ResolverDetailController.m */,
+				4D0CC27F1C73E87C00BABE4B /* ResolverDetailController.xib */,
 				4DA5D20F1C2F81D30031FBE5 /* SettingsViewController.h */,
 				4DA5D2101C2F81D30031FBE5 /* SettingsViewController.m */,
 				4DA5D20C1C2F81D30031FBE5 /* InfoTableViewController.h */,
@@ -336,8 +352,8 @@
 		4DA5D3121C2F88DA0031FBE5 /* Feed View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4D0CC2971C73E8D100BABE4B /* FeedViewController.m */,
 				4D0CC2981C73E8D100BABE4B /* FeedViewController.h */,
+				4D0CC2971C73E8D100BABE4B /* FeedViewController.m */,
 				4D0CC2A11C73E8D100BABE4B /* GenresCollectionViewController.h */,
 				4D0CC29C1C73E8D100BABE4B /* GenresCollectionViewController.m */,
 				4D0CC2991C73E8D100BABE4B /* GenresCollectionViewController.xib */,
@@ -529,6 +545,8 @@
 				4D0CC2931C73E8B000BABE4B /* SearchTableViewController.xib in Resources */,
 				4D0CC2961C73E8B000BABE4B /* ArtistsHeader.xib in Resources */,
 				4DA5D31D1C2F8AA60031FBE5 /* CollectionView.xib in Resources */,
+				4D6A2CC31C75349F00B611B0 /* LibraryCollectionViewController.xib in Resources */,
+				4D6A2CC11C751F9400B611B0 /* LibraryHeader.xib in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,9 +621,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DA5D2CD1C2F82B00031FBE5 /* TEngine.m in Sources */,
-				4DA5D2301C2F82340031FBE5 /* MyAdditions.m in Sources */,
+				4DA5D2301C2F82340031FBE5 /* UIKit+Tomahawk.m in Sources */,
 				4D0CC2921C73E8B000BABE4B /* SearchTableViewController.m in Sources */,
 				4DA5D2251C2F82190031FBE5 /* CollectionViewCell.m in Sources */,
+				4D6A2CC61C75350700B611B0 /* LibraryHeader.m in Sources */,
 				4D0CC2911C73E8B000BABE4B /* DetailTableViewController.m in Sources */,
 				4D0CC2A21C73E8D100BABE4B /* FeedViewController.m in Sources */,
 				4DA5D2281C2F82190031FBE5 /* ConnectCell.m in Sources */,
@@ -614,6 +633,7 @@
 				4DB547DE1C3FD56700B7F22B /* InboxTableViewController.m in Sources */,
 				4D04DFB01C720C6100DA8EBD /* ADVSegmentedControl.swift in Sources */,
 				4DA5D21C1C2F81F50031FBE5 /* main.m in Sources */,
+				4D6A2CC01C751F9400B611B0 /* LibraryCollectionViewController.m in Sources */,
 				4DA5D2131C2F81D30031FBE5 /* InfoTableViewController.m in Sources */,
 				4DA5D2151C2F81D30031FBE5 /* ConnectCollectionViewController.m in Sources */,
 				4D0CC2941C73E8B000BABE4B /* ArtistDetailCollectionViewController.m in Sources */,

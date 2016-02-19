@@ -15,7 +15,6 @@
 
 - (void)applyLayoutAttributes:(StickyHeaderFlowLayoutAttributes *)layoutAttributes {
     [UIView beginAnimations:@"" context:nil];
-//    self.titleLabel.alpha = layoutAttributes.progressiveness <= 0.1 ?  1 : 0;
     self.navigationBarArtistImage.alpha = layoutAttributes.progressiveness <= 0.1 ?  1 : 0;
     [UIView commitAnimations];
 }

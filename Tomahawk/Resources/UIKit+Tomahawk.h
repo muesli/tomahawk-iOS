@@ -1,5 +1,5 @@
 //
-//  MyAdditions.h
+//  UIKit+Tomahawk.h
 //  Tomahawk
 //
 //  Created by Mark Bourke on 20/12/2015.
@@ -8,34 +8,35 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIImage (MyAdditions)
-+(UIImage *)image:(UIImage *)image withColor:(UIColor *)color;
+@interface UIImage (Tomahawk)
++ (UIImage *)image:(UIImage *)image withColor:(UIColor *)color;
 
 - (UIImage *)crop:(CGRect)rect;
 
 @end
 
-@interface NSString (MyAdditions)
+
+@interface NSString (Tomahawk)
 
 - (NSString *)md5;
 - (NSDictionary *) URLStringValues;
 
 @end
 
-@interface NSData (MyAdditions)
+@interface NSData (Tomahawk)
 
 - (NSString*)md5;
 - (id)serialize;
 
 @end
 
-@interface NSDictionary (MyAdditions)
+@interface NSDictionary (Tomahawk)
 
 - (NSString *)stringify;
 
 @end
 
-@interface NSError (MyAdditions)
+@interface NSError (Tomahawk)
 
 - (UIAlertController *)createAlertFromError;
 

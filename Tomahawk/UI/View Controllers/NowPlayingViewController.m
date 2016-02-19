@@ -7,7 +7,7 @@
 //
 
 #import "NowPlayingViewController.h"
-#import "MyAdditions.h"
+#import "UIKit+Tomahawk.h"
 #import "CastIconButton.h"
 #import "SLColorArt.h"
 

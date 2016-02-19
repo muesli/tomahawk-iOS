@@ -9,7 +9,7 @@
 #import "ArtistDetailCollectionViewController.h"
 #import "StickyHeaderFlowLayout.h"
 #import "ArtistsHeader.h"
-#import "MyAdditions.h"
+#import "UIKit+Tomahawk.h"
 
 @implementation ArtistDetailCollectionViewController
 
@@ -20,8 +20,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    self.navigationController.tabBarController.tabBar.hidden = YES;
-    self.navigationController.toolbar.hidden = YES;
     
 }
 

@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "TEngine.h"
-#import "MyAdditions.h"
 #import "ResolverDetailController.h"
 
 @interface AppDelegate ()

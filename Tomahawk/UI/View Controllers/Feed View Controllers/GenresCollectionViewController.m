@@ -9,7 +9,7 @@
 #import "GenresCollectionViewController.h"
 #import "CollectionViewCell.h"
 #import "TEngine.h"
-#import "MyAdditions.h"
+#import "UIKit+Tomahawk.h"
 #import "UIImageView+AFNetworking.h"
 
 @implementation GenresCollectionViewController {
@@ -40,9 +40,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *genres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     genres.title.text =  [titles objectAtIndex:indexPath.row];
-    genres.detailImage.hidden = YES;
     genres.artist.hidden = YES;
-    genres.listeners.hidden = YES;
     [genres.image setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderGenres"]];
     return genres;
 }

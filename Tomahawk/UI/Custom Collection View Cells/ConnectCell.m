@@ -9,7 +9,7 @@
 
 #import "ConnectCell.h"
 #import <QuartzCore/QuartzCore.h>
-#import "MyAdditions.h"
+#import "UIKit+Tomahawk.h"
 
 @implementation ConnectCell {
     UIImageView *imageView;

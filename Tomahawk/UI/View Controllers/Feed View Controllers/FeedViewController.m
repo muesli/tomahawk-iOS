@@ -11,6 +11,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "GenresCollectionViewController.h"
 #import "SearchTableViewController.h"
+#import "LibraryCollectionViewController.h"
 
 
 @interface FeedViewController ()
@@ -74,7 +75,7 @@
     
     UITableViewController *songsController1 = [[UITableViewController alloc]initWithStyle:UITableViewStylePlain];
     songsController1.title = @"CHARTS";
-    UITableViewController *playlistsController = [[UITableViewController alloc]initWithStyle:UITableViewStylePlain];
+    LibraryCollectionViewController *playlistsController = [[LibraryCollectionViewController alloc]initWithNibName:@"LibraryCollectionViewController" bundle:nil];
     playlistsController.title = @"FOR YOU";
     GenresCollectionViewController *songsController = [[GenresCollectionViewController alloc]initWithNibName:@"GenresCollectionViewController" bundle:nil];
     songsController.title = @"RADIO";
