@@ -1,0 +1,14 @@
+//
+//  Tomahawk-Prefix.pch
+//  Tomahawk
+//
+//  Created by Mark Bourke on 19/02/2016.
+//  Copyright © 2016 Mark Bourke. All rights reserved.
+//
+
+#ifndef Tomahawk_pch
+#define Tomahawk_pch
+
+#import "UIKit+Tomahawk.h"
+
+#endif

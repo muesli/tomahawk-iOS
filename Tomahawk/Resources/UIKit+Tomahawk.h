@@ -42,4 +42,10 @@
 
 @end
 
+@interface NSObject (Tomahawk)
+
+- (void)performBlock:(void (^)())block afterDelay:(NSTimeInterval)delay;
+
+@end
+
 

@@ -9,7 +9,7 @@
 #import "ArtistDetailCollectionViewController.h"
 #import "StickyHeaderFlowLayout.h"
 #import "ArtistsHeader.h"
-#import "UIKit+Tomahawk.h"
+
 
 @implementation ArtistDetailCollectionViewController
 

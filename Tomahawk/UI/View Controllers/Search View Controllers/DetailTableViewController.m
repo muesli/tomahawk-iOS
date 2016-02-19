@@ -10,7 +10,6 @@
 #import "CustomTableViewCell.h"
 #import "TEngine.h"
 #import "UIImageView+AFNetworking.h"
-#import "UIKit+Tomahawk.h"
 
 @interface DetailTableViewController () {
     NSArray *textLabels, *detailTextLabels, *images, *secondDetailTextLabels;

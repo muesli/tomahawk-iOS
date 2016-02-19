@@ -7,7 +7,6 @@
 //
 
 #import "NowPlayingViewController.h"
-#import "UIKit+Tomahawk.h"
 #import "CastIconButton.h"
 #import "SLColorArt.h"
 
@@ -119,8 +118,9 @@
     }
     return cast;
 }
+
 - (UIModalPresentationStyle) adaptivePresentationStyleForPresentationController: (UIPresentationController * ) controller {
-    return UIModalPresentationNone;
+    return controller == self.resolver ? UIModalPresentationNone : UIModalPresentationFullScreen;
 }
 
 

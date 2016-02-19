@@ -11,12 +11,23 @@
 #import "StickyHeaderFlowLayout.h"
 #import "CustomUIButton.h"
 #import "TableViewCollectionViewCell.h"
+#import "NowPlayingViewController.h"
 
 @interface LibraryCollectionViewController ()
 
 @end
 
 @implementation LibraryCollectionViewController
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self performBlock:^{
+        NSArray *indexPath = [self.collectionView indexPathsForSelectedItems];
+        if (indexPath.count != 0) {
+            [self updateCellColorWithTint:NO atIndexPath:indexPath[0] animated:YES];
+            [self.collectionView deselectItemAtIndexPath:indexPath[0] animated:NO];
+        }
+    } afterDelay:0.2];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,27 +55,43 @@
     return cell;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 20;
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     LibraryHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
     return header;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCollectionViewCell* cell = (TableViewCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    [self updateCellColorWithTint:YES atIndexPath:indexPath animated:NO];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCollectionViewCell* cell = (TableViewCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
+-(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateCellColorWithTint:NO atIndexPath:indexPath animated:NO];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self updateCellColorWithTint:YES atIndexPath:indexPath animated:NO];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    [self updateCellColorWithTint:NO atIndexPath:indexPath animated:NO];
+}
+
+- (void)updateCellColorWithTint:(BOOL)tint atIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
+    TableViewCollectionViewCell* cell = (TableViewCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    if (animated) {
+        [UIView beginAnimations:nil context:nil];
+        cell.backgroundColor = tint ? [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0] : [UIColor clearColor];
+        [UIView commitAnimations];
+    } else {
+       cell.backgroundColor = tint ? [UIColor colorWithRed:217.0/255.0 green:217.0/255.0 blue:217.0/255.0 alpha:1.0] : [UIColor clearColor];
+    }
+    
 }
 
 @end

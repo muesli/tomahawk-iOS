@@ -7,7 +7,6 @@
 //
 
 #import "TEngine.h"
-#import "UIKit+Tomahawk.h"
 #import "AFNetworking.h"
 #import "AFOAuth2Manager.h"
 #import "Private.h"

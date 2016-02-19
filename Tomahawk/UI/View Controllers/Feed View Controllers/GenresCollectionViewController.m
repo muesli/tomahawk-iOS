@@ -9,7 +9,6 @@
 #import "GenresCollectionViewController.h"
 #import "THKCollectionViewCell.h"
 #import "TEngine.h"
-#import "UIKit+Tomahawk.h"
 #import "UIImageView+AFNetworking.h"
 
 @implementation GenresCollectionViewController {
@@ -22,7 +21,7 @@
     [TEngine getRadioGenresWithCompletionBlock:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
             UIAlertController *error = [response createAlertFromError];
-            [self presentViewController:error animated:YES completion:nil];
+            [self.view.window.rootViewController presentViewController:error animated:YES completion:nil];
         }else {
             titles = [response objectForKey:@"genreTitle"];
             genreID = [response objectForKey:@"genreID"];
@@ -48,5 +47,6 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.view.frame.size.width *0.43, self.view.frame.size.width *0.55);
 }
+
 
 @end

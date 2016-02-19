@@ -7,7 +7,6 @@
 //
 
 #import "InboxTableViewController.h"
-#import "UIKit+Tomahawk.h"
 
 @interface InboxTableViewController (){
     NSMutableArray *messages;

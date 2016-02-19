@@ -7,7 +7,6 @@
 //
 
 #import "ResolverDetailController.h"
-#import "UIKit+Tomahawk.h"
 #import "TEngine.h"
 
 @implementation ResolverDetailController {

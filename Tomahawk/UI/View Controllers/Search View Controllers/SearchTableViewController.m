@@ -11,7 +11,6 @@
 #import "dispatch_cancelable_block.h"
 #import "UIImageView+AFNetworking.h"
 #import "CustomTableViewCell.h"
-#import "UIKit+Tomahawk.h"
 #import "DetailTableViewController.h"
 #import "ArtistDetailCollectionViewController.h"
 #import "NowPlayingViewController.h"
