@@ -144,7 +144,7 @@ import UIKit
     }
     
     func displayNewSelectedIndex(){
-        for (index, item) in labels.enumerate() {
+        for (_, item) in labels.enumerate() {
             item.textColor = unselectedLabelColor
         }
         
@@ -160,7 +160,7 @@ import UIKit
     
     func addIndividualItemConstraints(items: [UIView], mainView: UIView, padding: CGFloat) {
         
-        let constraints = mainView.constraints
+        _ = mainView.constraints
         
         for (index, button) in items.enumerate() {
             

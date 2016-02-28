@@ -6,16 +6,22 @@
 //  Copyright © 2016 Mark Bourke. All rights reserved.
 //
 
-#import "LibraryHeader.h"
+#import "ChartsHeader.h"
 #import "THKCollectionViewCell.h"
+#import "StickyHeaderFlowLayoutAttributes.h"
 
-@implementation LibraryHeader
+@implementation ChartsHeader
 
 
 -(void)awakeFromNib {
     [super awakeFromNib];
     [self.collectionView registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
 }
+
+//- (void)applyLayoutAttributes:(StickyHeaderFlowLayoutAttributes *)layoutAttributes {
+//    NSLog(@"Delegate sent");
+//    [self.delegate headerDidScrollWithProgress:layoutAttributes.progressiveness];
+//}
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 5;
@@ -25,7 +31,7 @@
     THKCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.textLabel.text = @"Title";
     cell.detailTextLabel.text = @"Artist";
-    cell.imageView.image = [UIImage imageNamed:@"PlaceholderSongs"];
+    cell.imageView.image = [UIImage imageNamed:@"PlaceholderCountryCharts"];
     return cell;
 }
 

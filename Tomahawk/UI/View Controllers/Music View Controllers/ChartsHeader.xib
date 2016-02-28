@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="7mu-fy-s28" customClass="LibraryHeader">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="7mu-fy-s28" customClass="ChartsHeader">
             <rect key="frame" x="0.0" y="0.0" width="405" height="210"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -27,9 +27,9 @@
                         <outlet property="delegate" destination="7mu-fy-s28" id="fnv-6P-37v"/>
                     </connections>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECENTLY PLAYED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usl-4v-WKO">
-                    <rect key="frame" x="20" y="10" width="112" height="15"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHARTS BY COUNTRY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usl-4v-WKO">
+                    <rect key="frame" x="20" y="10" width="124" height="14"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -39,12 +39,12 @@
                         <constraint firstAttribute="width" constant="70" id="CO2-CD-dT8"/>
                         <constraint firstAttribute="height" constant="15" id="vNJ-nZ-LlX"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     <inset key="contentEdgeInsets" minX="66" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="titleEdgeInsets" minX="-105" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="-2" minY="3" maxX="18" maxY="3"/>
-                    <state key="normal" title="SEE ALL" image="More Than"/>
+                    <inset key="titleEdgeInsets" minX="-90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="-1" minY="0.0" maxX="19" maxY="0.0"/>
+                    <state key="normal" title="SEE ALL" image="Right Chevron"/>
                 </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -65,6 +65,6 @@
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="More Than" width="22" height="22"/>
+        <image name="Right Chevron" width="12" height="12"/>
     </resources>
 </document>

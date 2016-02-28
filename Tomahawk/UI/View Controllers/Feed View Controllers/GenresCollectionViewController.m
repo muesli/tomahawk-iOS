@@ -10,6 +10,7 @@
 #import "THKCollectionViewCell.h"
 #import "TEngine.h"
 #import "UIImageView+AFNetworking.h"
+#import "PlaylistsDetailViewController.h"
 
 @implementation GenresCollectionViewController {
     NSArray *titles, *tracklists, *images, *genreID;
@@ -40,7 +41,7 @@
     THKCollectionViewCell *genres = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     genres.textLabel.text =  [titles objectAtIndex:indexPath.row];
     genres.detailTextLabel.hidden = YES;
-    [genres.imageView setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderGenres"]];
+    [genres.imageView setImageWithURL:[NSURL URLWithString:[images objectAtIndex:indexPath.row]] placeholderImage:[UIImage imageNamed:@"PlaceholderRadios"]];
     return genres;
 }
 
@@ -48,5 +49,16 @@
     return CGSizeMake(self.view.frame.size.width *0.43, self.view.frame.size.width *0.55);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    PlaylistsDetailViewController *playlistDetail = [storyboard instantiateViewControllerWithIdentifier:@"PlaylistsDetailViewController"];
+    UINavigationController *rootController = (UINavigationController *)[[[[UIApplication sharedApplication]delegate] window] rootViewController];
+    THKCollectionViewCell *cell = (THKCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    playlistDetail.navigationItem.title = cell.textLabel.text;
+    [rootController pushViewController:playlistDetail animated:YES];
+    [TEngine getRadioGenreTracksWithID:genreID[indexPath.row] completion:^(id response) {
+        [playlistDetail response:response];
+    }];
+}
 
 @end

@@ -15,7 +15,7 @@
 
 #pragma mark - Search
 
-+ (void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
++ (void)searchSongsBySongName:(NSString *)song resolver:(resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -49,6 +49,11 @@
             baseURL = RHAPSODY_BASE;
             query = @"/v1/search/typeahead";
             params = @{@"apikey" : RHAPSODY_API_KEY, @"q" : song, @"type" : @"track", @"limit" : @(limit), @"offset" : @(limit * page)};
+            break;
+        case RGenius:
+            baseURL = GENIUS_BASE;
+            query = @"/search";
+            params = @{@"q" : song, @"access_token" : GENIUS_CLIENT_ACCESS_TOKEN};
             break;
         default:
             break;
@@ -145,6 +150,16 @@
                     [songImages addObject:image];
                 }
                 break;
+            case RGenius:
+                base = [[responseObject objectForKey:@"response"]objectForKey:@"hits"];
+                for (int i = 0; i<base.count; i++) {
+                    NSString *name = [[[base objectAtIndex:i]objectForKey:@"result"]objectForKey:@"title"];
+                    NSString *artist = [[[[base objectAtIndex:i]objectForKey:@"result"]objectForKey:@"primary_artist"]objectForKey:@"name"];
+                    NSString *images = [[[base objectAtIndex:i]objectForKey:@"result"]objectForKey:@"header_image_thumbnail_url"];
+                    [songImages addObject:images];
+                    [songNames addObject:name];
+                    [artistNames addObject:artist];
+                }
             default:
                 break;
         }
@@ -163,7 +178,7 @@
     }];
 }
 
-+ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -311,7 +326,7 @@
 
 }
 
-+ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion {
     NSString *baseURL;
     NSString *query;
     NSDictionary *params;
@@ -564,28 +579,51 @@
     }];
 }
 
-+(void)getTopTracksWithCompletionBlock:(void (^)(id response))completion {
-    NSDictionary *params = @{@"method" : @"chart.getTopTracks", @"api_key" : LASTFM_API_KEY, @"format" : @"json", @"limit" : @4};
-    
-    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:LASTFM_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
++ (void)getChartsWithOption:(charts)chart page:(int)page limit:(int)limit completion:(void (^)(id))completion {
+    NSDictionary *params = @{@"limit" : @(limit), @"index" : @(limit * page)};
+    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:DEEZER_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-    [session GET:@"/2.0" parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [session GET:chartsString(chart) parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
-        NSArray *base = [[responseObject objectForKey:@"tracks"]objectForKey:@"track"];
-        NSMutableArray *songArtists = [NSMutableArray new];
-        NSMutableArray *songNames = [NSMutableArray new];
-        NSMutableArray *songImages = [NSMutableArray new];
-        for (int i = 0; i<base.count; i++) {
-            NSString *images = [[[[base objectAtIndex:i]objectForKey:@"image"]objectAtIndex:2]objectForKey:@"#text"];
-            NSString *names = [[base objectAtIndex:i] objectForKey:@"name"];
-            NSString *artists = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
-            [songImages addObject:images];
-            [songNames addObject:names];
-            [songArtists addObject:artists];
+        NSArray *base = [responseObject objectForKey:@"data"];
+        NSMutableArray *subtitles = [NSMutableArray new];
+        NSMutableArray *titles = [NSMutableArray new];
+        NSMutableArray *images = [NSMutableArray new];
+        switch (chart) {
+            case kTracks:
+                for (int i = 0; i<base.count; i++) {
+                    NSString *image = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"cover_medium"];
+                    NSString *names = [[base objectAtIndex:i] objectForKey:@"title"];
+                    NSString *artists = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+                    [images addObject:image];
+                    [titles addObject:names];
+                    [subtitles addObject:artists];
+                }
+                break;
+            case kArtists:
+                for (int i = 0; i<base.count; i++) {
+                    NSString *image = [[base objectAtIndex:i]objectForKey:@"picture_medium"];
+                    NSString *names = [[base objectAtIndex:i]objectForKey:@"name"];
+                    [images addObject:image];
+                    [titles addObject:names];
+                }
+                break;
+            case kAlbums:
+                for (int i = 0; i<base.count; i++) {
+                    NSString *image = [[base objectAtIndex:i]objectForKey:@"cover_medium"];
+                    NSString *names = [[base objectAtIndex:i]objectForKey:@"title"];
+                    NSString *artists = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];
+                    [images addObject:image];
+                    [titles addObject:names];
+                    [subtitles addObject:artists];
+                }
+                break;
+            default:
+                break;
         }
-        [myDict setObject:songArtists forKey:@"songArtists"];
-        [myDict setObject:songNames forKey:@"songNames"];
-        [myDict setObject:songImages forKey:@"songImages"];
+        [myDict setObject:titles forKey:@"titles"];
+        [myDict setObject:subtitles forKey:@"subtitles"];
+        [myDict setObject:images forKey:@"images"];
         completion(myDict);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion (error);
@@ -593,35 +631,7 @@
  
 }
 
-+(void)getTopArtistsWithCompletionBlock:(void (^)(id response))completion {
-    NSDictionary *params = @{@"method" : @"chart.getTopArtists", @"api_key" : LASTFM_API_KEY, @"format" : @"json", @"limit" : @4};
-    
-    AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:LASTFM_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-    [session GET:@"/2.0" parameters:params progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSMutableDictionary *myDict = [NSMutableDictionary dictionary];
-        NSArray *base = [[responseObject objectForKey:@"artists"]objectForKey:@"artist"];
-        NSMutableArray *artistListeners = [NSMutableArray new];
-        NSMutableArray *artistImages = [NSMutableArray new];
-        NSMutableArray *artistNames = [NSMutableArray new];
-        for (int i = 0; i<base.count; i++) {
-            NSString *images = [[[[base objectAtIndex:i]objectForKey:@"image"]objectAtIndex:2]objectForKey:@"#text"];
-            NSString *names = [[base objectAtIndex:i]objectForKey:@"name"];
-            NSNumber *listeners = [[base objectAtIndex:i]objectForKey:@"listeners"];
-            [artistImages addObject:images];
-            [artistNames addObject:names];
-            [artistListeners addObject:listeners];
-        }
-        [myDict setObject:artistListeners forKey:@"artistListeners"];
-        [myDict setObject:artistNames forKey:@"artistNames"];
-        [myDict setObject:artistImages forKey:@"artistImages"];
-        completion(myDict);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completion (error);
-    }];
-}
-
-+(void)getRadioGenresWithCompletionBlock:(void (^)(id response))completion {
++ (void)getRadioGenresWithCompletionBlock:(void (^)(id response))completion {
     
     AFHTTPSessionManager *session = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:DEEZER_BASE] sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
@@ -632,7 +642,7 @@
         NSMutableArray *genreImage = [NSMutableArray new];
         NSMutableArray *genreID = [NSMutableArray new];
         for (int i = 0; i<base.count; i++) {
-            NSString *images = [[base objectAtIndex:i]objectForKey:@"picture_medium"];
+            NSString *images = [[base objectAtIndex:i]objectForKey:@"picture_big"];
             NSString *title = [[base objectAtIndex:i]objectForKey:@"title"];
             NSNumber *ID = [[base objectAtIndex:i]objectForKey:@"id"];
             [genreImage addObject:images];
@@ -659,7 +669,7 @@
         NSMutableArray *trackArtist = [NSMutableArray new];
         NSMutableArray *trackAlbum = [NSMutableArray new];
         for (int i = 0; i<base.count; i++) {
-            NSString *images = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"cover"];
+            NSString *images = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"cover_medium"];
             NSString *titles = [[base objectAtIndex:i]objectForKey:@"title"];
             NSString *albums = [[[base objectAtIndex:i]objectForKey:@"album"]objectForKey:@"title"];
             NSString *artists = [[[base objectAtIndex:i]objectForKey:@"artist"]objectForKey:@"name"];

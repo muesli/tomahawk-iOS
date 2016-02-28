@@ -9,6 +9,8 @@
 #ifndef Tomahawk_pch
 #define Tomahawk_pch
 
-#import "UIKit+Tomahawk.h"
+    #ifdef __OBJC__
+    #import "UIKit+Tomahawk.h"
+    #endif
 
 #endif

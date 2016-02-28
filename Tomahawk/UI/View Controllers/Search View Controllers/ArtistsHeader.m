@@ -14,10 +14,11 @@
 @implementation ArtistsHeader
 
 - (void)applyLayoutAttributes:(StickyHeaderFlowLayoutAttributes *)layoutAttributes {
-    [UIView beginAnimations:@"" context:nil];
+    [UIView beginAnimations:nil context:nil];
     self.navigationBarArtistImage.alpha = layoutAttributes.progressiveness <= 0.1 ?  1 : 0;
     [UIView commitAnimations];
 }
+
 
 
 - (void)drawRect:(CGRect)rect {

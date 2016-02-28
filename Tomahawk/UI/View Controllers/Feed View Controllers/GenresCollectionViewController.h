@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GenresCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
+@interface GenresCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end

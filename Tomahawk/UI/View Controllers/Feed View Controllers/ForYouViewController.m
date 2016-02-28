@@ -11,6 +11,21 @@
 
 @implementation ForYouViewController
 
+//@implementation LibraryHeader  {
+//    BDKCollectionIndexView *index;
+//}
+//
+//
+//-(void)awakeFromNib {
+//    [super awakeFromNib];
+//    [self.collectionView registerNib:[UINib nibWithNibName:@"THKCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+//    index = [[BDKCollectionIndexView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.view.frame) - 28, 10, 28, self.view.frame.size.height - 160) indexTitles:@[@"A",@"B",@"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", @"#"]];
+//    index.tintColor = [UIColor colorWithRed:(226.0/255.0) green:(56.0/255.0) blue:(83.0/255.0) alpha:(1.0)];
+//    index.touchStatusViewAlpha = 0.0;
+//    index.alpha = 0;
+//    [self.view addSubview:index];
+//}
+
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];

@@ -259,7 +259,7 @@ static CGFloat searchBlockDelay = 0.25;
     
     UIButton *seeAll = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    [seeAll setImage:[UIImage imageNamed:@"More Than"] forState:UIControlStateNormal];
+    [seeAll setImage:[UIImage imageNamed:@"Right Chevron"] forState:UIControlStateNormal];
     [seeAll setTitleEdgeInsets:UIEdgeInsetsMake(0, -105.0, 0, 0)];
     [seeAll setImageEdgeInsets:UIEdgeInsetsMake(3, -2, 3, 18)];
     [seeAll setContentEdgeInsets:UIEdgeInsetsMake(0, 66, 0, 0)];
@@ -348,7 +348,7 @@ static CGFloat searchBlockDelay = 0.25;
     }];
     
     dispatch_group_enter(group);
-    [TEngine searchSongsBySongName:searchText resolver:RDeezer limit:4 page:0 completion:^(id response) {
+    [TEngine searchSongsBySongName:searchText resolver:RGenius limit:4 page:0 completion:^(id response) {
         if ([response isKindOfClass:[NSError class]]) {
             self.myError = response;
         }else {

@@ -17,6 +17,7 @@ PODS:
     - AFNetworking/NSURLSession
   - AFOAuth2Manager (3.0.0):
     - AFNetworking/NSURLSession (~> 3.0)
+  - BDKCollectionIndexView (2.2.1)
   - ColorArt (0.1.1)
   - google-cast-sdk (2.10.1):
     - google-cast-sdk/Assets (= 2.10.1)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - AFNetworking
   - AFOAuth2Manager (from `https://github.com/AFNetworking/AFOAuth2Manager.git`, branch
     `3_0_0_branch`)
+  - BDKCollectionIndexView
   - ColorArt
   - google-cast-sdk
   - JVFloatLabeledTextField
@@ -59,6 +61,7 @@ SPEC CHECKSUMS:
   1PasswordExtension: a22573ad528dd63bd79c1f3b3813b17c2f86b91b
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   AFOAuth2Manager: 0566da1be64883e339813d411229fdc9a84dab7c
+  BDKCollectionIndexView: 819bd123d618f20c061caacd409e2d8f1590df7d
   ColorArt: de0ffb63da4acdde8e234ded62e200236ca3e7e4
   google-cast-sdk: 98bafadd4c490c776f2ee913a6561cda5b8634a6
   JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4

@@ -45,9 +45,9 @@
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (textLabels.count == 0 && detailTextLabels.count == 0 && images.count == 0) {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         indicator.center = self.tableView.center;
@@ -100,6 +100,8 @@
         }
     }
 }
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     [cell.myAccessoryButton addTarget:self action:@selector(moreButtonTouched:forEvent:)forControlEvents:UIControlEventTouchUpInside];
@@ -111,6 +113,10 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
 - (void)loadNextPage:(int)pageNumber {
     if (self.isLoading) return;
     self.isLoading = YES;
@@ -119,8 +125,6 @@
         [activityIndicatorView removeFromSuperview];
         activityIndicatorView = nil;
         [self.tableView setBackgroundView:nil];
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44, 0);
-        self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 44, 0);
         tableViewBG = nil;
         if ([response isKindOfClass:[NSError class]]) {
             UIAlertController *error = [response createAlertFromError];
@@ -139,10 +143,6 @@
         [self.tableView reloadData];
         self.isLoading = NO;
     }];
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
 }
 
 

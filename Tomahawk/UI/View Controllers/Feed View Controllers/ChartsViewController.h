@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChartsHeader.h"
 
-@interface ChartsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ChartsViewController : UICollectionViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ChartsHeaderDelegate, UIPopoverPresentationControllerDelegate, UITableViewDelegate>
 
-@property(nonatomic, strong) IBOutlet UICollectionView *chartsByCountry;
-@property(nonatomic, strong) IBOutlet UITableView *top;
-@property(weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property(nonatomic,retain) UIPopoverPresentationController *resolver;
 
 @end

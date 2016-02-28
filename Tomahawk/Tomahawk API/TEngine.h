@@ -10,27 +10,38 @@
 
 @interface TEngine : NSObject
 
-typedef enum resolvers {
+typedef NS_ENUM(NSInteger, resolvers) {
     RLastFM = 0,
-    RSpotify = 1,
-    RGPlayMusic = 2,
-    RAppleMusic = 3,
-    RSoundcloud = 4,
-    ROfficialFM = 5,
-    RDeezer = 6,
-    RTidal = 7,
-    RYouTube = 8,
-    RAmazonPM = 9,
-    RRhapsody = 10
-} resolvers;
+    RSpotify,
+    RGPlayMusic,
+    RAppleMusic,
+    RSoundcloud,
+    ROfficialFM,
+    RDeezer,
+    RTidal,
+    RYouTube,
+    RAmazonPM,
+    RRhapsody,
+    RGenius
+};
+
+typedef enum {
+    kTracks = 0,
+    kArtists,
+    kAlbums
+} charts;
+
+#define chartsString(enum) [@[@"/chart/0/tracks",@"/chart/0/artists",@"/chart/0/albums"] objectAtIndex:enum]
+
+
 
 #pragma mark - Search
 
-+(void)searchSongsBySongName:(NSString *)song resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
++(void)searchSongsBySongName:(NSString *)song resolver:(resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
 
-+ (void)searchArtistsByArtistName:(NSString *)artist resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
++ (void)searchArtistsByArtistName:(NSString *)artist resolver:(resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
 
-+ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(enum resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
++ (void)searchAlbumsByAlbumName:(NSString *)album resolver:(resolvers)resolver limit:(int)limit page:(int)page completion:(void (^)(id response))completion;
 
 
 #pragma mark - Artist
@@ -44,8 +55,7 @@ typedef enum resolvers {
 
 #pragma mark - Chart
 
-+(void)getTopTracksWithCompletionBlock:(void (^)(id response))completion;
-+(void)getTopArtistsWithCompletionBlock:(void (^)(id response))completion;
++ (void)getChartsWithOption:(charts)chart page:(int)page limit:(int)limit completion:(void (^)(id))completion;
 
 #pragma mark - Event
 

@@ -10,6 +10,7 @@ pod 'AFOAuth2Manager', git: 'https://github.com/AFNetworking/AFOAuth2Manager.git
 pod 'JVFloatLabeledTextField'
 pod 'google-cast-sdk'
 pod 'ColorArt'
+pod 'BDKCollectionIndexView'
 
 use_frameworks!
 

@@ -85,7 +85,7 @@ static const NSInteger kHeaderZIndex = 1024;
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes *layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:decorationViewKind withIndexPath:indexPath];
     CGFloat inset = ([indexPath section] == [self.collectionView numberOfSections] - 1 && [indexPath row] == [self.collectionView numberOfItemsInSection:[indexPath section]] - 1) ? 0.0 : 90.0; //If it's the last row, remove the separator inset
-    layoutAttributes.frame = CGRectMake(inset, (indexPath.row + 1) * self.itemSize.height + indexPath.row * self.minimumLineSpacing + self.parallaxHeaderReferenceSize.height, self.collectionViewContentSize.width, self.minimumLineSpacing);
+    layoutAttributes.frame = CGRectMake(inset, (indexPath.row + 1) * self.itemSize.height + indexPath.row * self.minimumLineSpacing + self.parallaxHeaderReferenceSize.height + self.headerReferenceSize.height, self.collectionViewContentSize.width, self.minimumLineSpacing);
     layoutAttributes.zIndex = 1000;
     
     return layoutAttributes;

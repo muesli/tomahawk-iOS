@@ -33,11 +33,14 @@
 		4D2456D71C5BDDC500B5B4E5 /* CastIconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2456D61C5BDDC400B5B4E5 /* CastIconButton.m */; };
 		4D2456D91C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */; };
 		4D6A2CC01C751F9400B611B0 /* LibraryCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A2CBE1C751F9400B611B0 /* LibraryCollectionViewController.m */; };
-		4D6A2CC11C751F9400B611B0 /* LibraryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */; };
+		4D6A2CC11C751F9400B611B0 /* ChartsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CBF1C751F9400B611B0 /* ChartsHeader.xib */; };
 		4D6A2CC31C75349F00B611B0 /* LibraryCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */; };
-		4D6A2CC61C75350700B611B0 /* LibraryHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC51C75350700B611B0 /* LibraryHeader.m */; };
+		4D6A2CC61C75350700B611B0 /* ChartsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6A2CC51C75350700B611B0 /* ChartsHeader.m */; };
 		4D9342681C774A6D00011711 /* TableViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9342661C774A6D00011711 /* TableViewCollectionViewCell.m */; };
 		4D9342691C774A6D00011711 /* TableViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9342671C774A6D00011711 /* TableViewCollectionViewCell.xib */; };
+		4D9342791C8363AA00011711 /* PlaylistDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9342771C8363AA00011711 /* PlaylistDetailHeader.m */; };
+		4D93427A1C8363AA00011711 /* PlaylistDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9342781C8363AA00011711 /* PlaylistDetailHeader.xib */; };
+		4D93427D1C83665F00011711 /* PlaylistsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D93427C1C83665F00011711 /* PlaylistsDetailViewController.m */; };
 		4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */; };
 		4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */; };
 		4DA5D2091C2F81B80031FBE5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5D2071C2F81B80031FBE5 /* AppDelegate.m */; };
@@ -119,14 +122,19 @@
 		4D2456D81C5BDE1B00B5B4E5 /* CastFrameworkAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = CastFrameworkAssets.xcassets; path = "Pods/google-cast-sdk/GoogleCastSDK-2.10.1-Release/CastFrameworkAssets.xcassets"; sourceTree = "<group>"; };
 		4D6A2CBD1C751F9400B611B0 /* LibraryCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryCollectionViewController.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.h"; sourceTree = "<group>"; };
 		4D6A2CBE1C751F9400B611B0 /* LibraryCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryCollectionViewController.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.m"; sourceTree = "<group>"; };
-		4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryHeader.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.xib"; sourceTree = "<group>"; };
+		4D6A2CBF1C751F9400B611B0 /* ChartsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChartsHeader.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/ChartsHeader.xib"; sourceTree = "<group>"; };
 		4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LibraryCollectionViewController.xib; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryCollectionViewController.xib"; sourceTree = "<group>"; };
-		4D6A2CC41C75350700B611B0 /* LibraryHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LibraryHeader.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.h"; sourceTree = "<group>"; };
-		4D6A2CC51C75350700B611B0 /* LibraryHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LibraryHeader.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/LibraryHeader.m"; sourceTree = "<group>"; };
+		4D6A2CC41C75350700B611B0 /* ChartsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartsHeader.h; path = "Tomahawk/UI/View Controllers/Music View Controllers/ChartsHeader.h"; sourceTree = "<group>"; };
+		4D6A2CC51C75350700B611B0 /* ChartsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartsHeader.m; path = "Tomahawk/UI/View Controllers/Music View Controllers/ChartsHeader.m"; sourceTree = "<group>"; };
 		4D9342651C774A6D00011711 /* TableViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewCollectionViewCell.h; path = "Tomahawk/UI/Custom Collection View Cells/TableViewCollectionViewCell.h"; sourceTree = "<group>"; };
 		4D9342661C774A6D00011711 /* TableViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewCollectionViewCell.m; path = "Tomahawk/UI/Custom Collection View Cells/TableViewCollectionViewCell.m"; sourceTree = "<group>"; };
 		4D9342671C774A6D00011711 /* TableViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCollectionViewCell.xib; path = "Tomahawk/UI/Custom Collection View Cells/TableViewCollectionViewCell.xib"; sourceTree = "<group>"; };
 		4D9342701C77767B00011711 /* Tomahawk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Tomahawk-Prefix.pch"; path = "Tomahawk/Supporting Files/Tomahawk-Prefix.pch"; sourceTree = "<group>"; };
+		4D9342761C8363AA00011711 /* PlaylistDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistDetailHeader.h; path = "Tomahawk/UI/View Controllers/Feed View Controllers/PlaylistDetailHeader.h"; sourceTree = "<group>"; };
+		4D9342771C8363AA00011711 /* PlaylistDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistDetailHeader.m; path = "Tomahawk/UI/View Controllers/Feed View Controllers/PlaylistDetailHeader.m"; sourceTree = "<group>"; };
+		4D9342781C8363AA00011711 /* PlaylistDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaylistDetailHeader.xib; path = "Tomahawk/UI/View Controllers/Feed View Controllers/PlaylistDetailHeader.xib"; sourceTree = "<group>"; };
+		4D93427B1C83665F00011711 /* PlaylistsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistsDetailViewController.h; path = "Tomahawk/UI/View Controllers/Feed View Controllers/PlaylistsDetailViewController.h"; sourceTree = "<group>"; };
+		4D93427C1C83665F00011711 /* PlaylistsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistsDetailViewController.m; path = "Tomahawk/UI/View Controllers/Feed View Controllers/PlaylistsDetailViewController.m"; sourceTree = "<group>"; };
 		4DA5D1D81C2F80F40031FBE5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Tomahawk/Images.xcassets; sourceTree = "<group>"; };
 		4DA5D1E31C2F817B0031FBE5 /* NowPlayingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NowPlayingViewController.h; path = "Tomahawk/UI/View Controllers/NowPlayingViewController.h"; sourceTree = "<group>"; };
 		4DA5D1E41C2F817B0031FBE5 /* NowPlayingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NowPlayingViewController.m; path = "Tomahawk/UI/View Controllers/NowPlayingViewController.m"; sourceTree = "<group>"; };
@@ -214,10 +222,10 @@
 		4D0A0FA81C34168200244532 /* Search View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4D0CC2871C73E8B000BABE4B /* DetailTableViewController.m */,
-				4D0CC2881C73E8B000BABE4B /* SearchTableViewController.m */,
 				4D0CC2891C73E8B000BABE4B /* DetailTableViewController.h */,
+				4D0CC2871C73E8B000BABE4B /* DetailTableViewController.m */,
 				4D0CC28A1C73E8B000BABE4B /* SearchTableViewController.h */,
+				4D0CC2881C73E8B000BABE4B /* SearchTableViewController.m */,
 				4D0CC28B1C73E8B000BABE4B /* SearchTableViewController.xib */,
 				4D0CC28D1C73E8B000BABE4B /* ArtistsHeader.h */,
 				4D0CC28E1C73E8B000BABE4B /* ArtistsHeader.m */,
@@ -254,9 +262,6 @@
 				4D6A2CBD1C751F9400B611B0 /* LibraryCollectionViewController.h */,
 				4D6A2CBE1C751F9400B611B0 /* LibraryCollectionViewController.m */,
 				4D6A2CC21C75349F00B611B0 /* LibraryCollectionViewController.xib */,
-				4D6A2CC41C75350700B611B0 /* LibraryHeader.h */,
-				4D6A2CC51C75350700B611B0 /* LibraryHeader.m */,
-				4D6A2CBF1C751F9400B611B0 /* LibraryHeader.xib */,
 			);
 			name = "Music View Controllers";
 			sourceTree = "<group>";
@@ -367,9 +372,17 @@
 				4D0CC29D1C73E8D100BABE4B /* ChartsViewController.h */,
 				4D0CC29E1C73E8D100BABE4B /* ChartsViewController.m */,
 				4D0CC29B1C73E8D100BABE4B /* ChartsViewController.xib */,
+				4D6A2CC41C75350700B611B0 /* ChartsHeader.h */,
+				4D6A2CC51C75350700B611B0 /* ChartsHeader.m */,
+				4D6A2CBF1C751F9400B611B0 /* ChartsHeader.xib */,
 				4D0CC29F1C73E8D100BABE4B /* ForYouViewController.h */,
 				4D0CC2A01C73E8D100BABE4B /* ForYouViewController.m */,
 				4D0CC29A1C73E8D100BABE4B /* ForYouViewController.xib */,
+				4D93427B1C83665F00011711 /* PlaylistsDetailViewController.h */,
+				4D93427C1C83665F00011711 /* PlaylistsDetailViewController.m */,
+				4D9342761C8363AA00011711 /* PlaylistDetailHeader.h */,
+				4D9342771C8363AA00011711 /* PlaylistDetailHeader.m */,
+				4D9342781C8363AA00011711 /* PlaylistDetailHeader.xib */,
 			);
 			name = "Feed View Controllers";
 			sourceTree = "<group>";
@@ -550,6 +563,7 @@
 				4DA5D2F41C2F83310031FBE5 /* Main.storyboard in Resources */,
 				4D0CC2A31C73E8D100BABE4B /* GenresCollectionViewController.xib in Resources */,
 				4DA5D2F21C2F831D0031FBE5 /* LaunchScreen.storyboard in Resources */,
+				4D93427A1C8363AA00011711 /* PlaylistDetailHeader.xib in Resources */,
 				4D0CC2A41C73E8D100BABE4B /* ForYouViewController.xib in Resources */,
 				4D9342691C774A6D00011711 /* TableViewCollectionViewCell.xib in Resources */,
 				4D0CC2A51C73E8D100BABE4B /* ChartsViewController.xib in Resources */,
@@ -557,7 +571,7 @@
 				4D0CC2961C73E8B000BABE4B /* ArtistsHeader.xib in Resources */,
 				4DA5D31D1C2F8AA60031FBE5 /* THKCollectionViewCell.xib in Resources */,
 				4D6A2CC31C75349F00B611B0 /* LibraryCollectionViewController.xib in Resources */,
-				4D6A2CC11C751F9400B611B0 /* LibraryHeader.xib in Resources */,
+				4D6A2CC11C751F9400B611B0 /* ChartsHeader.xib in Resources */,
 				4DA5D1D91C2F80F40031FBE5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,8 +649,9 @@
 				4DA5D2301C2F82340031FBE5 /* UIKit+Tomahawk.m in Sources */,
 				4D0CC2921C73E8B000BABE4B /* SearchTableViewController.m in Sources */,
 				4DA5D2251C2F82190031FBE5 /* THKCollectionViewCell.m in Sources */,
-				4D6A2CC61C75350700B611B0 /* LibraryHeader.m in Sources */,
+				4D6A2CC61C75350700B611B0 /* ChartsHeader.m in Sources */,
 				4D0CC2911C73E8B000BABE4B /* DetailTableViewController.m in Sources */,
+				4D93427D1C83665F00011711 /* PlaylistsDetailViewController.m in Sources */,
 				4D0CC2A21C73E8D100BABE4B /* FeedViewController.m in Sources */,
 				4DA5D2281C2F82190031FBE5 /* ConnectCollectionViewCell.m in Sources */,
 				4DEE816B1C3DA2D90077F7FD /* CustomTableViewCell.m in Sources */,
@@ -662,6 +677,7 @@
 				4D0CC2A61C73E8D100BABE4B /* GenresCollectionViewController.m in Sources */,
 				4D0CC2951C73E8B000BABE4B /* ArtistsHeader.m in Sources */,
 				4DA5D1EE1C2F817B0031FBE5 /* NowPlayingViewController.m in Sources */,
+				4D9342791C8363AA00011711 /* PlaylistDetailHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
