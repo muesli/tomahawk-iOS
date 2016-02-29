@@ -24,7 +24,7 @@ $ pod install
 $ open Tomahawk.xcworkspace
 ```
 
-## Lisence
+## License
 
 If you distribute a copy or make a fork of the project, you have to credit this project as source. You may NOT use any of the icons included in the Images.xcassets file inside of this project in any project other than this one.
 
